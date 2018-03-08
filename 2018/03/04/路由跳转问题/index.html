@@ -5,17 +5,20 @@
   
 
   
-  <title>叶落林间</title>
+  <title>路由跳转问题 | 叶落林间</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人博客，分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="叶落林间">
-<meta property="og:url" content="http://nisonfuture.cn/index.html">
+  <meta name="description" content="观察路由跳转，我发现是通过yield put(routerRedux.push(&amp;#39;/dashboard/analysis&amp;#39;));这行代码来进行跳转，但是却跳不过去好像触发了路由守卫，没有身份验证成功 所以跳不过去 ，找到一个  123456&amp;lt;AuthorizedRoute           path=&amp;quot;/&amp;quot;           render=&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路由跳转问题">
+<meta property="og:url" content="http://nisonfuture.cn/2018/03/04/路由跳转问题/index.html">
 <meta property="og:site_name" content="叶落林间">
-<meta property="og:description" content="个人博客，分享">
+<meta property="og:description" content="观察路由跳转，我发现是通过yield put(routerRedux.push(&amp;#39;/dashboard/analysis&amp;#39;));这行代码来进行跳转，但是却跳不过去好像触发了路由守卫，没有身份验证成功 所以跳不过去 ，找到一个  123456&amp;lt;AuthorizedRoute           path=&amp;quot;/&amp;quot;           render=&amp;#123;">
+<meta property="og:image" content="blob:http://markdown.xiaoshujiang.com/9b87a59c-9aa1-48c5-a370-dfd757a3869e">
+<meta property="og:updated_time" content="2018-03-08T03:20:00.298Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="叶落林间">
-<meta name="twitter:description" content="个人博客，分享">
+<meta name="twitter:title" content="路由跳转问题">
+<meta name="twitter:description" content="观察路由跳转，我发现是通过yield put(routerRedux.push(&amp;#39;/dashboard/analysis&amp;#39;));这行代码来进行跳转，但是却跳不过去好像触发了路由守卫，没有身份验证成功 所以跳不过去 ，找到一个  123456&amp;lt;AuthorizedRoute           path=&amp;quot;/&amp;quot;           render=&amp;#123;">
+<meta name="twitter:image" content="blob:http://markdown.xiaoshujiang.com/9b87a59c-9aa1-48c5-a370-dfd757a3869e">
   
     <link rel="alternate" href="/atom.xml" title="叶落林间" type="application/atom+xml">
   
@@ -62,157 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-昨天loading状态的修改问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/08/昨天loading状态的修改问题/" class="article-date">
-  <time datetime="2018-03-08T01:35:59.000Z" itemprop="datePublished">2018-03-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/08/昨天loading状态的修改问题/">昨天loading状态的修改问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="昨晚回去后，调试发现-一直在提示-status-没有定义，"><a href="#昨晚回去后，调试发现-一直在提示-status-没有定义，" class="headerlink" title="昨晚回去后，调试发现 一直在提示 status 没有定义，"></a>昨晚回去后，调试发现 一直在提示 status 没有定义，</h3><p>我一开始以为是在 changeLoginStatus这里出现了问题，但是修改了 也没有变化，于是我在login 函数增加了日志  发现其实那个函数已经运行了，并没有问题，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">login(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">      // console.log(&apos;login&apos;, payload);</span><br><span class="line">      try &#123;</span><br><span class="line">        const response = yield call(fakeAccountLogin, payload);</span><br><span class="line">        // console.log(&apos;login&apos;, response.state, JSON.stringify(response));</span><br><span class="line">        yield put(&#123;</span><br><span class="line">          type: &apos;changeLoginStatus&apos;,</span><br><span class="line">          payload: response,</span><br><span class="line">        &#125;);</span><br><span class="line">        // response 有可能是undefined 出现错误的情况 是没有返回结果的 没有返回结果就undefined 所以要加一个判断</span><br><span class="line">        if (response !== undefined &amp;&amp; response.status === &apos;ok&apos;) &#123;</span><br><span class="line">          yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; finally &#123;</span><br><span class="line">        yield put(&#123;</span><br><span class="line">          type: &apos;changeLoginStatus&apos;,</span><br><span class="line">          payload: &#123;</span><br><span class="line">            state: &apos;error&apos;,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">        yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-<p>通过将response 输出来 我发现 失败之后 输出来的是Undefined<br>所以就找到问题所在 在用response 的时候进行参数检查，如果非空则继续运行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/昨天loading状态的修改问题/" data-id="cjehy2s7w0002w8ugzwp7sbea" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jsx简介" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/06/jsx简介/" class="article-date">
-  <time datetime="2018-03-06T10:11:39.000Z" itemprop="datePublished">2018-03-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/06/jsx简介/">jsx简介</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/06/jsx简介/" data-id="cjehy2s7n0000w8ug4a8nzjfk" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="react-学习（一）" class="article article-type-react" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/05/学习（一）/" class="article-date">
-  <time datetime="2018-03-05T01:25:02.000Z" itemprop="datePublished">2018-03-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/05/学习（一）/">学习（一）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/05/学习（一）/" data-id="cjehy2s8d0005w8ug8kat148j" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-模板" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/04/模板/" class="article-date">
-  <time datetime="2018-03-04T12:35:59.000Z" itemprop="datePublished">2018-03-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/04/模板/">模板</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>### </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/04/模板/" data-id="cjehy2s7x0003w8ugh6mivu94" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-路由跳转问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-路由跳转问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/04/路由跳转问题/" class="article-date">
   <time datetime="2018-03-04T12:35:59.000Z" itemprop="datePublished">2018-03-04</time>
@@ -225,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/04/路由跳转问题/">路由跳转问题</a>
+    <h1 class="article-title" itemprop="name">
+      路由跳转问题
     </h1>
   
 
@@ -253,93 +106,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-pling" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/04/pling/" class="article-date">
-  <time datetime="2018-03-04T11:35:59.000Z" itemprop="datePublished">2018-03-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2018/03/04/模板/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/04/pling/">pling</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>hello I‘m plinghuang</p>
-<h3 id="iiii"><a href="#iiii" class="headerlink" title="iiii"></a>iiii</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/04/pling/" data-id="cjehy2s7t0001w8ugu31bypit" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/04/hello-world/" class="article-date">
-  <time datetime="2018-03-04T10:05:39.981Z" itemprop="datePublished">2018-03-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          模板
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/04/hello-world/">Hello World</a>
-    </h1>
   
+    <a href="/2018/03/04/pling/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">pling</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/04/hello-world/" data-id="cjehy2s8f0006w8ugo8447n9m" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
