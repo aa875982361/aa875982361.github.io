@@ -5,19 +5,23 @@
   
 
   
-  <title>ant Design 路由 | 叶落林间</title>
+  <title>2018-3-7 登录页面的错误提示 | 叶落林间</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1234567891011121314&amp;#123;  &apos;/dashboard/analysis&apos;: &amp;#123;    component: DynamicComponent(),    name: &apos;分析页&apos;,  &amp;#125;,  &apos;/dashboard/monitor&apos;: &amp;#123;    component: DynamicComponent(),    name: &apos;监控页&apos;,  &amp;#1">
+  <meta name="description" content="查看代码发现 是在下面的代码控制的： 1234567891011121314function checkStatus(response) &amp;#123;  if (response.status &amp;gt;= 200 &amp;amp;&amp;amp; response.status &amp;lt; 300) &amp;#123;    return response;  &amp;#125;  const errortext = c">
 <meta name="keywords" content="ant Design">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ant Design 路由">
-<meta property="og:url" content="http://nisonfuture.cn/2018/03/06/ant Design 路由/index.html">
+<meta property="og:title" content="2018-3-7 登录页面的错误提示">
+<meta property="og:url" content="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/index.html">
 <meta property="og:site_name" content="叶落林间">
-<meta property="og:description" content="1234567891011121314&amp;#123;  &apos;/dashboard/analysis&apos;: &amp;#123;    component: DynamicComponent(),    name: &apos;分析页&apos;,  &amp;#125;,  &apos;/dashboard/monitor&apos;: &amp;#123;    component: DynamicComponent(),    name: &apos;监控页&apos;,  &amp;#1">
-<meta property="og:updated_time" content="2018-03-10T16:45:22.512Z">
+<meta property="og:description" content="查看代码发现 是在下面的代码控制的： 1234567891011121314function checkStatus(response) &amp;#123;  if (response.status &amp;gt;= 200 &amp;amp;&amp;amp; response.status &amp;lt; 300) &amp;#123;    return response;  &amp;#125;  const errortext = c">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/images/1520409819446.jpg">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/images/1520411194353.jpg">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/images/1520411270183.jpg">
+<meta property="og:updated_time" content="2018-03-10T17:08:06.195Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ant Design 路由">
-<meta name="twitter:description" content="1234567891011121314&amp;#123;  &apos;/dashboard/analysis&apos;: &amp;#123;    component: DynamicComponent(),    name: &apos;分析页&apos;,  &amp;#125;,  &apos;/dashboard/monitor&apos;: &amp;#123;    component: DynamicComponent(),    name: &apos;监控页&apos;,  &amp;#1">
+<meta name="twitter:title" content="2018-3-7 登录页面的错误提示">
+<meta name="twitter:description" content="查看代码发现 是在下面的代码控制的： 1234567891011121314function checkStatus(response) &amp;#123;  if (response.status &amp;gt;= 200 &amp;amp;&amp;amp; response.status &amp;lt; 300) &amp;#123;    return response;  &amp;#125;  const errortext = c">
+<meta name="twitter:image" content="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/images/1520409819446.jpg">
   
     <link rel="alternate" href="/atom.xml" title="叶落林间" type="application/atom+xml">
   
@@ -68,10 +72,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-ant Design 路由" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-登录页面的错误提示" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/06/ant Design 路由/" class="article-date">
-  <time datetime="2018-03-06T10:11:39.000Z" itemprop="datePublished">2018-03-06</time>
+    <a href="/2018/03/07/登录页面的错误提示/" class="article-date">
+  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ant Design 路由
+      2018-3-7 登录页面的错误提示
     </h1>
   
 
@@ -94,18 +98,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  '/dashboard/analysis': &#123;</span><br><span class="line">    component: DynamicComponent(),</span><br><span class="line">    name: '分析页',</span><br><span class="line">  &#125;,</span><br><span class="line">  '/dashboard/monitor': &#123;</span><br><span class="line">    component: DynamicComponent(),</span><br><span class="line">    name: '监控页',</span><br><span class="line">  &#125;,</span><br><span class="line">  '/dashboard/workplace': &#123;</span><br><span class="line">    component: DynamicComponent(),</span><br><span class="line">    name: '工作台',</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>大概结构就像上面 有三个参数：</p>
-<ul>
-<li>路由名称 </li>
-<li>组件</li>
-<li>名称</li>
-</ul>
+        <p><img src="./images/1520409819446.jpg" alt="输入错入的数据的时候 会有错误提示"></p>
+<p>查看代码发现 是在下面的代码控制的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function checkStatus(response) &#123;</span><br><span class="line">  if (response.status &gt;= 200 &amp;&amp; response.status &lt; 300) &#123;</span><br><span class="line">    return response;</span><br><span class="line">  &#125;</span><br><span class="line">  const errortext = codeMessage[response.status] || response.statusText;</span><br><span class="line">  notification.error(&#123;</span><br><span class="line">    message: `请求错误 $&#123;response.status&#125;: $&#123;response.body.msg&#125;`,</span><br><span class="line">    description: errortext,</span><br><span class="line">  &#125;);</span><br><span class="line">  const error = new Error(errortext);</span><br><span class="line">  error.name = response.status;</span><br><span class="line">  error.response = response;</span><br><span class="line">  throw error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将errContext 和 response这两个属性 输出来 查看一下<br><code>console.log(&#39;checkStatus&#39;, JSON.stringify(errortext), JSON.stringify(response));</code><br>结果如下<br><code>checkStatus &quot;发出的请求有错误，服务器没有进行新建或修改数据的操作。&quot; {}</code></p>
+<p><img src="./images/1520411194353.jpg" alt="response"><br>返回的数据解析如上图 但是没有返回结果的body 但是通过浏览器的拦截 我看到有response是有数据的<br><img src="./images/1520411270183.jpg" alt="浏览器拦截"><br>所以这就很奇怪 </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/06/ant Design 路由/" data-id="cjelml1vf0005w0ugo16dzv80" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/" data-id="cjelml1wq001zw0ugfkojyx9m" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -116,19 +118,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/03/06/vscode 配置/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/03/07/flux应用实践/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
-          vscode 配置
+          flux应用实践
         
       </div>
     </a>
   
   
-    <a href="/2018/03/06/登录页面的构建/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/03/07/Flux应用架构/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">登录页面的构建</div>
+      <div class="article-nav-title">Flux应用架构</div>
     </a>
   
 </nav>
