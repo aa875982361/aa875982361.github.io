@@ -5,19 +5,19 @@
   
 
   
-  <title>元素渲染 | 叶落林间</title>
+  <title>vscode 配置 | 叶落林间</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在主页面有个root的节点 通过dom的render函数将自定义组件添加到root里面  12345678//html&amp;lt;div id=&quot;root&quot;&amp;gt;&amp;lt;/div&amp;gt;//jsconst element = &amp;lt;h1&amp;gt;Hello, world&amp;lt;/h1&amp;gt;;ReactDOM.render(  element,  document.getElementById(&apos;r">
-<meta name="keywords" content="react">
+  <meta name="description" content="问题：Expected linebreaks to be ‘LF’ but found ‘CRLF’  linebreak-style  原因：当许多人都有不同的编辑器，VCS应用程序和操作系统时，可能会发生不同的行结尾由上述任何一种写入（可能特别发生在将SourceTree的Windows和Mac版本一起使用时）。在Windows操作系统中使用的换行符（换行符）通常是回车符（CR），后面是换行符">
+<meta name="keywords" content="工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="元素渲染">
-<meta property="og:url" content="http://nisonfuture.cn/2018/03/05/元素渲染/index.html">
+<meta property="og:title" content="vscode 配置">
+<meta property="og:url" content="http://nisonfuture.cn/2018/03/06/vscode 配置/index.html">
 <meta property="og:site_name" content="叶落林间">
-<meta property="og:description" content="在主页面有个root的节点 通过dom的render函数将自定义组件添加到root里面  12345678//html&amp;lt;div id=&quot;root&quot;&amp;gt;&amp;lt;/div&amp;gt;//jsconst element = &amp;lt;h1&amp;gt;Hello, world&amp;lt;/h1&amp;gt;;ReactDOM.render(  element,  document.getElementById(&apos;r">
-<meta property="og:updated_time" content="2018-03-10T16:16:48.644Z">
+<meta property="og:description" content="问题：Expected linebreaks to be ‘LF’ but found ‘CRLF’  linebreak-style  原因：当许多人都有不同的编辑器，VCS应用程序和操作系统时，可能会发生不同的行结尾由上述任何一种写入（可能特别发生在将SourceTree的Windows和Mac版本一起使用时）。在Windows操作系统中使用的换行符（换行符）通常是回车符（CR），后面是换行符">
+<meta property="og:updated_time" content="2018-03-10T16:42:21.632Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="元素渲染">
-<meta name="twitter:description" content="在主页面有个root的节点 通过dom的render函数将自定义组件添加到root里面  12345678//html&amp;lt;div id=&quot;root&quot;&amp;gt;&amp;lt;/div&amp;gt;//jsconst element = &amp;lt;h1&amp;gt;Hello, world&amp;lt;/h1&amp;gt;;ReactDOM.render(  element,  document.getElementById(&apos;r">
+<meta name="twitter:title" content="vscode 配置">
+<meta name="twitter:description" content="问题：Expected linebreaks to be ‘LF’ but found ‘CRLF’  linebreak-style  原因：当许多人都有不同的编辑器，VCS应用程序和操作系统时，可能会发生不同的行结尾由上述任何一种写入（可能特别发生在将SourceTree的Windows和Mac版本一起使用时）。在Windows操作系统中使用的换行符（换行符）通常是回车符（CR），后面是换行符">
   
     <link rel="alternate" href="/atom.xml" title="叶落林间" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-元素渲染" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-vscode 配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/05/元素渲染/" class="article-date">
-  <time datetime="2018-03-05T10:11:39.000Z" itemprop="datePublished">2018-03-05</time>
+    <a href="/2018/03/06/vscode 配置/" class="article-date">
+  <time datetime="2018-03-06T10:11:39.000Z" itemprop="datePublished">2018-03-06</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      元素渲染
+      vscode 配置
     </h1>
   
 
@@ -94,22 +94,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在主页面有个root的节点 通过dom的render函数将自定义组件添加到root里面 </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;<span class="selector-tag">div</span> id=<span class="string">"root"</span>&gt;&lt;/div&gt;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">const element = &lt;h1&gt;Hello, world&lt;/h1&gt;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  element,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h3 id="更新元素渲染"><a href="#更新元素渲染" class="headerlink" title="更新元素渲染"></a>更新元素渲染</h3><p>React 元素都是immutable<strong>不可变</strong>的。当元素被创建之后，你是无法改变其内容或属性的。一个元素就好像是动画里的一帧，它代表应用界面在某一时间点的样子。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function tick() &#123;</span><br><span class="line">  const element = (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;Hello, world!&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;It is &#123;new Date().toLocaleTimeString()&#125;.&lt;/h2&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">  ReactDOM.render(</span><br><span class="line">    element,</span><br><span class="line">    document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setInterval(tick, 1000);</span><br></pre></td></tr></table></figure>
-<p>这个例子里面 通过 setInterval() 方法，每秒钟调用一次 ReactDOM.render().更新渲染页面。</p>
+        <p>问题：Expected linebreaks to be ‘LF’ but found ‘CRLF’  linebreak-style</p>
 <blockquote>
-<p>注意:<br>在实际生产开发中, 大多数React应用只会调用一次 ReactDOM.render() . 在下一个章节中我们将会详细介绍 有状态组件 实现 DOM 更新方式。</p>
+<p>原因：当许多人都有不同的编辑器，VCS应用程序和操作系统时，可能会发生不同的行结尾由上述任何一种写入（可能特别发生在将SourceTree的Windows和Mac版本一起使用时）。<br>在Windows操作系统中使用的换行符（换行符）通常是回车符（CR），后面是换行符（LF），使其成为回车换行符（CRLF），而Linux和Unix使用简单换行符（LF）。相应的控制序列是”\n”（对于LF）和”\r\n”对于（CRLF）。</p>
 </blockquote>
+<p>解决方法：<br>在.eslintrc文件的rule中添加：linebreak-style: [“error”, “windows”] 或 linebreak-style:0</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  extends: <span class="string">'google'</span>,</span><br><span class="line">  quotes: [<span class="number">2</span>, <span class="string">'single'</span>],</span><br><span class="line">  globals: &#123;</span><br><span class="line">    SwaggerEditor: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  env: &#123;</span><br><span class="line">    browser: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  rules:&#123;</span><br><span class="line">    <span class="string">"linebreak-style"</span>: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/05/元素渲染/" data-id="cjelltuaz000mi4ug6jw5fph1" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/06/vscode 配置/" data-id="cjelltuaw000ii4uglmqo1ia5" class="article-share-link">Teilen</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
 
     </footer>
   </div>
@@ -117,19 +116,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/03/05/State & 生命周期/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/03/06/ant Design 路由/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
-          State &amp; 生命周期
+          ant Design 路由
         
       </div>
     </a>
   
   
-    <a href="/2018/03/05/jsx简介/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/03/06/登录页面的构建/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">jsx简介</div>
+      <div class="article-nav-title">登录页面的构建</div>
     </a>
   
 </nav>

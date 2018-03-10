@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>登录页面的构建 | 叶落林间</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="观察原有的登录界面，删除掉我不需要的元素。 发现在验证码的那个组件是不适用于我的，现在找出来，修改掉 通过获取验证码 这几个字 全局查找 找出 了组件所在位置 通过查找西湖区 找到登录页面的组件所在 修改删除 得到以下界面 到此 已经将登录界面的界面做完，但是没有接上验证码和接口和登录接口  我看了下 目标管理界面的验证码请求，感觉和我自己构建的验证码请求不太一样，我是直接通过一条链接，然后就直接">
+<meta name="keywords" content="ant Design">
+<meta property="og:type" content="article">
+<meta property="og:title" content="登录页面的构建">
+<meta property="og:url" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/index.html">
+<meta property="og:site_name" content="叶落林间">
+<meta property="og:description" content="观察原有的登录界面，删除掉我不需要的元素。 发现在验证码的那个组件是不适用于我的，现在找出来，修改掉 通过获取验证码 这几个字 全局查找 找出 了组件所在位置 通过查找西湖区 找到登录页面的组件所在 修改删除 得到以下界面 到此 已经将登录界面的界面做完，但是没有接上验证码和接口和登录接口  我看了下 目标管理界面的验证码请求，感觉和我自己构建的验证码请求不太一样，我是直接通过一条链接，然后就直接">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520318270663.jpg">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520319921946.jpg">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520322456032.jpg">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520324022861.jpg">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520324222753.jpg">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520325475859.jpg">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520325713899.jpg">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520325760451.jpg">
+<meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E6%8F%90%E4%BA%A4%E6%97%B6%E9%97%B4.png">
+<meta property="og:updated_time" content="2018-03-10T16:46:55.920Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="登录页面的构建">
+<meta name="twitter:description" content="观察原有的登录界面，删除掉我不需要的元素。 发现在验证码的那个组件是不适用于我的，现在找出来，修改掉 通过获取验证码 这几个字 全局查找 找出 了组件所在位置 通过查找西湖区 找到登录页面的组件所在 修改删除 得到以下界面 到此 已经将登录界面的界面做完，但是没有接上验证码和接口和登录接口  我看了下 目标管理界面的验证码请求，感觉和我自己构建的验证码请求不太一样，我是直接通过一条链接，然后就直接">
+<meta name="twitter:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520318270663.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="叶落林间" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">叶落林间</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">你只有非常努力，才能看起来毫不费力</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://nisonfuture.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-登录页面的构建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/06/登录页面的构建/" class="article-date">
+  <time datetime="2018-03-06T10:11:39.000Z" itemprop="datePublished">2018-03-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      登录页面的构建
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>观察原有的登录界面，删除掉我不需要的元素。</p>
+<p>发现在验证码的那个组件是不适用于我的，现在找出来，修改掉</p>
+<p>通过获取验证码 这几个字 全局查找 找出 了组件所在位置<br><img src="./images/1520318270663.jpg" alt="验证码组件"></p>
+<p>通过查找西湖区 找到登录页面的组件所在 修改删除 得到以下界面<br><img src="./images/1520319921946.jpg" alt="登录界面"></p>
+<p>到此 已经将登录界面的界面做完，但是没有接上验证码和接口和登录接口</p>
+<p><img src="./images/1520322456032.jpg" alt="验证码组件的使用demo"></p>
+<p><img src="./images/1520324022861.jpg" alt="目标后台登录接麦你的验证码请求"><br>我看了下 目标管理界面的<strong>验证码请求</strong>，感觉和我自己构建的验证码请求不太一样，我是直接通过一条链接，然后就直接获取到图片 通过每次修改uuid 就获取到了不同的验证码图片 ，如下图：<br><img src="./images/1520324222753.jpg" alt="本机测试验证码图"></p>
+<p>暂时先不深究这个问题 先留着<br>接下来查看<strong>登录事件</strong><br><img src="./images/1520325475859.jpg" alt="点击登录后发送的请求"><br> 根据api <strong>api/login/account</strong>找到函数调用接口<br> <img src="./images/1520325713899.jpg" alt="enter description here"><br> 再找在哪调用了这个接口 <strong>/api/login/account</strong><br> <img src="./images/1520325760451.jpg" alt="enter description here"><br>在找在哪调用了<strong>fakeAccountLogin</strong> 这个函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">*login(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">  const response = yield call(fakeAccountLogin, payload);</span><br><span class="line">  yield put(&#123;</span><br><span class="line">    type: &apos;changeLoginStatus&apos;,</span><br><span class="line">    payload: response,</span><br><span class="line">  &#125;);</span><br><span class="line">  // Login successfully</span><br><span class="line">  if (response.status === &apos;ok&apos;) &#123;</span><br><span class="line">    reloadAuthorized();</span><br><span class="line">    yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>对于=<a href="http://taobaofed.org/blog/2015/11/19/yield-and-delegating-yield/" target="_blank" rel="noopener">yield</a> 这个函数不理解 所以找了资料 </p>
+<p>再看提交事件，打算通过提交事件去找到验证码组件</p>
+<p>点击提交后发现，其实是有绑定事件的，并发送了post请求，如下图<br><img src="./images/%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E6%8F%90%E4%BA%A4%E6%97%B6%E9%97%B4.png" alt="enter description here" title="登录页面提交时间"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/06/登录页面的构建/" data-id="cjelltuba0019i4ugc7jww0fr" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/06/vscode 配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          vscode 配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/05/列表 & Keys/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">列表 &amp; Keys</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ant-Design/">ant Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js工具/">js工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ant-Design/" style="font-size: 16.67px;">ant Design</a> <a href="/tags/js工具/" style="font-size: 10px;">js工具</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/工具/" style="font-size: 13.33px;">工具</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/11/marjs随机生成hash值/">js随机生成hash值</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/08/查看列表组件/">查看列表组件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/08/昨天loading状态的修改问题/">昨天loading状态的修改问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/06/github仓库配置/">github仓库配置</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/06/ant Design 路由/">ant Design 路由</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Pling Huang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>组合 vs 继承 | 叶落林间</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="React 具有强大的组合模型，我们建议使用组合而不是继承来复用组件之间的代码。 在本节中，我们将围绕几个 React 新手经常使用继承解决的问题，我们将展示如果用组合来解决它们。 包含关系一些组件不能提前知道它们的子组件是什么。这对于 Sidebar 或 Dialog 这类通用容器尤其常见。 我们建议这些组件使用 children 属性将子元素直接传递到输出。 1234567function F">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合 vs 继承">
+<meta property="og:url" content="http://nisonfuture.cn/2018/03/05/组合 vs 继承/index.html">
+<meta property="og:site_name" content="叶落林间">
+<meta property="og:description" content="React 具有强大的组合模型，我们建议使用组合而不是继承来复用组件之间的代码。 在本节中，我们将围绕几个 React 新手经常使用继承解决的问题，我们将展示如果用组合来解决它们。 包含关系一些组件不能提前知道它们的子组件是什么。这对于 Sidebar 或 Dialog 这类通用容器尤其常见。 我们建议这些组件使用 children 属性将子元素直接传递到输出。 1234567function F">
+<meta property="og:updated_time" content="2018-03-10T16:34:23.457Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组合 vs 继承">
+<meta name="twitter:description" content="React 具有强大的组合模型，我们建议使用组合而不是继承来复用组件之间的代码。 在本节中，我们将围绕几个 React 新手经常使用继承解决的问题，我们将展示如果用组合来解决它们。 包含关系一些组件不能提前知道它们的子组件是什么。这对于 Sidebar 或 Dialog 这类通用容器尤其常见。 我们建议这些组件使用 children 属性将子元素直接传递到输出。 1234567function F">
+  
+    <link rel="alternate" href="/atom.xml" title="叶落林间" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">叶落林间</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">你只有非常努力，才能看起来毫不费力</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://nisonfuture.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-组合 vs 继承" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/05/组合 vs 继承/" class="article-date">
+  <time datetime="2018-03-05T10:11:39.000Z" itemprop="datePublished">2018-03-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      组合 vs 继承
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>React 具有强大的组合模型，我们建议使用组合而不是继承来复用组件之间的代码。</p>
+<p>在本节中，我们将围绕几个 React 新手经常使用继承解决的问题，我们将展示如果用组合来解决它们。</p>
+<h2 id="包含关系"><a href="#包含关系" class="headerlink" title="包含关系"></a>包含关系</h2><p>一些组件不能提前知道它们的子组件是什么。这对于 Sidebar 或 Dialog 这类通用容器尤其常见。</p>
+<p>我们建议这些组件使用 children 属性<strong>将子元素直接传递</strong>到输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function FancyBorder(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&#123;&apos;FancyBorder FancyBorder-&apos; + props.color&#125;&gt;</span><br><span class="line">      &#123;props.children&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样做还允许其他组件通过<strong>嵌套 JSX 来传递子组件</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function WelcomeDialog() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;FancyBorder color=&quot;blue&quot;&gt;</span><br><span class="line">      &lt;h1 className=&quot;Dialog-title&quot;&gt;</span><br><span class="line">        Welcome</span><br><span class="line">      &lt;/h1&gt;</span><br><span class="line">      &lt;p className=&quot;Dialog-message&quot;&gt;</span><br><span class="line">        Thank you for visiting our spacecraft!</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">    &lt;/FancyBorder&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><fancyborder> JSX 标签内的任何内容都将通过 children 属性传入 FancyBorder。由于 FancyBorder 在一个 <div> 内渲染了 {props.children}，所以被传递的所有元素都会出现在最终输出中。</div></fancyborder></p>
+<p>虽然不太常见，但有时你可能需要在组件中有多个入口，这种情况下你可以使用自己约定的属性而不是 children：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function SplitPane(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;SplitPane&quot;&gt;</span><br><span class="line">      &lt;div className=&quot;SplitPane-left&quot;&gt;</span><br><span class="line">        &#123;props.left&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div className=&quot;SplitPane-right&quot;&gt;</span><br><span class="line">        &#123;props.right&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;SplitPane</span><br><span class="line">      left=&#123;</span><br><span class="line">        &lt;Contacts /&gt;</span><br><span class="line">      &#125;</span><br><span class="line">      right=&#123;</span><br><span class="line">        &lt;Chat /&gt;</span><br><span class="line">      &#125; /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类似 <contacts> 和 <chat> 这样的 React 元素都是对象，所以你可以像任何其他元素一样传递它们。</chat></contacts></p>
+<h2 id="特殊实例"><a href="#特殊实例" class="headerlink" title="特殊实例"></a>特殊实例</h2><p>有时我们认为组件是其他组件的特殊实例。例如，我们会说 WelcomeDialog 是 Dialog 的特殊实例。</p>
+<p>在 React 中，这也是通过组合来实现的，通过配置属性用较特殊的组件来渲染较通用的组件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function Dialog(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;FancyBorder color=&quot;blue&quot;&gt;</span><br><span class="line">      &lt;h1 className=&quot;Dialog-title&quot;&gt;</span><br><span class="line">        &#123;props.title&#125;</span><br><span class="line">      &lt;/h1&gt;</span><br><span class="line">      &lt;p className=&quot;Dialog-message&quot;&gt;</span><br><span class="line">        &#123;props.message&#125;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">    &lt;/FancyBorder&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function WelcomeDialog() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;Dialog</span><br><span class="line">      title=&quot;Welcome&quot;</span><br><span class="line">      message=&quot;Thank you for visiting our spacecraft!&quot; /&gt;</span><br><span class="line"></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>组合对于定义为类的组件同样适用：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">function Dialog(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;FancyBorder color=&quot;blue&quot;&gt;</span><br><span class="line">      &lt;h1 className=&quot;Dialog-title&quot;&gt;</span><br><span class="line">        &#123;props.title&#125;</span><br><span class="line">      &lt;/h1&gt;</span><br><span class="line">      &lt;p className=&quot;Dialog-message&quot;&gt;</span><br><span class="line">        &#123;props.message&#125;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &#123;props.children&#125;</span><br><span class="line">    &lt;/FancyBorder&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SignUpDialog extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.handleChange = this.handleChange.bind(this);</span><br><span class="line">    this.handleSignUp = this.handleSignUp.bind(this);</span><br><span class="line">    this.state = &#123;login: &apos;&apos;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Dialog title=&quot;Mars Exploration Program&quot;</span><br><span class="line">              message=&quot;How should we refer to you?&quot;&gt;</span><br><span class="line">        &lt;input value=&#123;this.state.login&#125;</span><br><span class="line">               onChange=&#123;this.handleChange&#125; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;button onClick=&#123;this.handleSignUp&#125;&gt;</span><br><span class="line">          Sign Me Up!</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">      &lt;/Dialog&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleChange(e) &#123;</span><br><span class="line">    this.setState(&#123;login: e.target.value&#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleSignUp() &#123;</span><br><span class="line">    alert(`Welcome aboard, $&#123;this.state.login&#125;!`);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="那么继承呢？"><a href="#那么继承呢？" class="headerlink" title="那么继承呢？"></a>那么继承呢？</h2><p>在 Facebook 网站上，我们的 React 使用了数以千计的组件，然而却还未发现任何需要推荐你使用继承的情况。</p>
+<p>属性和组合为你提供了以清晰和安全的方式自定义组件的样式和行为所需的所有灵活性。请记住，组件可以接受任意元素，包括基本数据类型、React 元素或函数。</p>
+<p>如果要在组件之间复用 UI 无关的功能，我们建议将其提取到单独的 JavaScript 模块中。这样可以在不对组件进行扩展的前提下导入并使用该函数、对象或类。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/05/组合 vs 继承/" data-id="cjelltubd001ei4ugtvviz4bh" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/05/状态提升/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          状态提升
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/05/组件 & Props/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">组件 &amp; Props</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ant-Design/">ant Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js工具/">js工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ant-Design/" style="font-size: 16.67px;">ant Design</a> <a href="/tags/js工具/" style="font-size: 10px;">js工具</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/工具/" style="font-size: 13.33px;">工具</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/11/marjs随机生成hash值/">js随机生成hash值</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/08/查看列表组件/">查看列表组件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/08/昨天loading状态的修改问题/">昨天loading状态的修改问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/06/github仓库配置/">github仓库配置</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/06/ant Design 路由/">ant Design 路由</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Pling Huang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
