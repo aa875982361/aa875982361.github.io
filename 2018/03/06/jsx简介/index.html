@@ -7,16 +7,16 @@
   
   <title>jsx简介 | 叶落林间</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人博客，分享">
+  <meta name="description" content="JSX简介1const element = &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt;;  一种 JavaScript 的语法扩展。 我们推荐在 React 中使用 JSX 来描述用户界面。JSX 乍看起来可能比较像是模版语言，但事实上它完全是在 JavaScript 内部实现的。  在 JSX 中使用表达式可以在jsx中插入函数 或变量 1234567891011121">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsx简介">
 <meta property="og:url" content="http://nisonfuture.cn/2018/03/06/jsx简介/index.html">
 <meta property="og:site_name" content="叶落林间">
-<meta property="og:description" content="个人博客，分享">
-<meta property="og:updated_time" content="2018-03-06T10:11:39.596Z">
+<meta property="og:description" content="JSX简介1const element = &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt;;  一种 JavaScript 的语法扩展。 我们推荐在 React 中使用 JSX 来描述用户界面。JSX 乍看起来可能比较像是模版语言，但事实上它完全是在 JavaScript 内部实现的。  在 JSX 中使用表达式可以在jsx中插入函数 或变量 1234567891011121">
+<meta property="og:updated_time" content="2018-03-10T15:25:40.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jsx简介">
-<meta name="twitter:description" content="个人博客，分享">
+<meta name="twitter:description" content="JSX简介1const element = &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt;;  一种 JavaScript 的语法扩展。 我们推荐在 React 中使用 JSX 来描述用户界面。JSX 乍看起来可能比较像是模版语言，但事实上它完全是在 JavaScript 内部实现的。  在 JSX 中使用表达式可以在jsx中插入函数 或变量 1234567891011121">
   
     <link rel="alternate" href="/atom.xml" title="叶落林间" type="application/atom+xml">
   
@@ -39,6 +39,10 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">叶落林间</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">你只有非常努力，才能看起来毫不费力</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -85,11 +89,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="JSX简介"><a href="#JSX简介" class="headerlink" title="JSX简介"></a>JSX简介</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一种 JavaScript 的语法扩展。 我们推荐在 React 中使用 JSX 来描述用户界面。JSX 乍看起来可能比较像是模版语言，但事实上它完全是在 JavaScript 内部实现的。</p>
+</blockquote>
+<h3 id="在-JSX-中使用表达式"><a href="#在-JSX-中使用表达式" class="headerlink" title="在 JSX 中使用表达式"></a>在 JSX 中使用表达式</h3><pre><code>可以在jsx中插入函数 或变量
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function formatName(user) &#123;</span><br><span class="line">  return user.firstName + &apos; &apos; + user.lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const user = &#123;</span><br><span class="line">  firstName: &apos;Harper&apos;,</span><br><span class="line">  lastName: &apos;Perez&apos;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const element = (</span><br><span class="line">  &lt;h1&gt;</span><br><span class="line">    Hello, &#123;formatName(user)&#125;!</span><br><span class="line">  &lt;/h1&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  element,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="JSX-本身其实也是一种表达式"><a href="#JSX-本身其实也是一种表达式" class="headerlink" title="JSX 本身其实也是一种表达式"></a>JSX 本身其实也是一种表达式</h3><blockquote>
+<p>在编译之后呢，JSX 其实会被转化为普通的 JavaScript 对象。<br>这也就意味着，你其实可以在 if 或者 for 语句里使用 JSX，将它赋值给变量，当作参数传入，作为返回值都可以：</p>
+</blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getGreeting(user) &#123;</span><br><span class="line">  <span class="keyword">if</span> (user) &#123;</span><br><span class="line">    return &lt;h1&gt;Hello, &#123;formatName(user)&#125;!&lt;/h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">  return &lt;h1&gt;Hello, Stranger.&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JSX-属性"><a href="#JSX-属性" class="headerlink" title="JSX 属性"></a>JSX 属性</h3><p>可以使用引号来定义以字符串为值的属性：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;div tabIndex="0"&gt;&lt;/div&gt;;</span><br></pre></td></tr></table></figure>
+<p>也可以使用大括号来定义以 JavaScript 表达式为值的属性：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;img src=&#123;user.avatarUrl&#125;&gt;&lt;/img&gt;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>切记你使用了大括号包裹的 JavaScript 表达式时就不要再到外面套引号了。JSX 会将引号当中的内容识别为字符串而不是表达式。</p>
+</blockquote>
+<h3 id="JSX-嵌套"><a href="#JSX-嵌套" class="headerlink" title="JSX 嵌套"></a>JSX 嵌套</h3><p>如果 JSX 标签是闭合式的，那么你需要在结尾处用 /&gt;, 就好像 XML/HTML 一样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;img src=&#123;user.avatarUrl&#125; /&gt;;</span><br></pre></td></tr></table></figure>
+<h3 id="JSX-标签同样可以相互嵌套："><a href="#JSX-标签同样可以相互嵌套：" class="headerlink" title="JSX 标签同样可以相互嵌套："></a>JSX 标签同样可以相互嵌套：</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const element = (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;Hello!&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;Good to see you here.&lt;/h2&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>警告:<br>因为 JSX 的特性更接近 JavaScript 而不是 HTML , 所以 React DOM 使用 camelCase 小驼峰命名 来定义属性的名称，而不是使用 HTML 的属性名称。<br>例如，class 变成了 className，而 tabindex 则对应着 tabIndex.</p>
+</blockquote>
+<h3 id="JSX-防注入攻击"><a href="#JSX-防注入攻击" class="headerlink" title="JSX 防注入攻击"></a>JSX 防注入攻击</h3><p>React DOM 在渲染之前默认会 过滤 所有传入的值。它可以确保你的应用不会被注入攻击。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 XSS(跨站脚本) 攻击。</p>
+<h3 id="JSX-代表-Objects"><a href="#JSX-代表-Objects" class="headerlink" title="JSX 代表 Objects"></a>JSX 代表 Objects</h3><p>Babel 转译器会把 JSX 转换成一个名为 React.createElement() 的方法调用。</p>
+<p>下面两种代码的作用是完全相同的：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const element = (</span><br><span class="line">  &lt;<span class="selector-tag">h1</span> className=<span class="string">"greeting"</span>&gt;</span><br><span class="line">    Hello, world!</span><br><span class="line">  &lt;/h1&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const element = React.createElement(</span><br><span class="line">  <span class="string">'h1'</span>,</span><br><span class="line">  &#123;className: <span class="string">'greeting'</span>&#125;,</span><br><span class="line">  <span class="string">'Hello, world!'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>React.createElement() 这个方法首先会进行一些避免bug的检查，之后会返回一个类似下面例子的对象：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意: 以下示例是简化过的（不代表在 React 源码中是这样）</span></span><br><span class="line">const element = &#123;</span><br><span class="line">  type: <span class="string">'h1'</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    className: <span class="string">'greeting'</span>,</span><br><span class="line">    children: <span class="string">'Hello, world'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这样的对象被称为 “React 元素”。它代表所有你在屏幕上看到的东西。React 通过读取这些对象来构建 DOM 并保持数据内容一致。</p>
+<blockquote>
+<p>Tip:<br>如果你是在使用本地编辑器编写 JSX 代码的话，推荐你去装一个支持 JSX 高亮的插件，这样更方便之后的开发学习。</p>
+</blockquote>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/06/jsx简介/" data-id="cjehy2s7n0000w8ug4a8nzjfk" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/06/jsx简介/" data-id="cjeljbw140000igugftjbjcme" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -126,9 +164,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ant-Design/" style="font-size: 10px;">ant Design</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -147,6 +199,14 @@
       <ul>
         
           <li>
+            <a href="/2018/03/10/plinghuang/">plinghuang</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/08/查看列表组件/">查看列表组件</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/08/昨天loading状态的修改问题/">昨天loading状态的修改问题</a>
           </li>
         
@@ -156,14 +216,6 @@
         
           <li>
             <a href="/2018/03/05/学习（一）/">学习（一）</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/04/模板/">模板</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/04/路由跳转问题/">路由跳转问题</a>
           </li>
         
       </ul>
