@@ -68,46 +68,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-marjs随机生成hash值" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/11/marjs随机生成hash值/" class="article-date">
-  <time datetime="2018-03-10T16:48:13.519Z" itemprop="datePublished">2018-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/11/marjs随机生成hash值/">js随机生成hash值</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本篇简单介绍如何随机生成一个hashcode</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">//产生一个hash值，只有数字，规则和java的hashcode规则相同</span><br><span class="line">function hashCode(str) &#123;</span><br><span class="line">    var h = 0;</span><br><span class="line">    var len = str.length;</span><br><span class="line">    var t = 2147483648;</span><br><span class="line">    for (var i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        h = 31 * h + str.charCodeAt(i);</span><br><span class="line">        if (h &gt; 2147483647) h %= t; //java int溢出则取模</span><br><span class="line">    &#125;</span><br><span class="line">    /*var t = -2147483648 * 2;</span><br><span class="line">     while (h &gt; 2147483647) &#123;</span><br><span class="line">     h += t</span><br><span class="line">     &#125;*/</span><br><span class="line">    return h;</span><br><span class="line">&#125;</span><br><span class="line">//时间戳来自客户端，精确到毫秒，但仍旧有可能在在多线程下有并发，</span><br><span class="line">//尤其hash化后，毫秒数前面的几位都不变化，导致不同日期hash化的值有可能存在相同，</span><br><span class="line">//因此使用下面的随机数函数，在时间戳上加随机数，保证hash化的结果差异会比较大</span><br><span class="line">/*</span><br><span class="line"> ** randomWord 产生任意长度随机字母数字组合</span><br><span class="line"> ** randomFlag-是否任意长度 min-任意长度最小位[固定位数] max-任意长度最大位</span><br><span class="line"> ** 用法  randomWord(false,6);规定位数 flash</span><br><span class="line"> * 		randomWord(true,3，6);长度不定，true</span><br><span class="line"> * arr变量可以把其他字符加入，如以后需要小写字母，直接加入即可</span><br><span class="line"> */</span><br><span class="line">function randomWord(randomFlag, min, max) &#123;</span><br><span class="line">    var str = &quot;&quot;,</span><br><span class="line">        range = min,</span><br><span class="line">        arr = [&apos;0&apos;, &apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos;, &apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;, &apos;I&apos;, &apos;J&apos;, &apos;K&apos;, &apos;L&apos;, &apos;M&apos;, &apos;N&apos;, &apos;O&apos;, &apos;P&apos;, &apos;Q&apos;, &apos;R&apos;, &apos;S&apos;, &apos;T&apos;, &apos;U&apos;, &apos;V&apos;, &apos;W&apos;, &apos;X&apos;, &apos;Y&apos;, &apos;Z&apos;];</span><br><span class="line">    // 随机产生</span><br><span class="line">    if (randomFlag) &#123;</span><br><span class="line">        range = Math.round(Math.random() * (max - min)) + min;</span><br><span class="line">    &#125;</span><br><span class="line">    for (var i = 0; i &lt; range; i++) &#123;</span><br><span class="line">        pos = Math.round(Math.random() * (arr.length - 1));</span><br><span class="line">        str += arr[pos];</span><br><span class="line">    &#125;</span><br><span class="line">    return str;</span><br><span class="line">&#125;</span><br><span class="line">//获取hashcode</span><br><span class="line">function gethashcode() &#123;</span><br><span class="line">    //定义一个时间戳，计算与1970年相差的毫秒数  用来获得唯一时间</span><br><span class="line">    var timestamp = (new Date()).valueOf();</span><br><span class="line">    var myRandom=randomWord(false,6);</span><br><span class="line">    var hashcode=hashCode(myRandom+timestamp.toString());</span><br><span class="line">    return hashcode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/11/marjs随机生成hash值/" data-id="cjelml1vu000cw0ug4u38ydd3" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js工具/">js工具</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-查看列表组件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/08/查看列表组件/" class="article-date">
@@ -159,7 +119,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/查看列表组件/" data-id="cjelml1wa001jw0ugik6tkec6" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/查看列表组件/" data-id="cjelmpgzy001iicugxek71kyp" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -200,245 +160,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/昨天loading状态的修改问题/" data-id="cjelml1wa001ew0ugc63hooni" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/昨天loading状态的修改问题/" data-id="cjelmpgzy001sicug1usbajv1" class="article-share-link">Teilen</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-nginx 反向代理实现本地调试" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/07/nginx 反向代理实现本地调试/" class="article-date">
-  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/nginx 反向代理实现本地调试/">nginx 反向代理实现本地调试</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>昨天在做登陆接口的时候是用公司后台的登陆接口，在本地调试会出现跨域问题，我不太想通过jsonp解决这个问题，因为jsonp 用法相对来前端说比较麻烦，设置cors策略的话，因为我不能操作后台 这种方式也不太可行，</p>
-<p>之前听朋友说到 设置反向代理可以解决这个问题，昨晚在研究nginx </p>
-<ol>
-<li>通过host 将本地改为域名 test.com </li>
-<li>配置nginx 监听80端口</li>
-<li>将含有api的url 转发到公司的主机</li>
-<li>将没有api的链接转发到8000（这个是调试的端口）</li>
-<li>本地调试的时候，将发送到服务器端的url改为发送到本地。</li>
-</ol>
-<p>host 增加一行解析（win文件地址：C:\Windows\System32\drivers\etc）：<br>    127.0.0.1       test.com</p>
-<blockquote>
-<p>注：这个文件要用替换的方式在能修改</p>
-</blockquote>
-<p><strong>注意：</strong><br>调试的时候域名要用好 不要用localhost  要用test.com(这个是host文件解析的本地域名)<br>还有就是 在npm start 的时候会自动打开localhost：8000这个端口，不能再这个页面调试 需要将域名改为test.com 并且不带端口 </p>
-<p>nginx 配置如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#user  nobody;</span></span><br><span class="line">worker_processes  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    <span class="keyword">include</span>       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">80</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        location ^~ /api/ &#123;</span><br><span class="line"></span><br><span class="line">             proxy_pass http:<span class="comment">//wallpaper-cms.t.talkmoney.cn/api/;</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">             proxy_pass http:<span class="comment">//127.0.0.1:8000/;</span></span><br><span class="line"></span><br><span class="line">             proxy_http_version <span class="number">1.1</span>;</span><br><span class="line">             proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">             proxy_set_header Connection <span class="string">"upgrade"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">        location = /<span class="number">50</span>x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    root           html;</span></span><br><span class="line">        <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">        <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">        <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">        <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root</span></span><br><span class="line">        <span class="comment"># concurs with nginx's one</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">        <span class="comment">#    deny  all;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       8000;</span></span><br><span class="line">    <span class="comment">#    listen       somename:8080;</span></span><br><span class="line">    <span class="comment">#    server_name  somename  alias  another.alias;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># HTTPS server</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       443 ssl;</span></span><br><span class="line">    <span class="comment">#    server_name  localhost;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_certificate      cert.pem;</span></span><br><span class="line">    <span class="comment">#    ssl_certificate_key  cert.key;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_session_cache    shared:SSL:1m;</span></span><br><span class="line">    <span class="comment">#    ssl_session_timeout  5m;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span></span><br><span class="line">    <span class="comment">#    ssl_prefer_server_ciphers  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>=<a href="./attachments/nginx-1.12.2.zip">nginx</a></p>
-<p>  跨域问题解决，现在来看 请求数据问题</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/nginx 反向代理实现本地调试/" data-id="cjelml1vu000nw0ug3953xbvp" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx-工具/">nginx ,工具</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-flux应用实践" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/07/flux应用实践/" class="article-date">
-  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/flux应用实践/">flux应用实践</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://www.ruanyifeng.com/blog/2016/01/flux.html" target="_blank" rel="noopener">Flux 架构入门教程</a><br>可以安装一个demo 来直观的看效果 </p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/ruanyf/extremely-simple-flux-demo.git</span><br><span class="line">$ <span class="built_in">cd</span> extremely-simple-flux-demo &amp;&amp; npm install</span><br><span class="line">$ npm <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
-<p>然后，访问 <a href="http://127.0.0.1:8080" target="_blank" rel="noopener">http://127.0.0.1:8080</a> 。<br><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016011502.png" alt="enter description here"><br>你会看到一个按钮。这就是我们的Demo。</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>前一篇有详细说明：</p>
-<blockquote>
-<ul>
-<li>View： 视图层</li>
-<li>Action（动作）：视图层发出的消息（比如mouseClick）</li>
-<li>Dispatcher（派发器）：用来接收Actions、执行回调函数</li>
-<li>Store（数据层）：用来存放应用的状态，一旦发生变动，就提醒Views要更新页面<br><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016011503.png" alt="enter description here"></li>
-</ul>
-</blockquote>
-<p>flux 最大的特点是 数据的单向流动：<br>用户访问 View</p>
-<blockquote>
-<ol>
-<li>View 发出用户的 Action</li>
-<li>Dispatcher 收到 Action，要求 Store 进行相应的更新</li>
-<li>Store 更新后，发出一个”change”事件</li>
-<li>View 收到”change”事件后，更新页面</li>
-</ol>
-</blockquote>
-<p>上面过程中，数据总是”单向流动”，任何相邻的部分都不会发生数据的”双向流动”。这保证了流程的清晰。</p>
-<p>读到这里，你可能感到一头雾水，OK，这是正常的。接下来，我会详细讲解每一步。</p>
-<h2 id="四、View（第一部分）"><a href="#四、View（第一部分）" class="headerlink" title="四、View（第一部分）"></a>四、View（第一部分）</h2><p>请打开 Demo 的首页index.jsx ，你会看到只加载了一个组件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// index.jsx</span><br><span class="line">var React = require(&apos;react&apos;);</span><br><span class="line">var ReactDOM = require(&apos;react-dom&apos;);</span><br><span class="line">var MyButtonController = require(&apos;./components/MyButtonController&apos;);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;MyButtonController/&gt;,</span><br><span class="line">  document.querySelector(&apos;#example&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>上面代码中，你可能注意到了，组件的名字不是 MyButton，而是 MyButtonController。这是为什么？</p>
-<p>这里，我采用的是 React 的 controller view 模式。”controller view”组件只用来保存状态，然后将其转发给子组件。MyButtonController的源码很简单。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// components/MyButtonController.jsx</span><br><span class="line">var React = require(&apos;react&apos;);</span><br><span class="line">var ButtonActions = require(&apos;../actions/ButtonActions&apos;);</span><br><span class="line">var MyButton = require(&apos;./MyButton&apos;);</span><br><span class="line"></span><br><span class="line">var MyButtonController = React.createClass(&#123;</span><br><span class="line">  createNewItem: function (event) &#123;</span><br><span class="line">    ButtonActions.addNewItem(&apos;new item&apos;);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render: function() &#123;</span><br><span class="line">    return &lt;MyButton</span><br><span class="line">      onClick=&#123;this.createNewItem&#125;</span><br><span class="line">    /&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = MyButtonController;</span><br></pre></td></tr></table></figure>
-<p>上面代码中，MyButtonController将参数传给子组件MyButton。后者的源码甚至更简单。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// components/MyButton.jsx</span><br><span class="line">var React = require(&apos;react&apos;);</span><br><span class="line"></span><br><span class="line">var MyButton = function(props) &#123;</span><br><span class="line">  return &lt;div&gt;</span><br><span class="line">    &lt;button onClick=&#123;props.onClick&#125;&gt;New Item&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports = MyButton;</span><br></pre></td></tr></table></figure>
-<p>上面代码中，你可以看到MyButton是一个纯组件（即不含有任何状态），从而方便了测试和复用。这就是”controll view”模式的最大优点。</p>
-<p>MyButton只有一个逻辑，就是一旦用户点击，就调用this.createNewItem 方法(从父组件传递下来的方法)，向Dispatcher发出一个Action。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// components/MyButtonController.jsx</span><br><span class="line"></span><br><span class="line">  // ...</span><br><span class="line">  createNewItem: function (event) &#123;</span><br><span class="line">    ButtonActions.addNewItem(&apos;new item&apos;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码中，调用createNewItem方法，会触发名为addNewItem的Action</p>
-<h2 id="五、Action"><a href="#五、Action" class="headerlink" title="五、Action"></a>五、Action</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/flux应用实践/" data-id="cjelml1vu000jw0ugc7ezop6z" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-登录页面的错误提示" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/07/登录页面的错误提示/" class="article-date">
-  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/登录页面的错误提示/">2018-3-7 登录页面的错误提示</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="./images/1520409819446.jpg" alt="输入错入的数据的时候 会有错误提示"></p>
-<p>查看代码发现 是在下面的代码控制的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function checkStatus(response) &#123;</span><br><span class="line">  if (response.status &gt;= 200 &amp;&amp; response.status &lt; 300) &#123;</span><br><span class="line">    return response;</span><br><span class="line">  &#125;</span><br><span class="line">  const errortext = codeMessage[response.status] || response.statusText;</span><br><span class="line">  notification.error(&#123;</span><br><span class="line">    message: `请求错误 $&#123;response.status&#125;: $&#123;response.body.msg&#125;`,</span><br><span class="line">    description: errortext,</span><br><span class="line">  &#125;);</span><br><span class="line">  const error = new Error(errortext);</span><br><span class="line">  error.name = response.status;</span><br><span class="line">  error.response = response;</span><br><span class="line">  throw error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将errContext 和 response这两个属性 输出来 查看一下<br><code>console.log(&#39;checkStatus&#39;, JSON.stringify(errortext), JSON.stringify(response));</code><br>结果如下<br><code>checkStatus &quot;发出的请求有错误，服务器没有进行新建或修改数据的操作。&quot; {}</code></p>
-<p><img src="./images/1520411194353.jpg" alt="response"><br>返回的数据解析如上图 但是没有返回结果的body 但是通过浏览器的拦截 我看到有response是有数据的<br><img src="./images/1520411270183.jpg" alt="浏览器拦截"><br>所以这就很奇怪 </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/" data-id="cjelml1wq001zw0ugfkojyx9m" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Flux应用架构" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/07/Flux应用架构/" class="article-date">
-  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/Flux应用架构/">Flux应用架构</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><blockquote>
-<p>为了方便理解，主要的英文名词都没有翻译。比如：dispatcher（调度者）、 store（仓库）、view（视图）</p>
-</blockquote>
-<p>Flux是Facebook用来构建用户端的web应用的应用程序体系架构。它通过利用数据的单向流动为React的可复用的视图组件提供了补充。相比于形式化的框架它更像是一个架构思想，不需要太多新的代码你就可以马上使用Flux构建你的应用。</p>
-<p>Flux应用主要包括三部分：dispatcher、store和views（React components），千万不要和MVC(model-View-Controller)搞混。Controller在Flux应用中也确实存在，但是是以controller-view的形式。view通常处于应用的顶层，它从stores中获取数据，同时将这些数据传递给它的后代节点。另外，action creators - dispatcher辅助方法 - 一个被用来提供描述应用所有可能存在的改变的语义化的API。把它理解为Flux更新闭环的第四个组成部分可以帮助你更好的理解它。</p>
-<p>Flux使用单向的数据流动来避开MVC. 当用户与React视图交互的时候，视图会通过中枢dispatcher产生一个action。然后大量的保存着应用数据和业务逻辑的视图接收到冒泡的action，更新所有受影响的view。这种方式很适合React这种声明式的编程方式，因为它的store更新，并不需要特别指定如何在view和state中过渡。</p>
-<p>我们独创性的解决了数据的获取：举个栗子，比如我们需要展示一个会话列表，高亮其中未读的会话，同时展示未读会话的数量。如果用MVC架构的话将很难处理这种情况，因为更新一个对话为已读的时候会更新对话model，然后同样也需要更新未读对话数量model（数量-1）。这样的依赖和瀑布式的更新在大型的应用中非常常见，导致错综复杂的数据流动和不可预测的结果。（这其实是Facebook之前的一个线上bug，有时候用户看到提示说有一条未读信息，但是点进去却发现没有）。</p>
-<p>反过来让 Store 来控制：store接受更新，并在合适的时机处理这些更新。而不是采用一贯依赖外部的方式来更新数据。在store外部，并没办法看到store内部是如何处理它内部的数据的，这样的方式保证了一个清晰的关注点分离。Store并没有类似setAsRead()这样直接的setter方法，但是在其自成一体的世界中拥有唯一个获取新数据的方法 - store通过dispatcher注册的回调函数。</p>
-<h2 id="Structure-and-Data-Flow"><a href="#Structure-and-Data-Flow" class="headerlink" title="Structure and Data Flow"></a>Structure and Data Flow</h2><p>在Flux应用中数据是单向流动的：<br><img src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-1300w.png" alt="enter description here"></p>
-<p>单向的数据流是Flux应用的核心特性，上图应该成为Flux程序员的主要心智模型。Dispatcher，stores和views是拥有清晰的输入输出的独立节点。而actions是包含了新的数据和身份属性的简单对象。</p>
-<p>用户的交互可能会使views产生新的action，这个action可以在整个系统中传播：<br><img src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png" alt="enter description here"><br>所有的数据的流动都通过中枢dispatcher。Action可以通过action creator产生并被提供给dispatcher，但多数情况下action是通过用户与views的交互产生。dispatcher接收到action并执行那些已经注册的回调，向所有stores分发action。通过注册的回调，store响应那些与他们所保存的状态有关的action。然后store会触发一个 change 事件，来提醒controller-views数据已经发生了改变。Controller-views监听这些事件并重新从store中获取数据。这些controller-views调用他们自己的setState()方法，重新渲染自身以及组件树上的所有后代组件。<br><img src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-explained-1300w.png" alt="enter description here"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/Flux应用架构/" data-id="cjelml1vf0001w0ug2ecju9t8" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
     </footer>
   </div>
   
@@ -489,7 +213,54 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/token认证机制/" data-id="cjelml1wa000uw0ug032si8xj" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/07/token认证机制/" data-id="cjelmpgzi000xicug4hcrlnzl" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-登录页面的错误提示" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/登录页面的错误提示/" class="article-date">
+  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/登录页面的错误提示/">2018-3-7 登录页面的错误提示</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="./images/1520409819446.jpg" alt="输入错入的数据的时候 会有错误提示"></p>
+<p>查看代码发现 是在下面的代码控制的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function checkStatus(response) &#123;</span><br><span class="line">  if (response.status &gt;= 200 &amp;&amp; response.status &lt; 300) &#123;</span><br><span class="line">    return response;</span><br><span class="line">  &#125;</span><br><span class="line">  const errortext = codeMessage[response.status] || response.statusText;</span><br><span class="line">  notification.error(&#123;</span><br><span class="line">    message: `请求错误 $&#123;response.status&#125;: $&#123;response.body.msg&#125;`,</span><br><span class="line">    description: errortext,</span><br><span class="line">  &#125;);</span><br><span class="line">  const error = new Error(errortext);</span><br><span class="line">  error.name = response.status;</span><br><span class="line">  error.response = response;</span><br><span class="line">  throw error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将errContext 和 response这两个属性 输出来 查看一下<br><code>console.log(&#39;checkStatus&#39;, JSON.stringify(errortext), JSON.stringify(response));</code><br>结果如下<br><code>checkStatus &quot;发出的请求有错误，服务器没有进行新建或修改数据的操作。&quot; {}</code></p>
+<p><img src="./images/1520411194353.jpg" alt="response"><br>返回的数据解析如上图 但是没有返回结果的body 但是通过浏览器的拦截 我看到有response是有数据的<br><img src="./images/1520411270183.jpg" alt="浏览器拦截"><br>所以这就很奇怪 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/" data-id="cjelmpgzy0021icughd3iuak8" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -550,7 +321,67 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/登录接口与后端的交互/" data-id="cjelml1wa001rw0ugiwry5gcy" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/07/登录接口与后端的交互/" data-id="cjelmpgzy001vicugcj05tp4f" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx-工具/">nginx ,工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-nginx 反向代理实现本地调试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/nginx 反向代理实现本地调试/" class="article-date">
+  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/nginx 反向代理实现本地调试/">nginx 反向代理实现本地调试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天在做登陆接口的时候是用公司后台的登陆接口，在本地调试会出现跨域问题，我不太想通过jsonp解决这个问题，因为jsonp 用法相对来前端说比较麻烦，设置cors策略的话，因为我不能操作后台 这种方式也不太可行，</p>
+<p>之前听朋友说到 设置反向代理可以解决这个问题，昨晚在研究nginx </p>
+<ol>
+<li>通过host 将本地改为域名 test.com </li>
+<li>配置nginx 监听80端口</li>
+<li>将含有api的url 转发到公司的主机</li>
+<li>将没有api的链接转发到8000（这个是调试的端口）</li>
+<li>本地调试的时候，将发送到服务器端的url改为发送到本地。</li>
+</ol>
+<p>host 增加一行解析（win文件地址：C:\Windows\System32\drivers\etc）：<br>    127.0.0.1       test.com</p>
+<blockquote>
+<p>注：这个文件要用替换的方式在能修改</p>
+</blockquote>
+<p><strong>注意：</strong><br>调试的时候域名要用好 不要用localhost  要用test.com(这个是host文件解析的本地域名)<br>还有就是 在npm start 的时候会自动打开localhost：8000这个端口，不能再这个页面调试 需要将域名改为test.com 并且不带端口 </p>
+<p>nginx 配置如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#user  nobody;</span></span><br><span class="line">worker_processes  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    <span class="keyword">include</span>       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">80</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        location ^~ /api/ &#123;</span><br><span class="line"></span><br><span class="line">             proxy_pass http:<span class="comment">//wallpaper-cms.t.talkmoney.cn/api/;</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">             proxy_pass http:<span class="comment">//127.0.0.1:8000/;</span></span><br><span class="line"></span><br><span class="line">             proxy_http_version <span class="number">1.1</span>;</span><br><span class="line">             proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">             proxy_set_header Connection <span class="string">"upgrade"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">        location = /<span class="number">50</span>x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    root           html;</span></span><br><span class="line">        <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">        <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">        <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">        <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root</span></span><br><span class="line">        <span class="comment"># concurs with nginx's one</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">        <span class="comment">#    deny  all;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       8000;</span></span><br><span class="line">    <span class="comment">#    listen       somename:8080;</span></span><br><span class="line">    <span class="comment">#    server_name  somename  alias  another.alias;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># HTTPS server</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       443 ssl;</span></span><br><span class="line">    <span class="comment">#    server_name  localhost;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_certificate      cert.pem;</span></span><br><span class="line">    <span class="comment">#    ssl_certificate_key  cert.key;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_session_cache    shared:SSL:1m;</span></span><br><span class="line">    <span class="comment">#    ssl_session_timeout  5m;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span></span><br><span class="line">    <span class="comment">#    ssl_prefer_server_ciphers  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>=<a href="./attachments/nginx-1.12.2.zip">nginx</a></p>
+<p>  跨域问题解决，现在来看 请求数据问题</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/07/nginx 反向代理实现本地调试/" data-id="cjelmpgzi000kicugpmxeiog0" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx-工具/">nginx ,工具</a></li></ul>
@@ -655,10 +486,188 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/别再用勤奋掩饰你的懒惰/" data-id="cjelml1wa001bw0ugev745xc6" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/07/别再用勤奋掩饰你的懒惰/" data-id="cjelmpgzy0017icugwbavaucy" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人生/">人生</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flux应用实践" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/flux应用实践/" class="article-date">
+  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/flux应用实践/">flux应用实践</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.ruanyifeng.com/blog/2016/01/flux.html" target="_blank" rel="noopener">Flux 架构入门教程</a><br>可以安装一个demo 来直观的看效果 </p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/ruanyf/extremely-simple-flux-demo.git</span><br><span class="line">$ <span class="built_in">cd</span> extremely-simple-flux-demo &amp;&amp; npm install</span><br><span class="line">$ npm <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
+<p>然后，访问 <a href="http://127.0.0.1:8080" target="_blank" rel="noopener">http://127.0.0.1:8080</a> 。<br><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016011502.png" alt="enter description here"><br>你会看到一个按钮。这就是我们的Demo。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>前一篇有详细说明：</p>
+<blockquote>
+<ul>
+<li>View： 视图层</li>
+<li>Action（动作）：视图层发出的消息（比如mouseClick）</li>
+<li>Dispatcher（派发器）：用来接收Actions、执行回调函数</li>
+<li>Store（数据层）：用来存放应用的状态，一旦发生变动，就提醒Views要更新页面<br><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016011503.png" alt="enter description here"></li>
+</ul>
+</blockquote>
+<p>flux 最大的特点是 数据的单向流动：<br>用户访问 View</p>
+<blockquote>
+<ol>
+<li>View 发出用户的 Action</li>
+<li>Dispatcher 收到 Action，要求 Store 进行相应的更新</li>
+<li>Store 更新后，发出一个”change”事件</li>
+<li>View 收到”change”事件后，更新页面</li>
+</ol>
+</blockquote>
+<p>上面过程中，数据总是”单向流动”，任何相邻的部分都不会发生数据的”双向流动”。这保证了流程的清晰。</p>
+<p>读到这里，你可能感到一头雾水，OK，这是正常的。接下来，我会详细讲解每一步。</p>
+<h2 id="四、View（第一部分）"><a href="#四、View（第一部分）" class="headerlink" title="四、View（第一部分）"></a>四、View（第一部分）</h2><p>请打开 Demo 的首页index.jsx ，你会看到只加载了一个组件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// index.jsx</span><br><span class="line">var React = require(&apos;react&apos;);</span><br><span class="line">var ReactDOM = require(&apos;react-dom&apos;);</span><br><span class="line">var MyButtonController = require(&apos;./components/MyButtonController&apos;);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;MyButtonController/&gt;,</span><br><span class="line">  document.querySelector(&apos;#example&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>上面代码中，你可能注意到了，组件的名字不是 MyButton，而是 MyButtonController。这是为什么？</p>
+<p>这里，我采用的是 React 的 controller view 模式。”controller view”组件只用来保存状态，然后将其转发给子组件。MyButtonController的源码很简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// components/MyButtonController.jsx</span><br><span class="line">var React = require(&apos;react&apos;);</span><br><span class="line">var ButtonActions = require(&apos;../actions/ButtonActions&apos;);</span><br><span class="line">var MyButton = require(&apos;./MyButton&apos;);</span><br><span class="line"></span><br><span class="line">var MyButtonController = React.createClass(&#123;</span><br><span class="line">  createNewItem: function (event) &#123;</span><br><span class="line">    ButtonActions.addNewItem(&apos;new item&apos;);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render: function() &#123;</span><br><span class="line">    return &lt;MyButton</span><br><span class="line">      onClick=&#123;this.createNewItem&#125;</span><br><span class="line">    /&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = MyButtonController;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，MyButtonController将参数传给子组件MyButton。后者的源码甚至更简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// components/MyButton.jsx</span><br><span class="line">var React = require(&apos;react&apos;);</span><br><span class="line"></span><br><span class="line">var MyButton = function(props) &#123;</span><br><span class="line">  return &lt;div&gt;</span><br><span class="line">    &lt;button onClick=&#123;props.onClick&#125;&gt;New Item&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports = MyButton;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，你可以看到MyButton是一个纯组件（即不含有任何状态），从而方便了测试和复用。这就是”controll view”模式的最大优点。</p>
+<p>MyButton只有一个逻辑，就是一旦用户点击，就调用this.createNewItem 方法(从父组件传递下来的方法)，向Dispatcher发出一个Action。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// components/MyButtonController.jsx</span><br><span class="line"></span><br><span class="line">  // ...</span><br><span class="line">  createNewItem: function (event) &#123;</span><br><span class="line">    ButtonActions.addNewItem(&apos;new item&apos;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，调用createNewItem方法，会触发名为addNewItem的Action</p>
+<h2 id="五、Action"><a href="#五、Action" class="headerlink" title="五、Action"></a>五、Action</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/07/flux应用实践/" data-id="cjelmpgz30005icugiqw0iil4" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Flux应用架构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/Flux应用架构/" class="article-date">
+  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/Flux应用架构/">Flux应用架构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><blockquote>
+<p>为了方便理解，主要的英文名词都没有翻译。比如：dispatcher（调度者）、 store（仓库）、view（视图）</p>
+</blockquote>
+<p>Flux是Facebook用来构建用户端的web应用的应用程序体系架构。它通过利用数据的单向流动为React的可复用的视图组件提供了补充。相比于形式化的框架它更像是一个架构思想，不需要太多新的代码你就可以马上使用Flux构建你的应用。</p>
+<p>Flux应用主要包括三部分：dispatcher、store和views（React components），千万不要和MVC(model-View-Controller)搞混。Controller在Flux应用中也确实存在，但是是以controller-view的形式。view通常处于应用的顶层，它从stores中获取数据，同时将这些数据传递给它的后代节点。另外，action creators - dispatcher辅助方法 - 一个被用来提供描述应用所有可能存在的改变的语义化的API。把它理解为Flux更新闭环的第四个组成部分可以帮助你更好的理解它。</p>
+<p>Flux使用单向的数据流动来避开MVC. 当用户与React视图交互的时候，视图会通过中枢dispatcher产生一个action。然后大量的保存着应用数据和业务逻辑的视图接收到冒泡的action，更新所有受影响的view。这种方式很适合React这种声明式的编程方式，因为它的store更新，并不需要特别指定如何在view和state中过渡。</p>
+<p>我们独创性的解决了数据的获取：举个栗子，比如我们需要展示一个会话列表，高亮其中未读的会话，同时展示未读会话的数量。如果用MVC架构的话将很难处理这种情况，因为更新一个对话为已读的时候会更新对话model，然后同样也需要更新未读对话数量model（数量-1）。这样的依赖和瀑布式的更新在大型的应用中非常常见，导致错综复杂的数据流动和不可预测的结果。（这其实是Facebook之前的一个线上bug，有时候用户看到提示说有一条未读信息，但是点进去却发现没有）。</p>
+<p>反过来让 Store 来控制：store接受更新，并在合适的时机处理这些更新。而不是采用一贯依赖外部的方式来更新数据。在store外部，并没办法看到store内部是如何处理它内部的数据的，这样的方式保证了一个清晰的关注点分离。Store并没有类似setAsRead()这样直接的setter方法，但是在其自成一体的世界中拥有唯一个获取新数据的方法 - store通过dispatcher注册的回调函数。</p>
+<h2 id="Structure-and-Data-Flow"><a href="#Structure-and-Data-Flow" class="headerlink" title="Structure and Data Flow"></a>Structure and Data Flow</h2><p>在Flux应用中数据是单向流动的：<br><img src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-1300w.png" alt="enter description here"></p>
+<p>单向的数据流是Flux应用的核心特性，上图应该成为Flux程序员的主要心智模型。Dispatcher，stores和views是拥有清晰的输入输出的独立节点。而actions是包含了新的数据和身份属性的简单对象。</p>
+<p>用户的交互可能会使views产生新的action，这个action可以在整个系统中传播：<br><img src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png" alt="enter description here"><br>所有的数据的流动都通过中枢dispatcher。Action可以通过action creator产生并被提供给dispatcher，但多数情况下action是通过用户与views的交互产生。dispatcher接收到action并执行那些已经注册的回调，向所有stores分发action。通过注册的回调，store响应那些与他们所保存的状态有关的action。然后store会触发一个 change 事件，来提醒controller-views数据已经发生了改变。Controller-views监听这些事件并重新从store中获取数据。这些controller-views调用他们自己的setState()方法，重新渲染自身以及组件树上的所有后代组件。<br><img src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-explained-1300w.png" alt="enter description here"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/07/Flux应用架构/" data-id="cjelmpgz30001icug2t4leuhc" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vscode 配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/06/vscode 配置/" class="article-date">
+  <time datetime="2018-03-06T10:11:39.000Z" itemprop="datePublished">2018-03-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/06/vscode 配置/">vscode 配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题：Expected linebreaks to be ‘LF’ but found ‘CRLF’  linebreak-style</p>
+<blockquote>
+<p>原因：当许多人都有不同的编辑器，VCS应用程序和操作系统时，可能会发生不同的行结尾由上述任何一种写入（可能特别发生在将SourceTree的Windows和Mac版本一起使用时）。<br>在Windows操作系统中使用的换行符（换行符）通常是回车符（CR），后面是换行符（LF），使其成为回车换行符（CRLF），而Linux和Unix使用简单换行符（LF）。相应的控制序列是”\n”（对于LF）和”\r\n”对于（CRLF）。</p>
+</blockquote>
+<p>解决方法：<br>在.eslintrc文件的rule中添加：linebreak-style: [“error”, “windows”] 或 linebreak-style:0</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  extends: <span class="string">'google'</span>,</span><br><span class="line">  quotes: [<span class="number">2</span>, <span class="string">'single'</span>],</span><br><span class="line">  globals: &#123;</span><br><span class="line">    SwaggerEditor: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  env: &#123;</span><br><span class="line">    browser: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  rules:&#123;</span><br><span class="line">    <span class="string">"linebreak-style"</span>: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/06/vscode 配置/" data-id="cjelmpgzi000uicugouhbkvug" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
 
     </footer>
   </div>
@@ -724,10 +733,6 @@
       <ul>
         
           <li>
-            <a href="/2018/03/11/marjs随机生成hash值/">js随机生成hash值</a>
-          </li>
-        
-          <li>
             <a href="/2018/03/08/查看列表组件/">查看列表组件</a>
           </li>
         
@@ -736,11 +741,15 @@
           </li>
         
           <li>
-            <a href="/2018/03/07/nginx 反向代理实现本地调试/">nginx 反向代理实现本地调试</a>
+            <a href="/2018/03/07/token认证机制/">2018-3-7 token认证机制</a>
           </li>
         
           <li>
-            <a href="/2018/03/07/flux应用实践/">flux应用实践</a>
+            <a href="/2018/03/07/登录页面的错误提示/">2018-3-7 登录页面的错误提示</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/07/登录接口与后端的交互/">2018-3-7与后端的交互</a>
           </li>
         
       </ul>
