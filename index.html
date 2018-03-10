@@ -68,6 +68,84 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-组件 &amp; Props" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/11/组件 & Props/" class="article-date">
+  <time datetime="2018-03-10T16:14:09.401Z" itemprop="datePublished">2018-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/11/组件 & Props/">组件 &amp; Props</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>组件可以将UI切分成一些的独立的、可复用的部件，这样你就只需专注于构建每一个单独的部件。</p>
+<p>组件从概念上看就像是函数，它可以接收任意的输入值（称之为“props”），并返回一个需要在页面上展示的React元素。</p>
+<h2 id="函数定义-类定义组件"><a href="#函数定义-类定义组件" class="headerlink" title="函数定义/类定义组件"></a>函数定义/类定义组件</h2><p>定义一个组件最简单的方式是使用JavaScript函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Welcome(props) &#123;</span><br><span class="line">  return &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line">//这样可以直接使用 &lt;Welcome /&gt;这个标签</span><br></pre></td></tr></table></figure>
+<p>也可以使用es6的规范来声明一个组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Welcome extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="组件渲染"><a href="#组件渲染" class="headerlink" title="组件渲染"></a>组件渲染</h2><p>当React遇到的元素是用户自定义的组件，它会将JSX属性作为单个对象传递给该组件,这个对象称之为“props”。<br>例如,这段代码会在页面上渲染出”Hello,Sara”:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Welcome(props) &#123;</span><br><span class="line">  return &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const element = &lt;Welcome name="Sara" /&gt;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  element,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这个例子中发生了什么：</p>
+<ol>
+<li>我们对<welcome name="Sara">元素调用了ReactDOM.render()方法。</welcome></li>
+<li>React将{name: ‘Sara’}作为props传入并调用Welcome组件。</li>
+<li>Welcome组件将\<h1>Hello, Sara\</h1>元素作为结果返回。</li>
+<li>React DOM将DOM更新为\<h1>Hello, Sara\</h1>。<blockquote>
+<p>警告:<br>组件名称必须以<strong>大写字母开头</strong>。<br>例如，\<div> 表示一个DOM标签，但 \<welcome> 表示一个组件，并且在使用该组件时你必须定义或引入它。</welcome></div></p>
+</blockquote>
+<h2 id="组合组件"><a href="#组合组件" class="headerlink" title="组合组件"></a>组合组件</h2>组件可以在它的输出中引用其它组件，这就可以让我们用同一组件来抽象出任意层次的细节。在React应用中，按钮、表单、对话框、整个屏幕的内容等，这些通常都被表示为组件。</li>
+</ol>
+<p>例如，我们可以创建一个App组件，用来多次渲染Welcome组件：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function Welcome(props) &#123;</span><br><span class="line">  return &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Welcome name=<span class="string">"Sara"</span> /&gt;</span><br><span class="line">      &lt;Welcome name=<span class="string">"Cahal"</span> /&gt;</span><br><span class="line">      &lt;Welcome name=<span class="string">"Edite"</span> /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;App /&gt;,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>通常，一个新的React应用程序的<strong>顶部是一个App组件</strong>。但是，如果要将React集成到现有应用程序中，则可以从下而上使用像Button这样的小组件作为开始，并逐渐运用到视图层的顶部。</p>
+<blockquote>
+<p>警告:<br>组件的<strong>返回值只能有一个根元素</strong>。这也是我们要用一个\<div>来包裹所有\<welcome>元素的原因。</welcome></div></p>
+</blockquote>
+<h2 id="提取组件"><a href="#提取组件" class="headerlink" title="提取组件"></a>提取组件</h2><p>在写组件的时候 如果组件复杂的话，很难被重用，所以在写组件的时候需要将一些组件提取出来，提高重用性。下面是一个复杂的组件：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function Comment(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;<span class="selector-tag">div</span> className=<span class="string">"Comment"</span>&gt;</span><br><span class="line">      &lt;<span class="selector-tag">div</span> className=<span class="string">"UserInfo"</span>&gt;</span><br><span class="line">        &lt;<span class="selector-tag">img</span> className=<span class="string">"Avatar"</span></span><br><span class="line">          src=&#123;props<span class="selector-class">.author</span><span class="selector-class">.avatarUrl</span>&#125;</span><br><span class="line">          alt=&#123;props<span class="selector-class">.author</span><span class="selector-class">.name</span>&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">        &lt;<span class="selector-tag">div</span> className=<span class="string">"UserInfo-name"</span>&gt;</span><br><span class="line">          &#123;props<span class="selector-class">.author</span><span class="selector-class">.name</span>&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;<span class="selector-tag">div</span> className=<span class="string">"Comment-text"</span>&gt;</span><br><span class="line">        &#123;props.text&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;<span class="selector-tag">div</span> className=<span class="string">"Comment-date"</span>&gt;</span><br><span class="line">        &#123;formatDate(props.date)&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个组件接收author(对象)、text(字符串)、以及date(Date对象)作为props, 用来描述一个社交媒体网站上的评论。<br>这个组件由于<strong>嵌套</strong>，变得难以被修改，可复用的部分也难以被复用（例如）。所以可以从这个组件中提取出一些小组件。</p>
+<p>首先，我们来提取Avatar组件：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Avatar(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;<span class="selector-tag">img</span> className=<span class="string">"Avatar"</span></span><br><span class="line">      src=&#123;props<span class="selector-class">.user</span><span class="selector-class">.avatarUrl</span>&#125;</span><br><span class="line">      alt=&#123;props<span class="selector-class">.user</span><span class="selector-class">.name</span>&#125;</span><br><span class="line">    /&gt;</span><br><span class="line"></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Avatar作为Comment的内部组件，不需要知道是否被渲染。因此我们将author改为一个更通用的名字user。</p>
+<p>我们建议<strong>从组件自身的角度来命名props</strong>，而不是根据使用组件的上下文命名。</p>
+<p>现在我们可以对Comment组件做一些小小的调整：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function Comment(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;<span class="selector-tag">div</span> className=<span class="string">"Comment"</span>&gt;</span><br><span class="line">      &lt;<span class="selector-tag">div</span> className=<span class="string">"UserInfo"</span>&gt;</span><br><span class="line">        &lt;Avatar user=&#123;props.author&#125; /&gt;</span><br><span class="line">        &lt;<span class="selector-tag">div</span> className=<span class="string">"UserInfo-name"</span>&gt;</span><br><span class="line">          &#123;props<span class="selector-class">.author</span><span class="selector-class">.name</span>&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;<span class="selector-tag">div</span> className=<span class="string">"Comment-text"</span>&gt;</span><br><span class="line">        &#123;props.text&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;<span class="selector-tag">div</span> className=<span class="string">"Comment-date"</span>&gt;</span><br><span class="line">        &#123;formatDate(props.date)&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>提取组件一开始看起来像是一项单调乏味的工作，但是在大型应用中，构建可复用的组件完全必要的。当你的UI中有一部分重复使用了好几次（比如，Button、Panel、Avatar），或者其自身就足够复杂（比如，App、FeedStory、Comment），类似这些都是抽象成一个可复用组件的绝佳选择，这也是一个比较好的做法。</p>
+<h2 id="Props的只读性"><a href="#Props的只读性" class="headerlink" title="Props的只读性"></a>Props的只读性</h2><p>无论是使用函数或是类来声明一个组件，它<strong>决不能修改</strong>它自己的props。来看这个sum函数：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function sum(<span class="selector-tag">a</span>, b) &#123;</span><br><span class="line">  return a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类似于上面的这种函数称为“<strong>纯函数</strong>”，它没有改变它自己的输入值，当传入的值相同时，总是会返回相同的结果。</p>
+<p>与之相对的是<strong>非纯函数</strong>，它会改变它自身的输入值：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function withdraw(account, amount) &#123;</span><br><span class="line">  account.total -= amount;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>React是非常灵活的，但它也有一个严格的规则：<br><strong>所有的React组件必须像纯函数那样使用它们的props</strong><br>当然，应用的界面是随时间动态变化的，我们将在下一节介绍一种称为“state”的新概念，State可以在不违反上述规则的情况下，根据用户操作、网络响应、或者其他状态变化，使组件动态的响应并改变组件的输出。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/11/组件 & Props/" data-id="cjelkp9pj000e1cugo5dwwono" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-plinghuang" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/10/plinghuang/" class="article-date">
@@ -94,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/10/plinghuang/" data-id="cjeljbw190001igugb11e3s6z" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/10/plinghuang/" data-id="cjelkp9p900051cugotravboj" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -155,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/查看列表组件/" data-id="cjeljbw1d0003igugsl9v622q" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/查看列表组件/" data-id="cjelkp9pd00081cugoz87t0ct" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -196,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/昨天loading状态的修改问题/" data-id="cjeljbw1x0009igugmhi4qj0r" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/昨天loading状态的修改问题/" data-id="cjelkp9p700041cugoq0q5sd3" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -208,10 +286,14 @@
   
     <article id="post-jsx简介" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/06/jsx简介/" class="article-date">
-  <time datetime="2018-03-06T10:11:39.000Z" itemprop="datePublished">2018-03-06</time>
+    <a href="/2018/03/05/jsx简介/" class="article-date">
+  <time datetime="2018-03-05T10:11:39.000Z" itemprop="datePublished">2018-03-05</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -220,7 +302,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/06/jsx简介/">jsx简介</a>
+      <a class="article-title" href="/2018/03/05/jsx简介/">jsx简介</a>
     </h1>
   
 
@@ -266,9 +348,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/06/jsx简介/" data-id="cjeljbw140000igugftjbjcme" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/05/jsx简介/" data-id="cjelkp9ou00001cugffnl5vy9" class="article-share-link">Teilen</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
     </footer>
   </div>
   
@@ -276,10 +360,60 @@
 
 
   
-    <article id="react-学习（一）" class="article article-type-react" itemscope itemprop="blogPost">
+    <article id="post-元素渲染" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/05/学习（一）/" class="article-date">
-  <time datetime="2018-03-05T01:25:02.000Z" itemprop="datePublished">2018-03-05</time>
+    <a href="/2018/03/05/元素渲染/" class="article-date">
+  <time datetime="2018-03-05T10:11:39.000Z" itemprop="datePublished">2018-03-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/05/元素渲染/">元素渲染</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在主页面有个root的节点 通过dom的render函数将自定义组件添加到root里面 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;<span class="selector-tag">div</span> id=<span class="string">"root"</span>&gt;&lt;/div&gt;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">const element = &lt;h1&gt;Hello, world&lt;/h1&gt;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  element,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="更新元素渲染"><a href="#更新元素渲染" class="headerlink" title="更新元素渲染"></a>更新元素渲染</h3><p>React 元素都是immutable<strong>不可变</strong>的。当元素被创建之后，你是无法改变其内容或属性的。一个元素就好像是动画里的一帧，它代表应用界面在某一时间点的样子。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function tick() &#123;</span><br><span class="line">  const element = (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;Hello, world!&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;It is &#123;new Date().toLocaleTimeString()&#125;.&lt;/h2&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">  ReactDOM.render(</span><br><span class="line">    element,</span><br><span class="line">    document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setInterval(tick, 1000);</span><br></pre></td></tr></table></figure>
+<p>这个例子里面 通过 setInterval() 方法，每秒钟调用一次 ReactDOM.render().更新渲染页面。</p>
+<blockquote>
+<p>注意:<br>在实际生产开发中, 大多数React应用只会调用一次 ReactDOM.render() . 在下一个章节中我们将会详细介绍 有状态组件 实现 DOM 更新方式。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/05/元素渲染/" data-id="cjelkp9pf00091cug0xpbe132" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-模板" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/04/模板/" class="article-date">
+  <time datetime="2018-03-04T12:35:59.000Z" itemprop="datePublished">2018-03-04</time>
 </a>
     
   </div>
@@ -290,7 +424,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/05/学习（一）/">学习（一）</a>
+      <a class="article-title" href="/2018/03/04/模板/">模板</a>
     </h1>
   
 
@@ -298,11 +432,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>### </p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/05/学习（一）/" data-id="cjeljbw1b0002igugbrf8500z" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/04/模板/" data-id="cjelkp9pb00061cugy330ob26" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -347,44 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/04/路由跳转问题/" data-id="cjeljbw1k0006igugfgnrnm92" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-模板" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/04/模板/" class="article-date">
-  <time datetime="2018-03-04T12:35:59.000Z" itemprop="datePublished">2018-03-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/04/模板/">模板</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>### </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/04/模板/" data-id="cjeljbw1v0008igug98odt2ai" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/04/路由跳转问题/" data-id="cjelkp9ph000c1cug3y8vfr2h" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -421,7 +519,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/04/pling/" data-id="cjeljbw1u0007igug5b5jemaf" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/04/pling/" data-id="cjelkp9p100011cugxn06i8qg" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -438,13 +536,20 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a></li></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ant-Design/">ant Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li></ul>
     </div>
   </div>
 
@@ -454,7 +559,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ant-Design/" style="font-size: 10px;">ant Design</a>
+      <a href="/tags/ant-Design/" style="font-size: 10px;">ant Design</a> <a href="/tags/react/" style="font-size: 20px;">react</a>
     </div>
   </div>
 
@@ -476,6 +581,10 @@
       <ul>
         
           <li>
+            <a href="/2018/03/11/组件 & Props/">组件 &amp; Props</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/10/plinghuang/">plinghuang</a>
           </li>
         
@@ -488,11 +597,7 @@
           </li>
         
           <li>
-            <a href="/2018/03/06/jsx简介/">jsx简介</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/05/学习（一）/">学习（一）</a>
+            <a href="/2018/03/05/jsx简介/">jsx简介</a>
           </li>
         
       </ul>
