@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>State &amp; 生命周期 | 叶落林间</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如何使Clock组件真正可重用和封装。它将设置自己的计时器，并每秒钟更新一次。 理想情况下，我们写一次 Clock 然后它能更新自身： 1234ReactDOM.render(  &amp;lt;Clock /&amp;gt;,  document.getElementById(&apos;root&apos;)); 为了实现这个需求，我们需要为Clock组件添加状态 状态与属性十分相似，但是状态是私有的，完全受控于当前组件。 我们">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="State &amp; 生命周期">
+<meta property="og:url" content="http://nisonfuture.cn/2018/03/05/State & 生命周期/index.html">
+<meta property="og:site_name" content="叶落林间">
+<meta property="og:description" content="如何使Clock组件真正可重用和封装。它将设置自己的计时器，并每秒钟更新一次。 理想情况下，我们写一次 Clock 然后它能更新自身： 1234ReactDOM.render(  &amp;lt;Clock /&amp;gt;,  document.getElementById(&apos;root&apos;)); 为了实现这个需求，我们需要为Clock组件添加状态 状态与属性十分相似，但是状态是私有的，完全受控于当前组件。 我们">
+<meta property="og:updated_time" content="2018-03-10T16:22:17.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="State &amp; 生命周期">
+<meta name="twitter:description" content="如何使Clock组件真正可重用和封装。它将设置自己的计时器，并每秒钟更新一次。 理想情况下，我们写一次 Clock 然后它能更新自身： 1234ReactDOM.render(  &amp;lt;Clock /&amp;gt;,  document.getElementById(&apos;root&apos;)); 为了实现这个需求，我们需要为Clock组件添加状态 状态与属性十分相似，但是状态是私有的，完全受控于当前组件。 我们">
+  
+    <link rel="alternate" href="/atom.xml" title="叶落林间" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">叶落林间</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">你只有非常努力，才能看起来毫不费力</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://nisonfuture.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-State &amp; 生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/05/State & 生命周期/" class="article-date">
+  <time datetime="2018-03-05T10:11:39.000Z" itemprop="datePublished">2018-03-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      State &amp; 生命周期
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如何使Clock组件真正可重用和封装。它将设置自己的计时器，并每秒钟更新一次。</p>
+<p>理想情况下，我们写一次 Clock 然后它能更新自身：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Clock /&gt;,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>为了实现这个需求，我们需要为Clock组件添加状态</p>
+<p>状态与属性十分相似，但是状态是私有的，完全受控于当前组件。</p>
+<p>我们之前提到过，定义为类的组件有一些特性。局部状态就是如此：一个功能只适用于类。</p>
+<h2 id="将函数转换为类"><a href="#将函数转换为类" class="headerlink" title="将函数转换为类"></a>将函数转换为类</h2><p>你可以通过5个步骤将函数组件 Clock 转换为类</p>
+<ol>
+<li><p>创建一个名称扩展为 React.Component 的ES6 类</p>
+</li>
+<li><p>创建一个叫做render()的空方法</p>
+</li>
+<li><p>将函数体移动到 render() 方法中</p>
+</li>
+<li><p>在 render() 方法中，使用 this.props 替换 props</p>
+</li>
+<li><p>删除剩余的空函数声明</p>
+</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Clock extends React<span class="selector-class">.Component</span> &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Hello, world!&lt;/h1&gt;</span><br><span class="line">        &lt;h2&gt;It is &#123;this<span class="selector-class">.props</span><span class="selector-class">.date</span><span class="selector-class">.toLocaleTimeString</span>()&#125;.&lt;/h2&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Clock 现在被定义为一个类而不只是一个函数</p>
+<p>使用类就允许我们使用其它特性，例如局部状态、生命周期钩子</p>
+<h2 id="为一个类添加局部状态"><a href="#为一个类添加局部状态" class="headerlink" title="为一个类添加局部状态"></a>为一个类添加局部状态</h2><p>我们会通过3个步骤将 date 从属性移动到状态中：</p>
+<ol>
+<li>在 render() 方法中使用 this.state.date 替代 this.props.date</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Clock extends React<span class="selector-class">.Component</span> &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Hello, world!&lt;/h1&gt;</span><br><span class="line">        &lt;h2&gt;It is &#123;this<span class="selector-class">.state</span><span class="selector-class">.date</span><span class="selector-class">.toLocaleTimeString</span>()&#125;.&lt;/h2&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>添加一个类构造函数来初始化状态 this.state</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Clock extends React<span class="selector-class">.Component</span> &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;date: new Date()&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Hello, world!&lt;/h1&gt;</span><br><span class="line">        &lt;h2&gt;It is &#123;this<span class="selector-class">.state</span><span class="selector-class">.date</span><span class="selector-class">.toLocaleTimeString</span>()&#125;.&lt;/h2&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类组件应始终使用<strong>props调用基础构造函数</strong>。`<br>3.从 \<clock> 元素移除 date 属性：<br>​    </clock></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Clock /&gt;,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>综合上面三步，其实就是将date这个属性 用state保存起来，通过构造函数给date复制，只要date的值发生变化就渲染页面<br>但是暂时没有加计时器，只会停留在一开始的时间，</p>
+</blockquote>
+<p>接下来，我们将使Clock设置自己的计时器并每秒更新一次。</p>
+<h2 id="将生命周期方法添加到类中"><a href="#将生命周期方法添加到类中" class="headerlink" title="将生命周期方法添加到类中"></a>将生命周期方法添加到类中</h2><p>在具有许多组件的应用程序中，在<strong>销毁时释放组件所占用的资源</strong>非常重要。</p>
+<p>每当Clock组件【第一次加载到DOM】中的时候，我们都想生成定时器，这在React中被称为<strong>挂载</strong></p>
+<p>同样，每当Clock生成的这个【DOM被移除】的时候，我们也会想要清除定时器，这在React中被称为<strong>卸载</strong>。</p>
+<p>我们可以在组件类上声明特殊的方法，当组件挂载或卸载时，来运行一些代码</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Clock extends React<span class="selector-class">.Component</span> &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;date: new Date()&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">	<span class="comment">//当组件第一次被加载到DOM节点的时候调用的函数 </span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">   	<span class="comment">//每当Clock生成的这个DOM被移除的时候调用的函数</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Hello, world!&lt;/h1&gt;</span><br><span class="line">        &lt;h2&gt;It is &#123;this<span class="selector-class">.state</span><span class="selector-class">.date</span><span class="selector-class">.toLocaleTimeString</span>()&#125;.&lt;/h2&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这些方法被称作<strong>生命周期钩子</strong>。例如：</p>
+<ol>
+<li>componentDidMount()</li>
+<li>componentWillUnmount()</li>
+</ol>
+<p>当组件输出到 DOM 后会执行 componentDidMount() 钩子，这是一个建立定时器的好地方：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">componentDidMount</span><span class="params">()</span></span> &#123;</span><br><span class="line">  this<span class="selector-class">.timerID</span> = setInterval(</span><br><span class="line">    () =&gt; this.tick(),</span><br><span class="line">    <span class="number">1000</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意我们如何在 this 中保存<strong>定时器ID</strong>。这个要先保存起来，在销毁的时候需要通过这个id去释放资源。</p>
+<p>虽然 this.props 由React本身设置以及this.state 具有特殊的含义，但如果需要存储不用于视觉输出的东西，则可以手动向类中添加其他字段。</p>
+<p>如果你不在 render() 中使用某些东西，它就不应该在状态中。</p>
+<p>我们将在 componentWillUnmount（）生命周期钩子中卸载计时器：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">componentWillUnmount</span><span class="params">()</span></span> &#123;</span><br><span class="line">  clearInterval(this.timerID);//释放资源</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后，我们实现了每秒钟执行的 tick() 方法。</p>
+<p>它将使用 this.setState() 来更新组件局部状态：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">tick</span><span class="params">()</span></span> &#123;</span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    date: new Date()</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在时钟每秒钟都会执行。</p>
+<p>执行顺序是：</p>
+<ol>
+<li>当 、<clock> 被传递给 ReactDOM.render() 时，React 调用 Clock 组件的构造函数。 由于 Clock 需要显示当前时间，所以使用包含当前时间的对象来初始化 this.state 。 我们稍后会更新此状态。</clock></li>
+<li>React 然后调用 Clock 组件的 render() 方法。这是 React 了解屏幕上应该显示什么内容，然后 React 更新 DOM 以匹配 Clock 的渲染输出。</li>
+<li>当 Clock 的输出插入到 DOM 中时，React 调用 componentDidMount() 生命周期钩子。 在其中，Clock 组件要求浏览器设置一个定时器，每秒钟调用一次 tick()。</li>
+<li>浏览器每秒钟调用 tick() 方法。 在其中，Clock 组件通过使用包含当前时间的对象调用 setState() 来调度UI更新。 通过调用 setState() ，React 知道状态已经改变，并再次调用 render() 方法来确定屏幕上应当显示什么。 这一次，render() 方法中的 this.state.date 将不同，所以渲染输出将包含更新的时间，并相应地更新DOM。</li>
+<li>一旦Clock组件被从DOM中移除，React会调用componentWillUnmount()这个钩子函数，定时器也就会被清除。<h2 id="正确地使用state"><a href="#正确地使用state" class="headerlink" title="正确地使用state"></a>正确地使用state</h2>关于 setState() 这里有三件事情需要知道<h3 id="不要直接更新状态"><a href="#不要直接更新状态" class="headerlink" title="不要直接更新状态"></a>不要直接更新状态</h3>例如，此代码不会重新渲染组件：</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Wrong</span></span><br><span class="line">this.state.comment = 'Hello';</span><br></pre></td></tr></table></figure>
+<p>应当使用 setState():</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Correct</span></span><br><span class="line">this.setState(&#123;comment: 'Hello'&#125;);</span><br></pre></td></tr></table></figure>
+<p>构造函数是唯一能够初始化 this.state 的地方。通过下面的方式：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">constructor</span><span class="params">(props)</span></span> &#123;</span><br><span class="line">  super(props);</span><br><span class="line">  this.state = &#123;date: new Date()&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="状态更新可能是异步的"><a href="#状态更新可能是异步的" class="headerlink" title="状态更新可能是异步的"></a>状态更新可能是异步的</h3><p>React 可以将多个setState() 调用合并成一个调用来提高性能。</p>
+<p>因为 this.props 和 this.state 可能是<strong>异步更新</strong>的，你不应该依靠它们的值来计算下一个状态。</p>
+<p>例如，此代码可能无法更新计数器：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Wrong</span></span><br><span class="line">this.setState(&#123;</span><br><span class="line">  counter: this<span class="selector-class">.state</span><span class="selector-class">.counter</span> + this<span class="selector-class">.props</span><span class="selector-class">.increment</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>要修复它，请使用第二种形式的 setState() 来<strong>接受一个函数</strong>而不是一个对象。 该函数将接收先前的状态作为第一个参数，将此次更新被应用时的props做为第二个参数：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Correct</span></span><br><span class="line">this.setState((prevState, props) =&gt; (&#123;</span><br><span class="line">  counter: prevState<span class="selector-class">.counter</span> + props.increment</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>上方代码使用了箭头函数，但它也适用于常规函数：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Correct</span></span><br><span class="line">this.setState(function(prevState, props) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    counter: prevState<span class="selector-class">.counter</span> + props.increment</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="状态更新合并"><a href="#状态更新合并" class="headerlink" title="状态更新合并"></a>状态更新合并</h3><p>当你调用 setState() 时，React 将你提供的对象合并到当前状态。</p>
+<p>例如，你的状态可能包含一些独立的变量：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">constructor</span><span class="params">(props)</span></span> &#123;</span><br><span class="line">  super(props);</span><br><span class="line">  this<span class="selector-class">.state</span> = &#123;</span><br><span class="line">    posts: [],</span><br><span class="line">    comments: []</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你可以调用 setState() 独立地更新它们：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">componentDidMount</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fetchPosts().then(response =&gt; &#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      posts: response.posts</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  fetchComments().then(response =&gt; &#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      comments: response.comments</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的合并是<strong>浅合并</strong>，也就是说this.setState({comments})完整保留了this.state.posts，但完全替换了this.state.comments。</p>
+<h3 id="数据自顶向下流动"><a href="#数据自顶向下流动" class="headerlink" title="数据自顶向下流动"></a>数据自顶向下流动</h3><p>父组件或子组件都不能知道某个组件是有状态还是无状态，并且它们不应该关心某组件是被定义为一个函数还是一个类。</p>
+<p>这就是为什么状态通常被称为局部或封装。 除了拥有并设置它的组件外，其它组件不可访问。</p>
+<p>组件可以选择将其状态作为属性传递给其子组件：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2&gt;It is &#123;this<span class="selector-class">.state</span><span class="selector-class">.date</span><span class="selector-class">.toLocaleTimeString</span>()&#125;.&lt;/h2&gt;</span><br><span class="line">&lt;FormattedDate date=&#123;this<span class="selector-class">.state</span><span class="selector-class">.date</span>&#125; /&gt;<span class="comment">//用户自定义组件也适用</span></span><br></pre></td></tr></table></figure>
+<p>FormattedDate 组件将在其属性中接收到 date 值，并且不知道它是来自 Clock 状态、还是来自 Clock 的属性、亦或手工输入：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function FormattedDate(props) &#123;</span><br><span class="line">  return &lt;h2&gt;It is &#123;props.date.toLocaleTimeString()&#125;.&lt;/h2&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这通常被称为<strong>自顶向下</strong>或<strong>单向数据流</strong>。 任何状态始终由某些特定组件所有，并且从该状态导出的任何数据或 UI 只能影响树中下方的组件。</p>
+<p>如果你想象一个组件树作为属性的瀑布，每个组件的状态就像一个额外的水源，它连接在一个任意点，但也流下来。</p>
+<p>为了表明所有组件都是真正隔离的，我们可以创建一个 App 组件，它渲染三个Clock：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Clock /&gt;</span><br><span class="line">      &lt;Clock /&gt;</span><br><span class="line">      &lt;Clock /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;App /&gt;,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>每个 Clock 建立自己的定时器并且独立更新。</p>
+<p>在 React 应用程序中，组件是有状态还是无状态被认为是可能随时间而变化的组件的实现细节。 可以在有状态组件中使用无状态组件，反之亦然。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/05/State & 生命周期/" data-id="cjell430d0000xkug31szyvfa" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/05/列表 & Keys/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          列表 &amp; Keys
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/05/jsx简介/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">jsx简介</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ant-Design/">ant Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ant-Design/" style="font-size: 10px;">ant Design</a> <a href="/tags/react/" style="font-size: 20px;">react</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/08/查看列表组件/">查看列表组件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/08/昨天loading状态的修改问题/">昨天loading状态的修改问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/05/元素渲染/">元素渲染</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/05/表单/">表单</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/05/列表 & Keys/">列表 &amp; Keys</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Pling Huang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
