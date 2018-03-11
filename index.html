@@ -55,9 +55,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://nisonfuture.cn"></form>
@@ -124,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/10/构建管理权限界面/" data-id="cjemdzx7200216cug6tnwlc3w" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/10/构建管理权限界面/" data-id="cjemmq8g00024ncugc069tqmc" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -169,7 +169,53 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/10/ant Design 生命周期图/" data-id="cjemdzx6200056cugyekyeg6n" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/10/ant Design 生命周期图/" data-id="cjemmq8dw0004ncug7agbmvxn" class="article-share-link">Compartir</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-构建权限管理页面" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/09/构建权限管理页面/" class="article-date">
+  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先构建一个最简单的页面<br>简单的div 都要导入React  要注意 这个的开头是大写的，因为这个我花了5分的时间，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; PureComponent &#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">export default class Admin extends PureComponent &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        666</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用了以上代码 还是会报错 最后找到原因是我并没有带入需要的模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@connect((&#123; rule, loading &#125;) =&gt; (&#123;</span><br><span class="line">  rule,</span><br><span class="line">  loading: loading.models.rule,</span><br><span class="line">&#125;))</span><br><span class="line">@Form.create()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/09/构建权限管理页面/" data-id="cjemmq8fy0021ncugvjznagqk" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -222,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件/" data-id="cjemdzx6s001e6cug5nea9ab3" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件/" data-id="cjemmq8eg0011ncugloxt491h" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -280,53 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/封装弹窗/" data-id="cjemdzx6v001k6cug2wo3skkm" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-构建权限管理页面" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/09/构建权限管理页面/" class="article-date">
-  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先构建一个最简单的页面<br>简单的div 都要导入React  要注意 这个的开头是大写的，因为这个我花了5分的时间，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; PureComponent &#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">export default class Admin extends PureComponent &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        666</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用了以上代码 还是会报错 最后找到原因是我并没有带入需要的模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@connect((&#123; rule, loading &#125;) =&gt; (&#123;</span><br><span class="line">  rule,</span><br><span class="line">  loading: loading.models.rule,</span><br><span class="line">&#125;))</span><br><span class="line">@Form.create()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/构建权限管理页面/" data-id="cjemdzx7400246cug79v215xa" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/封装弹窗/" data-id="cjemmq8fw001yncugad7g7tzw" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -386,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件和弹窗组件的交互/" data-id="cjemdzx6w001p6cugr3qkkuo7" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件和弹窗组件的交互/" data-id="cjemmq8fq001rncugpse2bnpj" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -433,99 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/封装查询组件/" data-id="cjemdzx6z001v6cugf4ir7i4b" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-昨天loading状态的修改问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/08/昨天loading状态的修改问题/" class="article-date">
-  <time datetime="2018-03-08T01:35:59.000Z" itemprop="datePublished">2018-03-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/08/昨天loading状态的修改问题/">昨天loading状态的修改问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="昨晚回去后，调试发现-一直在提示-status-没有定义，"><a href="#昨晚回去后，调试发现-一直在提示-status-没有定义，" class="headerlink" title="昨晚回去后，调试发现 一直在提示 status 没有定义，"></a>昨晚回去后，调试发现 一直在提示 status 没有定义，</h3><p>我一开始以为是在 changeLoginStatus这里出现了问题，但是修改了 也没有变化，于是我在login 函数增加了日志  发现其实那个函数已经运行了，并没有问题，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">login(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">      // console.log(&apos;login&apos;, payload);</span><br><span class="line">      try &#123;</span><br><span class="line">        const response = yield call(fakeAccountLogin, payload);</span><br><span class="line">        // console.log(&apos;login&apos;, response.state, JSON.stringify(response));</span><br><span class="line">        yield put(&#123;</span><br><span class="line">          type: &apos;changeLoginStatus&apos;,</span><br><span class="line">          payload: response,</span><br><span class="line">        &#125;);</span><br><span class="line">        // response 有可能是undefined 出现错误的情况 是没有返回结果的 没有返回结果就undefined 所以要加一个判断</span><br><span class="line">        if (response !== undefined &amp;&amp; response.status === &apos;ok&apos;) &#123;</span><br><span class="line">          yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; finally &#123;</span><br><span class="line">        yield put(&#123;</span><br><span class="line">          type: &apos;changeLoginStatus&apos;,</span><br><span class="line">          payload: &#123;</span><br><span class="line">            state: &apos;error&apos;,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">        yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-<p>通过将response 输出来 我发现 失败之后 输出来的是Undefined<br>所以就找到问题所在 在用response 的时候进行参数检查，如果非空则继续运行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/昨天loading状态的修改问题/" data-id="cjemdzx6y001s6cugb29qgqzo" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-管理员页面的初步构建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/08/管理员页面的初步构建/" class="article-date">
-  <time datetime="2018-03-08T01:35:59.000Z" itemprop="datePublished">2018-03-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/08/管理员页面的初步构建/">管理员页面的初步构建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>通过全局搜索 找到左边表单的配置项，修改为我所需要的配置，则如下</p>
-<p>D:\luwei\project\wallpaper\wallpaper\src\common\menu.js<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">const menuData = [&#123;</span><br><span class="line">  name: '权限管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '刘海模版系列管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '刘海模板管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '系统壁纸系列管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '系统壁纸管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '留言管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>不过样式有点不太对劲 如下：<br><img src="./images/1520480250618.jpg" alt="enter description here"></p>
-<p>而目标原型为：<br><img src="./images/1520480283537.jpg" alt="目标原型"><br>需要修改一下 </p>
-<p>突然间 发现 好像是因为我设置path 路径是一样的 所以才出现这个问题  修改后就解决了 </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/管理员页面的初步构建/" data-id="cjemdzx7e002p6cug56frm7c1" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/封装查询组件/" data-id="cjemmq8fs001uncugp7fswz5r" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -592,7 +500,99 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/查看列表组件/" data-id="cjemdzx7500276cug9jbmqfwe" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/查看列表组件/" data-id="cjemmq8g10027ncugbejdf4eu" class="article-share-link">Compartir</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-管理员页面的初步构建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/08/管理员页面的初步构建/" class="article-date">
+  <time datetime="2018-03-08T01:35:59.000Z" itemprop="datePublished">2018-03-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/08/管理员页面的初步构建/">管理员页面的初步构建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通过全局搜索 找到左边表单的配置项，修改为我所需要的配置，则如下</p>
+<p>D:\luwei\project\wallpaper\wallpaper\src\common\menu.js<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">const menuData = [&#123;</span><br><span class="line">  name: '权限管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '刘海模版系列管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '刘海模板管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '系统壁纸系列管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '系统壁纸管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '留言管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>不过样式有点不太对劲 如下：<br><img src="./images/1520480250618.jpg" alt="enter description here"></p>
+<p>而目标原型为：<br><img src="./images/1520480283537.jpg" alt="目标原型"><br>需要修改一下 </p>
+<p>突然间 发现 好像是因为我设置path 路径是一样的 所以才出现这个问题  修改后就解决了 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/08/管理员页面的初步构建/" data-id="cjemmq8gf002sncuglmke9uv5" class="article-share-link">Compartir</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-昨天loading状态的修改问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/08/昨天loading状态的修改问题/" class="article-date">
+  <time datetime="2018-03-08T01:35:59.000Z" itemprop="datePublished">2018-03-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/08/昨天loading状态的修改问题/">昨天loading状态的修改问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="昨晚回去后，调试发现-一直在提示-status-没有定义，"><a href="#昨晚回去后，调试发现-一直在提示-status-没有定义，" class="headerlink" title="昨晚回去后，调试发现 一直在提示 status 没有定义，"></a>昨晚回去后，调试发现 一直在提示 status 没有定义，</h3><p>我一开始以为是在 changeLoginStatus这里出现了问题，但是修改了 也没有变化，于是我在login 函数增加了日志  发现其实那个函数已经运行了，并没有问题，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">login(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">      // console.log(&apos;login&apos;, payload);</span><br><span class="line">      try &#123;</span><br><span class="line">        const response = yield call(fakeAccountLogin, payload);</span><br><span class="line">        // console.log(&apos;login&apos;, response.state, JSON.stringify(response));</span><br><span class="line">        yield put(&#123;</span><br><span class="line">          type: &apos;changeLoginStatus&apos;,</span><br><span class="line">          payload: response,</span><br><span class="line">        &#125;);</span><br><span class="line">        // response 有可能是undefined 出现错误的情况 是没有返回结果的 没有返回结果就undefined 所以要加一个判断</span><br><span class="line">        if (response !== undefined &amp;&amp; response.status === &apos;ok&apos;) &#123;</span><br><span class="line">          yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; finally &#123;</span><br><span class="line">        yield put(&#123;</span><br><span class="line">          type: &apos;changeLoginStatus&apos;,</span><br><span class="line">          payload: &#123;</span><br><span class="line">            state: &apos;error&apos;,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">        yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<p>通过将response 输出来 我发现 失败之后 输出来的是Undefined<br>所以就找到问题所在 在用response 的时候进行参数检查，如果非空则继续运行</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/08/昨天loading状态的修改问题/" data-id="cjemmq8fu001wncugr4kaxphe" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -608,7 +608,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Siguiente &raquo;</a>
   </nav>
 
 </section>
@@ -617,7 +617,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categorías</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/life/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a></li></ul>
     </div>
@@ -637,7 +637,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nube de Tags</h3>
     <div class="widget tagcloud">
       <a href="/tags/ant-Design/" style="font-size: 20px;">ant Design</a> <a href="/tags/js工具/" style="font-size: 10px;">js工具</a> <a href="/tags/nginx-工具/" style="font-size: 13.33px;">nginx ,工具</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/工具/" style="font-size: 13.33px;">工具</a>
     </div>
@@ -646,7 +646,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -656,7 +656,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
@@ -669,15 +669,15 @@
           </li>
         
           <li>
+            <a href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/09/列表组件/">列表组件</a>
           </li>
         
           <li>
             <a href="/2018/03/09/封装弹窗/">2018-3-9 封装弹窗</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
           </li>
         
       </ul>
@@ -693,7 +693,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 Pling Huang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

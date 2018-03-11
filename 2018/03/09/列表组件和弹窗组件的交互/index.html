@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="叶落林间">
 <meta property="og:description" content="有个问题 就是在点击编辑 和点击新建的时候 是不是应该都要调用同一个弹窗呢？ 还是返回不同的弹窗？ 第一种方案 统一同一个弹窗 在点击弹窗后 传入参数列表 如果是新建 就传入空的参数列表，弹窗接收到相应的参数 就进行渲染  第二种方案，新建的就调用本窗口隐藏的弹窗，编辑就新建一个弹窗。 感觉来说 使用第一种方案会好一点，无论是从性能上 还是从使用上 这样的话，那我新建和编辑都可以调用同一个回调函数">
 <meta property="og:image" content="https://github.com/aa875982361/aa875982361.github.io/blob/master/images/1520581581228.jpg?raw=true">
-<meta property="og:updated_time" content="2018-03-11T04:31:31.363Z">
+<meta property="og:updated_time" content="2018-03-11T08:54:17.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="列表组件和弹窗组件的交互">
 <meta name="twitter:description" content="有个问题 就是在点击编辑 和点击新建的时候 是不是应该都要调用同一个弹窗呢？ 还是返回不同的弹窗？ 第一种方案 统一同一个弹窗 在点击弹窗后 传入参数列表 如果是新建 就传入空的参数列表，弹窗接收到相应的参数 就进行渲染  第二种方案，新建的就调用本窗口隐藏的弹窗，编辑就新建一个弹窗。 感觉来说 使用第一种方案会好一点，无论是从性能上 还是从使用上 这样的话，那我新建和编辑都可以调用同一个回调函数">
@@ -59,9 +59,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://nisonfuture.cn"></form>
@@ -118,7 +118,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件和弹窗组件的交互/" data-id="cjemdzx6w001p6cugr3qkkuo7" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件和弹窗组件的交互/" data-id="cjemmq8fq001rncugpse2bnpj" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -129,18 +129,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/03/09/构建权限管理页面/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
+    <a href="/2018/03/09/封装弹窗/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nuevo</strong>
       <div class="article-nav-title">
         
-          构建权限管理页面
+          2018-3-9 封装弹窗
         
       </div>
     </a>
   
   
     <a href="/2018/03/09/封装查询组件/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Viejo</strong>
       <div class="article-nav-title">封装查询组件</div>
     </a>
   
@@ -155,7 +155,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categorías</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/life/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a></li></ul>
     </div>
@@ -175,7 +175,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nube de Tags</h3>
     <div class="widget tagcloud">
       <a href="/tags/ant-Design/" style="font-size: 20px;">ant Design</a> <a href="/tags/js工具/" style="font-size: 10px;">js工具</a> <a href="/tags/nginx-工具/" style="font-size: 13.33px;">nginx ,工具</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/工具/" style="font-size: 13.33px;">工具</a>
     </div>
@@ -184,7 +184,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -194,7 +194,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
@@ -207,15 +207,15 @@
           </li>
         
           <li>
+            <a href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/09/列表组件/">列表组件</a>
           </li>
         
           <li>
             <a href="/2018/03/09/封装弹窗/">2018-3-9 封装弹窗</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
           </li>
         
       </ul>
@@ -231,7 +231,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 Pling Huang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
