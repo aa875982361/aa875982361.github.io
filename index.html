@@ -68,6 +68,64 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-构建管理权限界面" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/10/构建管理权限界面/" class="article-date">
+  <time datetime="2018-03-10T01:35:59.000Z" itemprop="datePublished">2018-03-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天有做基础 将简单的页面写好了，接下来就是要进行搬砖了，<br>先思考，再写代码。</p>
+<ol>
+<li>增加标题页 </li>
+<li>增加卡片式布局</li>
+<li>增加弹窗</li>
+<li>在卡片式布局增加查询组件</li>
+<li>在卡片式布局增加新建按钮</li>
+<li>增加列表组件，设置列表头参数</li>
+<li>设置列表操作函数</li>
+<li>设置查询回调函数</li>
+<li>设置新建回调函数</li>
+</ol>
+<p>暂时先写着这些 先动手</p>
+<p><img src="https://github.com/aa875982361/aa875982361.github.io/blob/master/images/1520654190698.jpg?raw=true" alt="基础页面"></p>
+<p>将基础页面暂时先做好，现在按照管理页面来写<br>如下图：</p>
+<p><img src="https://github.com/aa875982361/aa875982361.github.io/blob/master/images/1520654457438.jpg?raw=true" alt="管理端界面"></p>
+<p>总共有两列 一列是账号 一列是操作<br>14:07：初步构建完成</p>
+<p><img src="https://github.com/aa875982361/aa875982361.github.io/blob/master/images/1520662041093.jpg?raw=true" alt="初步页面"></p>
+<p>现在增加事件，以及配置组件</p>
+<p><img src="https://github.com/aa875982361/aa875982361.github.io/blob/master/images/1520666668507.jpg?raw=true" alt="再一次完善了界面"></p>
+<p>15：25<br>增加了弹窗的处理事件<br>调试的时候发现有个问题  就是我将表单都放在页面上，而不是将查询的表单和弹窗的表单分割开，当我点击submit 的时候却触发了整个表单的提交 因为在弹窗内是有必填信息的，所以就会出现err</p>
+<p><img src="https://github.com/aa875982361/aa875982361.github.io/blob/master/images/1520667727669.jpg?raw=true" alt="error"></p>
+<p>报错信息为：<br><code>You cannot set field before registering it.</code></p>
+<p>暂时未解决这个问题</p>
+<p>通过form的一个函数 直接获取到值 获取全部的值，就不会报错，具体方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 查询的事件</span><br><span class="line"> */</span><br><span class="line">handleSearch = (e) =&gt; &#123;</span><br><span class="line">  e.preventDefault();</span><br><span class="line">  const &#123; form &#125; = this.props;</span><br><span class="line">  console.log(&apos;handleSearch&apos;, form.getFieldValue(&apos;checkname&apos;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/10/构建管理权限界面/" data-id="cjemaizcf0025s8ugnkskc6tm" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ant Design 生命周期图" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/10/ant Design 生命周期图/" class="article-date">
@@ -101,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/10/ant Design 生命周期图/" data-id="cjema6r9000057cug4jk67wqx" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/10/ant Design 生命周期图/" data-id="cjemaizbb0004s8ug0dmlcnv6" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -113,10 +171,10 @@
 
 
   
-    <article id="post-构建管理权限界面" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-构建权限管理页面" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/10/构建管理权限界面/" class="article-date">
-  <time datetime="2018-03-10T01:35:59.000Z" itemprop="datePublished">2018-03-10</time>
+    <a href="/2018/03/09/构建权限管理页面/" class="article-date">
+  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
 </a>
     
   <div class="article-category">
@@ -131,7 +189,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/10/构建管理权限界面/">构建管理权限界面</a>
+      <a class="article-title" href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
     </h1>
   
 
@@ -139,37 +197,73 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>昨天有做基础 将简单的页面写好了，接下来就是要进行搬砖了，<br>先思考，再写代码。</p>
-<ol>
-<li>增加标题页 </li>
-<li>增加卡片式布局</li>
-<li>增加弹窗</li>
-<li>在卡片式布局增加查询组件</li>
-<li>在卡片式布局增加新建按钮</li>
-<li>增加列表组件，设置列表头参数</li>
-<li>设置列表操作函数</li>
-<li>设置查询回调函数</li>
-<li>设置新建回调函数</li>
-</ol>
-<p>暂时先写着这些 先动手</p>
-<p><img src="./images/1520654190698.jpg" alt="基础页面"></p>
-<p>将基础页面暂时先做好，现在按照管理页面来写<br>如下图：</p>
-<p><img src="./images/1520654457438.jpg" alt="管理端界面"></p>
-<p>总共有两列 一列是账号 一列是操作<br>14:07：初步构建完成</p>
-<p><img src="./images/1520662041093.jpg" alt="初步页面"></p>
-<p>现在增加事件，以及配置组件</p>
-<p><img src="./images/1520666668507.jpg" alt="再一次完善了界面"></p>
-<p>15：25<br>增加了弹窗的处理事件<br>调试的时候发现有个问题  就是我将表单都放在页面上，而不是将查询的表单和弹窗的表单分割开，当我点击submit 的时候却触发了整个表单的提交 因为在弹窗内是有必填信息的，所以就会出现err</p>
-<p><img src="./images/1520667727669.jpg" alt="error"></p>
-<p>报错信息为：<br><code>You cannot set field before registering it.</code></p>
-<p>暂时未解决这个问题</p>
-<p>通过form的一个函数 直接获取到值 获取全部的值，就不会报错，具体方式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 查询的事件</span><br><span class="line"> */</span><br><span class="line">handleSearch = (e) =&gt; &#123;</span><br><span class="line">  e.preventDefault();</span><br><span class="line">  const &#123; form &#125; = this.props;</span><br><span class="line">  console.log(&apos;handleSearch&apos;, form.getFieldValue(&apos;checkname&apos;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>首先构建一个最简单的页面<br>简单的div 都要导入React  要注意 这个的开头是大写的，因为这个我花了5分的时间，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; PureComponent &#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">export default class Admin extends PureComponent &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        666</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用了以上代码 还是会报错 最后找到原因是我并没有带入需要的模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@connect((&#123; rule, loading &#125;) =&gt; (&#123;</span><br><span class="line">  rule,</span><br><span class="line">  loading: loading.models.rule,</span><br><span class="line">&#125;))</span><br><span class="line">@Form.create()</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/10/构建管理权限界面/" data-id="cjema6raj00247cugbn6uzg53" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/构建权限管理页面/" data-id="cjemaizcc001zs8ugqgcjgrjg" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-封装弹窗" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/09/封装弹窗/" class="article-date">
+  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/09/封装弹窗/">2018-3-9 封装弹窗</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>观察ant 原生的弹窗 发现 formItem 都是放在在弹窗里面，这样的话 <strong>耦合度会高</strong>，<strong>不利于弹窗的复用</strong>，根据以往经验，可以将弹窗做成一个独立的组件，将里面的表单做成一个参数，从外部传入 。并且 通过输出form表单内的内容发现，从外部传入的表单，<strong>数据都是存储在外部form表单</strong>里面。在弹窗内部表单并不能获取到需要的数据。</p>
+<p>所以有必要进行封装加改装 使其能高效被我复用</p>
+<p>改装过程如下：<br>原本的外部处理函数如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">handleAdd = (fields) =&gt; &#123;</span><br><span class="line">  this.props.dispatch(&#123;</span><br><span class="line">    type: &apos;rule/add&apos;,</span><br><span class="line">    payload: &#123;</span><br><span class="line">      description: fields.desc,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  message.success(&apos;添加成功&apos;);</span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    modalVisible: false,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要从弹窗内部先获取到表单的数据，然后通过参数的方式传递到外部再进行处理。<br>改装后的函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 新建弹窗的回调函数</span><br><span class="line">   */</span><br><span class="line">  handleAdd = () =&gt; &#123;</span><br><span class="line">    const &#123; form &#125; = this.props;</span><br><span class="line">    form.validateFields((err, fieldsValue) =&gt; &#123;</span><br><span class="line">      if (err) return;</span><br><span class="line">      form.resetFields();// 重置 Checkbox 的勾选状态</span><br><span class="line">      console.log(&apos;okHandle&apos;, fieldsValue);</span><br><span class="line">    &#125;);</span><br><span class="line">	this.setState(&#123;</span><br><span class="line">      modalVisible: false,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>改装过后的函数 就不需要从弹窗获取参数，也获取不了参数，直接找内置表单的数据，然后进行处理。</p>
+<p>组件的使用方式也修改了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Dialog</span><br><span class="line">          &#123;...parentMethods&#125;</span><br><span class="line">          modalVisible=&#123;modalVisible&#125;</span><br><span class="line">          payload=&#123;payload&#125;</span><br><span class="line">          formItems=&#123;this.renderFormItem()&#125;</span><br><span class="line">        /&gt;</span><br></pre></td></tr></table></figure>
+<p>第三个是要传进去的参数列表 用来传递标题 其实想想 只是用一个string 就好 不用封装一个结构体来存储 ，但是不知道之后还有什么属性需要拓展的，暂时先将其封装风一个列表，只有有需要的属性再增加进去。</p>
+<p>第四个参数 是传进去的form表单，具体内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 弹窗内的组件</span><br><span class="line">   */</span><br><span class="line">  renderFormItem() &#123;</span><br><span class="line">    const &#123; payload &#125; = this.state;</span><br><span class="line">    const &#123; form &#125; = this.props;</span><br><span class="line">    return (</span><br><span class="line">      &lt;FormItem</span><br><span class="line">        labelCol=&#123;&#123; span: 5 &#125;&#125;</span><br><span class="line">        wrapperCol=&#123;&#123; span: 15 &#125;&#125;</span><br><span class="line">        label=&quot;描述&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &#123;form.getFieldDecorator(&apos;desc&apos;, &#123;</span><br><span class="line">          rules: [&#123; required: true, message: &apos;Please input some description...&apos; &#125;],</span><br><span class="line">          initialValue: payload.key,//初始化数值</span><br><span class="line">        &#125;)(</span><br><span class="line">          &lt;Input placeholder=&quot;请输入&quot; /&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      &lt;/FormItem&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>封装后的弹窗其实代码量就很少，很简洁，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import &#123; Form, Modal &#125; from &apos;antd&apos;;</span><br><span class="line"></span><br><span class="line">const Dialog = Form.create()((props) =&gt; &#123;</span><br><span class="line">  const &#123; modalVisible, handleAdd, handleModalVisible, payload, formItems &#125; = props;</span><br><span class="line">  return (</span><br><span class="line">    &lt;Modal</span><br><span class="line">      title=&#123;payload.title&#125;</span><br><span class="line">      visible=&#123;modalVisible&#125;</span><br><span class="line">      onOk=&#123;handleAdd&#125;</span><br><span class="line">      onCancel=&#123;() =&gt; handleModalVisible()&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &#123;formItems&#125;</span><br><span class="line">    &lt;/Modal&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default Dialog;</span><br></pre></td></tr></table></figure>
+<p>……居然漏了将窗口关闭</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.setState(&#123;</span><br><span class="line">  modalVisible: false,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/09/封装弹窗/" data-id="cjemaizc7001qs8ugggcpdfya" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -228,158 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件和弹窗组件的交互/" data-id="cjema6ra3001h7cugtug1ct16" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-构建权限管理页面" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/09/构建权限管理页面/" class="article-date">
-  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先构建一个最简单的页面<br>简单的div 都要导入React  要注意 这个的开头是大写的，因为这个我花了5分的时间，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; PureComponent &#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">export default class Admin extends PureComponent &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        666</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用了以上代码 还是会报错 最后找到原因是我并没有带入需要的模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@connect((&#123; rule, loading &#125;) =&gt; (&#123;</span><br><span class="line">  rule,</span><br><span class="line">  loading: loading.models.rule,</span><br><span class="line">&#125;))</span><br><span class="line">@Form.create()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/构建权限管理页面/" data-id="cjema6raf001y7cuguc94uo76" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-封装查询组件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/09/封装查询组件/" class="article-date">
-  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/09/封装查询组件/">封装查询组件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>封装前的思考：<br>究竟是和弹窗一样 表单组件放在外面 还是 将表单内置在查询组件之内？<br>这是个问题。<br>分析：<br>如果是从外部输入表单的话 没办法控制输入框的数量 就没办法控制样式就像下图：<br><img src="./images/1520605067124.jpg" alt="enter description here"></p>
-<p><img src="./images/1520605670496.jpg" alt="enter description here"></p>
-<p>其实想想这样的布局 感觉也还是可以的 起码没出大问题<br>就用这种方式吧，将form表单放在外层，通过加载children的方式渲染，但是表单还是存在于 本列表<br>查询组件列表代码如下 Check.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import &#123; Form, Modal, Row, Col, Button &#125; from &apos;antd&apos;;</span><br><span class="line"></span><br><span class="line">import styles from &apos;./Check.less&apos;;</span><br><span class="line"></span><br><span class="line">const Check = Form.create()((props) =&gt; &#123;</span><br><span class="line">    const &#123; handleSearch, formItems &#125; = props;</span><br><span class="line">    const &#123; getFieldDecorator &#125; = props.form;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Form onSubmit=&#123;handleSearch&#125; layout=&quot;inline&quot;&gt;</span><br><span class="line">        &lt;Row gutter=&#123;&#123; md: 8, lg: 24, xl: 48 &#125;&#125;&gt;</span><br><span class="line">          &#123;formItems?formItems:&lt;Col md=&#123;8&#125; sm=&#123;24&#125;&gt;查询表单为空&lt;/Col&gt;&#125;</span><br><span class="line">          &lt;Col md=&#123;8&#125; sm=&#123;24&#125;&gt;</span><br><span class="line">            &lt;span className=&#123;styles.submitButtons&#125;&gt;</span><br><span class="line">              &lt;Button type=&quot;primary&quot; htmlType=&quot;submit&quot; &gt;查询&lt;/Button&gt;</span><br><span class="line">            &lt;/span&gt;</span><br><span class="line">          &lt;/Col&gt;</span><br><span class="line">        &lt;/Row&gt;</span><br><span class="line">      &lt;/Form&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default Check;</span><br></pre></td></tr></table></figure></p>
-<p>check.less</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">.tableListForm &#123;</span><br><span class="line">    :global &#123;</span><br><span class="line">      .ant-form-item &#123;</span><br><span class="line">        margin-bottom: 24px;</span><br><span class="line">        margin-right: 0;</span><br><span class="line">        display: flex;</span><br><span class="line">        &gt; .ant-form-item-label &#123;</span><br><span class="line">          width: auto;</span><br><span class="line">          line-height: 32px;</span><br><span class="line">          padding-right: 8px;</span><br><span class="line">        &#125;</span><br><span class="line">        .ant-form-item-control &#123;</span><br><span class="line">          line-height: 32px;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      .ant-form-item-control-wrapper &#123;</span><br><span class="line">        flex: 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    .submitButtons &#123;</span><br><span class="line">      white-space: nowrap;</span><br><span class="line">      margin-bottom: 24px;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/封装查询组件/" data-id="cjema6raa001s7cugqq4urvl8" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-封装弹窗" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/09/封装弹窗/" class="article-date">
-  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/09/封装弹窗/">2018-3-9 封装弹窗</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>观察ant 原生的弹窗 发现 formItem 都是放在在弹窗里面，这样的话 <strong>耦合度会高</strong>，<strong>不利于弹窗的复用</strong>，根据以往经验，可以将弹窗做成一个独立的组件，将里面的表单做成一个参数，从外部传入 。并且 通过输出form表单内的内容发现，从外部传入的表单，<strong>数据都是存储在外部form表单</strong>里面。在弹窗内部表单并不能获取到需要的数据。</p>
-<p>所以有必要进行封装加改装 使其能高效被我复用</p>
-<p>改装过程如下：<br>原本的外部处理函数如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">handleAdd = (fields) =&gt; &#123;</span><br><span class="line">  this.props.dispatch(&#123;</span><br><span class="line">    type: &apos;rule/add&apos;,</span><br><span class="line">    payload: &#123;</span><br><span class="line">      description: fields.desc,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  message.success(&apos;添加成功&apos;);</span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    modalVisible: false,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>需要从弹窗内部先获取到表单的数据，然后通过参数的方式传递到外部再进行处理。<br>改装后的函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 新建弹窗的回调函数</span><br><span class="line">   */</span><br><span class="line">  handleAdd = () =&gt; &#123;</span><br><span class="line">    const &#123; form &#125; = this.props;</span><br><span class="line">    form.validateFields((err, fieldsValue) =&gt; &#123;</span><br><span class="line">      if (err) return;</span><br><span class="line">      form.resetFields();// 重置 Checkbox 的勾选状态</span><br><span class="line">      console.log(&apos;okHandle&apos;, fieldsValue);</span><br><span class="line">    &#125;);</span><br><span class="line">	this.setState(&#123;</span><br><span class="line">      modalVisible: false,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>改装过后的函数 就不需要从弹窗获取参数，也获取不了参数，直接找内置表单的数据，然后进行处理。</p>
-<p>组件的使用方式也修改了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Dialog</span><br><span class="line">          &#123;...parentMethods&#125;</span><br><span class="line">          modalVisible=&#123;modalVisible&#125;</span><br><span class="line">          payload=&#123;payload&#125;</span><br><span class="line">          formItems=&#123;this.renderFormItem()&#125;</span><br><span class="line">        /&gt;</span><br></pre></td></tr></table></figure>
-<p>第三个是要传进去的参数列表 用来传递标题 其实想想 只是用一个string 就好 不用封装一个结构体来存储 ，但是不知道之后还有什么属性需要拓展的，暂时先将其封装风一个列表，只有有需要的属性再增加进去。</p>
-<p>第四个参数 是传进去的form表单，具体内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 弹窗内的组件</span><br><span class="line">   */</span><br><span class="line">  renderFormItem() &#123;</span><br><span class="line">    const &#123; payload &#125; = this.state;</span><br><span class="line">    const &#123; form &#125; = this.props;</span><br><span class="line">    return (</span><br><span class="line">      &lt;FormItem</span><br><span class="line">        labelCol=&#123;&#123; span: 5 &#125;&#125;</span><br><span class="line">        wrapperCol=&#123;&#123; span: 15 &#125;&#125;</span><br><span class="line">        label=&quot;描述&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &#123;form.getFieldDecorator(&apos;desc&apos;, &#123;</span><br><span class="line">          rules: [&#123; required: true, message: &apos;Please input some description...&apos; &#125;],</span><br><span class="line">          initialValue: payload.key,//初始化数值</span><br><span class="line">        &#125;)(</span><br><span class="line">          &lt;Input placeholder=&quot;请输入&quot; /&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      &lt;/FormItem&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>封装后的弹窗其实代码量就很少，很简洁，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import &#123; Form, Modal &#125; from &apos;antd&apos;;</span><br><span class="line"></span><br><span class="line">const Dialog = Form.create()((props) =&gt; &#123;</span><br><span class="line">  const &#123; modalVisible, handleAdd, handleModalVisible, payload, formItems &#125; = props;</span><br><span class="line">  return (</span><br><span class="line">    &lt;Modal</span><br><span class="line">      title=&#123;payload.title&#125;</span><br><span class="line">      visible=&#123;modalVisible&#125;</span><br><span class="line">      onOk=&#123;handleAdd&#125;</span><br><span class="line">      onCancel=&#123;() =&gt; handleModalVisible()&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &#123;formItems&#125;</span><br><span class="line">    &lt;/Modal&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default Dialog;</span><br></pre></td></tr></table></figure>
-<p>……居然漏了将窗口关闭</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.setState(&#123;</span><br><span class="line">  modalVisible: false,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/封装弹窗/" data-id="cjema6ra8001p7cugmspx2z8g" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件和弹窗组件的交互/" data-id="cjemaizc2001fs8ugqj01gvgm" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -432,7 +375,54 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件/" data-id="cjema6ra6001m7cugimno5dfn" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件/" data-id="cjemaizc1001cs8ugesyc12k1" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-封装查询组件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/09/封装查询组件/" class="article-date">
+  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/09/封装查询组件/">封装查询组件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>封装前的思考：<br>究竟是和弹窗一样 表单组件放在外面 还是 将表单内置在查询组件之内？<br>这是个问题。<br>分析：<br>如果是从外部输入表单的话 没办法控制输入框的数量 就没办法控制样式就像下图：<br><img src="https://github.com/aa875982361/aa875982361.github.io/blob/master/images/1520667727669.jpg?raw=true" alt="enter description here"></p>
+<p><img src="https://github.com/aa875982361/aa875982361.github.io/blob/master/images/1520605670496.jpg?raw=true" alt="enter description here"></p>
+<p>其实想想这样的布局 感觉也还是可以的 起码没出大问题<br>就用这种方式吧，将form表单放在外层，通过加载children的方式渲染，但是表单还是存在于 本列表<br>查询组件列表代码如下 Check.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import &#123; Form, Modal, Row, Col, Button &#125; from &apos;antd&apos;;</span><br><span class="line"></span><br><span class="line">import styles from &apos;./Check.less&apos;;</span><br><span class="line"></span><br><span class="line">const Check = Form.create()((props) =&gt; &#123;</span><br><span class="line">    const &#123; handleSearch, formItems &#125; = props;</span><br><span class="line">    const &#123; getFieldDecorator &#125; = props.form;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Form onSubmit=&#123;handleSearch&#125; layout=&quot;inline&quot;&gt;</span><br><span class="line">        &lt;Row gutter=&#123;&#123; md: 8, lg: 24, xl: 48 &#125;&#125;&gt;</span><br><span class="line">          &#123;formItems?formItems:&lt;Col md=&#123;8&#125; sm=&#123;24&#125;&gt;查询表单为空&lt;/Col&gt;&#125;</span><br><span class="line">          &lt;Col md=&#123;8&#125; sm=&#123;24&#125;&gt;</span><br><span class="line">            &lt;span className=&#123;styles.submitButtons&#125;&gt;</span><br><span class="line">              &lt;Button type=&quot;primary&quot; htmlType=&quot;submit&quot; &gt;查询&lt;/Button&gt;</span><br><span class="line">            &lt;/span&gt;</span><br><span class="line">          &lt;/Col&gt;</span><br><span class="line">        &lt;/Row&gt;</span><br><span class="line">      &lt;/Form&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default Check;</span><br></pre></td></tr></table></figure></p>
+<p>check.less</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">.tableListForm &#123;</span><br><span class="line">    :global &#123;</span><br><span class="line">      .ant-form-item &#123;</span><br><span class="line">        margin-bottom: 24px;</span><br><span class="line">        margin-right: 0;</span><br><span class="line">        display: flex;</span><br><span class="line">        &gt; .ant-form-item-label &#123;</span><br><span class="line">          width: auto;</span><br><span class="line">          line-height: 32px;</span><br><span class="line">          padding-right: 8px;</span><br><span class="line">        &#125;</span><br><span class="line">        .ant-form-item-control &#123;</span><br><span class="line">          line-height: 32px;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      .ant-form-item-control-wrapper &#123;</span><br><span class="line">        flex: 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    .submitButtons &#123;</span><br><span class="line">      white-space: nowrap;</span><br><span class="line">      margin-bottom: 24px;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/09/封装查询组件/" data-id="cjemaizc9001ts8ug9fi842du" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -477,7 +467,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/昨天loading状态的修改问题/" data-id="cjema6rac001v7cugf41umw6c" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/昨天loading状态的修改问题/" data-id="cjemaizcb001ws8ugzswf90od" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -544,7 +534,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/查看列表组件/" data-id="cjema6rak00277cugwxxrth65" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/查看列表组件/" data-id="cjemaizch0028s8ughiewjhw2" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -591,7 +581,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/管理员页面的初步构建/" data-id="cjema6raw002p7cug8tqci4pq" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/管理员页面的初步构建/" data-id="cjemaizco002ns8ug09cmyc0w" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -660,15 +650,11 @@
       <ul>
         
           <li>
+            <a href="/2018/03/10/构建管理权限界面/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/10/ant Design 生命周期图/">ant Design 生命周期图</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/10/构建管理权限界面/">构建管理权限界面</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/09/列表组件和弹窗组件的交互/">列表组件和弹窗组件的交互</a>
           </li>
         
           <li>
@@ -676,7 +662,11 @@
           </li>
         
           <li>
-            <a href="/2018/03/09/封装查询组件/">封装查询组件</a>
+            <a href="/2018/03/09/封装弹窗/">2018-3-9 封装弹窗</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/09/列表组件和弹窗组件的交互/">列表组件和弹窗组件的交互</a>
           </li>
         
       </ul>

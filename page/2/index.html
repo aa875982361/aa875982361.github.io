@@ -107,7 +107,169 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/路由跳转问题/" data-id="cjema6rb400317cughzv9rits" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/路由跳转问题/" data-id="cjemaizcw0032s8ug2pzm4cpf" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-token认证机制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/token认证机制/" class="article-date">
+  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/token认证机制/">2018-3-7 token认证机制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch</a><br>fetch 的使用</p>
+<p>登录成功后 返回的数据有token 所以在获取到token之后先存储在localStorage， 每次请求之前都先去查找localStorage这里面的token 然后加到请求头上面</p>
+<p>具体实现方式 ：</p>
+<ol>
+<li>定义存储和获取的两个方法 </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export function getToken() &#123;</span><br><span class="line">  return localStorage.getItem(&apos;token&apos;) || &apos;&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function setToken(token) &#123;</span><br><span class="line">  return localStorage.setItem(&apos;token&apos;, token);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在login.js 里面 在获取到成功的token之后就放到ls里面</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">reducers: &#123;</span><br><span class="line">  changeLoginStatus(state, &#123; payload &#125;) &#123;</span><br><span class="line">    setToken(payload.token);</span><br><span class="line">    return &#123;</span><br><span class="line">      ...state,</span><br><span class="line">      status: payload.status,</span><br><span class="line">      type: payload.type,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>成功设置好token<br>在请求的时候加上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (getToken()) &#123;</span><br><span class="line">      newOptions.headers = &#123;</span><br><span class="line">        &apos;Authorization&apos;:&apos;token &apos; + getToken(),</span><br><span class="line">        ...newOptions.headers,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/07/token认证机制/" data-id="cjemaizbt000vs8ug4t7x9vxw" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-nginx 反向代理实现本地调试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/nginx 反向代理实现本地调试/" class="article-date">
+  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/nginx 反向代理实现本地调试/">nginx 反向代理实现本地调试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天在做登陆接口的时候是用公司后台的登陆接口，在本地调试会出现跨域问题，我不太想通过jsonp解决这个问题，因为jsonp 用法相对来前端说比较麻烦，设置cors策略的话，因为我不能操作后台 这种方式也不太可行，</p>
+<p>之前听朋友说到 设置反向代理可以解决这个问题，昨晚在研究nginx </p>
+<ol>
+<li>通过host 将本地改为域名 test.com </li>
+<li>配置nginx 监听80端口</li>
+<li>将含有api的url 转发到公司的主机</li>
+<li>将没有api的链接转发到8000（这个是调试的端口）</li>
+<li>本地调试的时候，将发送到服务器端的url改为发送到本地。</li>
+</ol>
+<p>host 增加一行解析（win文件地址：C:\Windows\System32\drivers\etc）：<br>    127.0.0.1       test.com</p>
+<blockquote>
+<p>注：这个文件要用替换的方式在能修改</p>
+</blockquote>
+<p><strong>注意：</strong><br>调试的时候域名要用好 不要用localhost  要用test.com(这个是host文件解析的本地域名)<br>还有就是 在npm start 的时候会自动打开localhost：8000这个端口，不能再这个页面调试 需要将域名改为test.com 并且不带端口 </p>
+<p>nginx 配置如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#user  nobody;</span></span><br><span class="line">worker_processes  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    <span class="keyword">include</span>       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">80</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        location ^~ /api/ &#123;</span><br><span class="line"></span><br><span class="line">             proxy_pass http:<span class="comment">//wallpaper-cms.t.talkmoney.cn/api/;</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">             proxy_pass http:<span class="comment">//127.0.0.1:8000/;</span></span><br><span class="line"></span><br><span class="line">             proxy_http_version <span class="number">1.1</span>;</span><br><span class="line">             proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">             proxy_set_header Connection <span class="string">"upgrade"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">        location = /<span class="number">50</span>x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    root           html;</span></span><br><span class="line">        <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">        <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">        <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">        <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root</span></span><br><span class="line">        <span class="comment"># concurs with nginx's one</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">        <span class="comment">#    deny  all;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       8000;</span></span><br><span class="line">    <span class="comment">#    listen       somename:8080;</span></span><br><span class="line">    <span class="comment">#    server_name  somename  alias  another.alias;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># HTTPS server</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       443 ssl;</span></span><br><span class="line">    <span class="comment">#    server_name  localhost;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_certificate      cert.pem;</span></span><br><span class="line">    <span class="comment">#    ssl_certificate_key  cert.key;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_session_cache    shared:SSL:1m;</span></span><br><span class="line">    <span class="comment">#    ssl_session_timeout  5m;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span></span><br><span class="line">    <span class="comment">#    ssl_prefer_server_ciphers  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>=<a href="./attachments/nginx-1.12.2.zip">nginx</a></p>
+<p>  跨域问题解决，现在来看 请求数据问题</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/07/nginx 反向代理实现本地调试/" data-id="cjemaizbu000ys8ugxux8f7vz" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx-工具/">nginx ,工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-登录页面的错误提示" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/登录页面的错误提示/" class="article-date">
+  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/登录页面的错误提示/">2018-3-7 登录页面的错误提示</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="./images/1520409819446.jpg" alt="输入错入的数据的时候 会有错误提示"></p>
+<p>查看代码发现 是在下面的代码控制的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function checkStatus(response) &#123;</span><br><span class="line">  if (response.status &gt;= 200 &amp;&amp; response.status &lt; 300) &#123;</span><br><span class="line">    return response;</span><br><span class="line">  &#125;</span><br><span class="line">  const errortext = codeMessage[response.status] || response.statusText;</span><br><span class="line">  notification.error(&#123;</span><br><span class="line">    message: `请求错误 $&#123;response.status&#125;: $&#123;response.body.msg&#125;`,</span><br><span class="line">    description: errortext,</span><br><span class="line">  &#125;);</span><br><span class="line">  const error = new Error(errortext);</span><br><span class="line">  error.name = response.status;</span><br><span class="line">  error.response = response;</span><br><span class="line">  throw error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将errContext 和 response这两个属性 输出来 查看一下<br><code>console.log(&#39;checkStatus&#39;, JSON.stringify(errortext), JSON.stringify(response));</code><br>结果如下<br><code>checkStatus &quot;发出的请求有错误，服务器没有进行新建或修改数据的操作。&quot; {}</code></p>
+<p><img src="./images/1520411194353.jpg" alt="response"><br>返回的数据解析如上图 但是没有返回结果的body 但是通过浏览器的拦截 我看到有response是有数据的<br><img src="./images/1520411270183.jpg" alt="浏览器拦截"><br>所以这就很奇怪 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/" data-id="cjemaizcq002qs8ugzb5zqpj3" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -212,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/别再用勤奋掩饰你的懒惰/" data-id="cjema6ra1001e7cugrarz4fpy" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/07/别再用勤奋掩饰你的懒惰/" data-id="cjemaizc4001is8ugfkx6xwoi" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人生/">人生</a></li></ul>
@@ -265,125 +427,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/Flux应用架构/" data-id="cjema6r8u00017cugpks43vsh" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/07/Flux应用架构/" data-id="cjemaizb70001s8ug4vfmp62i" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-nginx 反向代理实现本地调试" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/07/nginx 反向代理实现本地调试/" class="article-date">
-  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/nginx 反向代理实现本地调试/">nginx 反向代理实现本地调试</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>昨天在做登陆接口的时候是用公司后台的登陆接口，在本地调试会出现跨域问题，我不太想通过jsonp解决这个问题，因为jsonp 用法相对来前端说比较麻烦，设置cors策略的话，因为我不能操作后台 这种方式也不太可行，</p>
-<p>之前听朋友说到 设置反向代理可以解决这个问题，昨晚在研究nginx </p>
-<ol>
-<li>通过host 将本地改为域名 test.com </li>
-<li>配置nginx 监听80端口</li>
-<li>将含有api的url 转发到公司的主机</li>
-<li>将没有api的链接转发到8000（这个是调试的端口）</li>
-<li>本地调试的时候，将发送到服务器端的url改为发送到本地。</li>
-</ol>
-<p>host 增加一行解析（win文件地址：C:\Windows\System32\drivers\etc）：<br>    127.0.0.1       test.com</p>
-<blockquote>
-<p>注：这个文件要用替换的方式在能修改</p>
-</blockquote>
-<p><strong>注意：</strong><br>调试的时候域名要用好 不要用localhost  要用test.com(这个是host文件解析的本地域名)<br>还有就是 在npm start 的时候会自动打开localhost：8000这个端口，不能再这个页面调试 需要将域名改为test.com 并且不带端口 </p>
-<p>nginx 配置如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#user  nobody;</span></span><br><span class="line">worker_processes  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    <span class="keyword">include</span>       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       <span class="number">80</span>;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        location ^~ /api/ &#123;</span><br><span class="line"></span><br><span class="line">             proxy_pass http:<span class="comment">//wallpaper-cms.t.talkmoney.cn/api/;</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">             proxy_pass http:<span class="comment">//127.0.0.1:8000/;</span></span><br><span class="line"></span><br><span class="line">             proxy_http_version <span class="number">1.1</span>;</span><br><span class="line">             proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">             proxy_set_header Connection <span class="string">"upgrade"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">        location = /<span class="number">50</span>x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    root           html;</span></span><br><span class="line">        <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">        <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">        <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">        <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root</span></span><br><span class="line">        <span class="comment"># concurs with nginx's one</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">        <span class="comment">#    deny  all;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       8000;</span></span><br><span class="line">    <span class="comment">#    listen       somename:8080;</span></span><br><span class="line">    <span class="comment">#    server_name  somename  alias  another.alias;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># HTTPS server</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       443 ssl;</span></span><br><span class="line">    <span class="comment">#    server_name  localhost;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_certificate      cert.pem;</span></span><br><span class="line">    <span class="comment">#    ssl_certificate_key  cert.key;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_session_cache    shared:SSL:1m;</span></span><br><span class="line">    <span class="comment">#    ssl_session_timeout  5m;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span></span><br><span class="line">    <span class="comment">#    ssl_prefer_server_ciphers  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>=<a href="./attachments/nginx-1.12.2.zip">nginx</a></p>
-<p>  跨域问题解决，现在来看 请求数据问题</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/nginx 反向代理实现本地调试/" data-id="cjema6r9m000r7cugkf1re9tw" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx-工具/">nginx ,工具</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-token认证机制" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/07/token认证机制/" class="article-date">
-  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/token认证机制/">2018-3-7 token认证机制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch</a><br>fetch 的使用</p>
-<p>登录成功后 返回的数据有token 所以在获取到token之后先存储在localStorage， 每次请求之前都先去查找localStorage这里面的token 然后加到请求头上面</p>
-<p>具体实现方式 ：</p>
-<ol>
-<li>定义存储和获取的两个方法 </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export function getToken() &#123;</span><br><span class="line">  return localStorage.getItem(&apos;token&apos;) || &apos;&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function setToken(token) &#123;</span><br><span class="line">  return localStorage.setItem(&apos;token&apos;, token);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在login.js 里面 在获取到成功的token之后就放到ls里面</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">reducers: &#123;</span><br><span class="line">  changeLoginStatus(state, &#123; payload &#125;) &#123;</span><br><span class="line">    setToken(payload.token);</span><br><span class="line">    return &#123;</span><br><span class="line">      ...state,</span><br><span class="line">      status: payload.status,</span><br><span class="line">      type: payload.type,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-<p>成功设置好token<br>在请求的时候加上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (getToken()) &#123;</span><br><span class="line">      newOptions.headers = &#123;</span><br><span class="line">        &apos;Authorization&apos;:&apos;token &apos; + getToken(),</span><br><span class="line">        ...newOptions.headers,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/token认证机制/" data-id="cjema6r9s00117cug3xi1cm4e" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
 
     </footer>
   </div>
@@ -456,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/flux应用实践/" data-id="cjema6r96000a7cugkla0lggs" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/07/flux应用实践/" data-id="cjemaizbh000as8ugdnoqulri" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
@@ -517,7 +564,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/登录接口与后端的交互/" data-id="cjema6rao002d7cugew1uzr29" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/07/登录接口与后端的交互/" data-id="cjemaizck002es8ug451i62u9" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx-工具/">nginx ,工具</a></li></ul>
@@ -529,10 +576,10 @@
 
 
   
-    <article id="post-登录页面的错误提示" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Effect 处理异步请求" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/07/登录页面的错误提示/" class="article-date">
-  <time datetime="2018-03-07T10:11:39.000Z" itemprop="datePublished">2018-03-07</time>
+    <a href="/2018/03/06/Effect 处理异步请求/" class="article-date">
+  <time datetime="2018-03-06T10:11:39.000Z" itemprop="datePublished">2018-03-06</time>
 </a>
     
   <div class="article-category">
@@ -547,7 +594,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/登录页面的错误提示/">2018-3-7 登录页面的错误提示</a>
+      <a class="article-title" href="/2018/03/06/Effect 处理异步请求/">Effect 处理异步请求</a>
     </h1>
   
 
@@ -555,16 +602,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="./images/1520409819446.jpg" alt="输入错入的数据的时候 会有错误提示"></p>
-<p>查看代码发现 是在下面的代码控制的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function checkStatus(response) &#123;</span><br><span class="line">  if (response.status &gt;= 200 &amp;&amp; response.status &lt; 300) &#123;</span><br><span class="line">    return response;</span><br><span class="line">  &#125;</span><br><span class="line">  const errortext = codeMessage[response.status] || response.statusText;</span><br><span class="line">  notification.error(&#123;</span><br><span class="line">    message: `请求错误 $&#123;response.status&#125;: $&#123;response.body.msg&#125;`,</span><br><span class="line">    description: errortext,</span><br><span class="line">  &#125;);</span><br><span class="line">  const error = new Error(errortext);</span><br><span class="line">  error.name = response.status;</span><br><span class="line">  error.response = response;</span><br><span class="line">  throw error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将errContext 和 response这两个属性 输出来 查看一下<br><code>console.log(&#39;checkStatus&#39;, JSON.stringify(errortext), JSON.stringify(response));</code><br>结果如下<br><code>checkStatus &quot;发出的请求有错误，服务器没有进行新建或修改数据的操作。&quot; {}</code></p>
-<p><img src="./images/1520411194353.jpg" alt="response"><br>返回的数据解析如上图 但是没有返回结果的body 但是通过浏览器的拦截 我看到有response是有数据的<br><img src="./images/1520411270183.jpg" alt="浏览器拦截"><br>所以这就很奇怪 </p>
+        <p>在处理复杂的异步请求的时候，很容易让逻辑混乱，陷入嵌套陷阱，所以 Ant Design Pro 的底层基础框架 dva 使用 effect 的方式来管理<strong>同步化异步</strong>请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">effects: &#123;</span><br><span class="line">  *fetch(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      type: &apos;changeLoading&apos;,</span><br><span class="line">      payload: true,</span><br><span class="line">    &#125;);</span><br><span class="line">    // 异步请求 1</span><br><span class="line">    const response = yield call(queryFakeList, payload);</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      type: &apos;save&apos;,</span><br><span class="line">      payload: response,</span><br><span class="line">    &#125;);</span><br><span class="line">    // 异步请求 2</span><br><span class="line">    const response2 = yield call(queryFakeList2, payload);</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      type: &apos;save2&apos;,</span><br><span class="line">      payload: response2,</span><br><span class="line">    &#125;);</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      type: &apos;changeLoading&apos;,</span><br><span class="line">      payload: false,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>通过 <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/function*" target="_blank" rel="noopener">generator</a> 和 <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/yield" target="_blank" rel="noopener">yield</a> 使得异步调用的逻辑处理跟同步一样，更多可参看 dva async logic。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/" data-id="cjema6raq002g7cughfecyo2e" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/06/Effect 处理异步请求/" data-id="cjemaizb10000s8ugawjpvpzu" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -576,9 +621,9 @@
 
 
   
-    <article id="post-github仓库配置" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-vscode 配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/06/github仓库配置/" class="article-date">
+    <a href="/2018/03/06/vscode 配置/" class="article-date">
   <time datetime="2018-03-06T10:11:39.000Z" itemprop="datePublished">2018-03-06</time>
 </a>
     
@@ -594,7 +639,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/06/github仓库配置/">github仓库配置</a>
+      <a class="article-title" href="/2018/03/06/vscode 配置/">vscode 配置</a>
     </h1>
   
 
@@ -602,60 +647,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> "# aotuWeb" &gt;&gt; README.<span class="built_in">md</span></span><br><span class="line">git init</span><br><span class="line">git add README.<span class="built_in">md</span></span><br><span class="line">git commit -m "first commit"</span><br><span class="line">git remote add origin https://github.com/aa875982361/aotuWeb.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p>建立好个人仓库</p>
+        <p>问题：Expected linebreaks to be ‘LF’ but found ‘CRLF’  linebreak-style</p>
+<blockquote>
+<p>原因：当许多人都有不同的编辑器，VCS应用程序和操作系统时，可能会发生不同的行结尾由上述任何一种写入（可能特别发生在将SourceTree的Windows和Mac版本一起使用时）。<br>在Windows操作系统中使用的换行符（换行符）通常是回车符（CR），后面是换行符（LF），使其成为回车换行符（CRLF），而Linux和Unix使用简单换行符（LF）。相应的控制序列是”\n”（对于LF）和”\r\n”对于（CRLF）。</p>
+</blockquote>
+<p>解决方法：<br>在.eslintrc文件的rule中添加：linebreak-style: [“error”, “windows”] 或 linebreak-style:0</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  extends: <span class="string">'google'</span>,</span><br><span class="line">  quotes: [<span class="number">2</span>, <span class="string">'single'</span>],</span><br><span class="line">  globals: &#123;</span><br><span class="line">    SwaggerEditor: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  env: &#123;</span><br><span class="line">    browser: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  rules:&#123;</span><br><span class="line">    <span class="string">"linebreak-style"</span>: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/06/github仓库配置/" data-id="cjema6r9d000h7cugj4railw3" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/06/vscode 配置/" data-id="cjemaizby0015s8ug212epjpa" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-marjs随机生成hash值" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/06/marjs随机生成hash值/" class="article-date">
-  <time datetime="2018-03-06T10:11:39.000Z" itemprop="datePublished">2018-03-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/06/marjs随机生成hash值/">js随机生成hash值</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本篇简单介绍如何随机生成一个hashcode</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">//产生一个hash值，只有数字，规则和java的hashcode规则相同</span><br><span class="line">function hashCode(str) &#123;</span><br><span class="line">    var h = 0;</span><br><span class="line">    var len = str.length;</span><br><span class="line">    var t = 2147483648;</span><br><span class="line">    for (var i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        h = 31 * h + str.charCodeAt(i);</span><br><span class="line">        if (h &gt; 2147483647) h %= t; //java int溢出则取模</span><br><span class="line">    &#125;</span><br><span class="line">    /*var t = -2147483648 * 2;</span><br><span class="line">     while (h &gt; 2147483647) &#123;</span><br><span class="line">     h += t</span><br><span class="line">     &#125;*/</span><br><span class="line">    return h;</span><br><span class="line">&#125;</span><br><span class="line">//时间戳来自客户端，精确到毫秒，但仍旧有可能在在多线程下有并发，</span><br><span class="line">//尤其hash化后，毫秒数前面的几位都不变化，导致不同日期hash化的值有可能存在相同，</span><br><span class="line">//因此使用下面的随机数函数，在时间戳上加随机数，保证hash化的结果差异会比较大</span><br><span class="line">/*</span><br><span class="line"> ** randomWord 产生任意长度随机字母数字组合</span><br><span class="line"> ** randomFlag-是否任意长度 min-任意长度最小位[固定位数] max-任意长度最大位</span><br><span class="line"> ** 用法  randomWord(false,6);规定位数 flash</span><br><span class="line"> * 		randomWord(true,3，6);长度不定，true</span><br><span class="line"> * arr变量可以把其他字符加入，如以后需要小写字母，直接加入即可</span><br><span class="line"> */</span><br><span class="line">function randomWord(randomFlag, min, max) &#123;</span><br><span class="line">    var str = &quot;&quot;,</span><br><span class="line">        range = min,</span><br><span class="line">        arr = [&apos;0&apos;, &apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos;, &apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;, &apos;I&apos;, &apos;J&apos;, &apos;K&apos;, &apos;L&apos;, &apos;M&apos;, &apos;N&apos;, &apos;O&apos;, &apos;P&apos;, &apos;Q&apos;, &apos;R&apos;, &apos;S&apos;, &apos;T&apos;, &apos;U&apos;, &apos;V&apos;, &apos;W&apos;, &apos;X&apos;, &apos;Y&apos;, &apos;Z&apos;];</span><br><span class="line">    // 随机产生</span><br><span class="line">    if (randomFlag) &#123;</span><br><span class="line">        range = Math.round(Math.random() * (max - min)) + min;</span><br><span class="line">    &#125;</span><br><span class="line">    for (var i = 0; i &lt; range; i++) &#123;</span><br><span class="line">        pos = Math.round(Math.random() * (arr.length - 1));</span><br><span class="line">        str += arr[pos];</span><br><span class="line">    &#125;</span><br><span class="line">    return str;</span><br><span class="line">&#125;</span><br><span class="line">//获取hashcode</span><br><span class="line">function gethashcode() &#123;</span><br><span class="line">    //定义一个时间戳，计算与1970年相差的毫秒数  用来获得唯一时间</span><br><span class="line">    var timestamp = (new Date()).valueOf();</span><br><span class="line">    var myRandom=randomWord(false,6);</span><br><span class="line">    var hashcode=hashCode(myRandom+timestamp.toString());</span><br><span class="line">    return hashcode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/06/marjs随机生成hash值/" data-id="cjema6r9j000o7cugm6dmhj91" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js工具/">js工具</a></li></ul>
 
     </footer>
   </div>
@@ -721,15 +727,11 @@
       <ul>
         
           <li>
+            <a href="/2018/03/10/构建管理权限界面/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/10/ant Design 生命周期图/">ant Design 生命周期图</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/10/构建管理权限界面/">构建管理权限界面</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/09/列表组件和弹窗组件的交互/">列表组件和弹窗组件的交互</a>
           </li>
         
           <li>
@@ -737,7 +739,11 @@
           </li>
         
           <li>
-            <a href="/2018/03/09/封装查询组件/">封装查询组件</a>
+            <a href="/2018/03/09/封装弹窗/">2018-3-9 封装弹窗</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/09/列表组件和弹窗组件的交互/">列表组件和弹窗组件的交互</a>
           </li>
         
       </ul>
