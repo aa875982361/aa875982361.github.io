@@ -68,51 +68,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-ant Design 生命周期图" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/10/ant Design 生命周期图/" class="article-date">
-  <time datetime="2018-03-10T01:35:59.000Z" itemprop="datePublished">2018-03-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/10/ant Design 生命周期图/">ant Design 生命周期图</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="blob:http://markdown.xiaoshujiang.com/5e07b178-f5bc-45e1-b931-1b5bb01c666e" alt="生命周期"></p>
-<p><img src="blob:http://markdown.xiaoshujiang.com/ec2a02c4-ed75-4480-aaf2-d31dd959c000" alt="总的流程图"></p>
-<p><img src="blob:http://markdown.xiaoshujiang.com/7785ac83-2651-43fc-ba4a-26a6f875fcb3" alt="State数据流图"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/10/ant Design 生命周期图/" data-id="cjem89q680006qgugsax1u5y4" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-构建管理权限界面" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/10/构建管理权限界面/" class="article-date">
@@ -169,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/10/构建管理权限界面/" data-id="cjem89q7s0022qgugc0yeemwm" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/10/构建管理权限界面/" data-id="cjem9h58600245ougngnaibji" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -181,10 +136,10 @@
 
 
   
-    <article id="post-封装查询组件" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-ant Design 生命周期图" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/09/封装查询组件/" class="article-date">
-  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
+    <a href="/2018/03/10/ant Design 生命周期图/" class="article-date">
+  <time datetime="2018-03-10T01:35:59.000Z" itemprop="datePublished">2018-03-10</time>
 </a>
     
   <div class="article-category">
@@ -199,7 +154,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/09/封装查询组件/">封装查询组件</a>
+      <a class="article-title" href="/2018/03/10/ant Design 生命周期图/">ant Design 生命周期图</a>
     </h1>
   
 
@@ -207,16 +162,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>封装前的思考：<br>究竟是和弹窗一样 表单组件放在外面 还是 将表单内置在查询组件之内？<br>这是个问题。<br>分析：<br>如果是从外部输入表单的话 没办法控制输入框的数量 就没办法控制样式就像下图：<br><img src="./images/1520605067124.jpg" alt="enter description here"></p>
-<p><img src="./images/1520605670496.jpg" alt="enter description here"></p>
-<p>其实想想这样的布局 感觉也还是可以的 起码没出大问题<br>就用这种方式吧，将form表单放在外层，通过加载children的方式渲染，但是表单还是存在于 本列表<br>查询组件列表代码如下 Check.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import &#123; Form, Modal, Row, Col, Button &#125; from &apos;antd&apos;;</span><br><span class="line"></span><br><span class="line">import styles from &apos;./Check.less&apos;;</span><br><span class="line"></span><br><span class="line">const Check = Form.create()((props) =&gt; &#123;</span><br><span class="line">    const &#123; handleSearch, formItems &#125; = props;</span><br><span class="line">    const &#123; getFieldDecorator &#125; = props.form;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Form onSubmit=&#123;handleSearch&#125; layout=&quot;inline&quot;&gt;</span><br><span class="line">        &lt;Row gutter=&#123;&#123; md: 8, lg: 24, xl: 48 &#125;&#125;&gt;</span><br><span class="line">          &#123;formItems?formItems:&lt;Col md=&#123;8&#125; sm=&#123;24&#125;&gt;查询表单为空&lt;/Col&gt;&#125;</span><br><span class="line">          &lt;Col md=&#123;8&#125; sm=&#123;24&#125;&gt;</span><br><span class="line">            &lt;span className=&#123;styles.submitButtons&#125;&gt;</span><br><span class="line">              &lt;Button type=&quot;primary&quot; htmlType=&quot;submit&quot; &gt;查询&lt;/Button&gt;</span><br><span class="line">            &lt;/span&gt;</span><br><span class="line">          &lt;/Col&gt;</span><br><span class="line">        &lt;/Row&gt;</span><br><span class="line">      &lt;/Form&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default Check;</span><br></pre></td></tr></table></figure></p>
-<p>check.less</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">.tableListForm &#123;</span><br><span class="line">    :global &#123;</span><br><span class="line">      .ant-form-item &#123;</span><br><span class="line">        margin-bottom: 24px;</span><br><span class="line">        margin-right: 0;</span><br><span class="line">        display: flex;</span><br><span class="line">        &gt; .ant-form-item-label &#123;</span><br><span class="line">          width: auto;</span><br><span class="line">          line-height: 32px;</span><br><span class="line">          padding-right: 8px;</span><br><span class="line">        &#125;</span><br><span class="line">        .ant-form-item-control &#123;</span><br><span class="line">          line-height: 32px;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      .ant-form-item-control-wrapper &#123;</span><br><span class="line">        flex: 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    .submitButtons &#123;</span><br><span class="line">      white-space: nowrap;</span><br><span class="line">      margin-bottom: 24px;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+        <p><img src="blob:http://markdown.xiaoshujiang.com/5e07b178-f5bc-45e1-b931-1b5bb01c666e" alt="生命周期"></p>
+<p><img src="blob:http://markdown.xiaoshujiang.com/ec2a02c4-ed75-4480-aaf2-d31dd959c000" alt="总的流程图"></p>
+<p><img src="blob:http://markdown.xiaoshujiang.com/7785ac83-2651-43fc-ba4a-26a6f875fcb3" alt="State数据流图"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/封装查询组件/" data-id="cjem89q7k001tqgugvr4datau" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/10/ant Design 生命周期图/" data-id="cjem9h56o00055oug2taafgua" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -275,7 +228,106 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件和弹窗组件的交互/" data-id="cjem89q7c001cqgug6rd7d2il" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件和弹窗组件的交互/" data-id="cjem9h57o001e5ougixeud72d" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-构建权限管理页面" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/09/构建权限管理页面/" class="article-date">
+  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先构建一个最简单的页面<br>简单的div 都要导入React  要注意 这个的开头是大写的，因为这个我花了5分的时间，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; PureComponent &#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">export default class Admin extends PureComponent &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        666</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用了以上代码 还是会报错 最后找到原因是我并没有带入需要的模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@connect((&#123; rule, loading &#125;) =&gt; (&#123;</span><br><span class="line">  rule,</span><br><span class="line">  loading: loading.models.rule,</span><br><span class="line">&#125;))</span><br><span class="line">@Form.create()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/09/构建权限管理页面/" data-id="cjem9h57z001v5oug0cqica25" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-列表组件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/09/列表组件/" class="article-date">
+  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/09/列表组件/">列表组件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>先思考 在动手</strong>  </p>
+<p>观察 列表组件 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const menu = (</span><br><span class="line">  &lt;Menu onClick=&#123;this.handleMenuClick&#125; selectedKeys=&#123;[]&#125;&gt;</span><br><span class="line">    &lt;Menu.Item key=&quot;remove&quot;&gt;删除&lt;/Menu.Item&gt;</span><br><span class="line">    &lt;Menu.Item key=&quot;approval&quot;&gt;批量审批&lt;/Menu.Item&gt;</span><br><span class="line">  &lt;/Menu&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这个是批量操作的指令<br> 第一个参数应该是操作的指令 对应下面的key<br> 第二个参数应该是选择列表的key集合<br> 可是为什么是一个空的集合呢？ 有点奇怪 后面应该有答案</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const parentMethods = &#123;</span><br><span class="line">  handleAdd: this.handleAdd,</span><br><span class="line">  handleModalVisible: this.handleModalVisible,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这个是弹窗的参数，之后会传进去 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">     &lt;PageHeaderLayout title=&quot;查询表格&quot;&gt;</span><br><span class="line">+     &lt;Card bordered=&#123;false&#125;&gt;....</span><br><span class="line">       &lt;/Card&gt;</span><br><span class="line">       &lt;CreateForm</span><br><span class="line">         &#123;...parentMethods&#125;</span><br><span class="line">         modalVisible=&#123;modalVisible&#125;</span><br><span class="line">       /&gt;</span><br><span class="line">     &lt;/PageHeaderLayout&gt;</span><br><span class="line">   );</span><br></pre></td></tr></table></figure>
+<p>将中间部分折叠起来的话 会发现 其实只是一个PageHeaderLayout 包着一个Card 和弹窗组件 也不是什么问题</p>
+<p>所以我们现在来看看 这个Card这个组件里面有什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;Card bordered=&#123;false&#125;&gt;</span><br><span class="line">  &lt;div className=&#123;styles.tableList&#125;&gt;</span><br><span class="line">    &lt;div className=&#123;styles.tableListForm&#125;&gt;...</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div className=&#123;styles.tableListOperator&#125;&gt;...</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &gt;&gt;==&lt;StandardTable</span><br><span class="line">      selectedRows=&#123;selectedRows&#125;</span><br><span class="line">      loading=&#123;loading&#125;</span><br><span class="line">      data=&#123;data&#125;</span><br><span class="line">      columns=&#123;columns&#125;</span><br><span class="line">      onSelectRow=&#123;this.handleSelectRows&#125;</span><br><span class="line">      onChange=&#123;this.handleStandardTableChange&#125;==&lt;&lt;</span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/Card&gt;</span><br></pre></td></tr></table></figure>
+<p>观察发现 其实也没什么东西 也就一个查询 和新建 组件 之前也看过了<br>还有就是一个列表组件 这个列表组件 有点 陌生<br>接下来 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件/" data-id="cjem9h57x001s5oug3mdcbj1a" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -333,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/封装弹窗/" data-id="cjem89q7k001oqgug5wltx5m4" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/封装弹窗/" data-id="cjem9h57v001p5oug4g9a1l5f" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -345,9 +397,9 @@
 
 
   
-    <article id="post-构建权限管理页面" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-封装查询组件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/09/构建权限管理页面/" class="article-date">
+    <a href="/2018/03/09/封装查询组件/" class="article-date">
   <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
 </a>
     
@@ -363,7 +415,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
+      <a class="article-title" href="/2018/03/09/封装查询组件/">封装查询组件</a>
     </h1>
   
 
@@ -371,113 +423,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先构建一个最简单的页面<br>简单的div 都要导入React  要注意 这个的开头是大写的，因为这个我花了5分的时间，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; PureComponent &#125; from &apos;react&apos;;</span><br><span class="line"></span><br><span class="line">export default class Admin extends PureComponent &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        666</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用了以上代码 还是会报错 最后找到原因是我并没有带入需要的模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@connect((&#123; rule, loading &#125;) =&gt; (&#123;</span><br><span class="line">  rule,</span><br><span class="line">  loading: loading.models.rule,</span><br><span class="line">&#125;))</span><br><span class="line">@Form.create()</span><br></pre></td></tr></table></figure>
+        <p>封装前的思考：<br>究竟是和弹窗一样 表单组件放在外面 还是 将表单内置在查询组件之内？<br>这是个问题。<br>分析：<br>如果是从外部输入表单的话 没办法控制输入框的数量 就没办法控制样式就像下图：<br><img src="./images/1520605067124.jpg" alt="enter description here"></p>
+<p><img src="./images/1520605670496.jpg" alt="enter description here"></p>
+<p>其实想想这样的布局 感觉也还是可以的 起码没出大问题<br>就用这种方式吧，将form表单放在外层，通过加载children的方式渲染，但是表单还是存在于 本列表<br>查询组件列表代码如下 Check.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import &#123; Form, Modal, Row, Col, Button &#125; from &apos;antd&apos;;</span><br><span class="line"></span><br><span class="line">import styles from &apos;./Check.less&apos;;</span><br><span class="line"></span><br><span class="line">const Check = Form.create()((props) =&gt; &#123;</span><br><span class="line">    const &#123; handleSearch, formItems &#125; = props;</span><br><span class="line">    const &#123; getFieldDecorator &#125; = props.form;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Form onSubmit=&#123;handleSearch&#125; layout=&quot;inline&quot;&gt;</span><br><span class="line">        &lt;Row gutter=&#123;&#123; md: 8, lg: 24, xl: 48 &#125;&#125;&gt;</span><br><span class="line">          &#123;formItems?formItems:&lt;Col md=&#123;8&#125; sm=&#123;24&#125;&gt;查询表单为空&lt;/Col&gt;&#125;</span><br><span class="line">          &lt;Col md=&#123;8&#125; sm=&#123;24&#125;&gt;</span><br><span class="line">            &lt;span className=&#123;styles.submitButtons&#125;&gt;</span><br><span class="line">              &lt;Button type=&quot;primary&quot; htmlType=&quot;submit&quot; &gt;查询&lt;/Button&gt;</span><br><span class="line">            &lt;/span&gt;</span><br><span class="line">          &lt;/Col&gt;</span><br><span class="line">        &lt;/Row&gt;</span><br><span class="line">      &lt;/Form&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default Check;</span><br></pre></td></tr></table></figure></p>
+<p>check.less</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">.tableListForm &#123;</span><br><span class="line">    :global &#123;</span><br><span class="line">      .ant-form-item &#123;</span><br><span class="line">        margin-bottom: 24px;</span><br><span class="line">        margin-right: 0;</span><br><span class="line">        display: flex;</span><br><span class="line">        &gt; .ant-form-item-label &#123;</span><br><span class="line">          width: auto;</span><br><span class="line">          line-height: 32px;</span><br><span class="line">          padding-right: 8px;</span><br><span class="line">        &#125;</span><br><span class="line">        .ant-form-item-control &#123;</span><br><span class="line">          line-height: 32px;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      .ant-form-item-control-wrapper &#123;</span><br><span class="line">        flex: 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    .submitButtons &#123;</span><br><span class="line">      white-space: nowrap;</span><br><span class="line">      margin-bottom: 24px;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/构建权限管理页面/" data-id="cjem89q7s0025qgugq35kojcs" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-列表组件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/09/列表组件/" class="article-date">
-  <time datetime="2018-03-09T01:35:59.000Z" itemprop="datePublished">2018-03-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/09/列表组件/">列表组件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>先思考 在动手</strong>  </p>
-<p>观察 列表组件 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const menu = (</span><br><span class="line">  &lt;Menu onClick=&#123;this.handleMenuClick&#125; selectedKeys=&#123;[]&#125;&gt;</span><br><span class="line">    &lt;Menu.Item key=&quot;remove&quot;&gt;删除&lt;/Menu.Item&gt;</span><br><span class="line">    &lt;Menu.Item key=&quot;approval&quot;&gt;批量审批&lt;/Menu.Item&gt;</span><br><span class="line">  &lt;/Menu&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>这个是批量操作的指令<br> 第一个参数应该是操作的指令 对应下面的key<br> 第二个参数应该是选择列表的key集合<br> 可是为什么是一个空的集合呢？ 有点奇怪 后面应该有答案</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const parentMethods = &#123;</span><br><span class="line">  handleAdd: this.handleAdd,</span><br><span class="line">  handleModalVisible: this.handleModalVisible,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这个是弹窗的参数，之后会传进去 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">     &lt;PageHeaderLayout title=&quot;查询表格&quot;&gt;</span><br><span class="line">+     &lt;Card bordered=&#123;false&#125;&gt;....</span><br><span class="line">       &lt;/Card&gt;</span><br><span class="line">       &lt;CreateForm</span><br><span class="line">         &#123;...parentMethods&#125;</span><br><span class="line">         modalVisible=&#123;modalVisible&#125;</span><br><span class="line">       /&gt;</span><br><span class="line">     &lt;/PageHeaderLayout&gt;</span><br><span class="line">   );</span><br></pre></td></tr></table></figure>
-<p>将中间部分折叠起来的话 会发现 其实只是一个PageHeaderLayout 包着一个Card 和弹窗组件 也不是什么问题</p>
-<p>所以我们现在来看看 这个Card这个组件里面有什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;Card bordered=&#123;false&#125;&gt;</span><br><span class="line">  &lt;div className=&#123;styles.tableList&#125;&gt;</span><br><span class="line">    &lt;div className=&#123;styles.tableListForm&#125;&gt;...</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div className=&#123;styles.tableListOperator&#125;&gt;...</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &gt;&gt;==&lt;StandardTable</span><br><span class="line">      selectedRows=&#123;selectedRows&#125;</span><br><span class="line">      loading=&#123;loading&#125;</span><br><span class="line">      data=&#123;data&#125;</span><br><span class="line">      columns=&#123;columns&#125;</span><br><span class="line">      onSelectRow=&#123;this.handleSelectRows&#125;</span><br><span class="line">      onChange=&#123;this.handleStandardTableChange&#125;==&lt;&lt;</span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/Card&gt;</span><br></pre></td></tr></table></figure>
-<p>观察发现 其实也没什么东西 也就一个查询 和新建 组件 之前也看过了<br>还有就是一个列表组件 这个列表组件 有点 陌生<br>接下来 </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/09/列表组件/" data-id="cjem89q7c0019qgugdvmu6m2b" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-昨天loading状态的修改问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/08/昨天loading状态的修改问题/" class="article-date">
-  <time datetime="2018-03-08T01:35:59.000Z" itemprop="datePublished">2018-03-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/programming/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/08/昨天loading状态的修改问题/">昨天loading状态的修改问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="昨晚回去后，调试发现-一直在提示-status-没有定义，"><a href="#昨晚回去后，调试发现-一直在提示-status-没有定义，" class="headerlink" title="昨晚回去后，调试发现 一直在提示 status 没有定义，"></a>昨晚回去后，调试发现 一直在提示 status 没有定义，</h3><p>我一开始以为是在 changeLoginStatus这里出现了问题，但是修改了 也没有变化，于是我在login 函数增加了日志  发现其实那个函数已经运行了，并没有问题，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">login(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">      // console.log(&apos;login&apos;, payload);</span><br><span class="line">      try &#123;</span><br><span class="line">        const response = yield call(fakeAccountLogin, payload);</span><br><span class="line">        // console.log(&apos;login&apos;, response.state, JSON.stringify(response));</span><br><span class="line">        yield put(&#123;</span><br><span class="line">          type: &apos;changeLoginStatus&apos;,</span><br><span class="line">          payload: response,</span><br><span class="line">        &#125;);</span><br><span class="line">        // response 有可能是undefined 出现错误的情况 是没有返回结果的 没有返回结果就undefined 所以要加一个判断</span><br><span class="line">        if (response !== undefined &amp;&amp; response.status === &apos;ok&apos;) &#123;</span><br><span class="line">          yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; finally &#123;</span><br><span class="line">        yield put(&#123;</span><br><span class="line">          type: &apos;changeLoginStatus&apos;,</span><br><span class="line">          payload: &#123;</span><br><span class="line">            state: &apos;error&apos;,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">        yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-<p>通过将response 输出来 我发现 失败之后 输出来的是Undefined<br>所以就找到问题所在 在用response 的时候进行参数检查，如果非空则继续运行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/昨天loading状态的修改问题/" data-id="cjem89q7o001wqgugjofxk70g" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/09/封装查询组件/" data-id="cjem9h57s001k5ouggvwooifp" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -528,7 +483,54 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/路由跳转问题/" data-id="cjem89q88002zqgugqtraq154" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/路由跳转问题/" data-id="cjem9h58t00315ougb7drtfdk" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-管理员页面的初步构建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/08/管理员页面的初步构建/" class="article-date">
+  <time datetime="2018-03-08T01:35:59.000Z" itemprop="datePublished">2018-03-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/08/管理员页面的初步构建/">管理员页面的初步构建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通过全局搜索 找到左边表单的配置项，修改为我所需要的配置，则如下</p>
+<p>D:\luwei\project\wallpaper\wallpaper\src\common\menu.js<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">const menuData = [&#123;</span><br><span class="line">  name: '权限管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '刘海模版系列管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '刘海模板管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '系统壁纸系列管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '系统壁纸管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: '留言管理',</span><br><span class="line">  icon: 'book',</span><br><span class="line">  path: 'dashboard',</span><br><span class="line">&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>不过样式有点不太对劲 如下：<br><img src="./images/1520480250618.jpg" alt="enter description here"></p>
+<p>而目标原型为：<br><img src="./images/1520480283537.jpg" alt="目标原型"><br>需要修改一下 </p>
+<p>突然间 发现 好像是因为我设置path 路径是一样的 所以才出现这个问题  修改后就解决了 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nisonfuture.cn/2018/03/08/管理员页面的初步构建/" data-id="cjem9h58k002p5ougt9x54vd9" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -595,7 +597,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nisonfuture.cn/2018/03/08/查看列表组件/" data-id="cjem89q7w002eqgugrucr8vxv" class="article-share-link">Teilen</a>
+      <a data-url="http://nisonfuture.cn/2018/03/08/查看列表组件/" data-id="cjem9h58800275oug6i10k508" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-Design/">ant Design</a></li></ul>
@@ -664,15 +666,11 @@
       <ul>
         
           <li>
-            <a href="/2018/03/10/ant Design 生命周期图/">ant Design 生命周期图</a>
-          </li>
-        
-          <li>
             <a href="/2018/03/10/构建管理权限界面/">构建管理权限界面</a>
           </li>
         
           <li>
-            <a href="/2018/03/09/封装查询组件/">封装查询组件</a>
+            <a href="/2018/03/10/ant Design 生命周期图/">ant Design 生命周期图</a>
           </li>
         
           <li>
@@ -680,7 +678,11 @@
           </li>
         
           <li>
-            <a href="/2018/03/09/封装弹窗/">2018-3-9 封装弹窗</a>
+            <a href="/2018/03/09/构建权限管理页面/">构建权限管理页面</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/09/列表组件/">列表组件</a>
           </li>
         
       </ul>
