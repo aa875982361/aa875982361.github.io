@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="集成开发," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="做了三个月的项目，感觉每次都要将自己的代码在本地build出来放到测试服上面测试，就有点浪费时间，最近看到微鱼正式服上的有个deploy.sh ,和我们之前在学校使用自动构建有点类似，所以打算尝试一下自动构建  创建项目 创建一个自由风格的项目   项目配置 写该项目的描述    将gitLab 项目的链接关联起来   注意：如果分支不存在会报错  设置gitlab的webhook   这里有点">
+<meta name="keywords" content="集成开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jenkins + gitlab 自动化构建">
+<meta property="og:url" content="http://nisonfuture.cn/2018/06/03/jenkins + gitlab 自动化构建/index.html">
+<meta property="og:site_name" content="叶落林间">
+<meta property="og:description" content="做了三个月的项目，感觉每次都要将自己的代码在本地build出来放到测试服上面测试，就有点浪费时间，最近看到微鱼正式服上的有个deploy.sh ,和我们之前在学校使用自动构建有点类似，所以打算尝试一下自动构建  创建项目 创建一个自由风格的项目   项目配置 写该项目的描述    将gitLab 项目的链接关联起来   注意：如果分支不存在会报错  设置gitlab的webhook   这里有点">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528037365616.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528037445403.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528037584734.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528037934907.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528038418578.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528038765668.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528039032954.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528039154271.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528039296659.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528039636292.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528039800375.png">
+<meta property="og:updated_time" content="2018-06-30T13:25:53.965Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jenkins + gitlab 自动化构建">
+<meta name="twitter:description" content="做了三个月的项目，感觉每次都要将自己的代码在本地build出来放到测试服上面测试，就有点浪费时间，最近看到微鱼正式服上的有个deploy.sh ,和我们之前在学校使用自动构建有点类似，所以打算尝试一下自动构建  创建项目 创建一个自由风格的项目   项目配置 写该项目的描述    将gitLab 项目的链接关联起来   注意：如果分支不存在会报错  设置gitlab的webhook   这里有点">
+<meta name="twitter:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528037365616.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://nisonfuture.cn/2018/06/03/jenkins + gitlab 自动化构建/"/>
+
+
+
+
+
+  <title>jenkins + gitlab 自动化构建 | 叶落林间</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落林间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">你只有非常努力，才能看起来毫不费力</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/03/jenkins + gitlab 自动化构建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jenkins + gitlab 自动化构建</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
+                2018-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>做了三个月的项目，感觉每次都要将自己的代码在本地build出来放到测试服上面测试，就有点浪费时间，最近看到微鱼正式服上的有个deploy.sh ,和我们之前在学校使用自动构建有点类似，所以打算尝试一下自动构建</p>
+</blockquote>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><ol>
+<li>创建一个自由风格的项目</li>
+</ol>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528037365616.png" alt="step_1"></p>
+<h2 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h2><ol>
+<li>写该项目的描述</li>
+</ol>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528037445403.png" alt="step_2"></p>
+<ol>
+<li>将gitLab 项目的链接关联起来</li>
+</ol>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528037584734.png" alt="step_3"></p>
+<p>注意：如果分支不存在会报错</p>
+<ol>
+<li>设置gitlab的webhook</li>
+</ol>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528037934907.png" alt="step_4"></p>
+<p>这里有点坑的， 不能直接用给出的链接，需要拼接当前网页ip和后面的链接</p>
+<blockquote>
+<p>后面会讲到 这个链接和token怎样用</p>
+</blockquote>
+<ol>
+<li>设置构建脚本</li>
+</ol>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528038418578.png" alt="step_5"></p>
+<p>我比较喜欢在根目录用一个脚本文件来控制构建，因为我有时需要 npm install<br>有时不需要 npm install </p>
+<p>另外我还喜欢引入一个环境变量的插件去注入环境变量 Inject environment variables：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528038765668.png" alt="step_6"></p>
+<p>这个还可以用来控制是开发环境的build 或者是 正式环境的build<br>具体就是 增加一个变量，然后通过变量去 控制不同的 build 的命令</p>
+<blockquote>
+<p>这些变量在脚本里面都会用到 之后会有文件</p>
+</blockquote>
+<ol>
+<li>增加钉钉机器人提示</li>
+</ol>
+<p>先在钉钉设置一个其他机器人，取得token，其他随便设置</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528039032954.png" alt="step_7"></p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528039154271.png" alt="step_8"></p>
+<p>在增加构建后操作里面 选择钉钉通知器设置，如果没有可以安装”Dingding[钉钉] Plugin”插件；，<a href="https://blog.csdn.net/workdsz/article/details/77947183" target="_blank" rel="noopener">参考文章</a></p>
+<p>具体设置如图：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528039296659.png" alt="step_9"></p>
+<p>这里是会有给默认的ip的，如果不修改你会发现 有点问题，<strong>需要修改为当前网页的ip</strong>地址，另外要注意第二行是只要token 别把一行链接复制过来</p>
+<h2 id="gitlab配置"><a href="#gitlab配置" class="headerlink" title="gitlab配置"></a>gitlab配置</h2><ol>
+<li>设置webhook</li>
+</ol>
+<p>强调两点：</p>
+<ul>
+<li>不能直接使用jenkins给的链接，需要修改为访问jenkins的链接</li>
+<li>不能选ssl的，因为我们用的是 http</li>
+</ul>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528039636292.png" alt="step_10"></p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528039800375.png" alt="step_11"></p>
+<blockquote>
+<p>上图的 test 需要先增加才有</p>
+</blockquote>
+<h2 id="设置脚本delpoy-sh"><a href="#设置脚本delpoy-sh" class="headerlink" title="设置脚本delpoy.sh"></a>设置脚本delpoy.sh</h2><p>直接上代码：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> "I'm plinghuang"</span><br><span class="line"></span><br><span class="line"># 这里的都是取之前设置的环境变量</span><br><span class="line"># 还有很多操作都是可以控制的例如 测试 和 正式环境和测试环境</span><br><span class="line"></span><br><span class="line"># 如果TRUE ：则install</span><br><span class="line"># FALSE： 则不 install</span><br><span class="line"><span class="keyword">if</span> [ "$INSTALL_DEP" = "FALSE" ]; then</span><br><span class="line">	<span class="built_in">echo</span> "frontend npm install ..."</span><br><span class="line">	/usr/bin/npm install</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 如果TRUE ：则build</span><br><span class="line"># FALSE： 则不 build</span><br><span class="line"><span class="keyword">if</span> [ "$BUILD_FE" = "TRUE" ]; then</span><br><span class="line">	<span class="built_in">echo</span> "frontend build ..."</span><br><span class="line">	/usr/bin/npm run build</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h2 id="PS-踩到的坑："><a href="#PS-踩到的坑：" class="headerlink" title="PS 踩到的坑："></a>PS 踩到的坑：</h2><ol>
+<li>npm not found ：<br> 在jenkins 所在的环境没有node的环境，需要自己手动安装。</li>
+<li><p>巨坑：服务器采用可docker 来装 jenkins，我在正式服上装好node，然后一直都不能再jenkins上build 搞了很久才发现使用docket的，<br> 解决方案：在jenkins的docker里面安装 node</p>
+</li>
+<li><p>超级大巨坑：scp 无法ssh免密登录测试服<br>未解决<br>之所以说超级大巨坑是因为，测试服不知道环境是什么问题，就连接不上<br>在我腾讯云服务器上是可以连接的，我和我同学弄了几个小时都没找出问题</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/集成开发/" rel="tag"># 集成开发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/27/1 + + '2' + '2'/" rel="next" title="1 + + '2' + '2'">
+                <i class="fa fa-chevron-left"></i> 1 + + '2' + '2'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/03/使用yum安装最新版nodejs和npm/" rel="prev" title="使用yum安装最新版nodejs和npm">
+                使用yum安装最新版nodejs和npm <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Pling Huang</p>
+              <p class="site-description motion-element" itemprop="description">个人学习笔记，仅供本人复习</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目"><span class="nav-number">1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目配置"><span class="nav-number">2.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gitlab配置"><span class="nav-number">3.</span> <span class="nav-text">gitlab配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置脚本delpoy-sh"><span class="nav-number">4.</span> <span class="nav-text">设置脚本delpoy.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PS-踩到的坑："><span class="nav-number">5.</span> <span class="nav-text">PS 踩到的坑：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pling Huang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="react," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今天出现一个蜜汁bug,十分有趣，各位大神可有兴趣一观？  操作：点击图中的按钮  图中按钮的代码如下，单纯打印一个test 字符串：  浏览器控制台报错信息如下： 12345678910Uncaught TypeError: possiblePlugin.extractEvents is not a function    at extractEvents (react-dom.develop">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="possiblePlugin.extractEvents is not a function">
+<meta property="og:url" content="http://nisonfuture.cn/2018/06/19/possiblePlugin extractEvents is not a function/index.html">
+<meta property="og:site_name" content="叶落林间">
+<meta property="og:description" content="今天出现一个蜜汁bug,十分有趣，各位大神可有兴趣一观？  操作：点击图中的按钮  图中按钮的代码如下，单纯打印一个test 字符串：  浏览器控制台报错信息如下： 12345678910Uncaught TypeError: possiblePlugin.extractEvents is not a function    at extractEvents (react-dom.develop">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529394107892.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395327128.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395104456.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395207454.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395545595.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395818629.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395941773.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529406755639.png">
+<meta property="og:updated_time" content="2018-06-30T13:26:41.824Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="possiblePlugin.extractEvents is not a function">
+<meta name="twitter:description" content="今天出现一个蜜汁bug,十分有趣，各位大神可有兴趣一观？  操作：点击图中的按钮  图中按钮的代码如下，单纯打印一个test 字符串：  浏览器控制台报错信息如下： 12345678910Uncaught TypeError: possiblePlugin.extractEvents is not a function    at extractEvents (react-dom.develop">
+<meta name="twitter:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529394107892.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://nisonfuture.cn/2018/06/19/possiblePlugin extractEvents is not a function/"/>
+
+
+
+
+
+  <title>possiblePlugin.extractEvents is not a function | 叶落林间</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落林间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">你只有非常努力，才能看起来毫不费力</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/19/possiblePlugin extractEvents is not a function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">possiblePlugin.extractEvents is not a function</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-19T00:00:00+08:00">
+                2018-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>今天出现一个蜜汁bug,十分有趣，各位大神可有兴趣一观？</p>
+</blockquote>
+<p>操作：点击图中的按钮</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529394107892.png" alt="操作"></p>
+<p>图中按钮的代码如下，单纯打印一个test 字符串：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395327128.png" alt="button"></p>
+<p>浏览器控制台报错信息如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Uncaught <span class="built_in">TypeError</span>: possiblePlugin.extractEvents is not a <span class="function"><span class="keyword">function</span></span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">extractEvents</span> (<span class="params">react-dom.development.js:<span class="number">704</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">runExtractedEventsInBatch</span> (<span class="params">react-dom.development.js:<span class="number">738</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">handleTopLevel</span> (<span class="params">react-dom.development.js:<span class="number">4203</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">batchedUpdates</span> (<span class="params">react-dom.development.js:<span class="number">12539</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">batchedUpdates</span> (<span class="params">react-dom.development.js:<span class="number">1941</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">dispatchEvent</span> (<span class="params">react-dom.development.js:<span class="number">4284</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">interactiveUpdates</span> (<span class="params">react-dom.development.js:<span class="number">12594</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">interactiveUpdates</span> (<span class="params">react-dom.development.js:<span class="number">1960</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">dispatchInteractiveEvent</span> (<span class="params">react-dom.development.js:<span class="number">4261</span></span>)</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395104456.png" alt="error"></p>
+<p>仔细回想了一下自己的代码，以及通过测试，发现起因是下面这段代码，将代码注释掉就能正常运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function postLog (data) &#123;</span><br><span class="line">  let img = new Image();</span><br><span class="line">  img.src = logApi + params(data); // 这里是日志系统的链接地址</span><br><span class="line">  img.onload = () =&gt; &#123;</span><br><span class="line">    // TODO: 将img元素清除，避免内存泄漏</span><br><span class="line">    console.log(&apos;日志上报完成 &apos;, imgs.indexOf(img), img);</span><br><span class="line">    imgs.splice(imgs.indexOf(img),1);</span><br><span class="line">    console.log(&apos;清除img  &apos;, imgs)</span><br><span class="line">  &#125;</span><br><span class="line">  Array.prototype.push(imgs, img);// 采用闭包将img变量存储起来，担心数据未上报完毕 img对象就消失</span><br></pre></td></tr></table></figure>
+<p>通过注释代码 发现 主要问题在于：第十行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.push(imgs, img);<span class="comment">// 采用闭包将img变量存储起来，担心数据未上报完毕 img对象就消失</span></span><br></pre></td></tr></table></figure>
+<p>查看控制台的network：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395207454.png" alt="接口返回"></p>
+<p>发现 网络连接是没有问题的，那是什么原因呢？</p>
+<p>根据错误提示，我在<code>\node_modules\react-dom\cjs\react-dom.development.js</code>这个文件加了个debugger，去看 ==possiblePlugin==这个的值，</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395545595.png" alt="debugger"></p>
+<p>测试一： 不用img 向后台发送log </p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395818629.png" alt="正常情况"></p>
+<p>测试二： 用img向后台发送log</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395941773.png" alt="异常情况"></p>
+<p>正常情况应该 ==possiblePlugin==这个是一个object，但是经过发送log后，替换成了Array</p>
+<p>问题根源在于：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.push(imgs, img); <span class="comment">//少了一个 .call 或 .applay</span></span><br></pre></td></tr></table></figure>
+<p>正确应该是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.push.call(imgs, img);</span><br></pre></td></tr></table></figure>
+<p>无语了 </p>
+<p>可是为什么会有这样的情况呢？<br><code>Array.prototype.push(imgs, img);</code>这个究竟做了什么呢？</p>
+<p>这个操作修改了array 的原型， </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[]; <span class="comment">// 这样初始化是不安全的</span></span><br><span class="line">因为 修改原型后 [<span class="number">0</span>] 是有值的 不等于空</span><br></pre></td></tr></table></figure>
+<p>查看react-dom的源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function recomputePluginOrdering() &#123;</span><br><span class="line">  if (!eventPluginOrder) &#123;</span><br><span class="line">    // Wait until an `eventPluginOrder` is injected.</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line">  for (var pluginName in namesToPlugins) &#123;</span><br><span class="line">    var pluginModule = namesToPlugins[pluginName];</span><br><span class="line">    var pluginIndex = eventPluginOrder.indexOf(pluginName);</span><br><span class="line">    !(pluginIndex &gt; -1) ? invariant(false, &apos;EventPluginRegistry: Cannot inject event plugins that do not exist in the plugin ordering, `%s`.&apos;, pluginName) : void 0;</span><br><span class="line">    if (plugins[pluginIndex]) &#123; // 主要是这里 用原型去取到的值不为空，所以就会continue </span><br><span class="line">      continue;</span><br><span class="line">    &#125;</span><br><span class="line">    !pluginModule.extractEvents ? invariant(false, &apos;EventPluginRegistry: Event plugins must implement an `extractEvents` method, but `%s` does not.&apos;, pluginName) : void 0;</span><br><span class="line">    plugins[pluginIndex] = pluginModule;</span><br><span class="line">    var publishedEvents = pluginModule.eventTypes;</span><br><span class="line">    for (var eventName in publishedEvents) &#123;</span><br><span class="line">      !publishEventForPlugin(publishedEvents[eventName], pluginModule, eventName) ? invariant(false, &apos;EventPluginRegistry: Failed to publish event `%s` for plugin `%s`.&apos;, eventName, pluginName) : void 0;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529406755639.png" alt="错误情况"></p>
+<p>看到图片上的 当i=0的时候，没有属性，需要去原型里面取，我放了一个空数组去，所以取到的值就是空数组。用的时候就会报错。</p>
+<p>下面是执行代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> possiblePlugin = plugins[i]; <span class="comment">// 当i=0 取到的是空数组</span></span><br><span class="line"><span class="keyword">if</span> (possiblePlugin) &#123;</span><br><span class="line">  <span class="keyword">debugger</span></span><br><span class="line">  <span class="built_in">console</span>.log(possiblePlugin); <span class="comment">//  possiblePlugin.extractEvents 这个就是undefined</span></span><br><span class="line">  <span class="keyword">var</span> extractedEvents = possiblePlugin.extractEvents(topLevelType, targetInst, nativeEvent, nativeEventTarget);</span><br><span class="line">  <span class="keyword">if</span> (extractedEvents) &#123;</span><br><span class="line">    events = accumulateInto(events, extractedEvents);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>建议修改：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (plugins[pluginIndex] &amp;&amp; <span class="keyword">typeof</span> plugins[pluginIndex].extractEvents === <span class="string">'function'</span>) &#123; <span class="comment">// pluginIndex = 0  plugins[pluginIndex] = [] so containue</span></span><br><span class="line">  <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag"># react</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/18/前端日志系统解决方案/" rel="next" title="前端日志系统解决方案">
+                <i class="fa fa-chevron-left"></i> 前端日志系统解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/30/括号匹配方案/" rel="prev" title="括号匹配方案">
+                括号匹配方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Pling Huang</p>
+              <p class="site-description motion-element" itemprop="description">个人学习笔记，仅供本人复习</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pling Huang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
