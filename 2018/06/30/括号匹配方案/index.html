@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next mist use-motion" lang="">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -86,10 +86,12 @@
 <meta property="og:url" content="http://nisonfuture.cn/2018/06/30/括号匹配方案/index.html">
 <meta property="og:site_name" content="叶落林间">
 <meta property="og:description" content="合法的括号匹配序列被定义为:  空串””是合法的括号序列 如果”X”和”Y”是合法的序列,那么”XY”也是一个合法的括号序列 如果”X”是一个合法的序列,那么”(X)”也是一个合法的括号序列 每个合法的括号序列都可以由上面的规则生成例如””, “()”, “()()()”, “(()())”, “(((())))”都是合法的。 东东现在有一个合法的括号序列s,一次移除操作分为两步: 移除序列s中第">
-<meta property="og:updated_time" content="2018-06-30T13:33:12.532Z">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530368407434.png">
+<meta property="og:updated_time" content="2018-07-01T02:16:14.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="括号匹配方案">
 <meta name="twitter:description" content="合法的括号匹配序列被定义为:  空串””是合法的括号序列 如果”X”和”Y”是合法的序列,那么”XY”也是一个合法的括号序列 如果”X”是一个合法的序列,那么”(X)”也是一个合法的括号序列 每个合法的括号序列都可以由上面的规则生成例如””, “()”, “()()()”, “(()())”, “(((())))”都是合法的。 东东现在有一个合法的括号序列s,一次移除操作分为两步: 移除序列s中第">
+<meta name="twitter:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530368407434.png">
 
 
 
@@ -97,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -185,7 +187,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -195,7 +197,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -259,7 +261,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-30T00:00:00+08:00">
                 2018-06-30
@@ -391,8 +393,20 @@
 <li>没有做参数检查，如果不符合要求的话就会失败</li>
 </ol>
 <h3 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h3><p>从题目上说的话，我想到的方式还是按照题目要求，先去掉左边一个，然后去判断是否是合法序列，</p>
-<h3 id="我的不足"><a href="#我的不足" class="headerlink" title="我的不足"></a>我的不足</h3><p>无法突破思维，从另外一个方面去寻找解决方案，还是根据题目</p>
-
+<h3 id="我的不足"><a href="#我的不足" class="headerlink" title="我的不足"></a>我的不足</h3><p>无法突破思维，从另外一个方面去寻找解决方案，还是根据题目的意思去做，而且还没读懂题目的意思，自以为理解清楚，其实尚未理解透，下面代码就很明显的知道自己哪里出现了问题，我将XY这种类型的情况 用了拆解的 再相乘的方式来计算，其实是不行的，计算结果少了。</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530368407434.png" alt="错误示范"></p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>想到另外一种解这到题的思路：</p>
+<ol>
+<li>判断是否合法</li>
+<li>去掉第一个左括号</li>
+<li>去掉任意一个右括号</li>
+<li>计算次数</li>
+<li>用堆栈找出第一个左括号对应的右括号</li>
+<li>去掉对应的右括号</li>
+<li>递归</li>
+</ol>
+<p>但是感觉这样的时间复杂度 和 空间复杂度都挺大，没有别人的方案好</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自己实现一遍</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValue</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> len = str.length;</span><br><span class="line">	<span class="keyword">if</span>(str === <span class="string">''</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span> ; i&lt;len ; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(str[i] == <span class="string">')'</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i == <span class="string">'1'</span>) &#123;</span><br><span class="line">				<span class="keyword">let</span> next = str.substring(<span class="number">2</span>);</span><br><span class="line">				<span class="keyword">return</span> i * getValue(next);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">let</span> next = str.slice(<span class="number">0</span>,i<span class="number">-1</span>) + str.slice(i+<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">return</span> i * getValue(next);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">getValue(<span class="string">"((()))(()(()))((()))"</span>);</span><br><span class="line"><span class="comment">// 432</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -484,10 +498,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -508,7 +522,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">66</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -519,7 +533,7 @@
               <div class="site-state-item site-state-categories">
                 
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 
               </div>
             
@@ -530,7 +544,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -562,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#看别人代码理了一下思路："><span class="nav-number">1.</span> <span class="nav-text">看别人代码理了一下思路：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么会想到这种方式呢？"><span class="nav-number">2.</span> <span class="nav-text">为什么会想到这种方式呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我的思路"><span class="nav-number">3.</span> <span class="nav-text">我的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我的不足"><span class="nav-number">4.</span> <span class="nav-text">我的不足</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#看别人代码理了一下思路："><span class="nav-number">1.</span> <span class="nav-text">看别人代码理了一下思路：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么会想到这种方式呢？"><span class="nav-number">2.</span> <span class="nav-text">为什么会想到这种方式呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我的思路"><span class="nav-number">3.</span> <span class="nav-text">我的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我的不足"><span class="nav-number">4.</span> <span class="nav-text">我的不足</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">5.</span> <span class="nav-text">思考</span></a></li></ol></div>
             
 
           </div>
@@ -592,7 +606,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -600,7 +614,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
