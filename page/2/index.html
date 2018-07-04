@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -231,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/图片预加载/">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/随机数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pling Huang">
@@ -250,7 +250,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/12/图片预加载/" itemprop="url">图片预加载</a></h1>
+                <a class="post-title-link" href="/2018/06/12/随机数/" itemprop="url">随机数</a></h1>
         
 
         <div class="post-meta">
@@ -260,7 +260,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
                 2018-06-12
@@ -302,8 +302,133 @@
       
         
           
-            <p><a href="https://segmentfault.com/a/1190000000684923" target="_blank" rel="noopener">https://segmentfault.com/a/1190000000684923</a></p>
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandom</span>(<span class="params">min,max</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>( <span class="built_in">isNaN</span>( <span class="built_in">parseInt</span>(min) ) || <span class="built_in">isNaN</span>( <span class="built_in">parseInt</span>(max) ) )&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">'输入的值不能转化为数字'</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	min = <span class="built_in">parseInt</span>(min);</span><br><span class="line">	max = <span class="built_in">parseInt</span>(max);</span><br><span class="line">	<span class="keyword">if</span>(min&gt;max)&#123;</span><br><span class="line">		<span class="keyword">let</span> temp = min;</span><br><span class="line">		min = max;</span><br><span class="line">		max = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * ( max - min + <span class="number">1</span>)) + min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandom</span>(<span class="params">...values</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 对多元素进行 处理</span></span><br><span class="line">	<span class="keyword">let</span> exitNaN = values.some(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">isNaN</span>(value))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">if</span>( exitNaN ) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'存在不能转化为数字的值'</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">let</span> tempValueList = values.map(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">parseInt</span>(value,<span class="number">10</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(tempValueList);</span><br><span class="line">	<span class="comment">//取最小,最大值</span></span><br><span class="line">	<span class="keyword">let</span> min = <span class="built_in">Math</span>.min(...tempValueList);</span><br><span class="line">	<span class="keyword">let</span> max = <span class="built_in">Math</span>.max(...tempValueList);</span><br><span class="line">	<span class="keyword">if</span>(min&gt;max)&#123;</span><br><span class="line">		<span class="keyword">let</span> temp = min;</span><br><span class="line">		min = max;</span><br><span class="line">		max = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * ( max - min + <span class="number">1</span>)) + min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>检测数组：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528780129930.png" alt="slice检测数组"></p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/纯函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/12/纯函数/" itemprop="url">纯函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>纯函数是这样一种函数，即<strong>相同的输入</strong>，永远会得到<strong>相同的输出</strong>，而且没有任何可观察的副作用。</p>
+<p>例子：</p>
+<p>比如 slice 和 splice，这两个函数的作用并无二致——但是注意，它们各自的方式却大不同，但不管怎么说作用还是一样的。我们说 slice 符合纯函数的定义是因为对相同的输入它保证能返回相同的输出。而 splice 却会嚼烂调用它的那个数组，然后再吐出来；这就会产生可观察到的副作用，即这个数组永久地改变了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xs = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 纯的</span></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不纯的</span></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [4,5]</span></span><br><span class="line"></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; []</span></span><br></pre></td></tr></table></figure>
           
         
       
@@ -380,7 +505,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
                 2018-06-12
@@ -571,129 +696,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/随机数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/12/随机数/" itemprop="url">随机数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
-                2018-06-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandom</span>(<span class="params">min,max</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>( <span class="built_in">isNaN</span>( <span class="built_in">parseInt</span>(min) ) || <span class="built_in">isNaN</span>( <span class="built_in">parseInt</span>(max) ) )&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">'输入的值不能转化为数字'</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	min = <span class="built_in">parseInt</span>(min);</span><br><span class="line">	max = <span class="built_in">parseInt</span>(max);</span><br><span class="line">	<span class="keyword">if</span>(min&gt;max)&#123;</span><br><span class="line">		<span class="keyword">let</span> temp = min;</span><br><span class="line">		min = max;</span><br><span class="line">		max = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * ( max - min + <span class="number">1</span>)) + min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandom</span>(<span class="params">...values</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 对多元素进行 处理</span></span><br><span class="line">	<span class="keyword">let</span> exitNaN = values.some(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">isNaN</span>(value))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">if</span>( exitNaN ) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'存在不能转化为数字的值'</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">let</span> tempValueList = values.map(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">parseInt</span>(value,<span class="number">10</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(tempValueList);</span><br><span class="line">	<span class="comment">//取最小,最大值</span></span><br><span class="line">	<span class="keyword">let</span> min = <span class="built_in">Math</span>.min(...tempValueList);</span><br><span class="line">	<span class="keyword">let</span> max = <span class="built_in">Math</span>.max(...tempValueList);</span><br><span class="line">	<span class="keyword">if</span>(min&gt;max)&#123;</span><br><span class="line">		<span class="keyword">let</span> temp = min;</span><br><span class="line">		min = max;</span><br><span class="line">		max = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * ( max - min + <span class="number">1</span>)) + min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>检测数组：</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528780129930.png" alt="slice检测数组"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/03/使用yum安装最新版nodejs和npm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -723,7 +725,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
                 2018-06-03
@@ -854,7 +856,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
                 2018-06-03
@@ -987,7 +989,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
                 2018-06-03
@@ -1173,7 +1175,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-27T00:00:00+08:00">
                 2018-05-27
@@ -1314,7 +1316,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-27T00:00:00+08:00">
                 2018-05-27
@@ -1493,7 +1495,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T00:00:00+08:00">
                 2018-05-23
@@ -1607,7 +1609,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/19/overflow hidden 出现边框 记录/">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/19/MarginTop 为何影响父元素的 MarginTop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pling Huang">
@@ -1626,7 +1628,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/19/overflow hidden 出现边框 记录/" itemprop="url">overflow hidden 出现边框 记录</a></h1>
+                <a class="post-title-link" href="/2018/05/19/MarginTop 为何影响父元素的 MarginTop/" itemprop="url">MarginTop 为何影响父元素的 MarginTop</a></h1>
         
 
         <div class="post-meta">
@@ -1636,7 +1638,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T00:00:00+08:00">
                 2018-05-19
@@ -1678,7 +1680,18 @@
       
         
           
-            <p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1526698382487.jpg" alt="overflow:hidden"></p>
+            <p>在做弹窗的时候发现一个有趣的问题：<br>子元素用margin-top 将父元素顶下来了 ，并没有起到理想的效果，子元素相对于父元素顶部 XXXXpx<br>如下图：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1526697876549.jpg" alt="margin-top问题"></p>
+<p>红色边框 父元素 css：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">relative</span>;</span><br><span class="line"><span class="selector-tag">width</span>: 5<span class="selector-class">.5rem</span>;</span><br><span class="line"><span class="selector-tag">height</span>: 6<span class="selector-class">.8rem</span>;</span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">white</span>;</span><br><span class="line"><span class="selector-tag">border-radius</span>: 0<span class="selector-class">.12rem</span>;</span><br></pre></td></tr></table></figure>
+<p>绿色边框 第一个子元素 css ：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">margin</span>: 0 <span class="selector-tag">auto</span>;</span><br><span class="line">   <span class="selector-tag">margin-top</span>: 0<span class="selector-class">.47rem</span>;</span><br><span class="line">   <span class="selector-tag">margin-bottom</span>: 0<span class="selector-class">.23rem</span>;</span><br><span class="line">   <span class="selector-tag">font-family</span>: <span class="selector-tag">PingFang-SC-Medium</span>;</span><br><span class="line">   <span class="selector-tag">font-size</span>: 0<span class="selector-class">.3rem</span>;</span><br><span class="line">   <span class="selector-tag">font-weight</span>: <span class="selector-tag">normal</span>;</span><br><span class="line">   <span class="selector-tag">font-stretch</span>: <span class="selector-tag">normal</span>;</span><br><span class="line">   <span class="selector-tag">line-height</span>: 0<span class="selector-class">.46rem</span>;</span><br><span class="line">   <span class="selector-tag">letter-spacing</span>: 0<span class="selector-tag">rem</span>;</span><br><span class="line">   <span class="selector-tag">color</span>: <span class="selector-id">#131313</span>;</span><br><span class="line">   <span class="selector-tag">text-align</span>: <span class="selector-tag">center</span>;</span><br></pre></td></tr></table></figure>
+<p>父元素并没有设置margin-top<br>但是 却又margin-top的效果<br>上网找了一下资料发现 这个 居然是 <strong>==CSS2.1盒模型规范==</strong></p>
+<p>CSS2.1的盒模型中规定的内容——<a href="http://www.w3.org/TR/CSS21/box.html#collapsing-margins" target="_blank" rel="noopener">Collapsing margins</a>：</p>
+<blockquote>
+<p>In this specification, the expression collapsing margins means that adjoining margins (no non-empty content, padding or border areas or clearance separate them) of two or more boxes (which may be next to one another or nested) combine to form a single margin. 所有毗邻的两个或更多盒元素的margin将会合并为一个margin共享之。毗邻的定义为：同级或者嵌套的盒元素，并且它们之间没有非空内容、Padding或Border分隔。</p>
+</blockquote>
+<h3 id="这就是原因了。“嵌套”的盒元素也算“毗邻”，也会-Collapsing-Margins。"><a href="#这就是原因了。“嵌套”的盒元素也算“毗邻”，也会-Collapsing-Margins。" class="headerlink" title="这就是原因了。“嵌套”的盒元素也算“毗邻”，也会 Collapsing Margins。"></a>这就是原因了。“嵌套”的盒元素也算“毗邻”，也会 Collapsing Margins。</h3><p>这个问题的避免方法很多，只要破坏它出现的条件就行。给 Outer Div 加上 padding/border，或者给 Outer Div / Inner Div 设置为 float/position:absolute(CSS2.1规定浮动元素和绝对定位元素不参与Margin折叠)。 　　更多信息，关于不同值的margin折叠后表现的计算方法等等，可自行查阅W3C的CSS2.1规范：<a href="http://www.w3.org/TR/CSS21/box.html#collapsing-margins" target="_blank" rel="noopener">Collapsing margins</a>。</p>
 
           
         
@@ -1765,7 +1778,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1776,7 +1789,7 @@
               <div class="site-state-item site-state-categories">
                 
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 
               </div>
             
@@ -1787,7 +1800,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -1833,7 +1846,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

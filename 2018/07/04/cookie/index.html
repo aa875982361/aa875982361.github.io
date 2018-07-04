@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://nisonfuture.cn/2018/07/04/cookie/index.html">
 <meta property="og:site_name" content="叶落林间">
 <meta property="og:description" content="Http cookie 是在客户端存储会话信息的。 设置方式通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如： 1234HTTP/1.1 200 OKContene-type: text/htmlSet-Cookie: name=valueOther-header: other-header-value 通过这样的返回值，浏览器会存储这样的信息，nam">
-<meta property="og:updated_time" content="2018-07-04T14:30:37.947Z">
+<meta property="og:updated_time" content="2018-07-04T14:33:31.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookie">
 <meta name="twitter:description" content="Http cookie 是在客户端存储会话信息的。 设置方式通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如： 1234HTTP/1.1 200 OKContene-type: text/htmlSet-Cookie: name=valueOther-header: other-header-value 通过这样的返回值，浏览器会存储这样的信息，nam">
@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -259,7 +259,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T00:00:00+08:00">
                 2018-07-04
@@ -306,7 +306,7 @@
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/index.html</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Cookie</span>: name=value</span><br></pre></td></tr></table></figure>
 <p>一开始，这个是一个比较好用的身份验证的方式，在登录成功之后，设置一个有效的token信息，之后发送请求就不用再次登录，服务器就知道你是谁。<br>但是这样存在一个缺点就是对每个请求都会发送cookie数据，如果是我从另外一个网站去调用目标网站的请求，也会带上相应的cookie，容易别人CSRF攻击。</p>
 <p>后来的一些解决方式是将身份验证信息token存储在ls 和ss 里面，在请求头上面加一个自定义请求头，在发送请求之前带上token，</p>
-<h3 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h3><p>为了确保cookie不会而已使用，都会</p>
+<h3 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h3><p>为了确保cookie不会被卵用，都会做出相应的限制</p>
 <h4 id="数量限制："><a href="#数量限制：" class="headerlink" title="数量限制："></a>数量限制：</h4><p>每隔域的cookie数量都是有限制的，不同的的浏览器限制有点不同，当超过单个域名限制之后设置cookie，浏览器会清楚以前设置的cookie。ie和Opera会使用LRU算法，将最近的最少使用的cookie删除，腾出空间，</p>
 <table>
 <thead>
@@ -416,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/04/Element和Node的区别/" rel="next" title="Element和Node的区别">
-                <i class="fa fa-chevron-left"></i> Element和Node的区别
+              <a href="/2018/07/01/表格处理/" rel="next" title="表格处理">
+                <i class="fa fa-chevron-left"></i> 表格处理
               </a>
             
           </div>
@@ -425,6 +425,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/04/HTMLCollection 和 NodeList的区别/" rel="prev" title="HTMLCollection 和 NodeList的区别">
+                HTMLCollection 和 NodeList的区别 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -478,10 +482,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -502,7 +506,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -513,7 +517,7 @@
               <div class="site-state-item site-state-categories">
                 
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 
               </div>
             
@@ -524,7 +528,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -586,7 +590,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

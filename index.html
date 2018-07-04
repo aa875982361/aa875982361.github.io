@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -217,212 +217,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/07/04/cookie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/04/cookie/" itemprop="url">cookie</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T00:00:00+08:00">
-                2018-07-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Http cookie 是在客户端存储会话信息的。</p>
-<h3 id="设置方式"><a href="#设置方式" class="headerlink" title="设置方式"></a>设置方式</h3><p>通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Contene-type</span>: text/html</span><br><span class="line"><span class="attribute">Set-Cookie</span>: name=value</span><br><span class="line"><span class="attribute">Other-header</span>: other-header-value</span><br></pre></td></tr></table></figure>
-<p>通过这样的返回值，浏览器会存储这样的信息，name=value，之后会为每个请求都会添加上cookie HTTP 请求头信息：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/index.html</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Cookie</span>: name=value</span><br></pre></td></tr></table></figure>
-<p>一开始，这个是一个比较好用的身份验证的方式，在登录成功之后，设置一个有效的token信息，之后发送请求就不用再次登录，服务器就知道你是谁。<br>但是这样存在一个缺点就是对每个请求都会发送cookie数据，如果是我从另外一个网站去调用目标网站的请求，也会带上相应的cookie，容易别人CSRF攻击。</p>
-<p>后来的一些解决方式是将身份验证信息token存储在ls 和ss 里面，在请求头上面加一个自定义请求头，在发送请求之前带上token，</p>
-<h3 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h3><p>为了确保cookie不会而已使用，都会</p>
-<h4 id="数量限制："><a href="#数量限制：" class="headerlink" title="数量限制："></a>数量限制：</h4><p>每隔域的cookie数量都是有限制的，不同的的浏览器限制有点不同，当超过单个域名限制之后设置cookie，浏览器会清楚以前设置的cookie。ie和Opera会使用LRU算法，将最近的最少使用的cookie删除，腾出空间，</p>
-<table>
-<thead>
-<tr>
-<th>浏览器</th>
-<th>每域名数量限制</th>
-<th>大小限制</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IE6 -</td>
-<td>最多20</td>
-<td>4095B </td>
-</tr>
-<tr>
-<td>IE7+</td>
-<td>最多50</td>
-<td>4095B</td>
-</tr>
-<tr>
-<td>FireFox</td>
-<td>最多50</td>
-<td>4097B</td>
-</tr>
-<tr>
-<td>Opera</td>
-<td>最多30</td>
-<td>4096B</td>
-</tr>
-<tr>
-<td>sofari 和 chrome</td>
-<td>没有限制</td>
-<td>没有限制</td>
-</tr>
-</tbody>
-</table>
-<h3 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h3><table>
-<thead>
-<tr>
-<th>key</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> 名称</td>
-<td>一个唯一确定的cookie，不区分大小写，必须是经过url编码的</td>
-</tr>
-<tr>
-<td> 值</td>
-<td>字符串值，必须被url编码</td>
-</tr>
-<tr>
-<td>域</td>
-<td>cookie 对于那个域是有效的，向该域发送请求时，会自动加上cookie值，可以包含子域，默认是设置cookie的那个域</td>
-</tr>
-<tr>
-<td>路径</td>
-<td>对于指定域中的那个路径才向服务器发送cookie</td>
-</tr>
-<tr>
-<td>失效时间</td>
-<td>表示cookie身上时候被删除，一般来说，没有设置失效时间，默认是当前会话结束之后，就会把cookie删除掉，这个值必须是GMT时间格式（Wdy，DD-Mon-YYYY HH:MM:SS GMT）</td>
-</tr>
-<tr>
-<td>安全标志</td>
-<td>指定后，只有HTTPS才会发送相应的请求</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>这里要注意一下：域、路径、失效时间和secure标志都是服务器给浏览器的知识，以指定什么时候才发送cookie，这些参数并不会发送给服务端</p>
-</blockquote>
-<h3 id="js中的cookie"><a href="#js中的cookie" class="headerlink" title="js中的cookie"></a>js中的cookie</h3><h4 id="获取方式"><a href="#获取方式" class="headerlink" title="获取方式"></a>获取方式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = encodeURLComponent(name)+<span class="string">'='</span>; <span class="comment">//注意这里需要先转换编码</span></span><br><span class="line"><span class="keyword">var</span> cookieStart=<span class="built_in">document</span>.cookie.indexOf(name);<span class="comment">// 看看是否存在</span></span><br><span class="line"><span class="keyword">var</span> cookieValue = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(cookieStart&gt;<span class="number">-1</span>)&#123; <span class="comment">// 是否存在</span></span><br><span class="line">	<span class="keyword">var</span> cookieEnd= <span class="built_in">document</span>.cookie.indexOf(<span class="string">';'</span>, cookieStart); <span class="comment">// 从当前到 分号结束</span></span><br><span class="line">	<span class="keyword">if</span>(cookieEnd === <span class="number">-1</span> <span class="comment">// 如果是最后一个,则是末尾</span></span><br><span class="line">		cookieEnd = <span class="built_in">document</span>.cookie.length;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> cookieValue=encodeURLComponent(<span class="built_in">document</span>.cookie.substring(cookieStart+name.length,cookieEnd));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="设置方式-1"><a href="#设置方式-1" class="headerlink" title="设置方式"></a>设置方式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//document.cookie = "name=plinghuang"; // 这样子是不严谨的</span></span><br><span class="line"><span class="built_in">document</span>.cookie=encodeURLComponent(<span class="string">'name'</span>)+<span class="string">'='</span>+encodeComponent(<span class="string">'plinghuang'</span>); <span class="comment">// 经过url编码才放进去是最好的</span></span><br></pre></td></tr></table></figure>
-<p>这个设置cookie并不会将原来的清空掉，只会在后面叠加一个键值对；这里没有设置时间，所以在会话结束就会删除掉，如果是想保存，可以按照Set-Cookie的格式去</p>
-<h3 id="突破浏览器cookie数限制"><a href="#突破浏览器cookie数限制" class="headerlink" title="突破浏览器cookie数限制"></a>突破浏览器cookie数限制</h3><p>采用子cookie的方式，就是在键值对里面嵌套键值对,进行二次解析</p>
-<p><code>data=name=plinghuang&amp;age=22&amp;sex=male</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
     
       
 
@@ -466,7 +260,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T00:00:00+08:00">
                 2018-07-04
@@ -617,7 +411,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T00:00:00+08:00">
                 2018-07-04
@@ -755,6 +549,212 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/07/04/cookie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/04/cookie/" itemprop="url">cookie</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T00:00:00+08:00">
+                2018-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Http cookie 是在客户端存储会话信息的。</p>
+<h3 id="设置方式"><a href="#设置方式" class="headerlink" title="设置方式"></a>设置方式</h3><p>通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Contene-type</span>: text/html</span><br><span class="line"><span class="attribute">Set-Cookie</span>: name=value</span><br><span class="line"><span class="attribute">Other-header</span>: other-header-value</span><br></pre></td></tr></table></figure>
+<p>通过这样的返回值，浏览器会存储这样的信息，name=value，之后会为每个请求都会添加上cookie HTTP 请求头信息：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/index.html</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Cookie</span>: name=value</span><br></pre></td></tr></table></figure>
+<p>一开始，这个是一个比较好用的身份验证的方式，在登录成功之后，设置一个有效的token信息，之后发送请求就不用再次登录，服务器就知道你是谁。<br>但是这样存在一个缺点就是对每个请求都会发送cookie数据，如果是我从另外一个网站去调用目标网站的请求，也会带上相应的cookie，容易别人CSRF攻击。</p>
+<p>后来的一些解决方式是将身份验证信息token存储在ls 和ss 里面，在请求头上面加一个自定义请求头，在发送请求之前带上token，</p>
+<h3 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h3><p>为了确保cookie不会被卵用，都会做出相应的限制</p>
+<h4 id="数量限制："><a href="#数量限制：" class="headerlink" title="数量限制："></a>数量限制：</h4><p>每隔域的cookie数量都是有限制的，不同的的浏览器限制有点不同，当超过单个域名限制之后设置cookie，浏览器会清楚以前设置的cookie。ie和Opera会使用LRU算法，将最近的最少使用的cookie删除，腾出空间，</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>每域名数量限制</th>
+<th>大小限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IE6 -</td>
+<td>最多20</td>
+<td>4095B </td>
+</tr>
+<tr>
+<td>IE7+</td>
+<td>最多50</td>
+<td>4095B</td>
+</tr>
+<tr>
+<td>FireFox</td>
+<td>最多50</td>
+<td>4097B</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>最多30</td>
+<td>4096B</td>
+</tr>
+<tr>
+<td>sofari 和 chrome</td>
+<td>没有限制</td>
+<td>没有限制</td>
+</tr>
+</tbody>
+</table>
+<h3 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h3><table>
+<thead>
+<tr>
+<th>key</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 名称</td>
+<td>一个唯一确定的cookie，不区分大小写，必须是经过url编码的</td>
+</tr>
+<tr>
+<td> 值</td>
+<td>字符串值，必须被url编码</td>
+</tr>
+<tr>
+<td>域</td>
+<td>cookie 对于那个域是有效的，向该域发送请求时，会自动加上cookie值，可以包含子域，默认是设置cookie的那个域</td>
+</tr>
+<tr>
+<td>路径</td>
+<td>对于指定域中的那个路径才向服务器发送cookie</td>
+</tr>
+<tr>
+<td>失效时间</td>
+<td>表示cookie身上时候被删除，一般来说，没有设置失效时间，默认是当前会话结束之后，就会把cookie删除掉，这个值必须是GMT时间格式（Wdy，DD-Mon-YYYY HH:MM:SS GMT）</td>
+</tr>
+<tr>
+<td>安全标志</td>
+<td>指定后，只有HTTPS才会发送相应的请求</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>这里要注意一下：域、路径、失效时间和secure标志都是服务器给浏览器的知识，以指定什么时候才发送cookie，这些参数并不会发送给服务端</p>
+</blockquote>
+<h3 id="js中的cookie"><a href="#js中的cookie" class="headerlink" title="js中的cookie"></a>js中的cookie</h3><h4 id="获取方式"><a href="#获取方式" class="headerlink" title="获取方式"></a>获取方式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = encodeURLComponent(name)+<span class="string">'='</span>; <span class="comment">//注意这里需要先转换编码</span></span><br><span class="line"><span class="keyword">var</span> cookieStart=<span class="built_in">document</span>.cookie.indexOf(name);<span class="comment">// 看看是否存在</span></span><br><span class="line"><span class="keyword">var</span> cookieValue = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(cookieStart&gt;<span class="number">-1</span>)&#123; <span class="comment">// 是否存在</span></span><br><span class="line">	<span class="keyword">var</span> cookieEnd= <span class="built_in">document</span>.cookie.indexOf(<span class="string">';'</span>, cookieStart); <span class="comment">// 从当前到 分号结束</span></span><br><span class="line">	<span class="keyword">if</span>(cookieEnd === <span class="number">-1</span> <span class="comment">// 如果是最后一个,则是末尾</span></span><br><span class="line">		cookieEnd = <span class="built_in">document</span>.cookie.length;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> cookieValue=encodeURLComponent(<span class="built_in">document</span>.cookie.substring(cookieStart+name.length,cookieEnd));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="设置方式-1"><a href="#设置方式-1" class="headerlink" title="设置方式"></a>设置方式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//document.cookie = "name=plinghuang"; // 这样子是不严谨的</span></span><br><span class="line"><span class="built_in">document</span>.cookie=encodeURLComponent(<span class="string">'name'</span>)+<span class="string">'='</span>+encodeComponent(<span class="string">'plinghuang'</span>); <span class="comment">// 经过url编码才放进去是最好的</span></span><br></pre></td></tr></table></figure>
+<p>这个设置cookie并不会将原来的清空掉，只会在后面叠加一个键值对；这里没有设置时间，所以在会话结束就会删除掉，如果是想保存，可以按照Set-Cookie的格式去</p>
+<h3 id="突破浏览器cookie数限制"><a href="#突破浏览器cookie数限制" class="headerlink" title="突破浏览器cookie数限制"></a>突破浏览器cookie数限制</h3><p>采用子cookie的方式，就是在键值对里面嵌套键值对,进行二次解析</p>
+<p><code>data=name=plinghuang&amp;age=22&amp;sex=male</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/07/01/表格处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -784,7 +784,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-01T00:00:00+08:00">
                 2018-07-01
@@ -963,7 +963,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-30T00:00:00+08:00">
                 2018-06-30
@@ -1187,7 +1187,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-19T00:00:00+08:00">
                 2018-06-19
@@ -1346,7 +1346,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-18T00:00:00+08:00">
                 2018-06-18
@@ -1466,7 +1466,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-15T00:00:00+08:00">
                 2018-06-15
@@ -1600,7 +1600,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-13T00:00:00+08:00">
                 2018-06-13
@@ -1712,7 +1712,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/纯函数/">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/图片预加载/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pling Huang">
@@ -1731,7 +1731,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/12/纯函数/" itemprop="url">纯函数</a></h1>
+                <a class="post-title-link" href="/2018/06/12/图片预加载/" itemprop="url">图片预加载</a></h1>
         
 
         <div class="post-meta">
@@ -1741,7 +1741,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
                 2018-06-12
@@ -1783,10 +1783,8 @@
       
         
           
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>纯函数是这样一种函数，即<strong>相同的输入</strong>，永远会得到<strong>相同的输出</strong>，而且没有任何可观察的副作用。</p>
-<p>例子：</p>
-<p>比如 slice 和 splice，这两个函数的作用并无二致——但是注意，它们各自的方式却大不同，但不管怎么说作用还是一样的。我们说 slice 符合纯函数的定义是因为对相同的输入它保证能返回相同的输出。而 splice 却会嚼烂调用它的那个数组，然后再吐出来；这就会产生可观察到的副作用，即这个数组永久地改变了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xs = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 纯的</span></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不纯的</span></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [4,5]</span></span><br><span class="line"></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; []</span></span><br></pre></td></tr></table></figure>
+            <p><a href="https://segmentfault.com/a/1190000000684923" target="_blank" rel="noopener">https://segmentfault.com/a/1190000000684923</a></p>
+
           
         
       
@@ -1872,7 +1870,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1883,7 +1881,7 @@
               <div class="site-state-item site-state-categories">
                 
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 
               </div>
             
@@ -1894,7 +1892,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -1940,7 +1938,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
