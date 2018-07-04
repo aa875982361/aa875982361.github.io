@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -217,6 +217,469 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/图片预加载/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/12/图片预加载/" itemprop="url">图片预加载</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://segmentfault.com/a/1190000000684923" target="_blank" rel="noopener">https://segmentfault.com/a/1190000000684923</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/redux实现原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/12/redux实现原理/" itemprop="url">redux实现原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-为什么用redux"><a href="#1-为什么用redux" class="headerlink" title="1. 为什么用redux"></a>1. 为什么用redux</h3><p>在react中，数据在组件中是单向流动的，数据从一个党项父组件流向子组件（通过props），所以两个非父子组件之间通信就相对麻烦，redux的出现就是为了解决state里面的数据问题。</p>
+<h3 id="2-redux设计理念"><a href="#2-redux设计理念" class="headerlink" title="2. redux设计理念"></a>2. redux设计理念</h3><p>redux 是将整个应用状态存储到一个地方上称为store，里面保存着一个状态树 store tree 如下图：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528802875186.png" alt="store tree"></p>
+<p>组件可以派发（dispatch）行为（action），而不是直接通知其他组件，组件内部通过订阅 store中的状态state来刷新自己的view。</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528802969988.png" alt="redux-flow"></p>
+<h3 id="3-redux-三大原则"><a href="#3-redux-三大原则" class="headerlink" title="3.redux 三大原则"></a>3.redux 三大原则</h3><ol>
+<li>唯一数据源</li>
+<li>保持只读状态</li>
+<li>数据改变通过<a href="https://github.com/aa875982361/plingWeb/blob/master/%E7%BA%AF%E5%87%BD%E6%95%B0.md" target="_blank" rel="noopener">纯函数</a>来执行 </li>
+</ol>
+<h4 id="1唯一数据源"><a href="#1唯一数据源" class="headerlink" title="1唯一数据源"></a>1唯一数据源</h4><blockquote>
+<p>整个应用的state都被存储到一个状态树里面，并且这个状态树只存在唯一的store中</p>
+</blockquote>
+<h4 id="2保持只读状态"><a href="#2保持只读状态" class="headerlink" title="2保持只读状态"></a>2保持只读状态</h4><blockquote>
+<p>state是制度的，唯一改变state的方式是触发action，action就是一个用于描述发生时间的普通对象</p>
+</blockquote>
+<h4 id="3数据改变只能通过纯函数来执行"><a href="#3数据改变只能通过纯函数来执行" class="headerlink" title="3数据改变只能通过纯函数来执行"></a>3数据改变只能通过纯函数来执行</h4><blockquote>
+<p>使用纯函数来执行修改，action是通过reducers函数改变state的，其实是替换掉原来的state，如果忘了将原本的state返回回去的话，很容易造成数据的丢失，甚至会导致程序出错。</p>
+</blockquote>
+<h3 id="4-redux-概念解析"><a href="#4-redux-概念解析" class="headerlink" title="4. redux 概念解析"></a>4. redux 概念解析</h3><p><strong>1. store</strong></p>
+<ul>
+<li>store 就是一个保存数据的地方，你可以把它看成一个数据，整个应用只能有一个store</li>
+<li>redux 提供createStore 这个函数，用来生成store</li>
+</ul>
+<p><strong>2. state</strong></p>
+<p>state 就是store里面存储的数据，store里面可以有多个state，redux规定一个state对应一个view，只要state相同，view就是一样的，反过来也一样，可以通过store.getState()获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">''</span>redux<span class="string">';</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const store = createStore(fn);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const state = store.getState();</span></span><br></pre></td></tr></table></figure>
+<p><strong>3.Action</strong><br>state 的改变会导致view的变化，但是在redux中不能直接操作state也饿就是说不能使用 this.state来操作，用户只能接触到View。在redux中提供一个对象来告诉store需要更新state。action是其中一个对象，type属性是必须的，表示action的名称，其他可以自由设定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> action = &#123;</span><br><span class="line">	type: <span class="string">'app/getInfo'</span>,</span><br><span class="line">	payload: &#123;</span><br><span class="line">		userid： <span class="number">565</span>，</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的<strong>type</strong> 是一个action的名称，就是通过这个action的名称做对应的操作。<br><strong>payload</strong> 这个是参数 我一般用这个名称来携带参数</p>
+<p><strong>4.store.dispatch()</strong><br>store.dispatch() 是view发出action的唯一办法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">store.dispatch(&#123;</span><br><span class="line">	type: <span class="string">'app/getInfo'</span>,</span><br><span class="line">	payload: &#123;</span><br><span class="line">		userId: <span class="number">565</span>,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>store.dispatch接受一个action作为参数，将它发送给store通知store来改变state。</p>
+<p><strong>5. reducer</strong></p>
+<p>store 收到action以后，必须给出一个新的state，这样view才会发生变化。这种state的计算过程就叫<strong>reducer</strong>。<br>reducer是一个纯函数，接受action和当前的state作为参数，返回一个新的state。</p>
+<blockquote>
+<p>注意： reducer必须是一个纯函数，也就是说函数返回结果必须由state 和action决定，而且不产生任何副作用也不能修改state和 action 对象。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reducer = （state， action）=&gt; &#123;</span><br><span class="line">	<span class="keyword">switch</span>(action.type)&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">'app/getInfo'</span>:</span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">						...state, <span class="comment">// 注意这里如果不返回原来的话 会将原来的对象替换掉，丢失数据</span></span><br><span class="line">						...action.payload,</span><br><span class="line">					&#125; </span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">return</span> state; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="redux源码分析"><a href="#redux源码分析" class="headerlink" title="redux源码分析"></a>redux源码分析</h3><h4 id="createStore-源码分析"><a href="#createStore-源码分析" class="headerlink" title="createStore 源码分析"></a>createStore 源码分析</h4><p>createStore 方法用来注册一个store，返回值为包含若干方法的对象，方法具体如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> ActionTypes = &#123;</span><br><span class="line">	INIF: <span class="string">'@@redux/INIF'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">createStore</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getState</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">subscribe</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">replaceReducer</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    dispatch(&#123; <span class="attr">type</span>: ActionTypes.INIT &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        dispatch,</span><br><span class="line">        subscribe,</span><br><span class="line">        getState,</span><br><span class="line">        replaceReducer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面逐个代码段分析功能<br>createStore完整函数声明如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">createStore(</span><br><span class="line">    reducer:<span class="function">(<span class="params">state, action</span>)=&gt;</span>nextState, </span><br><span class="line">    preloadedState:any, </span><br><span class="line">    enhancer:<span class="function">(<span class="params">store</span>)=&gt;</span>nextStore</span><br><span class="line">)=&gt;&#123;</span><br><span class="line">    getState:<span class="function"><span class="params">()</span>=&gt;</span>any,</span><br><span class="line">    subscribe:<span class="function">(<span class="params">listener:(</span>)=&gt;</span>any)=&gt;any,</span><br><span class="line">    dispatch:<span class="function">(<span class="params">action:&#123;type:<span class="string">""</span>&#125;</span>)=&gt;</span>&#123;<span class="attr">type</span>:<span class="string">""</span>&#125;,</span><br><span class="line">    replaceReducer:<span class="function">(<span class="params">nextReducer:(state, action</span>)=&gt;</span>nextState)=&gt;<span class="keyword">void</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出整个函数是一个闭包结构。参数有三个，返回值公开出若干方法</p>
+<ul>
+<li>dispatch：分发action</li>
+<li>subscribe：注册listener，监听state变化</li>
+<li>getState：读取store tree中所有state</li>
+<li>replaceReucer：替换reducer，改变state更新逻辑</li>
+</ul>
+<p>当然，createStore内部处理了其重载形式，即：可以不传preloadedState</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">createStore(</span><br><span class="line">    reducer:<span class="function">(<span class="params">state, action</span>)=&gt;</span>nextState, </span><br><span class="line">    enhancer:<span class="function">(<span class="params">store</span>)=&gt;</span>nextStore</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li>reducer[rɪ’djuːsə]： reducer必须是一个function类型，此方法根据action.type更新state</li>
+<li>preloadedState[priː’ləʊdɪd]： store tree初始值</li>
+<li>enhancer [ɪn’hænsɚ]： enhancer通过添加middleware，增强store功能</li>
+</ul>
+<blockquote>
+<p>store enhancer 可以翻译成store的增强器，顾名思义，就是增强store的功能，一个store enhancer ，实际上是一个告诫函数，它的参数是创建store的函数（createStore）返回值是一个可以创建更加强大的store的函数（enhanced store creator），这个和react 中 高阶组件的概念很像</p>
+</blockquote>
+<blockquote>
+<p><strong>前置操作</strong></p>
+</blockquote>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528856185968.png" alt="参数检查"></p>
+<p>进入 ==createStore== 首先执行如下操作：</p>
+<ul>
+<li>[40 - 43] 用来支持两种参数列表形式 ==createStore(reducer，preloadedState,  enhancer)==</li>
+<li>[45 - 48][53 - 55] 校验reducer 和 enchancer 的类型 必须为 function</li>
+</ul>
+<p>重点分析 50行：</p>
+<p><code>return enhancer(createStore)(reducer, preloadedState)</code></p>
+<p>这个执行了外部传入的enhancer，接受旧的 createStore， 返回一个新的 createStore 并返回一个新的createStore 并执行，此过程形成一次递归；</p>
+<blockquote>
+<p>为什么要这样做呢？ 只是在createStore之前 可以做一些操作，还能做其他么？ 这点有点不懂 ？？<br>20分钟后~ 看了一个实例enhancer 之后 知道了为什么，例如：可以将原本的 dispatch函数替换掉，增加自己的自定义功能</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// autoLogger.js</span></span><br><span class="line"><span class="comment">// store enhancer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">autoLogger</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">createStore</span> =&gt;</span> (reducer, initialState, enhancer) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> store = createStore(reducer, initialState, enhancer)</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span>(<span class="params">action</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`dispatch an action: <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(action)&#125;</span>`</span>);</span><br><span class="line">      <span class="keyword">const</span> res = store.dispatch(action);</span><br><span class="line">      <span class="keyword">const</span> newState = store.getState();</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`current state: <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(newState)&#125;</span>`</span>);</span><br><span class="line">      <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;...store, dispatch&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>// 参考：<a href="https://juejin.im/post/5a4874096fb9a044fa1a34c7" target="_blank" rel="noopener">浅析Redux 的 store enhancer</a></p>
+<blockquote>
+<p>另外，一开始感觉有点乱，被上面的 支持两种参数列表形式 坑了，我以为第47行的 createStore （reducer, preloadedState）会触发 40-43 的参数检查，就感觉有点乱，其实并不会触发，因为 preloadedStore 并不是一个function。</p>
+</blockquote>
+<p>所以递归到 45 的时候，因为enhancer 是undefined， 所以就不会继续递归下去。</p>
+<blockquote>
+<p><strong>闭包变量</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ref2; <span class="comment">// 这个暂时不知道是什么</span></span><br><span class="line"><span class="keyword">var</span> currentReducer = reducer; <span class="comment">//当前的reducer 是一个function </span></span><br><span class="line"><span class="keyword">var</span> currentState = preloadedState; <span class="comment">// 当前的 state</span></span><br><span class="line"><span class="keyword">var</span> currentListeners = [];<span class="comment">// 当前的监听事件</span></span><br><span class="line"><span class="keyword">var</span> nextListeners = currentListeners;<span class="comment">// 下一次的监听事件</span></span><br><span class="line"><span class="keyword">var</span> isDispatching = <span class="literal">false</span>;<span class="comment">// 是否正在推送(dispatch) action</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>getState()</strong></p>
+</blockquote>
+<p>==getState==方法不比较简单 直接返回 闭包内的 currentState 就好</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Reads the state tree managed by the store.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @returns &#123;any&#125; The current state tree of your application.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getState</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> currentState;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>subscribe()</p>
+</blockquote>
+<p>Redux 采用了观察者模式，store内部维护listenter 数组 通过store.subscrib 注册返回unsubscribe 方法用于注销当前的listenter；当store tree更新之后，一次执行数组中的listenter<br>具体代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">// 这个函数不太会 判断如果下一个监听事件 和当前监听事件 相同 就用slice copy下一个 这里不知道是不是为了 </span><br><span class="line"> function ensureCanMutateNextListeners() &#123;</span><br><span class="line">   if (nextListeners === currentListeners) &#123;</span><br><span class="line"> // 这里是浅拷贝，如果是引用对象类型会</span><br><span class="line">     nextListeners = currentListeners.slice();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> /**</span><br><span class="line">  * Adds a change listener. It will be called any time an action is dispatched,</span><br><span class="line">  * and some part of the state tree may potentially have changed. You may then</span><br><span class="line">  * call `getState()` to read the current state tree inside the callback.</span><br><span class="line">  *</span><br><span class="line">  * You may call `dispatch()` from a change listener, with the following</span><br><span class="line">  * caveats:</span><br><span class="line">  *</span><br><span class="line">  * 1. The subscriptions are snapshotted just before every `dispatch()` call.</span><br><span class="line">  * If you subscribe or unsubscribe while the listeners are being invoked, this</span><br><span class="line">  * will not have any effect on the `dispatch()` that is currently in progress.</span><br><span class="line">  * However, the next `dispatch()` call, whether nested or not, will use a more</span><br><span class="line">  * recent snapshot of the subscription list.</span><br><span class="line">  *</span><br><span class="line">  * 2. The listener should not expect to see all state changes, as the state</span><br><span class="line">  * might have been updated multiple times during a nested `dispatch()` before</span><br><span class="line">  * the listener is called. It is, however, guaranteed that all subscribers</span><br><span class="line">  * registered before the `dispatch()` started will be called with the latest</span><br><span class="line">  * state by the time it exits.</span><br><span class="line">  *</span><br><span class="line">  * @param &#123;Function&#125; listener A callback to be invoked on every dispatch.</span><br><span class="line">  * @returns &#123;Function&#125; A function to remove this change listener.</span><br><span class="line">  */</span><br><span class="line"> function subscribe(listener) &#123;</span><br><span class="line">   if (typeof listener !== &apos;function&apos;) &#123;</span><br><span class="line">     throw new Error(&apos;Expected listener to be a function.&apos;);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   var isSubscribed = true;</span><br><span class="line"></span><br><span class="line">   ensureCanMutateNextListeners();</span><br><span class="line">   nextListeners.push(listener);</span><br><span class="line"></span><br><span class="line">   return function unsubscribe() &#123;</span><br><span class="line">     if (!isSubscribed) &#123;</span><br><span class="line">       return;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     isSubscribed = false;</span><br><span class="line"></span><br><span class="line">     ensureCanMutateNextListeners();</span><br><span class="line">     var index = nextListeners.indexOf(listener);</span><br><span class="line">     nextListeners.splice(index, 1);</span><br><span class="line">   &#125;;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>参考链接：</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/e984206553c2" target="_blank" rel="noopener">Redux实现原理解析及应用</a></li>
+<li><a href="https://www.cnblogs.com/hhhyaaon/p/5860159.html" target="_blank" rel="noopener">Redux原理（一）：Store实现分析</a></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// createStore 源码</span></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line">exports.__esModule = <span class="literal">true</span>;</span><br><span class="line">exports.ActionTypes = <span class="literal">undefined</span>;</span><br><span class="line">exports[<span class="string">'default'</span>] = createStore;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _isPlainObject = <span class="built_in">require</span>(<span class="string">'lodash/isPlainObject'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _isPlainObject2 = _interopRequireDefault(_isPlainObject);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _symbolObservable = <span class="built_in">require</span>(<span class="string">'symbol-observable'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> _symbolObservable2 = _interopRequireDefault(_symbolObservable);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_interopRequireDefault</span>(<span class="params">obj</span>) </span>&#123; <span class="keyword">return</span> obj &amp;&amp; obj.__esModule ? obj : &#123; <span class="string">'default'</span>: obj &#125;; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * These are private action types reserved by Redux.</span></span><br><span class="line"><span class="comment"> * For any unknown actions, you must return the current state.</span></span><br><span class="line"><span class="comment"> * If the current state is undefined, you must return the initial state.</span></span><br><span class="line"><span class="comment"> * Do not reference these action types directly in your code.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> ActionTypes = exports.ActionTypes = &#123;</span><br><span class="line">  INIT: <span class="string">'@@redux/INIT'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Creates a Redux store that holds the state tree.</span></span><br><span class="line"><span class="comment">   * The only way to change the data in the store is to call `dispatch()` on it.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * There should only be a single store in your app. To specify how different</span></span><br><span class="line"><span class="comment">   * parts of the state tree respond to actions, you may combine several reducers</span></span><br><span class="line"><span class="comment">   * into a single reducer function by using `combineReducers`.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; reducer A function that returns the next state tree, given</span></span><br><span class="line"><span class="comment">   * the current state tree and the action to handle.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * @param &#123;any&#125; [preloadedState] The initial state. You may optionally specify it</span></span><br><span class="line"><span class="comment">   * to hydrate the state from the server in universal apps, or to restore a</span></span><br><span class="line"><span class="comment">   * previously serialized user session.</span></span><br><span class="line"><span class="comment">   * If you use `combineReducers` to produce the root reducer function, this must be</span></span><br><span class="line"><span class="comment">   * an object with the same shape as `combineReducers` keys.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; [enhancer] The store enhancer. You may optionally specify it</span></span><br><span class="line"><span class="comment">   * to enhance the store with third-party capabilities such as middleware,</span></span><br><span class="line"><span class="comment">   * time travel, persistence, etc. The only store enhancer that ships with Redux</span></span><br><span class="line"><span class="comment">   * is `applyMiddleware()`.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * @returns &#123;Store&#125; A Redux store that lets you read the state, dispatch actions</span></span><br><span class="line"><span class="comment">   * and subscribe to changes.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">&#125;;<span class="function"><span class="keyword">function</span> <span class="title">createStore</span>(<span class="params">reducer, preloadedState, enhancer</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _ref2;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> preloadedState === <span class="string">'function'</span> &amp;&amp; <span class="keyword">typeof</span> enhancer === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">    enhancer = preloadedState;</span><br><span class="line">    preloadedState = <span class="literal">undefined</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> enhancer !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> enhancer !== <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Expected the enhancer to be a function.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> enhancer(createStore)(reducer, preloadedState);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> reducer !== <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Expected the reducer to be a function.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> currentReducer = reducer;</span><br><span class="line">  <span class="keyword">var</span> currentState = preloadedState;</span><br><span class="line">  <span class="keyword">var</span> currentListeners = [];</span><br><span class="line">  <span class="keyword">var</span> nextListeners = currentListeners;</span><br><span class="line">  <span class="keyword">var</span> isDispatching = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">ensureCanMutateNextListeners</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nextListeners === currentListeners) &#123;</span><br><span class="line">      nextListeners = currentListeners.slice();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Reads the state tree managed by the store.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * @returns &#123;any&#125; The current state tree of your application.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getState</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> currentState;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Adds a change listener. It will be called any time an action is dispatched,</span></span><br><span class="line"><span class="comment">   * and some part of the state tree may potentially have changed. You may then</span></span><br><span class="line"><span class="comment">   * call `getState()` to read the current state tree inside the callback.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * You may call `dispatch()` from a change listener, with the following</span></span><br><span class="line"><span class="comment">   * caveats:</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * 1. The subscriptions are snapshotted just before every `dispatch()` call.</span></span><br><span class="line"><span class="comment">   * If you subscribe or unsubscribe while the listeners are being invoked, this</span></span><br><span class="line"><span class="comment">   * will not have any effect on the `dispatch()` that is currently in progress.</span></span><br><span class="line"><span class="comment">   * However, the next `dispatch()` call, whether nested or not, will use a more</span></span><br><span class="line"><span class="comment">   * recent snapshot of the subscription list.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * 2. The listener should not expect to see all state changes, as the state</span></span><br><span class="line"><span class="comment">   * might have been updated multiple times during a nested `dispatch()` before</span></span><br><span class="line"><span class="comment">   * the listener is called. It is, however, guaranteed that all subscribers</span></span><br><span class="line"><span class="comment">   * registered before the `dispatch()` started will be called with the latest</span></span><br><span class="line"><span class="comment">   * state by the time it exits.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; listener A callback to be invoked on every dispatch.</span></span><br><span class="line"><span class="comment">   * @returns &#123;Function&#125; A function to remove this change listener.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">subscribe</span>(<span class="params">listener</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> listener !== <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Expected listener to be a function.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> isSubscribed = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    ensureCanMutateNextListeners();</span><br><span class="line">    nextListeners.push(listener);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">unsubscribe</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (!isSubscribed) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      isSubscribed = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">      ensureCanMutateNextListeners();</span><br><span class="line">      <span class="keyword">var</span> index = nextListeners.indexOf(listener);</span><br><span class="line">      nextListeners.splice(index, <span class="number">1</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Dispatches an action. It is the only way to trigger a state change.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * The `reducer` function, used to create the store, will be called with the</span></span><br><span class="line"><span class="comment">   * current state tree and the given `action`. Its return value will</span></span><br><span class="line"><span class="comment">   * be considered the **next** state of the tree, and the change listeners</span></span><br><span class="line"><span class="comment">   * will be notified.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * The base implementation only supports plain object actions. If you want to</span></span><br><span class="line"><span class="comment">   * dispatch a Promise, an Observable, a thunk, or something else, you need to</span></span><br><span class="line"><span class="comment">   * wrap your store creating function into the corresponding middleware. For</span></span><br><span class="line"><span class="comment">   * example, see the documentation for the `redux-thunk` package. Even the</span></span><br><span class="line"><span class="comment">   * middleware will eventually dispatch plain object actions using this method.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * @param &#123;Object&#125; action A plain object representing “what changed”. It is</span></span><br><span class="line"><span class="comment">   * a good idea to keep actions serializable so you can record and replay user</span></span><br><span class="line"><span class="comment">   * sessions, or use the time travelling `redux-devtools`. An action must have</span></span><br><span class="line"><span class="comment">   * a `type` property which may not be `undefined`. It is a good idea to use</span></span><br><span class="line"><span class="comment">   * string constants for action types.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * @returns &#123;Object&#125; For convenience, the same action object you dispatched.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * Note that, if you use a custom middleware, it may wrap `dispatch()` to</span></span><br><span class="line"><span class="comment">   * return something else (for example, a Promise you can await).</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span>(<span class="params">action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!(<span class="number">0</span>, _isPlainObject2[<span class="string">'default'</span>])(action)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Actions must be plain objects. '</span> + <span class="string">'Use custom middleware for async actions.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action.type === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Actions may not have an undefined "type" property. '</span> + <span class="string">'Have you misspelled a constant?'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isDispatching) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Reducers may not dispatch actions.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      isDispatching = <span class="literal">true</span>;</span><br><span class="line">      currentState = currentReducer(currentState, action);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      isDispatching = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> listeners = currentListeners = nextListeners;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; listeners.length; i++) &#123;</span><br><span class="line">      <span class="keyword">var</span> listener = listeners[i];</span><br><span class="line">      listener();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> action;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Replaces the reducer currently used by the store to calculate the state.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * You might need this if your app implements code splitting and you want to</span></span><br><span class="line"><span class="comment">   * load some of the reducers dynamically. You might also need this if you</span></span><br><span class="line"><span class="comment">   * implement a hot reloading mechanism for Redux.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; nextReducer The reducer for the store to use instead.</span></span><br><span class="line"><span class="comment">   * @returns &#123;void&#125;</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">replaceReducer</span>(<span class="params">nextReducer</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> nextReducer !== <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Expected the nextReducer to be a function.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    currentReducer = nextReducer;</span><br><span class="line">    dispatch(&#123; <span class="attr">type</span>: ActionTypes.INIT &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Interoperability point for observable/reactive libraries.</span></span><br><span class="line"><span class="comment">   * @returns &#123;observable&#125; A minimal observable of state changes.</span></span><br><span class="line"><span class="comment">   * For more information, see the observable proposal:</span></span><br><span class="line"><span class="comment">   * https://github.com/tc39/proposal-observable</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">observable</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _ref;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> outerSubscribe = subscribe;</span><br><span class="line">    <span class="keyword">return</span> _ref = &#123;</span><br><span class="line">      <span class="comment">/**</span></span><br><span class="line"><span class="comment">       * The minimal observable subscription method.</span></span><br><span class="line"><span class="comment">       * @param &#123;Object&#125; observer Any object that can be used as an observer.</span></span><br><span class="line"><span class="comment">       * The observer object should have a `next` method.</span></span><br><span class="line"><span class="comment">       * @returns &#123;subscription&#125; An object with an `unsubscribe` method that can</span></span><br><span class="line"><span class="comment">       * be used to unsubscribe the observable from the store, and prevent further</span></span><br><span class="line"><span class="comment">       * emission of values from the observable.</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">      subscribe: <span class="function"><span class="keyword">function</span> <span class="title">subscribe</span>(<span class="params">observer</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> observer !== <span class="string">'object'</span>) &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Expected the observer to be an object.'</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">observeState</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (observer.next) &#123;</span><br><span class="line">            observer.next(getState());</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        observeState();</span><br><span class="line">        <span class="keyword">var</span> unsubscribe = outerSubscribe(observeState);</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">unsubscribe</span>: unsubscribe &#125;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, _ref[_symbolObservable2[<span class="string">'default'</span>]] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;, _ref;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// When a store is created, an "INIT" action is dispatched so that every</span></span><br><span class="line">  <span class="comment">// reducer returns their initial state. This effectively populates</span></span><br><span class="line">  <span class="comment">// the initial state tree.</span></span><br><span class="line">  dispatch(&#123; <span class="attr">type</span>: ActionTypes.INIT &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> _ref2 = &#123;</span><br><span class="line">    dispatch: dispatch,</span><br><span class="line">    subscribe: subscribe,</span><br><span class="line">    getState: getState,</span><br><span class="line">    replaceReducer: replaceReducer</span><br><span class="line">  &#125;, _ref2[_symbolObservable2[<span class="string">'default'</span>]] = observable, _ref2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/随机数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/12/随机数/" itemprop="url">随机数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandom</span>(<span class="params">min,max</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>( <span class="built_in">isNaN</span>( <span class="built_in">parseInt</span>(min) ) || <span class="built_in">isNaN</span>( <span class="built_in">parseInt</span>(max) ) )&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">'输入的值不能转化为数字'</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	min = <span class="built_in">parseInt</span>(min);</span><br><span class="line">	max = <span class="built_in">parseInt</span>(max);</span><br><span class="line">	<span class="keyword">if</span>(min&gt;max)&#123;</span><br><span class="line">		<span class="keyword">let</span> temp = min;</span><br><span class="line">		min = max;</span><br><span class="line">		max = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * ( max - min + <span class="number">1</span>)) + min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandom</span>(<span class="params">...values</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 对多元素进行 处理</span></span><br><span class="line">	<span class="keyword">let</span> exitNaN = values.some(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">isNaN</span>(value))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">if</span>( exitNaN ) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'存在不能转化为数字的值'</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">let</span> tempValueList = values.map(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">parseInt</span>(value,<span class="number">10</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(tempValueList);</span><br><span class="line">	<span class="comment">//取最小,最大值</span></span><br><span class="line">	<span class="keyword">let</span> min = <span class="built_in">Math</span>.min(...tempValueList);</span><br><span class="line">	<span class="keyword">let</span> max = <span class="built_in">Math</span>.max(...tempValueList);</span><br><span class="line">	<span class="keyword">if</span>(min&gt;max)&#123;</span><br><span class="line">		<span class="keyword">let</span> temp = min;</span><br><span class="line">		min = max;</span><br><span class="line">		max = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * ( max - min + <span class="number">1</span>)) + min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>检测数组：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528780129930.png" alt="slice检测数组"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -260,7 +723,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
                 2018-06-03
@@ -362,6 +825,139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/03/复习计划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/03/复习计划/" itemprop="url">复习计划</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
+                2018-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>代码优化</li>
+<li>性能优化</li>
+<li>自动化测试</li>
+<li>渗透测试</li>
+<li>自动化构建</li>
+<li>参考别人的项目</li>
+<li>日志系统</li>
+<li>点击穿透</li>
+<li>this</li>
+<li>redux 和 Array.reduce</li>
+<li>用webhook 触发后端的构建 自己搭建一个小的构建</li>
+<li>deno 源码学习</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/03/jenkins + gitlab 自动化构建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -391,7 +987,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
                 2018-06-03
@@ -577,7 +1173,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-27T00:00:00+08:00">
                 2018-05-27
@@ -718,7 +1314,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-27T00:00:00+08:00">
                 2018-05-27
@@ -897,7 +1493,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T00:00:00+08:00">
                 2018-05-23
@@ -1040,7 +1636,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T00:00:00+08:00">
                 2018-05-19
@@ -1083,601 +1679,6 @@
         
           
             <p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1526698382487.jpg" alt="overflow:hidden"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/19/MarginTop 为何影响父元素的 MarginTop/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/19/MarginTop 为何影响父元素的 MarginTop/" itemprop="url">MarginTop 为何影响父元素的 MarginTop</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T00:00:00+08:00">
-                2018-05-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在做弹窗的时候发现一个有趣的问题：<br>子元素用margin-top 将父元素顶下来了 ，并没有起到理想的效果，子元素相对于父元素顶部 XXXXpx<br>如下图：</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1526697876549.jpg" alt="margin-top问题"></p>
-<p>红色边框 父元素 css：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">relative</span>;</span><br><span class="line"><span class="selector-tag">width</span>: 5<span class="selector-class">.5rem</span>;</span><br><span class="line"><span class="selector-tag">height</span>: 6<span class="selector-class">.8rem</span>;</span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">white</span>;</span><br><span class="line"><span class="selector-tag">border-radius</span>: 0<span class="selector-class">.12rem</span>;</span><br></pre></td></tr></table></figure>
-<p>绿色边框 第一个子元素 css ：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">margin</span>: 0 <span class="selector-tag">auto</span>;</span><br><span class="line">   <span class="selector-tag">margin-top</span>: 0<span class="selector-class">.47rem</span>;</span><br><span class="line">   <span class="selector-tag">margin-bottom</span>: 0<span class="selector-class">.23rem</span>;</span><br><span class="line">   <span class="selector-tag">font-family</span>: <span class="selector-tag">PingFang-SC-Medium</span>;</span><br><span class="line">   <span class="selector-tag">font-size</span>: 0<span class="selector-class">.3rem</span>;</span><br><span class="line">   <span class="selector-tag">font-weight</span>: <span class="selector-tag">normal</span>;</span><br><span class="line">   <span class="selector-tag">font-stretch</span>: <span class="selector-tag">normal</span>;</span><br><span class="line">   <span class="selector-tag">line-height</span>: 0<span class="selector-class">.46rem</span>;</span><br><span class="line">   <span class="selector-tag">letter-spacing</span>: 0<span class="selector-tag">rem</span>;</span><br><span class="line">   <span class="selector-tag">color</span>: <span class="selector-id">#131313</span>;</span><br><span class="line">   <span class="selector-tag">text-align</span>: <span class="selector-tag">center</span>;</span><br></pre></td></tr></table></figure>
-<p>父元素并没有设置margin-top<br>但是 却又margin-top的效果<br>上网找了一下资料发现 这个 居然是 <strong>==CSS2.1盒模型规范==</strong></p>
-<p>CSS2.1的盒模型中规定的内容——<a href="http://www.w3.org/TR/CSS21/box.html#collapsing-margins" target="_blank" rel="noopener">Collapsing margins</a>：</p>
-<blockquote>
-<p>In this specification, the expression collapsing margins means that adjoining margins (no non-empty content, padding or border areas or clearance separate them) of two or more boxes (which may be next to one another or nested) combine to form a single margin. 所有毗邻的两个或更多盒元素的margin将会合并为一个margin共享之。毗邻的定义为：同级或者嵌套的盒元素，并且它们之间没有非空内容、Padding或Border分隔。</p>
-</blockquote>
-<h3 id="这就是原因了。“嵌套”的盒元素也算“毗邻”，也会-Collapsing-Margins。"><a href="#这就是原因了。“嵌套”的盒元素也算“毗邻”，也会-Collapsing-Margins。" class="headerlink" title="这就是原因了。“嵌套”的盒元素也算“毗邻”，也会 Collapsing Margins。"></a>这就是原因了。“嵌套”的盒元素也算“毗邻”，也会 Collapsing Margins。</h3><p>这个问题的避免方法很多，只要破坏它出现的条件就行。给 Outer Div 加上 padding/border，或者给 Outer Div / Inner Div 设置为 float/position:absolute(CSS2.1规定浮动元素和绝对定位元素不参与Margin折叠)。 　　更多信息，关于不同值的margin折叠后表现的计算方法等等，可自行查阅W3C的CSS2.1规范：<a href="http://www.w3.org/TR/CSS21/box.html#collapsing-margins" target="_blank" rel="noopener">Collapsing margins</a>。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/14/数字取整/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/14/数字取整/" itemprop="url">数字取整</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-14T00:00:00+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一、直接取整</p>
-<ol>
-<li>==parseInt(number)==<br>这大概是取整最常用的方法了，因为parseInt()不是只能处理Number类型，还可以处理字符串类型的。<br>parseInt()处理在处理字符串时，会从第一个不是空格的字符开始处理。如果第一个不是数字字符或者负号，则返回NaN；如果是数字字符，则会一直处理到不是数字字符为止。<br>注意，parseInt()可以识别各种整数格式（十进制，八进制和十六进制）。</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> </span><br><span class="line">    num1 = <span class="built_in">parseInt</span>(<span class="string">"2015nov"</span>),  <span class="comment">//2015</span></span><br><span class="line">    num2 = <span class="built_in">parseInt</span>(<span class="string">""</span>),  <span class="comment">//NaN</span></span><br><span class="line">    num3 = <span class="built_in">parseInt</span>(<span class="string">"0xA"</span>),  <span class="comment">//10(十六进制)</span></span><br><span class="line">    num4 = <span class="built_in">parseInt</span>(<span class="number">20.15</span>),  <span class="comment">//20</span></span><br><span class="line">    num5 = <span class="built_in">parseInt</span>(<span class="number">-20.15</span>),  <span class="comment">//-20</span></span><br><span class="line">    num6 = <span class="built_in">parseInt</span>(<span class="string">"070"</span>);  <span class="comment">//56(八进制数)</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>~~number<br>所有取整之中最快的，位运算，一如既往的快。</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = ~~<span class="number">20.15</span>,  <span class="comment">//20</span></span><br><span class="line">    num2 = ~~(<span class="number">-20.15</span>);  <span class="comment">//-20</span></span><br></pre></td></tr></table></figure>
-<p>3.number^0</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">20.15</span>^<span class="number">0</span>,  <span class="comment">//20</span></span><br><span class="line">    num2 = (<span class="number">-20.15</span>)^<span class="number">0</span>;  <span class="comment">//-20</span></span><br></pre></td></tr></table></figure>
-<p>4.number&lt;&lt;0</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">20.15</span> &lt;&lt; <span class="number">0</span>,  <span class="comment">//20</span></span><br><span class="line">    num2 = (<span class="number">-20.15</span>) &lt;&lt; <span class="number">0</span>,  <span class="comment">//-20</span></span><br></pre></td></tr></table></figure>
-<p>二、计算取整</p>
-<p>1.四舍五入Math.round(number)<br>Math.round()是Math对象中的一个函数，将数值四舍五入为最接近的整数。现实中很少有用到负数的四舍五入的，但是我们也可以看几个负数的例子。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="built_in">Math</span>.round(<span class="number">20.1</span>),  <span class="comment">//20</span></span><br><span class="line">    num2 = <span class="built_in">Math</span>.round(<span class="number">20.5</span>),  <span class="comment">//21</span></span><br><span class="line">    num3 = <span class="built_in">Math</span>.round(<span class="number">20.9</span>),  <span class="comment">//21</span></span><br><span class="line">    num4 = <span class="built_in">Math</span>.round(<span class="number">-20.1</span>),  <span class="comment">//-20</span></span><br><span class="line">    num5 = <span class="built_in">Math</span>.round(<span class="number">-20.5</span>),  <span class="comment">//-20 注意这里是-20而不是-21</span></span><br><span class="line">    num6 = <span class="built_in">Math</span>.round(<span class="number">-20.9</span>);  <span class="comment">//-21</span></span><br></pre></td></tr></table></figure>
-<p>2.向上取整Math.ceil(number)<br>Math.ceil()取向上最接近的整数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="built_in">Math</span>.ceil(<span class="number">20.1</span>),  <span class="comment">//21</span></span><br><span class="line">    num2 = <span class="built_in">Math</span>.ceil(<span class="number">20.5</span>),  <span class="comment">//21</span></span><br><span class="line">    num3 = <span class="built_in">Math</span>.ceil(<span class="number">20.9</span>),  <span class="comment">//21</span></span><br><span class="line">    num4 = <span class="built_in">Math</span>.ceil(<span class="number">-20.1</span>),  <span class="comment">//-20</span></span><br><span class="line">    num5 = <span class="built_in">Math</span>.ceil(<span class="number">-20.5</span>),  <span class="comment">//-20</span></span><br><span class="line">    num6 = <span class="built_in">Math</span>.ceil(<span class="number">-20.9</span>);  <span class="comment">//-20</span></span><br></pre></td></tr></table></figure>
-<p>3.向下取整Math.floor(number)<br>Math.floor()`取向下最接近的整数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var num1 = Math.floor(20.1),  //20</span><br><span class="line">    num2 = Math.floor(20.5),  //20</span><br><span class="line">    num3 = Math.floor(20.9),  //20</span><br><span class="line">    num4 = Math.floor(-20.1),  //-21</span><br><span class="line">    num5 = Math.floor(-20.5),  //-21</span><br><span class="line">    num6 = Math.floor(-20.9),  //-21</span><br></pre></td></tr></table></figure>
-<p>参考链接：<a href="https://www.jianshu.com/p/a3202bc3f7a4" target="_blank" rel="noopener">JS中数字取整</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/07/react router 嵌套路由/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/07/react router 嵌套路由/" itemprop="url">react router 嵌套路由</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T00:00:00+08:00">
-                2018-05-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>刚看了一下资料，发现react router 的路由嵌套，在react router V4 的版本下，使用还是比较简单的，我在这就不详细叙述了，用代码说话</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">RouterConfig</span>(<span class="params">&#123; history, app &#125;</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// const routerData = getRouterData(app);</span></span><br><span class="line">    <span class="comment">// const UserLayout = routerData['/user'].component;</span></span><br><span class="line">    <span class="keyword">let</span> male=<span class="string">"btn"</span>;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;LocaleProvider locale=&#123;enUS&#125;&gt;</span><br><span class="line">            &lt;ConnectedRouter history=&#123;history&#125;&gt;</span><br><span class="line">                &lt;div  style=&#123;&#123;<span class="attr">width</span>: <span class="string">'100%'</span>,<span class="attr">height</span>: <span class="string">'100vh'</span>&#125;&#125;&gt;</span><br><span class="line">                  &lt;h1 className=&#123;<span class="string">` <span class="subst">$&#123;styles[<span class="string">`my<span class="subst">$&#123;male&#125;</span>`</span>]&#125;</span>`</span>&#125;&gt;我是爸爸&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                  &lt;div style=&#123;&#123; width: 300, height: 500, background: "red"&#125;&#125;&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;Switch&gt;</span></span><br><span class="line"><span class="regexp">                        &lt;Route path="/</span><span class="string">" exact  component=&#123;HomePage&#125; /&gt;</span></span><br><span class="line"><span class="string">                        &lt;Route path="</span>/children<span class="string">"  component=&#123;ChlidrenPage&#125; /&gt;</span></span><br><span class="line"><span class="string">                    &lt;/Switch&gt;</span></span><br><span class="line"><span class="string">                  &lt;/div&gt;</span></span><br><span class="line"><span class="string">                  &lt;h1&gt;我是爸爸&lt;/h1&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/ConnectedRouter&gt;</span></span><br><span class="line"><span class="string">        &lt;/LocaleProvider&gt;</span></span><br><span class="line"><span class="string">    );</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>核心代码： </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Switch&gt;</span><br><span class="line">  &lt;Route path=<span class="string">"/"</span> exact  component=&#123;HomePage&#125; /&gt;</span><br><span class="line">  &lt;Route path=<span class="string">"/children"</span>  component=&#123;ChlidrenPage&#125; /&gt;</span><br><span class="line">&lt;<span class="regexp">/Switch&gt;</span></span><br></pre></td></tr></table></figure>
-<p>其中switch 就像我们平时用的 switch 一样，但是这个是用/做了分割匹配的， 举几个例子：</p>
-<ul>
-<li>/aaa : 没有匹配 对应的子组件不显示</li>
-<li>/: 匹配到 显示homePage </li>
-<li>/chlidren:  匹配到 显示chlidrenPage  </li>
-<li>/chlidren/dddd:  匹配到 显示chlidrenPage  </li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/06/Web App Hybrid App和 Native App的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/06/Web App Hybrid App和 Native App的区别/" itemprop="url">Web App Hybrid App和 Native App的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
-                2018-05-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>目前主流应用程序大体分为三类：Web App、Hybrid App、 Native App。</p>
-<h3 id="一、Web-App、Hybrid-App、Native-App-纵向对比"><a href="#一、Web-App、Hybrid-App、Native-App-纵向对比" class="headerlink" title="一、Web App、Hybrid App、Native App 纵向对比"></a>一、Web App、Hybrid App、Native App 纵向对比</h3><p>首先，我们来看看什么是 Web App、Hybrid App、 Native App。</p>
-<h4 id="1-Web-APP"><a href="#1-Web-APP" class="headerlink" title="1. Web APP"></a>1. Web APP</h4><p>Web App 指采用Html5语言写出的App，不需要下载安装。类似于现在所说的轻应用。生存在浏览器中的应用，基本上可以说是触屏版的网页应用。</p>
-<p>优点</p>
-<p>（1）开发成本低，<br>（2）更新快，<br>（3）更新无需通知用户，不需要手动升级，<br>（4）能够跨多个平台和终端。</p>
-<p>缺点：</p>
-<p>（1）临时性的入口<br>（2）无法获取系统级别的通知，提醒，动效等等<br>（3）用户留存率低<br>（4）设计受限制诸多<br>（5）体验较差</p>
-<h4 id="2-Hybrid-App"><a href="#2-Hybrid-App" class="headerlink" title="2. Hybrid App"></a>2. Hybrid App</h4><p>Hybrid APP指的是半原生半Web的混合类App。需要下载安装，看上去类似Native App，但只有很少的UI Web View，访问的内容是 Web 。</p>
-<p>例如Store里的新闻类APP，视频类APP普遍采取的是Native的框架，Web的内容。</p>
-<p>Hybrid App 极力去打造类似于Native App 的体验，但仍受限于技术，网速，等等很多因素。尚不完美。</p>
-<h4 id="3-Native-App"><a href="#3-Native-App" class="headerlink" title="3. Native App"></a>3. Native App</h4><p>Native APP 指的是原生程序，一般依托于操作系统，有很强的交互，是一个完整的App，可拓展性强。需要用户下载安装使用。</p>
-<p>优点：</p>
-<p>（1）打造完美的用户体验<br>（2）性能稳定<br>（3）操作速度快，上手流畅<br>（4）访问本地资源（通讯录，相册）<br>（5）设计出色的动效，转场，<br>（6）拥有系统级别的贴心通知或提醒<br>（7）用户留存率高</p>
-<p>缺点：</p>
-<p>（1）分发成本高（不同平台有不同的开发语言和界面适配）<br>（2）维护成本高（例如一款App已更新至V5版本，但仍有用户在使用V2， V3， V4版本，需要更多的开发人员维护之前的版本）<br>（3）更新缓慢，根据不同平台，提交–审核–上线 等等不同的流程，需要经过的流程较复杂</p>
-<h3 id="二、Web-App、Hybrid-App、Native-App-技术特性"><a href="#二、Web-App、Hybrid-App、Native-App-技术特性" class="headerlink" title="二、Web App、Hybrid App、Native App 技术特性"></a>二、Web App、Hybrid App、Native App 技术特性</h3><p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525586592219.jpg" alt="对比"></p>
-<p>由上图可见，Web APP 的开发基于Html5语言。而Html5语言本身又有着不可避免的局限性。正是这些局限性的存在，使得Web App在体验中要逊于Native App。</p>
-<h3 id="三、Web-App受限制因素及设计要点"><a href="#三、Web-App受限制因素及设计要点" class="headerlink" title="三、Web App受限制因素及设计要点"></a>三、Web App受限制因素及设计要点</h3><p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525586634685.jpg" alt="受限因素"></p>
-<p>相比Native App，Web App体验中受限于以上5个因素：网络环境，渲染性能，平台特性，受限于浏览器，系统限制。</p>
-<h4 id="1-网络环境，渲染性能"><a href="#1-网络环境，渲染性能" class="headerlink" title="1. 网络环境，渲染性能"></a><strong>1. 网络环境，渲染性能</strong></h4><p>Web APP对网络环境的依赖性较大，因为Web APP中的H5页面，当用户使用时，去服务器请求显示页面。如果此时用户恰巧遇到网速慢，网络不稳定等其他环境时，用户请求页面的效率大打折扣，在用户使 用中会出现不流畅，断断续续的不良感受。同时，H5技术自身渲染性能较弱：对复杂的图形样式，多样的动效，自定义字体等的支持性不强。</p>
-<p>因此，基于网络环境和渲染性能的影响，在设计H5页面时，应注意以下几点：</p>
-<p>简化不重要的动画/动效<br>简化复杂的图形文字样式<br>减少页面渲染的频率和次数<br>从下图移动Web版 jing.fm和Native版jing对比后可以看出：Web APP首页去除冗余的功能，回溯本源，只给用户提供了jing.fm最初的本质需求——电台。既符合H5精简功能又达到了突出核心功能的设计原则。无疑给用户眼前一亮的气息。</p>
-<p>正如书中《瞬间之美》的一个核心观点：重要的并不是我们提供的信息量有多大，而是我们能否给他们提供真正需要的信息。</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525586742550.jpg" alt="jing.fm"></p>
-<p>再如：百度最新推出的直达号，以良子健身为例：</p>
-<p>从Native App和Web App（百度直达号）的对比中，我们可以看出Native良子以九宫格的形式展现，且属于双重导航，功能入口太多；弊端是用户不知道聚焦在哪里，分散用户 的注意力。而Web版良子整合并减少了导航的入口，增强用户的专注度；界面清爽，整洁，很好地传达了良子本身的寓意——轻松、愉悦、休闲、舒适。</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525586826565.jpg" alt="良子健身"></p>
-<h4 id="2-受限于浏览器"><a href="#2-受限于浏览器" class="headerlink" title="2. 受限于浏览器"></a><strong>2. 受限于浏览器</strong></h4><p>通常Web App生存于浏览器里，宿主是浏览器。不同的浏览器自身的属性不尽相同，如：浏览器自带的手势，页面切换方式，链接跳转方式，版本兼容问题等等。</p>
-<p>例如下图：UC 浏览器和百度浏览器自身支持手势切换页面。手指从左侧滑动页面，返回至上一级。百度手机助手H5页面，顶部Banner支持手势左右滑动切换。这一操作与浏览器自身手势是冲突的。</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525586894125.jpg" alt="百度浏览器"></p>
-<p>再如，基于浏览器的Web APP在打开新的模块中的页面时，大多会新开窗口来展现。例如用户在使用购物类APP时，浏览每日精选模块时，每当打开新的商品时，默认新开一个窗口。这 样的优劣势显而易见：优势是能够记录用户浏览过的痕迹，浏览过的商品，以便后续横向对比；劣势是过多的页面容易使用户迷失在页面中。</p>
-<p>正如Google开发手册里描述：当用户打开一个Web App的时候，他们期待这个应用就像是一个单个应用，而不是一系列网页的结合。然而，什么情况下需要跳转页面，什么情况下在当前页面展示则需要设计师细致考量。</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525586926726.jpg" alt="淘宝web"></p>
-<p>因此，Web App基于浏览器的特性，从设计角度应该遵循以下了两点：</p>
-<p>少用手势，避免与浏览器手势冲突。</p>
-<p>减少页面跳转次数，尽量在当前页面显示。</p>
-<h4 id="3-系统限制，平台特性"><a href="#3-系统限制，平台特性" class="headerlink" title="3. 系统限制，平台特性"></a><strong>3. 系统限制，平台特性</strong></h4><p>由于Html5语言的技术特性，无法调用系统级别的权限。例如，系统级别的弹窗，系统级别的通知，地理信息，通讯录，语音等等。且与系统的兼容性也会存在一些问题。以上限制通常导致APP的拓展性不强，体验相对较差。例如百度地图：</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525587010971.jpg" alt="百度地图对比"><br>Web版地图基于浏览器展现，因此，不能全屏显示地图，给用户的眼界带来局限感；相反，Native 版地图以全屏展现的形式，很好的拓展了用户的视野。整个界面干净简洁，首页去除冗余功能。</p>
-<p>在制定路线的体验中，如图：</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525587038540.jpg" alt="地图制定路线"></p>
-<p>Web 版地图耗费的流量大于Native版，且不能预先缓存离线地图。对于地理位置的判断也是基于宿主浏览器，而非Web地图本身。获取路线后，对于更换到达方式，相对来说是不便利的。</p>
-<p>相反，Native 版地图，能够直接访问用户的地理位置，能够很清晰的为用户展现App规划的路线，并能轻松的查看多种路线方案，以便做出符合自己的最佳方案。对于切换公交，走路，自驾等路线方式也是只需一键操作。</p>
-<p>Native 版地图相对于 Web版地图增加更多情感化，易用的功能，如：能够记录用户的生活轨迹，记录用户的点滴足迹，能够享受躲避拥堵方案等。而Web版地图基于技术框架，很难实现以上功能，从用户体验角度来看，弱于Native版地图。</p>
-<h3 id="四、小结"><a href="#四、小结" class="headerlink" title="四、小结"></a>四、小结</h3><p>综述所述，在设计Web APP时，应当遵循以下几点：</p>
-<ol>
-<li><strong>简化</strong></li>
-</ol>
-<ul>
-<li>简化不重要的动画/动效</li>
-<li>简化复杂的图形文字样式</li>
-</ul>
-<ol>
-<li><strong>少用</strong></li>
-</ol>
-<ul>
-<li>少用手势，避免与浏览器手势冲突</li>
-<li>少用弹窗</li>
-</ul>
-<ol>
-<li><strong>减少</strong></li>
-</ol>
-<ul>
-<li>减少页面内容</li>
-<li>减少控件数量</li>
-<li>减少页面跳转次数，尽量在当前页面显示</li>
-</ul>
-<ol>
-<li><strong>增强</strong></li>
-</ol>
-<ul>
-<li>增强Loading时的趣味性</li>
-<li>增强页面主次关系</li>
-<li>增强控件复用性</li>
-</ul>
-<p>参考链接：<a href="http://www.ionic.wang/article-index-id-58.html" target="_blank" rel="noopener">Web App Hybrid App和 Native App的区别</a></p>
 
           
         
@@ -1763,8 +1764,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">66</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -1775,7 +1776,7 @@
               <div class="site-state-item site-state-categories">
                 
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
+                  <span class="site-state-item-name">categories</span>
                 
               </div>
             
@@ -1785,8 +1786,8 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -1832,7 +1833,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

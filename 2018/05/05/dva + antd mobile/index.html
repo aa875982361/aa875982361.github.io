@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -259,7 +259,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T00:00:00+08:00">
                 2018-05-05
@@ -317,7 +317,7 @@
 <h2 id="加入antd-mobile"><a href="#加入antd-mobile" class="headerlink" title="加入antd mobile"></a>加入antd mobile</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install antd-mobile --save</span><br></pre></td></tr></table></figure>
 <p>这个安装比较简单，只要用一句命令就可以，<strong>但是</strong> 要安装很久，我安装了两次都卡死了，<br>第一次使用yarn 就和原来的 dva demo 好像出现冲突，我不太清楚具体原因，但是想起老师说的，出现问题，就将node_moudle 删掉 重新装一遍。</p>
 <p>第二次没用 yarn 就成功装好</p>
-<h4 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Button &#125; <span class="keyword">from</span> <span class="string">'antd-mobile'</span>;</span><br><span class="line">ReactDOM.render(&lt;Button&gt;Start&lt;/Button&gt;, mountNode);</span><br></pre></td></tr></table></figure>
+<h4 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Button &#125; <span class="keyword">from</span> <span class="string">'antd-mobile'</span>;</span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Button</span>&gt;</span>Start<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span>, mountNode);</span><br></pre></td></tr></table></figure>
 <p>引用样式:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &apos;antd-mobile/dist/antd-mobile.css&apos;;  // or &apos;antd-mobile/dist/antd-mobile.less&apos;</span><br></pre></td></tr></table></figure>
 <h3 id="使用-babel-plugin-import（推荐）。"><a href="#使用-babel-plugin-import（推荐）。" class="headerlink" title="使用 babel-plugin-import（推荐）。"></a>使用 <a href="https://github.com/ant-design/babel-plugin-import" target="_blank" rel="noopener">babel-plugin-import</a>（推荐）。</h3><p>这个我没用过 是官网说推荐用这个 ，先看看怎么用，</p>
@@ -375,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/03/移动端页面适配/" rel="next" title="移动端页面适配">
-                <i class="fa fa-chevron-left"></i> 移动端页面适配
+              <a href="/2018/05/05/less css使用/" rel="next" title="less css使用">
+                <i class="fa fa-chevron-left"></i> less css使用
               </a>
             
           </div>
@@ -385,8 +385,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/05/less css使用/" rel="prev" title="less css使用">
-                less css使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/06/Object-keys/" rel="prev" title="Object-keys">
+                Object-keys <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -441,10 +441,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -464,8 +464,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">66</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -476,7 +476,7 @@
               <div class="site-state-item site-state-categories">
                 
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
+                  <span class="site-state-item-name">categories</span>
                 
               </div>
             
@@ -486,8 +486,8 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -549,7 +549,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

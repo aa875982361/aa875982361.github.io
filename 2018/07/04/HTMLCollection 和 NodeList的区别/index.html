@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js基础," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="先介绍一下这两个概念：HTMLCollection 和 NodeList  HTMLCollection: 一个包含了元素（元素顺序为文档流中的顺序）的通用集合，还提供了用来从该集合中选择元素的方法和属性， NodeList：是一个节点的集合，node.childNodes 返回，querySelectorAll 返回的  差异在于：  方法： HTMLCollection 比NodeList 多">
+<meta name="keywords" content="js基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTMLCollection 和 NodeList的区别">
+<meta property="og:url" content="http://nisonfuture.cn/2018/07/04/HTMLCollection 和 NodeList的区别/index.html">
+<meta property="og:site_name" content="叶落林间">
+<meta property="og:description" content="先介绍一下这两个概念：HTMLCollection 和 NodeList  HTMLCollection: 一个包含了元素（元素顺序为文档流中的顺序）的通用集合，还提供了用来从该集合中选择元素的方法和属性， NodeList：是一个节点的集合，node.childNodes 返回，querySelectorAll 返回的  差异在于：  方法： HTMLCollection 比NodeList 多">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530698719381.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530705224299.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530705335775.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530705369511.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530705398657.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530706184216.png">
+<meta property="og:updated_time" content="2018-07-04T14:30:46.179Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTMLCollection 和 NodeList的区别">
+<meta name="twitter:description" content="先介绍一下这两个概念：HTMLCollection 和 NodeList  HTMLCollection: 一个包含了元素（元素顺序为文档流中的顺序）的通用集合，还提供了用来从该集合中选择元素的方法和属性， NodeList：是一个节点的集合，node.childNodes 返回，querySelectorAll 返回的  差异在于：  方法： HTMLCollection 比NodeList 多">
+<meta name="twitter:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530698719381.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://nisonfuture.cn/2018/07/04/HTMLCollection 和 NodeList的区别/"/>
+
+
+
+
+
+  <title>HTMLCollection 和 NodeList的区别 | 叶落林间</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落林间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">你只有非常努力，才能看起来毫不费力</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/07/04/HTMLCollection 和 NodeList的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTMLCollection 和 NodeList的区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T00:00:00+08:00">
+                2018-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>先介绍一下这两个概念：HTMLCollection 和 NodeList</p>
+<ul>
+<li><strong>HTMLCollection</strong>: 一个包含了元素（元素顺序为文档流中的顺序）的通用集合，还提供了用来从该集合中选择元素的方法和属性，</li>
+<li><strong>NodeList</strong>：是一个节点的集合，node.childNodes 返回，querySelectorAll 返回的</li>
+</ul>
+<p>差异在于：</p>
+<ul>
+<li>方法： HTMLCollection 比NodeList 多一个节点</li>
+<li>包含方法节点类型不同 ： NodeList 可以包含任何节点类型，HTMLCollection 只包含袁术节点（ElementNode）</li>
+</ul>
+<p>两个的出现场景：</p>
+<ul>
+<li>当返回多个几点（如：getElementByTagName) 或者得到所有子元素（如：element.childNodes)是，Collections就会出现，有可能返回 HTMLCollection 或 NodeList</li>
+</ul>
+<blockquote>
+<p>看了这么多资料，感觉还是有点懵逼，还是喜欢从代码去看</p>
+</blockquote>
+<h2 id="HTMLCollection"><a href="#HTMLCollection" class="headerlink" title="HTMLCollection"></a>HTMLCollection</h2><blockquote>
+<p>HTMLCollection是以节点为元素的列表，可以凭借索引、节点名称、节点属性来对独立的节点进行访问。HTML DOM中的Collections是实时变动的，当原始文件变化，Collections也会随之发生变化。</p>
+</blockquote>
+<ul>
+<li>属性： length（返回的是列表的长度）</li>
+<li>方法一： item（通过序号索引获取节点，参数是索引值，超过索引值返回null）</li>
+<li>方法二：nameItem （用名字来返回一个节点，首先搜寻是否有匹配的id属性，如果没有就寻找是否有匹配的name属性，如果都买有，返回null）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;ct&quot;&gt;</span><br><span class="line">            &lt;p class=&quot;para&quot;&gt;pinghuang&lt;/p&gt;</span><br><span class="line">            &lt;p class=&quot;attr&quot;&gt;123&lt;span&gt;dozz&lt;/span&gt;&lt;/p&gt;</span><br><span class="line">            &lt;form action=&quot;&quot; method=&quot;get&quot; name=&quot;apply&quot;&gt;</span><br><span class="line">                &lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;用户名&quot;&gt;</span><br><span class="line">                &lt;input type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;密码&quot;&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;script src=&apos;./index.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>js文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ct = <span class="built_in">document</span>.getElementById(<span class="string">"ct"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(ct);</span><br><span class="line"><span class="keyword">var</span> a = ct.children;</span><br><span class="line"><span class="keyword">var</span> b = ct.childNodes;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="built_in">console</span>.log(a.item(<span class="number">1</span>));</span><br><span class="line"><span class="built_in">console</span>.log(a.item(<span class="number">3</span>));</span><br></pre></td></tr></table></figure>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530698719381.png" alt="nodeList"></p>
+<p>其实我一开始有点不懂，那个7是怎样算出来的，但是展开，看text 发现其中的data是一个回车和空格</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530705224299.png" alt="text"></p>
+<p>于是我将回车和空格去掉，发现长度变为6，说明nodeList 还包含文本，里面的回车字符都算进去</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530705335775.png" alt="回车和空格"></p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530705369511.png" alt="目标代码"></p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530705398657.png" alt="结果"></p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530706184216.png" alt="方法一方法二"></p>
+<h3 id="Element-和-Node"><a href="#Element-和-Node" class="headerlink" title="Element 和 Node"></a>Element 和 Node</h3><p>文章中参考的是MDN：Node是一个基础类型，document, element, text, comment, DocumentFragment等都继承于Node. 在这篇文章最开始的测试中NodeList结果中有非常多的text，其实element, text, comment都是Node的子类，可以将它们视为：elementNode, textNode以及commentNode.平时在DOM中最常用的Element对象，其本质就是elementNode.<br>由于Node就是DOM的结构，代码内容经过解析后，Node与Node之间可以插入文本，文章最开头的截图中的”↵ “本质上就是Node之间的空隙，这种空隙的本质是textNode.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>HTMLCollection 和 NodeList 的共同点显而易见：</p>
+<ol>
+<li>都是类数组对象，都有length</li>
+<li>都有共同的方法： item，可以通过 item（index）或 item（id） 来访问元素</li>
+<li>都是实时变动的，（例外： document.querySelectorAll 返回的NodeList 不是实时的</li>
+</ol>
+<p>区别：</p>
+<ol>
+<li>NodeList 可以包含任何NODE节点类型,HTMLCollection 只包含元素节点（element_node) 标签</li>
+<li>HTMLCollection 比 NodeList多一项方法：nameditem 可以通过传递id或name属性来获得节点信息</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js基础/" rel="tag"># js基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/01/表格处理/" rel="next" title="表格处理">
+                <i class="fa fa-chevron-left"></i> 表格处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/04/Element和Node的区别/" rel="prev" title="Element和Node的区别">
+                Element和Node的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Pling Huang</p>
+              <p class="site-description motion-element" itemprop="description">个人学习笔记，仅供本人复习</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTMLCollection"><span class="nav-number">1.</span> <span class="nav-text">HTMLCollection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Element-和-Node"><span class="nav-number">1.1.</span> <span class="nav-text">Element 和 Node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pling Huang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
