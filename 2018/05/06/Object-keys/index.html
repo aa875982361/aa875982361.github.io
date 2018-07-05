@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://nisonfuture.cn/2018/05/06/Object-keys/index.html">
 <meta property="og:site_name" content="叶落林间">
 <meta property="og:description" content="今天看antd pro 的代码的时候看到有个用法： Object.keys(); 12345678910111213141516171819Object.keys(routerConfig).forEach((path) =&amp;gt; &amp;#123;       // Regular match item name       // eg.  router /user/:id === /user/ch">
-<meta property="og:updated_time" content="2018-06-30T13:26:22.469Z">
+<meta property="og:updated_time" content="2018-07-04T14:50:37.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Object-keys">
 <meta name="twitter:description" content="今天看antd pro 的代码的时候看到有个用法： Object.keys(); 12345678910111213141516171819Object.keys(routerConfig).forEach((path) =&amp;gt; &amp;#123;       // Regular match item name       // eg.  router /user/:id === /user/ch">
@@ -185,7 +185,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -195,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -259,7 +279,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
                 2018-05-06
@@ -306,10 +326,10 @@
 <p>其实我也没看懂，我们来看个例子吧：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// simple array</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(arr)); <span class="comment">// console: ['0', '1', '2']</span></span><br><span class="line"><span class="comment">// 简单数组 返回的是元素对应的序号</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// array like object</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="number">0</span>: <span class="string">'a'</span>, <span class="number">1</span>: <span class="string">'b'</span>, <span class="number">2</span>: <span class="string">'c'</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(obj)); <span class="comment">// console: ['0', '1', '2']</span></span><br><span class="line"><span class="comment">// 类似数组的对象，返回的值 是对应的 key </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// array like object with random key ordering</span></span><br><span class="line"><span class="keyword">var</span> anObj = &#123; <span class="number">100</span>: <span class="string">'a'</span>, <span class="number">2</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(anObj)); <span class="comment">// console: ['2', '7', '100']</span></span><br><span class="line"><span class="comment">// 这里返回的也是key 但是排列方式 是 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// getFoo is a property which isn't enumerable</span></span><br><span class="line"><span class="keyword">var</span> myObj = <span class="built_in">Object</span>.create(&#123;&#125;, &#123;</span><br><span class="line">  getFoo: &#123;</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.foo; &#125;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;);</span><br><span class="line">myObj.foo = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(myObj)); <span class="comment">// console: ['foo']</span></span><br></pre></td></tr></table></figure>
 <p>如果你想要所有的属性，即使是非枚举类型，请参阅<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames" target="_blank" rel="noopener">Object.getOwnPropertyNames()</a>。</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a><strong>注意</strong></h2><p>在ES5中，如果这个方法的参数不是一个对象（一个基元），那么它会导致一个TypeError。在ES2015中，非对象参数将被<strong>强制转换为对象</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.keys(<span class="string">'foo'</span>);</span><br><span class="line"><span class="comment">// TypeError: "foo" is not an object (ES5 code)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.keys(<span class="string">'foo'</span>);</span><br><span class="line"><span class="comment">// ["0", "1", "2"]                   (ES2015 code)</span></span><br></pre></td></tr></table></figure>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a><strong>注意</strong></h2><p>在ES5中，如果这个方法的参数不是一个对象（一个基元），那么它会导致一个tagsError。在ES2015中，非对象参数将被<strong>强制转换为对象</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.keys(<span class="string">'foo'</span>);</span><br><span class="line"><span class="comment">// tagsError: "foo" is not an object (ES5 code)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.keys(<span class="string">'foo'</span>);</span><br><span class="line"><span class="comment">// ["0", "1", "2"]                   (ES2015 code)</span></span><br></pre></td></tr></table></figure>
 <p>如果需要支持比较旧的环境，主要添加兼容支持，可以将keys 的实现方式添加到代码中：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">Object</span>.keys) &#123;</span><br><span class="line">  <span class="built_in">Object</span>.keys = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line">    <span class="keyword">var</span> hasOwnProperty = <span class="built_in">Object</span>.prototype.hasOwnProperty,</span><br><span class="line">        hasDontEnumBug = !(&#123; <span class="attr">toString</span>: <span class="literal">null</span> &#125;).propertyIsEnumerable(<span class="string">'toString'</span>),</span><br><span class="line">        dontEnums = [</span><br><span class="line">          <span class="string">'toString'</span>,</span><br><span class="line">          <span class="string">'toLocaleString'</span>,</span><br><span class="line">          <span class="string">'valueOf'</span>,</span><br><span class="line">          <span class="string">'hasOwnProperty'</span>,</span><br><span class="line">          <span class="string">'isPrototypeOf'</span>,</span><br><span class="line">          <span class="string">'propertyIsEnumerable'</span>,</span><br><span class="line">          <span class="string">'constructor'</span></span><br><span class="line">        ],</span><br><span class="line">        dontEnumsLength = dontEnums.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">'function'</span> &amp;&amp; (<span class="keyword">typeof</span> obj !== <span class="string">'object'</span> || obj === <span class="literal">null</span>)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Object.keys called on non-object'</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> result = [], prop, i;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (prop <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hasOwnProperty.call(obj, prop)) &#123;</span><br><span class="line">          result.push(prop);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (hasDontEnumBug) &#123;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; dontEnumsLength; i++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (hasOwnProperty.call(obj, dontEnums[i])) &#123;</span><br><span class="line">            result.push(dontEnums[i]);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">Object</span>.keys) &#123;</span><br><span class="line">  <span class="built_in">Object</span>.keys = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line">    <span class="keyword">var</span> hasOwnProperty = <span class="built_in">Object</span>.prototags.hasOwnProperty,</span><br><span class="line">        hasDontEnumBug = !(&#123; <span class="attr">toString</span>: <span class="literal">null</span> &#125;).propertyIsEnumerable(<span class="string">'toString'</span>),</span><br><span class="line">        dontEnums = [</span><br><span class="line">          <span class="string">'toString'</span>,</span><br><span class="line">          <span class="string">'toLocaleString'</span>,</span><br><span class="line">          <span class="string">'valueOf'</span>,</span><br><span class="line">          <span class="string">'hasOwnProperty'</span>,</span><br><span class="line">          <span class="string">'isPrototagsOf'</span>,</span><br><span class="line">          <span class="string">'propertyIsEnumerable'</span>,</span><br><span class="line">          <span class="string">'constructor'</span></span><br><span class="line">        ],</span><br><span class="line">        dontEnumsLength = dontEnums.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (tagsof obj !== <span class="string">'function'</span> &amp;&amp; (tagsof obj !== <span class="string">'object'</span> || obj === <span class="literal">null</span>)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> tagsError(<span class="string">'Object.keys called on non-object'</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> result = [], prop, i;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (prop <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hasOwnProperty.call(obj, prop)) &#123;</span><br><span class="line">          result.push(prop);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (hasDontEnumBug) &#123;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; dontEnumsLength; i++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (hasOwnProperty.call(obj, dontEnums[i])) &#123;</span><br><span class="line">            result.push(dontEnums[i]);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我看这个的实现方式，我能理解一部分，但是不知道 ==propertyIsEnumerable== 这个是什么，所以特意上网找了下资料。</p>
 <p>==PropertyIsEnumerable== ：<strong>检测属性是否可用 for…in 枚举</strong></p>
 <p>==Netmad==觉得in, hasOwnProperty和propertyIsEnumerable是逐渐增强的关系, 返回true的条件逐渐苛刻：</p>
@@ -349,8 +369,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/06/Web App Hybrid App和 Native App的区别/" rel="next" title="Web App Hybrid App和 Native App的区别">
-                <i class="fa fa-chevron-left"></i> Web App Hybrid App和 Native App的区别
+              <a href="/2018/05/06/React Router 简介/" rel="next" title="React Router 简介">
+                <i class="fa fa-chevron-left"></i> React Router 简介
               </a>
             
           </div>
@@ -415,10 +435,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -439,7 +459,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -448,10 +468,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -459,10 +479,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -523,7 +543,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

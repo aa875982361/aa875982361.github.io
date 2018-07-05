@@ -89,7 +89,7 @@
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528876107034.png">
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528876323842.png">
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528883478202.png">
-<meta property="og:updated_time" content="2018-06-30T13:25:56.914Z">
+<meta property="og:updated_time" content="2018-07-04T14:50:37.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 数组的深拷贝">
 <meta name="twitter:description" content="在js中对于 Object 和 Array 这类引用类型值，当一个变量想另一个变量复制应用类型时，这个值的副本其实是一个指针，两个变量指向同一个堆对象，改变其中一个变量，另一个也会受到影响。  这种拷贝分为两种情况： 拷贝实例和拷贝引用，也就是我们说的浅拷贝和深拷贝 浅拷贝（shallow copy）拷贝元对象的引用，这是最简单的拷贝。 12345678910111213141516// 对象v">
@@ -189,7 +189,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -199,7 +219,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -263,7 +283,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-13T00:00:00+08:00">
                 2018-06-13
@@ -311,7 +331,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象</span></span><br><span class="line"><span class="keyword">var</span> o1 = &#123; <span class="attr">a</span>: <span class="number">168</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = o1;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(o1 === o2); <span class="comment">// =&gt;true</span></span><br><span class="line">o2.a = <span class="number">699</span> ;</span><br><span class="line"><span class="built_in">console</span>,log(<span class="number">01.</span>a); <span class="comment">// =&gt;699</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="keyword">var</span> a1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> a2 = a1;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a1 === a2); <span class="comment">// true</span></span><br><span class="line">a2.push(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a1); <span class="comment">// [1,2,3,4]</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528876107034.png" alt="对象浅拷贝"></p>
 <p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528876323842.png" alt="数组浅拷贝"></p>
-<p>拷贝原对象的实例，但是对其内部的引用类型值，拷贝的是其引用，常用的就是如 jquey中的 $.extend（{， object}）; Array.prototype.slice() 和 Array.protype.concat() 都会返回一个数组会对象的浅拷贝，看下下面的代码：</p>
+<p>拷贝原对象的实例，但是对其内部的引用类型值，拷贝的是其引用，常用的就是如 jquey中的 $.extend（{， object}）; Array.prototags.slice() 和 Array.protags.concat() 都会返回一个数组会对象的浅拷贝，看下下面的代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = [ <span class="string">'plinghuang'</span>, &#123; <span class="attr">age</span>: <span class="number">22</span>&#125;];</span><br><span class="line"><span class="keyword">var</span> o2 = o1.slice();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( o1 === o2 );</span><br><span class="line">o2[<span class="number">0</span>] = <span class="string">'xieyanchuan'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(o1[<span class="number">0</span>]);</span><br><span class="line"><span class="comment">//对于基本类型的话，这个是实例拷贝</span></span><br><span class="line"></span><br><span class="line">o2[<span class="number">1</span>].age = <span class="string">'23'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(o1[<span class="number">1</span>].age);</span><br><span class="line"><span class="comment">// 对于引用类型的话 复制的是引用,会影响到原来的数值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 拓展运算符 复制对象属性</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	list: [ <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">	...obj,</span><br><span class="line">&#125;</span><br><span class="line">obj2.list[<span class="number">1</span>] = <span class="number">55</span>；</span><br><span class="line"><span class="built_in">console</span>.log(obj.list[<span class="number">1</span>]); <span class="comment">// 55</span></span><br></pre></td></tr></table></figure>
 <h2 id="深拷贝-deep-copy"><a href="#深拷贝-deep-copy" class="headerlink" title="深拷贝(deep copy)"></a>深拷贝(deep copy)</h2><p>深拷贝 也就是拷贝出一个实例和之前的实例互补影响,深拷贝的实现方式有几种:</p>
 <ol>
@@ -320,7 +340,7 @@
 <li>利用JSON.stringify 和 JSON.parse 来做</li>
 </ol>
 <p>第三方库的就说了，我们来看下 用递归的方式吧</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">source</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 判断参数类型是不是 object 如果不是object 那就用浅拷贝</span></span><br><span class="line">	<span class="keyword">if</span>(!source || <span class="keyword">typeof</span> source !== <span class="string">'object'</span>) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'erroe arguments '</span>, <span class="string">'shallowClone'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 看看 原型是array 还是 object 初始化 </span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'constructor'</span>, source.constructor);</span><br><span class="line">	<span class="keyword">var</span> targetObj = source.constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">	<span class="comment">//遍历 对象属性</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> source)&#123;</span><br><span class="line">		<span class="comment">// 排除从原型继承的属性</span></span><br><span class="line">		<span class="keyword">if</span>( source.hasOwnProperty(key) ) &#123;</span><br><span class="line">			<span class="comment">// 判断是否为引用对象类型</span></span><br><span class="line">			 <span class="keyword">if</span>( source[key] &amp;&amp; <span class="keyword">typeof</span> source[key] === <span class="string">'object'</span>)&#123;</span><br><span class="line">			 	<span class="comment">// 首先判断是什么类型的 先初始化一遍</span></span><br><span class="line">				targetObj[key] = source[key].constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">				targetObj[key] = deepClone(source[key]);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				targetObj[key] = source[key];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">source</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 判断参数类型是不是 object 如果不是object 那就用浅拷贝</span></span><br><span class="line">	<span class="keyword">if</span>(!source || tagsof source !== <span class="string">'object'</span>) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'erroe arguments '</span>, <span class="string">'shallowClone'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 看看 原型是array 还是 object 初始化 </span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'constructor'</span>, source.constructor);</span><br><span class="line">	<span class="keyword">var</span> targetObj = source.constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">	<span class="comment">//遍历 对象属性</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> source)&#123;</span><br><span class="line">		<span class="comment">// 排除从原型继承的属性</span></span><br><span class="line">		<span class="keyword">if</span>( source.hasOwnProperty(key) ) &#123;</span><br><span class="line">			<span class="comment">// 判断是否为引用对象类型</span></span><br><span class="line">			 <span class="keyword">if</span>( source[key] &amp;&amp; tagsof source[key] === <span class="string">'object'</span>)&#123;</span><br><span class="line">			 	<span class="comment">// 首先判断是什么类型的 先初始化一遍</span></span><br><span class="line">				targetObj[key] = source[key].constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">				targetObj[key] = deepClone(source[key]);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				targetObj[key] = source[key];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>还有一种实现深拷贝的方式是利用JSON对象中的parse和stringify，JOSN对象中的stringify可以把一个js对象序列化为一个JSON字符串，parse可以把JSON字符串反序列化为一个js对象，通过这两个方法，也可以实现对象的深复制。</p>
 <p>我们从下面的例子就可以看到，源对象的方法在拷贝的过程中丢失了，这是因为在==序列化JavaScript对象时，所有函数和原型成员会被有意忽略==，这个实现可以满足一些比较简单的情况，能够处理JSON格式所能表示的所有数据类型，同时如果在对象中存在循环应用的情况也无法正确处理。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(source)&#123;</span><br><span class="line">  return JSON.parse(JSON.stringify(source));</span><br><span class="line">&#125;</span><br><span class="line">undefined</span><br><span class="line">var obj1 = &#123; user : &#123;age: 66&#125;&#125;</span><br><span class="line">var obj2 = deepClone(obj1);</span><br><span class="line">obj2</span><br><span class="line">&#123;user: &#123;…&#125;&#125;user: &#123;age: 66&#125;</span><br><span class="line">obj1</span><br><span class="line">&#123;user: &#123;…&#125;&#125;user: &#123;age: 66&#125;</span><br><span class="line">obj2.user.age = 99</span><br><span class="line">99</span><br><span class="line">obj1</span><br><span class="line">&#123;user: &#123;…&#125;&#125;user: &#123;age: 66&#125;age: 66</span><br><span class="line">// 可以发现 并没有改变obj1的值</span><br></pre></td></tr></table></figure>
@@ -355,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/12/图片预加载/" rel="next" title="图片预加载">
-                <i class="fa fa-chevron-left"></i> 图片预加载
+              <a href="/2018/06/12/纯函数/" rel="next" title="纯函数">
+                <i class="fa fa-chevron-left"></i> 纯函数
               </a>
             
           </div>
@@ -421,10 +441,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -445,7 +465,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -454,10 +474,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -465,10 +485,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -529,7 +549,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

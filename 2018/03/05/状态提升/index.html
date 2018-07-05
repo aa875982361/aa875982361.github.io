@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="叶落林间">
 <meta property="og:description" content="使用 react 经常会遇到几个组件需要共用状态数据的情况。这种情况下，我们最好将这部分共享的状态提升至他们最近的父组件当中进行管理。我们来看一下具体如何操作吧。 这部分内容当中，我们会创建一个温度计算器来计算水是否会在给定的温度下烧开。 开始呢，我们先创建一个名为 BoilingVerdict 的组件。它会接受 celsius 这个温度变量作为它的 prop 属性，最后根据温度判断返回内容： 1">
 <meta property="og:image" content="https://doc.react-china.org/react-devtools-state-ef94afc3447d75cdc245c77efb0d63be.gif">
-<meta property="og:updated_time" content="2018-03-10T16:33:15.954Z">
+<meta property="og:updated_time" content="2018-07-04T14:50:37.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="状态提升">
 <meta name="twitter:description" content="使用 react 经常会遇到几个组件需要共用状态数据的情况。这种情况下，我们最好将这部分共享的状态提升至他们最近的父组件当中进行管理。我们来看一下具体如何操作吧。 这部分内容当中，我们会创建一个温度计算器来计算水是否会在给定的温度下烧开。 开始呢，我们先创建一个名为 BoilingVerdict 的组件。它会接受 celsius 这个温度变量作为它的 prop 属性，最后根据温度判断返回内容： 1">
@@ -187,7 +187,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -197,7 +217,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -261,7 +281,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T18:11:39+08:00">
                 2018-03-05
@@ -282,7 +302,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -415,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/05/元素渲染/" rel="next" title="元素渲染">
-                <i class="fa fa-chevron-left"></i> 元素渲染
+              <a href="/2018/03/05/条件渲染/" rel="next" title="条件渲染">
+                <i class="fa fa-chevron-left"></i> 条件渲染
               </a>
             
           </div>
@@ -481,10 +501,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -505,7 +525,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -514,10 +534,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -525,10 +545,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -589,7 +609,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

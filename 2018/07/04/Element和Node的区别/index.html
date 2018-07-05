@@ -89,7 +89,7 @@
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530707156966.png">
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530707278715.png">
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530707487749.png">
-<meta property="og:updated_time" content="2018-07-04T14:30:55.408Z">
+<meta property="og:updated_time" content="2018-07-04T14:50:37.329Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Element和Node的区别">
 <meta name="twitter:description" content="我们经常使用document.getElementById去获取DOM中的元素，也会使用childNodes来获取子节点。那么Element和Node的区别是什么？而什么又是HTMLCollection,HTMLElement,和NodeList呢？  1. 一个简单的页面：12345678910&amp;lt;html&amp;gt;  &amp;lt;body&amp;gt;    &amp;lt;h1&amp;gt;China&amp;lt;/">
@@ -189,7 +189,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -199,7 +219,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -263,7 +283,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T00:00:00+08:00">
                 2018-07-04
@@ -316,12 +336,12 @@
 </ol>
 <h3 id="2-Node-vs-Elemet"><a href="#2-Node-vs-Elemet" class="headerlink" title="2.Node vs Elemet"></a>2.Node vs Elemet</h3><p>以下摘自MDN:</p>
 <blockquote>
-<p>A Node is an interface from which a number of DOM types inherit, and allows these various types to be treated (or tested) similarly.<br>The following interfaces all inherit from Node its methods and properties: Document, Element, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference.</p>
+<p>A Node is an interface from which a number of DOM tagss inherit, and allows these various tagss to be treated (or tested) similarly.<br>The following interfaces all inherit from Node its methods and properties: Document, Element, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, Documenttags, Notation, Entity, EntityReference.</p>
 </blockquote>
 <p>简单的说就是Node是一个基类，DOM中的Element，Text和Comment都继承于它。<br>换句话说，Element，Text和Comment是三种特殊的Node，它们分别叫做ELEMENT_NODE, TEXT_NODE和COMMENT_NODE。</p>
 <p><strong><em>所以我们平时使用的html上的元素，即Element</em></strong>，是类型为ELEMENT_NODE的Node。</p>
-<p>利用nodeType可以查看所有类型，如下图：</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530707278715.png" alt="nodeType"></p>
+<p>利用nodetags可以查看所有类型，如下图：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530707278715.png" alt="nodetags"></p>
 <p>到这里，我想我们就可以解释上面两个问题了。</p>
 <p>实际上Node表示的是DOM树的结构，在html中，节点与节点之间是可以插入文本的，这个插入的空隙就是TEXT_NODE，即：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    we can put text here 1...</span><br><span class="line">    &lt;h1&gt;China&lt;/h1&gt;</span><br><span class="line">    we can put text here 2...</span><br><span class="line">    &lt;!-- My comment ...  --&gt;</span><br><span class="line">    we can put text here 3...</span><br><span class="line">    &lt;p&gt;China is a popular country with...&lt;/p&gt;</span><br><span class="line">    we can put text here 4...</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button&gt;See details&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    we can put text here 5 ...</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
@@ -427,10 +447,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -451,7 +471,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -460,10 +480,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -471,10 +491,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -535,7 +555,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

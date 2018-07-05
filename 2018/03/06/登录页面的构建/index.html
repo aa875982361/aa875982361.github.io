@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520325713899.jpg">
 <meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/1520325760451.jpg">
 <meta property="og:image" content="http://nisonfuture.cn/2018/03/06/登录页面的构建/images/%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E6%8F%90%E4%BA%A4%E6%97%B6%E9%97%B4.png">
-<meta property="og:updated_time" content="2018-03-10T16:46:55.920Z">
+<meta property="og:updated_time" content="2018-07-04T14:50:37.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="登录页面的构建">
 <meta name="twitter:description" content="观察原有的登录界面，删除掉我不需要的元素。 发现在验证码的那个组件是不适用于我的，现在找出来，修改掉 通过获取验证码 这几个字 全局查找 找出 了组件所在位置 通过查找西湖区 找到登录页面的组件所在 修改删除 得到以下界面 到此 已经将登录界面的界面做完，但是没有接上验证码和接口和登录接口  我看了下 目标管理界面的验证码请求，感觉和我自己构建的验证码请求不太一样，我是直接通过一条链接，然后就直接">
@@ -195,7 +195,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -205,7 +225,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -269,7 +289,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:11:39+08:00">
                 2018-03-06
@@ -290,7 +310,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -339,7 +359,7 @@
 <p><img src="./images/1520322456032.jpg" alt="验证码组件的使用demo"></p>
 <p><img src="./images/1520324022861.jpg" alt="目标后台登录接麦你的验证码请求"><br>我看了下 目标管理界面的<strong>验证码请求</strong>，感觉和我自己构建的验证码请求不太一样，我是直接通过一条链接，然后就直接获取到图片 通过每次修改uuid 就获取到了不同的验证码图片 ，如下图：<br><img src="./images/1520324222753.jpg" alt="本机测试验证码图"></p>
 <p>暂时先不深究这个问题 先留着<br>接下来查看<strong>登录事件</strong><br><img src="./images/1520325475859.jpg" alt="点击登录后发送的请求"><br> 根据api <strong>api/login/account</strong>找到函数调用接口<br> <img src="./images/1520325713899.jpg" alt="enter description here"><br> 再找在哪调用了这个接口 <strong>/api/login/account</strong><br> <img src="./images/1520325760451.jpg" alt="enter description here"><br>在找在哪调用了<strong>fakeAccountLogin</strong> 这个函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">*login(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">  const response = yield call(fakeAccountLogin, payload);</span><br><span class="line">  yield put(&#123;</span><br><span class="line">    type: &apos;changeLoginStatus&apos;,</span><br><span class="line">    payload: response,</span><br><span class="line">  &#125;);</span><br><span class="line">  // Login successfully</span><br><span class="line">  if (response.status === &apos;ok&apos;) &#123;</span><br><span class="line">    reloadAuthorized();</span><br><span class="line">    yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">*login(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">  const response = yield call(fakeAccountLogin, payload);</span><br><span class="line">  yield put(&#123;</span><br><span class="line">    tags: &apos;changeLoginStatus&apos;,</span><br><span class="line">    payload: response,</span><br><span class="line">  &#125;);</span><br><span class="line">  // Login successfully</span><br><span class="line">  if (response.status === &apos;ok&apos;) &#123;</span><br><span class="line">    reloadAuthorized();</span><br><span class="line">    yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p>对于=<a href="http://taobaofed.org/blog/2015/11/19/yield-and-delegating-yield/" target="_blank" rel="noopener">yield</a> 这个函数不理解 所以找了资料 </p>
 <p>再看提交事件，打算通过提交事件去找到验证码组件</p>
 <p>点击提交后发现，其实是有绑定事件的，并发送了post请求，如下图<br><img src="./images/%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E6%8F%90%E4%BA%A4%E6%97%B6%E9%97%B4.png" alt="enter description here" title="登录页面提交时间"></p>
@@ -373,8 +393,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/06/ant Design 路由/" rel="next" title="ant Design 路由">
-                <i class="fa fa-chevron-left"></i> ant Design 路由
+              <a href="/2018/03/06/Effect 处理异步请求/" rel="next" title="Effect 处理异步请求">
+                <i class="fa fa-chevron-left"></i> Effect 处理异步请求
               </a>
             
           </div>
@@ -383,8 +403,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/06/Effect 处理异步请求/" rel="prev" title="Effect 处理异步请求">
-                Effect 处理异步请求 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/06/github仓库配置/" rel="prev" title="github仓库配置">
+                github仓库配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -454,7 +474,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -463,10 +483,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -474,10 +494,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -522,7 +542,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

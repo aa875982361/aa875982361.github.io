@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Http cookie 是在客户端存储会话信息的。 设置方式通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如： 1234HTTP/1.1 200 OKContene-type: text/htmlSet-Cookie: name=valueOther-header: other-header-value 通过这样的返回值，浏览器会存储这样的信息，nam">
+<meta name="description" content="Http cookie 是在客户端存储会话信息的。 设置方式通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如： 1234HTTP/1.1 200 OKContene-tags: text/htmlSet-Cookie: name=valueOther-header: other-header-value 通过这样的返回值，浏览器会存储这样的信息，nam">
 <meta name="keywords" content="js基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cookie">
 <meta property="og:url" content="http://nisonfuture.cn/2018/07/04/cookie/index.html">
 <meta property="og:site_name" content="叶落林间">
-<meta property="og:description" content="Http cookie 是在客户端存储会话信息的。 设置方式通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如： 1234HTTP/1.1 200 OKContene-type: text/htmlSet-Cookie: name=valueOther-header: other-header-value 通过这样的返回值，浏览器会存储这样的信息，nam">
-<meta property="og:updated_time" content="2018-07-04T14:33:31.226Z">
+<meta property="og:description" content="Http cookie 是在客户端存储会话信息的。 设置方式通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如： 1234HTTP/1.1 200 OKContene-tags: text/htmlSet-Cookie: name=valueOther-header: other-header-value 通过这样的返回值，浏览器会存储这样的信息，nam">
+<meta property="og:updated_time" content="2018-07-05T01:10:58.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookie">
-<meta name="twitter:description" content="Http cookie 是在客户端存储会话信息的。 设置方式通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如： 1234HTTP/1.1 200 OKContene-type: text/htmlSet-Cookie: name=valueOther-header: other-header-value 通过这样的返回值，浏览器会存储这样的信息，nam">
+<meta name="twitter:description" content="Http cookie 是在客户端存储会话信息的。 设置方式通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如： 1234HTTP/1.1 200 OKContene-tags: text/htmlSet-Cookie: name=valueOther-header: other-header-value 通过这样的返回值，浏览器会存储这样的信息，nam">
 
 
 
@@ -185,7 +185,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -195,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -259,7 +279,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T00:00:00+08:00">
                 2018-07-04
@@ -301,7 +321,7 @@
       
         <p>Http cookie 是在客户端存储会话信息的。</p>
 <h3 id="设置方式"><a href="#设置方式" class="headerlink" title="设置方式"></a>设置方式</h3><p>通过服务端在任意HTTP请求发送 Set-Http 头做为相应的一部分，其中包含会话信息。例如：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Contene-type</span>: text/html</span><br><span class="line"><span class="attribute">Set-Cookie</span>: name=value</span><br><span class="line"><span class="attribute">Other-header</span>: other-header-value</span><br></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Contene-tags</span>: text/html</span><br><span class="line"><span class="attribute">Set-Cookie</span>: name=value</span><br><span class="line"><span class="attribute">Other-header</span>: other-header-value</span><br></pre></td></tr></table></figure>
 <p>通过这样的返回值，浏览器会存储这样的信息，name=value，之后会为每个请求都会添加上cookie HTTP 请求头信息：</p>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/index.html</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Cookie</span>: name=value</span><br></pre></td></tr></table></figure>
 <p>一开始，这个是一个比较好用的身份验证的方式，在登录成功之后，设置一个有效的token信息，之后发送请求就不用再次登录，服务器就知道你是谁。<br>但是这样存在一个缺点就是对每个请求都会发送cookie数据，如果是我从另外一个网站去调用目标网站的请求，也会带上相应的cookie，容易别人CSRF攻击。</p>
@@ -482,10 +502,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -506,7 +526,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -515,10 +535,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -526,10 +546,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -590,7 +610,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

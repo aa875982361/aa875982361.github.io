@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="叶落林间">
 <meta property="og:description" content="有个问题 就是在点击编辑 和点击新建的时候 是不是应该都要调用同一个弹窗呢？ 还是返回不同的弹窗？ 第一种方案 统一同一个弹窗 在点击弹窗后 传入参数列表 如果是新建 就传入空的参数列表，弹窗接收到相应的参数 就进行渲染  第二种方案，新建的就调用本窗口隐藏的弹窗，编辑就新建一个弹窗。 感觉来说 使用第一种方案会好一点，无论是从性能上 还是从使用上 这样的话，那我新建和编辑都可以调用同一个回调函数">
 <meta property="og:image" content="https://github.com/aa875982361/aa875982361.github.io/blob/master/images/1520581581228.jpg?raw=true">
-<meta property="og:updated_time" content="2018-03-11T08:54:17.728Z">
+<meta property="og:updated_time" content="2018-07-04T14:50:37.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="列表组件和弹窗组件的交互">
 <meta name="twitter:description" content="有个问题 就是在点击编辑 和点击新建的时候 是不是应该都要调用同一个弹窗呢？ 还是返回不同的弹窗？ 第一种方案 统一同一个弹窗 在点击弹窗后 传入参数列表 如果是新建 就传入空的参数列表，弹窗接收到相应的参数 就进行渲染  第二种方案，新建的就调用本窗口隐藏的弹窗，编辑就新建一个弹窗。 感觉来说 使用第一种方案会好一点，无论是从性能上 还是从使用上 这样的话，那我新建和编辑都可以调用同一个回调函数">
@@ -187,7 +187,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -197,7 +217,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -261,7 +281,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-09T09:35:59+08:00">
                 2018-03-09
@@ -282,7 +302,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -371,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/09/构建权限管理页面/" rel="next" title="构建权限管理页面">
-                <i class="fa fa-chevron-left"></i> 构建权限管理页面
+              <a href="/2018/03/09/封装查询组件/" rel="next" title="封装查询组件">
+                <i class="fa fa-chevron-left"></i> 封装查询组件
               </a>
             
           </div>
@@ -381,8 +401,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/09/列表组件/" rel="prev" title="列表组件">
-                列表组件 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/09/构建权限管理页面/" rel="prev" title="构建权限管理页面">
+                构建权限管理页面 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -452,7 +472,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -461,10 +481,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -472,10 +492,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -520,7 +540,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

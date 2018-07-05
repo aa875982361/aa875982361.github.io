@@ -184,7 +184,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -194,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -260,7 +280,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T00:00:00+08:00">
                 2018-05-19
@@ -380,7 +400,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-14T00:00:00+08:00">
                 2018-05-14
@@ -520,7 +540,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T00:00:00+08:00">
                 2018-05-07
@@ -650,7 +670,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
                 2018-05-06
@@ -699,10 +719,10 @@
 <p>其实我也没看懂，我们来看个例子吧：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// simple array</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(arr)); <span class="comment">// console: ['0', '1', '2']</span></span><br><span class="line"><span class="comment">// 简单数组 返回的是元素对应的序号</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// array like object</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="number">0</span>: <span class="string">'a'</span>, <span class="number">1</span>: <span class="string">'b'</span>, <span class="number">2</span>: <span class="string">'c'</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(obj)); <span class="comment">// console: ['0', '1', '2']</span></span><br><span class="line"><span class="comment">// 类似数组的对象，返回的值 是对应的 key </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// array like object with random key ordering</span></span><br><span class="line"><span class="keyword">var</span> anObj = &#123; <span class="number">100</span>: <span class="string">'a'</span>, <span class="number">2</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(anObj)); <span class="comment">// console: ['2', '7', '100']</span></span><br><span class="line"><span class="comment">// 这里返回的也是key 但是排列方式 是 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// getFoo is a property which isn't enumerable</span></span><br><span class="line"><span class="keyword">var</span> myObj = <span class="built_in">Object</span>.create(&#123;&#125;, &#123;</span><br><span class="line">  getFoo: &#123;</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.foo; &#125;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;);</span><br><span class="line">myObj.foo = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(myObj)); <span class="comment">// console: ['foo']</span></span><br></pre></td></tr></table></figure>
 <p>如果你想要所有的属性，即使是非枚举类型，请参阅<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames" target="_blank" rel="noopener">Object.getOwnPropertyNames()</a>。</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a><strong>注意</strong></h2><p>在ES5中，如果这个方法的参数不是一个对象（一个基元），那么它会导致一个TypeError。在ES2015中，非对象参数将被<strong>强制转换为对象</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.keys(<span class="string">'foo'</span>);</span><br><span class="line"><span class="comment">// TypeError: "foo" is not an object (ES5 code)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.keys(<span class="string">'foo'</span>);</span><br><span class="line"><span class="comment">// ["0", "1", "2"]                   (ES2015 code)</span></span><br></pre></td></tr></table></figure>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a><strong>注意</strong></h2><p>在ES5中，如果这个方法的参数不是一个对象（一个基元），那么它会导致一个tagsError。在ES2015中，非对象参数将被<strong>强制转换为对象</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.keys(<span class="string">'foo'</span>);</span><br><span class="line"><span class="comment">// tagsError: "foo" is not an object (ES5 code)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.keys(<span class="string">'foo'</span>);</span><br><span class="line"><span class="comment">// ["0", "1", "2"]                   (ES2015 code)</span></span><br></pre></td></tr></table></figure>
 <p>如果需要支持比较旧的环境，主要添加兼容支持，可以将keys 的实现方式添加到代码中：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">Object</span>.keys) &#123;</span><br><span class="line">  <span class="built_in">Object</span>.keys = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line">    <span class="keyword">var</span> hasOwnProperty = <span class="built_in">Object</span>.prototype.hasOwnProperty,</span><br><span class="line">        hasDontEnumBug = !(&#123; <span class="attr">toString</span>: <span class="literal">null</span> &#125;).propertyIsEnumerable(<span class="string">'toString'</span>),</span><br><span class="line">        dontEnums = [</span><br><span class="line">          <span class="string">'toString'</span>,</span><br><span class="line">          <span class="string">'toLocaleString'</span>,</span><br><span class="line">          <span class="string">'valueOf'</span>,</span><br><span class="line">          <span class="string">'hasOwnProperty'</span>,</span><br><span class="line">          <span class="string">'isPrototypeOf'</span>,</span><br><span class="line">          <span class="string">'propertyIsEnumerable'</span>,</span><br><span class="line">          <span class="string">'constructor'</span></span><br><span class="line">        ],</span><br><span class="line">        dontEnumsLength = dontEnums.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">'function'</span> &amp;&amp; (<span class="keyword">typeof</span> obj !== <span class="string">'object'</span> || obj === <span class="literal">null</span>)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Object.keys called on non-object'</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> result = [], prop, i;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (prop <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hasOwnProperty.call(obj, prop)) &#123;</span><br><span class="line">          result.push(prop);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (hasDontEnumBug) &#123;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; dontEnumsLength; i++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (hasOwnProperty.call(obj, dontEnums[i])) &#123;</span><br><span class="line">            result.push(dontEnums[i]);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">Object</span>.keys) &#123;</span><br><span class="line">  <span class="built_in">Object</span>.keys = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line">    <span class="keyword">var</span> hasOwnProperty = <span class="built_in">Object</span>.prototags.hasOwnProperty,</span><br><span class="line">        hasDontEnumBug = !(&#123; <span class="attr">toString</span>: <span class="literal">null</span> &#125;).propertyIsEnumerable(<span class="string">'toString'</span>),</span><br><span class="line">        dontEnums = [</span><br><span class="line">          <span class="string">'toString'</span>,</span><br><span class="line">          <span class="string">'toLocaleString'</span>,</span><br><span class="line">          <span class="string">'valueOf'</span>,</span><br><span class="line">          <span class="string">'hasOwnProperty'</span>,</span><br><span class="line">          <span class="string">'isPrototagsOf'</span>,</span><br><span class="line">          <span class="string">'propertyIsEnumerable'</span>,</span><br><span class="line">          <span class="string">'constructor'</span></span><br><span class="line">        ],</span><br><span class="line">        dontEnumsLength = dontEnums.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (tagsof obj !== <span class="string">'function'</span> &amp;&amp; (tagsof obj !== <span class="string">'object'</span> || obj === <span class="literal">null</span>)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> tagsError(<span class="string">'Object.keys called on non-object'</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> result = [], prop, i;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (prop <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hasOwnProperty.call(obj, prop)) &#123;</span><br><span class="line">          result.push(prop);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (hasDontEnumBug) &#123;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; dontEnumsLength; i++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (hasOwnProperty.call(obj, dontEnums[i])) &#123;</span><br><span class="line">            result.push(dontEnums[i]);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我看这个的实现方式，我能理解一部分，但是不知道 ==propertyIsEnumerable== 这个是什么，所以特意上网找了下资料。</p>
 <p>==PropertyIsEnumerable== ：<strong>检测属性是否可用 for…in 枚举</strong></p>
 <p>==Netmad==觉得in, hasOwnProperty和propertyIsEnumerable是逐渐增强的关系, 返回true的条件逐渐苛刻：</p>
@@ -712,6 +732,354 @@
 <li>propertyIsEnumerable: 首先满足hasOwnProperty，其次该属性未经由Object.defineProperty定义为不可列举</li>
 </ul>
 <p>参考链接： <a href="https://www.zhihu.com/question/21907133" target="_blank" rel="noopener">hasOwnProperty 和 propertyIsEnumerable 的区别？</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/06/React Router 简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/06/React Router 简介/" itemprop="url">React Router 简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
+                2018-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>这篇文章主要是讲怎样 react router 是怎样的，并没有介绍到底层的实现机制，仅供未了解过的同学参考。</p>
+</blockquote>
+<h2 id="弄清原理之React-Router"><a href="#弄清原理之React-Router" class="headerlink" title="弄清原理之React Router"></a>弄清原理之React Router</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><p>在web应用开发过程中，路由系统是不可或缺的一部分，路由简单来说就是当url发生变化时，web界面也会随之改变。react 也有自己的路由系统，那就是 react router 路由系统。</p>
+<h3 id="2-基本原理"><a href="#2-基本原理" class="headerlink" title="2. 基本原理"></a>2. 基本原理</h3><p>url  和ui 是意义对应的关系，记当你输入Url 时，就回渲染对应 react component</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525588546705.jpg" alt="基本原理"></p>
+<p>接下来然我们看看组件层面的实现原理</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525588577206.jpg" alt="实现原理"></p>
+<p>以browserHistory(一种history类型:一个 history 知道如何去监听浏览器地址栏的变化， 并解析这个 URL 转化为 location 对象)为例 :</p>
+<ul>
+<li>browserHistory进行==路由state==管理,主要通过sessionStorage</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//保存　路由state(router state)</span><br><span class="line">function saveState(key, state) &#123;</span><br><span class="line">  ...</span><br><span class="line">  window.sessionStorage.setItem(createKey(key), JSON.stringify(state));</span><br><span class="line">&#125;</span><br><span class="line">//读取路由state</span><br><span class="line">function readState(key) &#123;</span><br><span class="line">  ...</span><br><span class="line">  json = window.sessionStorage.getItem(createKey(key));</span><br><span class="line">  return JSON.parse(json);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中saveState函数传进来的state是个json对象，如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">route</span>: <span class="string">'/about'</span>&#125; <span class="comment">///假设此时的location为'/about'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>进行路由匹配，最终渲染对应的组件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> About = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//About 组件</span></span><br><span class="line"><span class="keyword">const</span> Inbox = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//Inbox 组件</span></span><br><span class="line"><span class="keyword">const</span> Home = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//Home组件</span></span><br><span class="line"> render() &#123;</span><br><span class="line">    <span class="keyword">let</span> Child</span><br><span class="line">    <span class="keyword">switch</span> (<span class="keyword">this</span>.state.route) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'/about'</span>: Child = About; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'/inbox'</span>: Child = Inbox; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:      Child = Home;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;App&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">          &lt;li&gt;&lt;a href="#/</span>about<span class="string">"&gt;About&lt;/a&gt;&lt;/li&gt;</span></span><br><span class="line">          &lt;li&gt;&lt;a href="#/inbox"&gt;Inbox&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Child/</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">React.render(&lt;App /</span>&gt;, <span class="built_in">document</span>.body)</span><br></pre></td></tr></table></figure>
+<h3 id="二-React-Router-实践"><a href="#二-React-Router-实践" class="headerlink" title="二. React Router 实践"></a>二. React Router 实践</h3><p>现在有这样的场景，想实现在 <strong>UserCenter Page</strong>(用户中心页面) 点击<strong>写文章</strong>链接后跳转到 <strong>BlogNewed Page</strong> (新建博客页面)的功能。</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525589351634.jpg" alt="点击链接后跳转.jpg"></p>
+<ol>
+<li>于是，首先我们要建立我们的UserCenter Page，因为页面代码不是我们今天的重点，所以不会过多解释。</li>
+</ol>
+<p>我们先在src/components文件夹下新建文件UserCenter.js，并添加以下代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Link&#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCenter</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"row user-info blog-body"</span>&gt;</span><br><span class="line">        &lt;div className=<span class="string">"col-md-3 "</span>&gt;</span><br><span class="line">          ![](images/userPhoto.jpg)</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div className=" col-md-4"&gt;</span></span><br><span class="line"><span class="regexp">          &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li&gt;</span></span><br><span class="line"><span class="regexp">              &lt;h3&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Link to="/</span>blogNewed<span class="string">"&gt;</span></span><br><span class="line"><span class="string">                  &lt;span className="</span>iconfont icon-iconxiezuo01<span class="string">"&gt; &lt;/span&gt;</span></span><br><span class="line"><span class="string">                  写文章</span></span><br><span class="line"><span class="string">                &lt;/Link&gt;</span></span><br><span class="line"><span class="string">              &lt;/h3&gt;</span></span><br><span class="line"><span class="string">            &lt;/li&gt;</span></span><br><span class="line"><span class="string">          &lt;/ul&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    );</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">export default UserCenter;</span></span><br></pre></td></tr></table></figure>
+<p>这是一份很简单的代码，其中主要用到的是React Router的Link组件，相当于React版的a标签。<strong>其中”/blogNewed”就是点击该Link后要跳到的目的地址，这个地址会被下面谈及的路由所捕获，然后转向对应的页面</strong></p>
+<ol>
+<li>想想我们之前只有UserCenter这个页面，之前通过路由进入UserCenter 页面的做法如下：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*src/index.js*/</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;render&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> UserCenter <span class="keyword">from</span> <span class="string">'./components/UserCenter'</span>;</span><br><span class="line">render(</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">       &lt;UserCenter/&gt;</span><br><span class="line">    &lt;<span class="regexp">/Provider&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById('app')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<p>如果我们只是UserCenter这个页面的话，这样做也没有什么问题。但是问题是我们这里在UserCenter里面点击相应的链接，需要跳转到/blogNewed页面。如果要实现这个功能，我们就要<strong>引入React Router</strong>了，我们先看代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;render&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Router, Route, browserHistory,IndexRoute&#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;</span><br><span class="line"><span class="comment">/*import App from './components/App';*/</span></span><br><span class="line"><span class="keyword">import</span> UserCenter <span class="keyword">from</span> <span class="string">'./components/UserCenter'</span>;</span><br><span class="line"><span class="keyword">import</span> BlogNewd <span class="keyword">from</span> <span class="string">'./components/BlogNewed'</span>;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/"</span> component=&#123;UserCenter&#125;/&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/blogNewed"</span> component=&#123;BlogNewd&#125;/&gt;</span><br><span class="line">      &lt;<span class="regexp">/Router&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>上面的 Route组件中</p>
+<ul>
+<li>==path:== 代表用户访问的路径</li>
+<li>==component:== 用户访问这个路径的时候，页面将会导向哪里？这里的目的地址就是React的一个组件</li>
+</ul>
+<p>所以就实现了在 UserCenter Page(用户中心页面) 点击写文章后跳转到 BlogNewed Page (新建博客页面)的功能. <a href="https://github.com/yujuan123/blogsearchengine.git" target="_blank" rel="noopener">上述博客代码</a></p>
+<blockquote>
+<p>可以看出React Router在路由配置起了很大作用</p>
+</blockquote>
+<ul>
+<li>可以配置路由: 具体做法比如<route path="/" component="{UserCenter}/"></route></li>
+<li>可以切换路由:通过Link自由切换</li>
+</ul>
+<p>其他React Router基础知识：</p>
+<ul>
+<li><a href="http://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">React Router实现原理</a></li>
+<li>React Router <a href="http://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">基本原理</a></li>
+<li>React Router的<a href="https://github.com/reactjs/react-router-tutorial/tree/master/lessons" target="_blank" rel="noopener">示例教程</a></li>
+</ul>
+<p>这篇文章没有讲到怎样在js代码里面去跳转页面，之后了解到再补充</p>
+<p>参考链接：<a href="https://www.jianshu.com/p/6f8babea6243" target="_blank" rel="noopener">弄清原理之React Router</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/06/react-router history原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/06/react-router history原理/" itemprop="url">react-router history原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
+                2018-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>目前，==react==的生态越来越丰富，像==flux redux react-router==已经被越来越多的使用，本文就==react-router==的内部实现进行分析。文章主要包含两大部分: 一是对==react-router==赖以依存的==history==进行研究；二是分析==react-router==是如何实现URL与UI同步的。</p>
+<p><strong>1.History</strong></p>
+<ul>
+<li><p>老浏览器的history: 主要通过hash来实现，对应createHashHistory</p>
+</li>
+<li><p>高版本浏览器: 通过html5里面的history，对应createBrowserHistory</p>
+</li>
+<li><p>node环境下: 主要存储在memeory里面，对应createMemoryHistory</p>
+</li>
+</ul>
+<p><strong>内部createHistory实现：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 内部的抽象实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createHistory</span>(<span class="params">options=&#123;&#125;</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    listenBefore, <span class="comment">// 内部的hook机制，可以在location发生变化前执行某些行为，AOP的实现</span></span><br><span class="line">    listen, <span class="comment">// location发生改变时触发回调</span></span><br><span class="line">    transitionTo, <span class="comment">// 执行location的改变</span></span><br><span class="line">    push, <span class="comment">// 改变location</span></span><br><span class="line">    replace,</span><br><span class="line">    go,</span><br><span class="line">    goBack,</span><br><span class="line">    goForward,</span><br><span class="line">    createKey, <span class="comment">// 创建location的key，用于唯一标示该location，是随机生成的</span></span><br><span class="line">    createPath,</span><br><span class="line">    createHref,</span><br><span class="line">    createLocation, <span class="comment">// 创建location</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>createLocation方法:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createLocation</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    pathname, <span class="comment">// url的基本路径</span></span><br><span class="line">    search, <span class="comment">// 查询字段</span></span><br><span class="line">    hash, <span class="comment">// url中的hash值</span></span><br><span class="line">    state, <span class="comment">// url对应的state字段</span></span><br><span class="line">    action, <span class="comment">// 分为push、replace、pop三种</span></span><br><span class="line">    key <span class="comment">// 生成方法为: Math.random().toString(36).substr(2, length)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>三种方法各自执行URL前进的方式：</strong></p>
+<ul>
+<li><p>createBrowserHistory: pushState、replaceState-</p>
+</li>
+<li><p>createHashHistory: location.hash=*** location.replace()</p>
+</li>
+<li><p>createMemoryHistory: 在内存中进行历史记录的存储</p>
+</li>
+</ul>
+<p>伪代码实现:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// createBrowserHistory(HTML5)中的前进实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">finishTransition</span>(<span class="params">location</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">const</span> historyState = &#123; key &#125;;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">if</span> (location.action === <span class="string">'PUSH'</span>) ) &#123;</span><br><span class="line">    <span class="built_in">window</span>.history.pushState(historyState, <span class="literal">null</span>, path);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">window</span>.history.replaceState(historyState, <span class="literal">null</span>, path)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// createHashHistory的内部实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">finishTransition</span>(<span class="params">location</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">if</span> (location.action === <span class="string">'PUSH'</span>) ) &#123;</span><br><span class="line">    <span class="built_in">window</span>.location.hash = path;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">window</span>.location.replace(</span><br><span class="line">    <span class="built_in">window</span>.location.pathname + <span class="built_in">window</span>.location.search + <span class="string">'#'</span> + path</span><br><span class="line">  );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// createMemoryHistory的内部实现</span></span><br><span class="line">entries = [];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">finishTransition</span>(<span class="params">location</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">switch</span> (location.action) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'PUSH'</span>:</span><br><span class="line">      entries.push(location);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'REPLACE'</span>:</span><br><span class="line">      entries[current] = location;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>检测URL回退</strong></p>
+<ul>
+<li>createBrowserHistory: popstate</li>
+<li>createHashHistory: hashchange</li>
+<li>createMemoryHistory: 因为是在内存中操作，跟浏览器没有关系，不涉及UI层面的事情，所以可以直接进行历史信息的回退</li>
+</ul>
+<p>伪代码实现如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// createBrowserHistory(HTML5)中的后退检测</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPopStateListener</span>(<span class="params">&#123; transitionTo &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">popStateListener</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    transitionTo( getCurrentLocation(event.state) );</span><br><span class="line">  &#125;</span><br><span class="line">  addEventListener(<span class="built_in">window</span>, <span class="string">'popstate'</span>, popStateListener);</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// createHashHistory的后退检测</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPopStateListener</span>(<span class="params">&#123; transitionTo &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">hashChangeListener</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    transitionTo( getCurrentLocation(event.state) );</span><br><span class="line">  &#125;</span><br><span class="line">  addEventListener(<span class="built_in">window</span>, <span class="string">'hashchange'</span>, hashChangeListener);</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// createMemoryHistory的内部实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">go</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n) &#123;</span><br><span class="line">    ...</span><br><span class="line">    current += n;</span><br><span class="line">  <span class="keyword">const</span> currentLocation = getCurrentLocation();</span><br><span class="line">  <span class="comment">// change action to POP</span></span><br><span class="line">  history.transitionTo(&#123; ...currentLocation, <span class="attr">action</span>: POP &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="state的存储"><a href="#state的存储" class="headerlink" title="state的存储"></a><strong>state的存储</strong></h3><p>为了维护state的状态，将其存储在sessionStorage里面：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// createBrowserHistory/createHashHistory中state的存储</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveState</span>(<span class="params">key, state</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="built_in">window</span>.sessionStorage.setItem(createKey(key), <span class="built_in">JSON</span>.stringify(state));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readState</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  json = <span class="built_in">window</span>.sessionStorage.getItem(createKey(key));</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(json);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// createMemoryHistory仅仅在内存中，所以操作比较简单</span></span><br><span class="line"><span class="keyword">const</span> storage = createStateStorage(entries); <span class="comment">// storage = &#123;entry.key: entry.state&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveState</span>(<span class="params">key, state</span>) </span>&#123;</span><br><span class="line">  storage[key] = state</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readState</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> storage[key]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="react-router的基本原理"><a href="#react-router的基本原理" class="headerlink" title="react-router的基本原理"></a><strong>react-router的基本原理</strong></h3><p>一句话：实现URL与UI界面的同步。其中在react-router中，==URL==对应==Location==对象，而UI是由==react components==来决定的，这样就转变成==location==与==components==之间的同步问题。</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525598996592.jpg" alt="基本原理"></p>
+<h3 id="react-router的具体实现"><a href="#react-router的具体实现" class="headerlink" title="react-router的具体实现"></a><strong>react-router的具体实现</strong></h3><p>react-router在==history==库的基础上，实现了URL与UI的同步，分为两个层次来描述具体的实现。</p>
+<h4 id="组件层面描述具体实现过程"><a href="#组件层面描述具体实现过程" class="headerlink" title="组件层面描述具体实现过程"></a>组件层面描述具体实现过程</h4><p>在react-router中最主要的component是Router RouterContext Link，history库起到了中间桥梁的作用。</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525599073031.jpg" alt="组件层面的实现过程"></p>
+<h4 id="API层面描述具体实现过程"><a href="#API层面描述具体实现过程" class="headerlink" title="API层面描述具体实现过程"></a>API层面描述具体实现过程</h4><p>为了简单说明，只描述使用browserHistory的实现，hashHistory的实现过程是类似的，就不在说明。</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525599115412.jpg" alt=" api层面的实现过程"></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a><strong>结语</strong></h3><p>目前==react-router==在项目中已有大量实践，其优点可以总结如下:</p>
+<p>风格: 与React融为一体,专为react量身打造，编码风格与react保持一致，例如路由的配置可以通过component来实现</p>
+<ul>
+<li>简单: 不需要手工维护路由state，使代码变得简单</li>
+<li>强大: 强大的路由管理机制，体现在如下方面<ul>
+<li>路由配置: 可以通过组件、配置对象来进行路由的配置</li>
+<li>路由切换: 可以通过\<link> Redirect进行路由的切换</li>
+<li>路由加载: 可以同步记载，也可以异步加载，这样就可以实现按需加载</li>
+</ul>
+</li>
+<li>使用方式: 不仅可以在浏览器端的使用，而且可以在服务器端的使用</li>
+</ul>
+<p>当然react-router的缺点就是API不太稳定，在升级版本的时候需要进行代码变动。</p>
+<p>参考链接： <a href="http://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">react-router的实现原理</a><br>参考链接： <a href="https://zhuanlan.zhihu.com/p/26942101" target="_blank" rel="noopener">前端进阶之路</a></p>
 
           
         
@@ -789,7 +1157,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
                 2018-05-06
@@ -954,354 +1322,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/06/react-router history原理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/06/react-router history原理/" itemprop="url">react-router history原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
-                2018-05-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>目前，==react==的生态越来越丰富，像==flux redux react-router==已经被越来越多的使用，本文就==react-router==的内部实现进行分析。文章主要包含两大部分: 一是对==react-router==赖以依存的==history==进行研究；二是分析==react-router==是如何实现URL与UI同步的。</p>
-<p><strong>1.History</strong></p>
-<ul>
-<li><p>老浏览器的history: 主要通过hash来实现，对应createHashHistory</p>
-</li>
-<li><p>高版本浏览器: 通过html5里面的history，对应createBrowserHistory</p>
-</li>
-<li><p>node环境下: 主要存储在memeory里面，对应createMemoryHistory</p>
-</li>
-</ul>
-<p><strong>内部createHistory实现：</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 内部的抽象实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createHistory</span>(<span class="params">options=&#123;&#125;</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    listenBefore, <span class="comment">// 内部的hook机制，可以在location发生变化前执行某些行为，AOP的实现</span></span><br><span class="line">    listen, <span class="comment">// location发生改变时触发回调</span></span><br><span class="line">    transitionTo, <span class="comment">// 执行location的改变</span></span><br><span class="line">    push, <span class="comment">// 改变location</span></span><br><span class="line">    replace,</span><br><span class="line">    go,</span><br><span class="line">    goBack,</span><br><span class="line">    goForward,</span><br><span class="line">    createKey, <span class="comment">// 创建location的key，用于唯一标示该location，是随机生成的</span></span><br><span class="line">    createPath,</span><br><span class="line">    createHref,</span><br><span class="line">    createLocation, <span class="comment">// 创建location</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>createLocation方法:</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createLocation</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    pathname, <span class="comment">// url的基本路径</span></span><br><span class="line">    search, <span class="comment">// 查询字段</span></span><br><span class="line">    hash, <span class="comment">// url中的hash值</span></span><br><span class="line">    state, <span class="comment">// url对应的state字段</span></span><br><span class="line">    action, <span class="comment">// 分为push、replace、pop三种</span></span><br><span class="line">    key <span class="comment">// 生成方法为: Math.random().toString(36).substr(2, length)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>三种方法各自执行URL前进的方式：</strong></p>
-<ul>
-<li><p>createBrowserHistory: pushState、replaceState-</p>
-</li>
-<li><p>createHashHistory: location.hash=*** location.replace()</p>
-</li>
-<li><p>createMemoryHistory: 在内存中进行历史记录的存储</p>
-</li>
-</ul>
-<p>伪代码实现:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// createBrowserHistory(HTML5)中的前进实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">finishTransition</span>(<span class="params">location</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">const</span> historyState = &#123; key &#125;;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">if</span> (location.action === <span class="string">'PUSH'</span>) ) &#123;</span><br><span class="line">    <span class="built_in">window</span>.history.pushState(historyState, <span class="literal">null</span>, path);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">window</span>.history.replaceState(historyState, <span class="literal">null</span>, path)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// createHashHistory的内部实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">finishTransition</span>(<span class="params">location</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">if</span> (location.action === <span class="string">'PUSH'</span>) ) &#123;</span><br><span class="line">    <span class="built_in">window</span>.location.hash = path;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">window</span>.location.replace(</span><br><span class="line">    <span class="built_in">window</span>.location.pathname + <span class="built_in">window</span>.location.search + <span class="string">'#'</span> + path</span><br><span class="line">  );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// createMemoryHistory的内部实现</span></span><br><span class="line">entries = [];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">finishTransition</span>(<span class="params">location</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">switch</span> (location.action) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'PUSH'</span>:</span><br><span class="line">      entries.push(location);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'REPLACE'</span>:</span><br><span class="line">      entries[current] = location;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>检测URL回退</strong></p>
-<ul>
-<li>createBrowserHistory: popstate</li>
-<li>createHashHistory: hashchange</li>
-<li>createMemoryHistory: 因为是在内存中操作，跟浏览器没有关系，不涉及UI层面的事情，所以可以直接进行历史信息的回退</li>
-</ul>
-<p>伪代码实现如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// createBrowserHistory(HTML5)中的后退检测</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPopStateListener</span>(<span class="params">&#123; transitionTo &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">popStateListener</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    transitionTo( getCurrentLocation(event.state) );</span><br><span class="line">  &#125;</span><br><span class="line">  addEventListener(<span class="built_in">window</span>, <span class="string">'popstate'</span>, popStateListener);</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// createHashHistory的后退检测</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startPopStateListener</span>(<span class="params">&#123; transitionTo &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">hashChangeListener</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    transitionTo( getCurrentLocation(event.state) );</span><br><span class="line">  &#125;</span><br><span class="line">  addEventListener(<span class="built_in">window</span>, <span class="string">'hashchange'</span>, hashChangeListener);</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// createMemoryHistory的内部实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">go</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n) &#123;</span><br><span class="line">    ...</span><br><span class="line">    current += n;</span><br><span class="line">  <span class="keyword">const</span> currentLocation = getCurrentLocation();</span><br><span class="line">  <span class="comment">// change action to POP</span></span><br><span class="line">  history.transitionTo(&#123; ...currentLocation, <span class="attr">action</span>: POP &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="state的存储"><a href="#state的存储" class="headerlink" title="state的存储"></a><strong>state的存储</strong></h3><p>为了维护state的状态，将其存储在sessionStorage里面：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// createBrowserHistory/createHashHistory中state的存储</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveState</span>(<span class="params">key, state</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="built_in">window</span>.sessionStorage.setItem(createKey(key), <span class="built_in">JSON</span>.stringify(state));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readState</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  json = <span class="built_in">window</span>.sessionStorage.getItem(createKey(key));</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(json);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// createMemoryHistory仅仅在内存中，所以操作比较简单</span></span><br><span class="line"><span class="keyword">const</span> storage = createStateStorage(entries); <span class="comment">// storage = &#123;entry.key: entry.state&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveState</span>(<span class="params">key, state</span>) </span>&#123;</span><br><span class="line">  storage[key] = state</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readState</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> storage[key]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="react-router的基本原理"><a href="#react-router的基本原理" class="headerlink" title="react-router的基本原理"></a><strong>react-router的基本原理</strong></h3><p>一句话：实现URL与UI界面的同步。其中在react-router中，==URL==对应==Location==对象，而UI是由==react components==来决定的，这样就转变成==location==与==components==之间的同步问题。</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525598996592.jpg" alt="基本原理"></p>
-<h3 id="react-router的具体实现"><a href="#react-router的具体实现" class="headerlink" title="react-router的具体实现"></a><strong>react-router的具体实现</strong></h3><p>react-router在==history==库的基础上，实现了URL与UI的同步，分为两个层次来描述具体的实现。</p>
-<h4 id="组件层面描述具体实现过程"><a href="#组件层面描述具体实现过程" class="headerlink" title="组件层面描述具体实现过程"></a>组件层面描述具体实现过程</h4><p>在react-router中最主要的component是Router RouterContext Link，history库起到了中间桥梁的作用。</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525599073031.jpg" alt="组件层面的实现过程"></p>
-<h4 id="API层面描述具体实现过程"><a href="#API层面描述具体实现过程" class="headerlink" title="API层面描述具体实现过程"></a>API层面描述具体实现过程</h4><p>为了简单说明，只描述使用browserHistory的实现，hashHistory的实现过程是类似的，就不在说明。</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525599115412.jpg" alt=" api层面的实现过程"></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a><strong>结语</strong></h3><p>目前==react-router==在项目中已有大量实践，其优点可以总结如下:</p>
-<p>风格: 与React融为一体,专为react量身打造，编码风格与react保持一致，例如路由的配置可以通过component来实现</p>
-<ul>
-<li>简单: 不需要手工维护路由state，使代码变得简单</li>
-<li>强大: 强大的路由管理机制，体现在如下方面<ul>
-<li>路由配置: 可以通过组件、配置对象来进行路由的配置</li>
-<li>路由切换: 可以通过\<link> Redirect进行路由的切换</li>
-<li>路由加载: 可以同步记载，也可以异步加载，这样就可以实现按需加载</li>
-</ul>
-</li>
-<li>使用方式: 不仅可以在浏览器端的使用，而且可以在服务器端的使用</li>
-</ul>
-<p>当然react-router的缺点就是API不太稳定，在升级版本的时候需要进行代码变动。</p>
-<p>参考链接： <a href="http://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">react-router的实现原理</a><br>参考链接： <a href="https://zhuanlan.zhihu.com/p/26942101" target="_blank" rel="noopener">前端进阶之路</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/06/React Router 简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/06/React Router 简介/" itemprop="url">React Router 简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
-                2018-05-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>这篇文章主要是讲怎样 react router 是怎样的，并没有介绍到底层的实现机制，仅供未了解过的同学参考。</p>
-</blockquote>
-<h2 id="弄清原理之React-Router"><a href="#弄清原理之React-Router" class="headerlink" title="弄清原理之React Router"></a>弄清原理之React Router</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><p>在web应用开发过程中，路由系统是不可或缺的一部分，路由简单来说就是当url发生变化时，web界面也会随之改变。react 也有自己的路由系统，那就是 react router 路由系统。</p>
-<h3 id="2-基本原理"><a href="#2-基本原理" class="headerlink" title="2. 基本原理"></a>2. 基本原理</h3><p>url  和ui 是意义对应的关系，记当你输入Url 时，就回渲染对应 react component</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525588546705.jpg" alt="基本原理"></p>
-<p>接下来然我们看看组件层面的实现原理</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525588577206.jpg" alt="实现原理"></p>
-<p>以browserHistory(一种history类型:一个 history 知道如何去监听浏览器地址栏的变化， 并解析这个 URL 转化为 location 对象)为例 :</p>
-<ul>
-<li>browserHistory进行==路由state==管理,主要通过sessionStorage</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//保存　路由state(router state)</span><br><span class="line">function saveState(key, state) &#123;</span><br><span class="line">  ...</span><br><span class="line">  window.sessionStorage.setItem(createKey(key), JSON.stringify(state));</span><br><span class="line">&#125;</span><br><span class="line">//读取路由state</span><br><span class="line">function readState(key) &#123;</span><br><span class="line">  ...</span><br><span class="line">  json = window.sessionStorage.getItem(createKey(key));</span><br><span class="line">  return JSON.parse(json);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中saveState函数传进来的state是个json对象，如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">route</span>: <span class="string">'/about'</span>&#125; <span class="comment">///假设此时的location为'/about'</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>进行路由匹配，最终渲染对应的组件</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> About = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//About 组件</span></span><br><span class="line"><span class="keyword">const</span> Inbox = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//Inbox 组件</span></span><br><span class="line"><span class="keyword">const</span> Home = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//Home组件</span></span><br><span class="line"> render() &#123;</span><br><span class="line">    <span class="keyword">let</span> Child</span><br><span class="line">    <span class="keyword">switch</span> (<span class="keyword">this</span>.state.route) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'/about'</span>: Child = About; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'/inbox'</span>: Child = Inbox; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:      Child = Home;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;App&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">          &lt;li&gt;&lt;a href="#/</span>about<span class="string">"&gt;About&lt;/a&gt;&lt;/li&gt;</span></span><br><span class="line">          &lt;li&gt;&lt;a href="#/inbox"&gt;Inbox&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Child/</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">React.render(&lt;App /</span>&gt;, <span class="built_in">document</span>.body)</span><br></pre></td></tr></table></figure>
-<h3 id="二-React-Router-实践"><a href="#二-React-Router-实践" class="headerlink" title="二. React Router 实践"></a>二. React Router 实践</h3><p>现在有这样的场景，想实现在 <strong>UserCenter Page</strong>(用户中心页面) 点击<strong>写文章</strong>链接后跳转到 <strong>BlogNewed Page</strong> (新建博客页面)的功能。</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525589351634.jpg" alt="点击链接后跳转.jpg"></p>
-<ol>
-<li>于是，首先我们要建立我们的UserCenter Page，因为页面代码不是我们今天的重点，所以不会过多解释。</li>
-</ol>
-<p>我们先在src/components文件夹下新建文件UserCenter.js，并添加以下代码:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Link&#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCenter</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"row user-info blog-body"</span>&gt;</span><br><span class="line">        &lt;div className=<span class="string">"col-md-3 "</span>&gt;</span><br><span class="line">          ![](images/userPhoto.jpg)</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div className=" col-md-4"&gt;</span></span><br><span class="line"><span class="regexp">          &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li&gt;</span></span><br><span class="line"><span class="regexp">              &lt;h3&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Link to="/</span>blogNewed<span class="string">"&gt;</span></span><br><span class="line"><span class="string">                  &lt;span className="</span>iconfont icon-iconxiezuo01<span class="string">"&gt; &lt;/span&gt;</span></span><br><span class="line"><span class="string">                  写文章</span></span><br><span class="line"><span class="string">                &lt;/Link&gt;</span></span><br><span class="line"><span class="string">              &lt;/h3&gt;</span></span><br><span class="line"><span class="string">            &lt;/li&gt;</span></span><br><span class="line"><span class="string">          &lt;/ul&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    );</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">export default UserCenter;</span></span><br></pre></td></tr></table></figure>
-<p>这是一份很简单的代码，其中主要用到的是React Router的Link组件，相当于React版的a标签。<strong>其中”/blogNewed”就是点击该Link后要跳到的目的地址，这个地址会被下面谈及的路由所捕获，然后转向对应的页面</strong></p>
-<ol>
-<li>想想我们之前只有UserCenter这个页面，之前通过路由进入UserCenter 页面的做法如下：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*src/index.js*/</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;render&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> UserCenter <span class="keyword">from</span> <span class="string">'./components/UserCenter'</span>;</span><br><span class="line">render(</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">       &lt;UserCenter/&gt;</span><br><span class="line">    &lt;<span class="regexp">/Provider&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById('app')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
-<p>如果我们只是UserCenter这个页面的话，这样做也没有什么问题。但是问题是我们这里在UserCenter里面点击相应的链接，需要跳转到/blogNewed页面。如果要实现这个功能，我们就要<strong>引入React Router</strong>了，我们先看代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;render&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Router, Route, browserHistory,IndexRoute&#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;</span><br><span class="line"><span class="comment">/*import App from './components/App';*/</span></span><br><span class="line"><span class="keyword">import</span> UserCenter <span class="keyword">from</span> <span class="string">'./components/UserCenter'</span>;</span><br><span class="line"><span class="keyword">import</span> BlogNewd <span class="keyword">from</span> <span class="string">'./components/BlogNewed'</span>;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/"</span> component=&#123;UserCenter&#125;/&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/blogNewed"</span> component=&#123;BlogNewd&#125;/&gt;</span><br><span class="line">      &lt;<span class="regexp">/Router&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>上面的 Route组件中</p>
-<ul>
-<li>==path:== 代表用户访问的路径</li>
-<li>==component:== 用户访问这个路径的时候，页面将会导向哪里？这里的目的地址就是React的一个组件</li>
-</ul>
-<p>所以就实现了在 UserCenter Page(用户中心页面) 点击写文章后跳转到 BlogNewed Page (新建博客页面)的功能. <a href="https://github.com/yujuan123/blogsearchengine.git" target="_blank" rel="noopener">上述博客代码</a></p>
-<blockquote>
-<p>可以看出React Router在路由配置起了很大作用</p>
-</blockquote>
-<ul>
-<li>可以配置路由: 具体做法比如<route path="/" component="{UserCenter}/"></route></li>
-<li>可以切换路由:通过Link自由切换</li>
-</ul>
-<p>其他React Router基础知识：</p>
-<ul>
-<li><a href="http://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">React Router实现原理</a></li>
-<li>React Router <a href="http://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">基本原理</a></li>
-<li>React Router的<a href="https://github.com/reactjs/react-router-tutorial/tree/master/lessons" target="_blank" rel="noopener">示例教程</a></li>
-</ul>
-<p>这篇文章没有讲到怎样在js代码里面去跳转页面，之后了解到再补充</p>
-<p>参考链接：<a href="https://www.jianshu.com/p/6f8babea6243" target="_blank" rel="noopener">弄清原理之React Router</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/05/dva + antd mobile/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1331,7 +1351,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T00:00:00+08:00">
                 2018-05-05
@@ -1496,7 +1516,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T00:00:00+08:00">
                 2018-05-05
@@ -1698,7 +1718,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-03T00:00:00+08:00">
                 2018-05-03
@@ -1955,7 +1975,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -1964,10 +1984,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -1975,10 +1995,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -2023,7 +2043,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

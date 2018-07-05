@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://nisonfuture.cn/2018/05/23/快速输出调试日志/index.html">
 <meta property="og:site_name" content="叶落林间">
 <meta property="og:description" content="感觉每次打console.log 很麻烦，所以就想加快输出log的速度同事教我装个插件 Javascript code snippets。 装完使用 clg 即可 将 console.log（Object）输出 后来感觉使用console.log 其实并不太好，因为如果到正式环境需要将调试的信息去掉，所以我自己封装了一个plog : p 是我id(Plinghuang) 的首写字母 ,    其实">
-<meta property="og:updated_time" content="2018-06-30T13:29:28.445Z">
+<meta property="og:updated_time" content="2018-07-04T14:50:37.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速输出调试日志">
 <meta name="twitter:description" content="感觉每次打console.log 很麻烦，所以就想加快输出log的速度同事教我装个插件 Javascript code snippets。 装完使用 clg 即可 将 console.log（Object）输出 后来感觉使用console.log 其实并不太好，因为如果到正式环境需要将调试的信息去掉，所以我自己封装了一个plog : p 是我id(Plinghuang) 的首写字母 ,    其实">
@@ -185,7 +185,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -195,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -259,7 +279,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T00:00:00+08:00">
                 2018-05-23
@@ -321,7 +341,7 @@
 </ol>
 <p>之所以分级别,更重要的原因是 方便后台日志数据库,将必要信息存储进数据库里面,可以快速定位错误</p>
 <p>上面的plog 是没有加向后台发送日志服务的,<br>之前用ts 写过一个服务 可以向后台发送数据:</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  plog.service.ts </span></span><br><span class="line"><span class="keyword">import</span> &#123;Injectable&#125; <span class="keyword">from</span> <span class="string">"@angular/core"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;PostService&#125; <span class="keyword">from</span> <span class="string">"./post.service"</span>;</span><br><span class="line"><span class="keyword">import</span> utils <span class="keyword">from</span> <span class="string">"../utils/utils"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;CONFIG&#125; <span class="keyword">from</span> <span class="string">"../config/config"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">export</span>  <span class="keyword">class</span> PlogService&#123;</span><br><span class="line">  <span class="keyword">private</span> TAG=<span class="string">"PlogService"</span>;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> postService:PostService</span>)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  log(message?: <span class="built_in">any</span>, ...optionalParams: <span class="built_in">any</span>[]) &#123;</span><br><span class="line">    <span class="keyword">this</span>.postWeblog(<span class="string">"log"</span>,message.toString(),optionalParams.toString());</span><br><span class="line">    <span class="built_in">console</span>.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  i(message?: <span class="built_in">any</span>, ...optionalParams: <span class="built_in">any</span>[])&#123;</span><br><span class="line">    <span class="keyword">this</span>.postWeblog(<span class="string">"info"</span>,message.toString(),optionalParams.toString());</span><br><span class="line">    <span class="built_in">console</span>.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  w(message?: <span class="built_in">any</span>, ...optionalParams: <span class="built_in">any</span>[])&#123;</span><br><span class="line">    <span class="keyword">this</span>.postWeblog(<span class="string">"warning"</span>,message.toString(),optionalParams.toString());</span><br><span class="line">    <span class="built_in">console</span>.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  e(message?: <span class="built_in">any</span>, ...optionalParams: <span class="built_in">any</span>[])&#123;</span><br><span class="line">    <span class="keyword">this</span>.postWeblog(<span class="string">"error"</span>,message.toString(),optionalParams.toString());</span><br><span class="line">    <span class="built_in">console</span>.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  d(message?: <span class="built_in">any</span>, ...optionalParams: <span class="built_in">any</span>[]) &#123;</span><br><span class="line">    <span class="comment">// this.postWeblog("debug",message.toString(),optionalParams.toString());</span></span><br><span class="line">    <span class="built_in">console</span>.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  postWeblog(<span class="keyword">type</span>,tag,detail:<span class="built_in">string</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> funcName=<span class="string">"postWeblog"</span>;</span><br><span class="line">    <span class="keyword">let</span> url=utils.getApiPrefix()+CONFIG.urls.postLog;</span><br><span class="line">    <span class="keyword">let</span> data=&#123;</span><br><span class="line">      <span class="string">"type"</span>:<span class="keyword">type</span>,</span><br><span class="line">      <span class="string">"tag"</span>:tag,</span><br><span class="line">      <span class="string">"detail"</span>:detail,</span><br><span class="line">      <span class="string">"createtime"</span>:<span class="built_in">parseInt</span>((<span class="keyword">new</span> <span class="built_in">Date</span>().getTime()/<span class="number">1000</span>).toFixed()),</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.postService.postJsonData(url,data,<span class="function">(<span class="params">fb</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.TAG,funcName,<span class="string">"success:"</span>,fb);</span><br><span class="line">    &#125;,<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.TAG,funcName,<span class="string">"fail:"</span>,err);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">//  plog.service.ts </span><br><span class="line">import &#123;Injectable&#125; from &quot;@angular/core&quot;;</span><br><span class="line">import &#123;PostService&#125; from &quot;./post.service&quot;;</span><br><span class="line">import utils from &quot;../utils/utils&quot;;</span><br><span class="line">import &#123;CONFIG&#125; from &quot;../config/config&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export  class PlogService&#123;</span><br><span class="line">  private TAG=&quot;PlogService&quot;;</span><br><span class="line">  constructor(private postService:PostService)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  log(message?: any, ...optionalParams: any[]) &#123;</span><br><span class="line">    this.postWeblog(&quot;log&quot;,message.toString(),optionalParams.toString());</span><br><span class="line">    console.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  i(message?: any, ...optionalParams: any[])&#123;</span><br><span class="line">    this.postWeblog(&quot;info&quot;,message.toString(),optionalParams.toString());</span><br><span class="line">    console.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  w(message?: any, ...optionalParams: any[])&#123;</span><br><span class="line">    this.postWeblog(&quot;warning&quot;,message.toString(),optionalParams.toString());</span><br><span class="line">    console.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  e(message?: any, ...optionalParams: any[])&#123;</span><br><span class="line">    this.postWeblog(&quot;error&quot;,message.toString(),optionalParams.toString());</span><br><span class="line">    console.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  d(message?: any, ...optionalParams: any[]) &#123;</span><br><span class="line">    // this.postWeblog(&quot;debug&quot;,message.toString(),optionalParams.toString());</span><br><span class="line">    console.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  postWeblog(tags,tag,detail:string)&#123;</span><br><span class="line">    let funcName=&quot;postWeblog&quot;;</span><br><span class="line">    let url=utils.getApiPrefix()+CONFIG.urls.postLog;</span><br><span class="line">    let data=&#123;</span><br><span class="line">      &quot;tags&quot;:tags,</span><br><span class="line">      &quot;tag&quot;:tag,</span><br><span class="line">      &quot;detail&quot;:detail,</span><br><span class="line">      &quot;createtime&quot;:parseInt((new Date().getTime()/1000).toFixed()),</span><br><span class="line">    &#125;</span><br><span class="line">    this.postService.postJsonData(url,data,(fb)=&gt;&#123;</span><br><span class="line">        console.log(this.TAG,funcName,&quot;success:&quot;,fb);</span><br><span class="line">    &#125;,(err)=&gt;&#123;</span><br><span class="line">        console.log(this.TAG,funcName,&quot;fail:&quot;,err);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>发送的服务自己写一个就好 仅供模式参考 </p>
 
       
@@ -363,8 +383,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/27/跨域问题/" rel="prev" title="跨域问题">
-                跨域问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/27/1 + + '2' + '2'/" rel="prev" title="1 + + '2' + '2'">
+                1 + + '2' + '2' <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -434,7 +454,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -443,10 +463,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -454,10 +474,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -502,7 +522,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

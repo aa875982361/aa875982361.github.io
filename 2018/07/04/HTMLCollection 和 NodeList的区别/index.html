@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530705369511.png">
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530705398657.png">
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530706184216.png">
-<meta property="og:updated_time" content="2018-07-04T14:30:46.179Z">
+<meta property="og:updated_time" content="2018-07-04T14:50:37.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTMLCollection 和 NodeList的区别">
 <meta name="twitter:description" content="先介绍一下这两个概念：HTMLCollection 和 NodeList  HTMLCollection: 一个包含了元素（元素顺序为文档流中的顺序）的通用集合，还提供了用来从该集合中选择元素的方法和属性， NodeList：是一个节点的集合，node.childNodes 返回，querySelectorAll 返回的  差异在于：  方法： HTMLCollection 比NodeList 多">
@@ -192,7 +192,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -202,7 +222,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -266,7 +286,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T00:00:00+08:00">
                 2018-07-04
@@ -331,7 +351,7 @@
 <li>方法一： item（通过序号索引获取节点，参数是索引值，超过索引值返回null）</li>
 <li>方法二：nameItem （用名字来返回一个节点，首先搜寻是否有匹配的id属性，如果没有就寻找是否有匹配的name属性，如果都买有，返回null）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;ct&quot;&gt;</span><br><span class="line">            &lt;p class=&quot;para&quot;&gt;pinghuang&lt;/p&gt;</span><br><span class="line">            &lt;p class=&quot;attr&quot;&gt;123&lt;span&gt;dozz&lt;/span&gt;&lt;/p&gt;</span><br><span class="line">            &lt;form action=&quot;&quot; method=&quot;get&quot; name=&quot;apply&quot;&gt;</span><br><span class="line">                &lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;用户名&quot;&gt;</span><br><span class="line">                &lt;input type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;密码&quot;&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;script src=&apos;./index.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctags html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;ct&quot;&gt;</span><br><span class="line">            &lt;p class=&quot;para&quot;&gt;pinghuang&lt;/p&gt;</span><br><span class="line">            &lt;p class=&quot;attr&quot;&gt;123&lt;span&gt;dozz&lt;/span&gt;&lt;/p&gt;</span><br><span class="line">            &lt;form action=&quot;&quot; method=&quot;get&quot; name=&quot;apply&quot;&gt;</span><br><span class="line">                &lt;input tags=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;用户名&quot;&gt;</span><br><span class="line">                &lt;input tags=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;密码&quot;&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;script src=&apos;./index.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>js文件</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ct = <span class="built_in">document</span>.getElementById(<span class="string">"ct"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(ct);</span><br><span class="line"><span class="keyword">var</span> a = ct.children;</span><br><span class="line"><span class="keyword">var</span> b = ct.childNodes;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="built_in">console</span>.log(a.item(<span class="number">1</span>));</span><br><span class="line"><span class="built_in">console</span>.log(a.item(<span class="number">3</span>));</span><br></pre></td></tr></table></figure>
 <p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1530698719381.png" alt="nodeList"></p>
@@ -450,10 +470,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -474,7 +494,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -483,10 +503,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -494,10 +514,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -558,7 +578,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

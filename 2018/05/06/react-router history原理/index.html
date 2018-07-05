@@ -89,7 +89,7 @@
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525598996592.jpg">
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525599073031.jpg">
 <meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525599115412.jpg">
-<meta property="og:updated_time" content="2018-06-30T13:26:41.953Z">
+<meta property="og:updated_time" content="2018-07-04T14:50:37.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-router history原理">
 <meta name="twitter:description" content="目前，==react==的生态越来越丰富，像==flux redux react-router==已经被越来越多的使用，本文就==react-router==的内部实现进行分析。文章主要包含两大部分: 一是对==react-router==赖以依存的==history==进行研究；二是分析==react-router==是如何实现URL与UI同步的。 1.History  老浏览器的history">
@@ -189,7 +189,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -199,7 +219,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -263,7 +283,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
                 2018-05-06
@@ -389,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/06/React Router 简介/" rel="next" title="React Router 简介">
-                <i class="fa fa-chevron-left"></i> React Router 简介
+              <a href="/2018/05/06/Web App Hybrid App和 Native App的区别/" rel="next" title="Web App Hybrid App和 Native App的区别">
+                <i class="fa fa-chevron-left"></i> Web App Hybrid App和 Native App的区别
               </a>
             
           </div>
@@ -399,8 +419,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/06/Web App Hybrid App和 Native App的区别/" rel="prev" title="Web App Hybrid App和 Native App的区别">
-                Web App Hybrid App和 Native App的区别 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/06/React Router 简介/" rel="prev" title="React Router 简介">
+                React Router 简介 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -455,10 +475,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -479,7 +499,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -488,10 +508,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                
+                  <span class="site-state-item-name">categories</span>
+                </a>
               </div>
             
 
@@ -499,10 +519,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
-                
+                  <span class="site-state-item-name">tags</span>
+                </a>
               </div>
             
 
@@ -563,7 +583,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
