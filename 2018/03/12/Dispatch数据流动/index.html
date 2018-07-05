@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="叶落林间">
 <meta property="og:description" content="数据的改变发生通常是通过用户的交互行为或浏览器行为（如路由跳转等）触发的，当此类行为会改变数据的时候可以先通过==dispatch== 发起一个action，如果是听不的行为会直接通过==Reducers==改变==states==，如果是异步行为（副作用 effect） 会先触发==Effects== 然后流向==reducers== 最终改变==State==，所以在dva中数据流向非常清晰">
 <meta property="og:image" content="http://nisonfuture.cn/2018/03/12/Dispatch数据流动/images/1520826671200.jpg">
-<meta property="og:updated_time" content="2018-07-04T14:50:37.329Z">
+<meta property="og:updated_time" content="2018-07-05T01:15:29.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dispatch数据流动">
 <meta name="twitter:description" content="数据的改变发生通常是通过用户的交互行为或浏览器行为（如路由跳转等）触发的，当此类行为会改变数据的时候可以先通过==dispatch== 发起一个action，如果是听不的行为会直接通过==Reducers==改变==states==，如果是异步行为（副作用 effect） 会先触发==Effects== 然后流向==reducers== 最终改变==State==，所以在dva中数据流向非常清晰">
@@ -187,7 +187,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -207,7 +207,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -217,7 +217,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -281,7 +281,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-12T00:00:00+08:00">
                 2018-03-12
@@ -293,6 +293,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -429,10 +451,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -453,7 +475,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -464,7 +486,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 </a>
               </div>
             
@@ -475,7 +497,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 </a>
               </div>
             
@@ -537,7 +559,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

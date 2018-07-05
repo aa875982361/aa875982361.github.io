@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -214,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/19/overflow hidden 出现边框 记录/">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/19/MarginTop 为何影响父元素的 MarginTop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pling Huang">
@@ -270,7 +270,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/19/overflow hidden 出现边框 记录/" itemprop="url">overflow hidden 出现边框 记录</a></h1>
+                <a class="post-title-link" href="/2018/05/19/MarginTop 为何影响父元素的 MarginTop/" itemprop="url">MarginTop 为何影响父元素的 MarginTop</a></h1>
         
 
         <div class="post-meta">
@@ -280,7 +280,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T00:00:00+08:00">
                 2018-05-19
@@ -292,6 +292,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -322,7 +344,18 @@
       
         
           
-            <p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1526698382487.jpg" alt="overflow:hidden"></p>
+            <p>在做弹窗的时候发现一个有趣的问题：<br>子元素用margin-top 将父元素顶下来了 ，并没有起到理想的效果，子元素相对于父元素顶部 XXXXpx<br>如下图：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1526697876549.jpg" alt="margin-top问题"></p>
+<p>红色边框 父元素 css：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">relative</span>;</span><br><span class="line"><span class="selector-tag">width</span>: 5<span class="selector-class">.5rem</span>;</span><br><span class="line"><span class="selector-tag">height</span>: 6<span class="selector-class">.8rem</span>;</span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">white</span>;</span><br><span class="line"><span class="selector-tag">border-radius</span>: 0<span class="selector-class">.12rem</span>;</span><br></pre></td></tr></table></figure>
+<p>绿色边框 第一个子元素 css ：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">margin</span>: 0 <span class="selector-tag">auto</span>;</span><br><span class="line">   <span class="selector-tag">margin-top</span>: 0<span class="selector-class">.47rem</span>;</span><br><span class="line">   <span class="selector-tag">margin-bottom</span>: 0<span class="selector-class">.23rem</span>;</span><br><span class="line">   <span class="selector-tag">font-family</span>: <span class="selector-tag">PingFang-SC-Medium</span>;</span><br><span class="line">   <span class="selector-tag">font-size</span>: 0<span class="selector-class">.3rem</span>;</span><br><span class="line">   <span class="selector-tag">font-weight</span>: <span class="selector-tag">normal</span>;</span><br><span class="line">   <span class="selector-tag">font-stretch</span>: <span class="selector-tag">normal</span>;</span><br><span class="line">   <span class="selector-tag">line-height</span>: 0<span class="selector-class">.46rem</span>;</span><br><span class="line">   <span class="selector-tag">letter-spacing</span>: 0<span class="selector-tag">rem</span>;</span><br><span class="line">   <span class="selector-tag">color</span>: <span class="selector-id">#131313</span>;</span><br><span class="line">   <span class="selector-tag">text-align</span>: <span class="selector-tag">center</span>;</span><br></pre></td></tr></table></figure>
+<p>父元素并没有设置margin-top<br>但是 却又margin-top的效果<br>上网找了一下资料发现 这个 居然是 <strong>==CSS2.1盒模型规范==</strong></p>
+<p>CSS2.1的盒模型中规定的内容——<a href="http://www.w3.org/TR/CSS21/box.html#collapsing-margins" target="_blank" rel="noopener">Collapsing margins</a>：</p>
+<blockquote>
+<p>In this specification, the expression collapsing margins means that adjoining margins (no non-empty content, padding or border areas or clearance separate them) of two or more boxes (which may be next to one another or nested) combine to form a single margin. 所有毗邻的两个或更多盒元素的margin将会合并为一个margin共享之。毗邻的定义为：同级或者嵌套的盒元素，并且它们之间没有非空内容、Padding或Border分隔。</p>
+</blockquote>
+<h3 id="这就是原因了。“嵌套”的盒元素也算“毗邻”，也会-Collapsing-Margins。"><a href="#这就是原因了。“嵌套”的盒元素也算“毗邻”，也会-Collapsing-Margins。" class="headerlink" title="这就是原因了。“嵌套”的盒元素也算“毗邻”，也会 Collapsing Margins。"></a>这就是原因了。“嵌套”的盒元素也算“毗邻”，也会 Collapsing Margins。</h3><p>这个问题的避免方法很多，只要破坏它出现的条件就行。给 Outer Div 加上 padding/border，或者给 Outer Div / Inner Div 设置为 float/position:absolute(CSS2.1规定浮动元素和绝对定位元素不参与Margin折叠)。 　　更多信息，关于不同值的margin折叠后表现的计算方法等等，可自行查阅W3C的CSS2.1规范：<a href="http://www.w3.org/TR/CSS21/box.html#collapsing-margins" target="_blank" rel="noopener">Collapsing margins</a>。</p>
 
           
         
@@ -400,7 +433,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-14T00:00:00+08:00">
                 2018-05-14
@@ -412,6 +445,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -540,7 +595,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T00:00:00+08:00">
                 2018-05-07
@@ -552,6 +607,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -670,7 +747,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
                 2018-05-06
@@ -682,6 +759,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -780,179 +879,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/06/React Router 简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/06/React Router 简介/" itemprop="url">React Router 简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
-                2018-05-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>这篇文章主要是讲怎样 react router 是怎样的，并没有介绍到底层的实现机制，仅供未了解过的同学参考。</p>
-</blockquote>
-<h2 id="弄清原理之React-Router"><a href="#弄清原理之React-Router" class="headerlink" title="弄清原理之React Router"></a>弄清原理之React Router</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><p>在web应用开发过程中，路由系统是不可或缺的一部分，路由简单来说就是当url发生变化时，web界面也会随之改变。react 也有自己的路由系统，那就是 react router 路由系统。</p>
-<h3 id="2-基本原理"><a href="#2-基本原理" class="headerlink" title="2. 基本原理"></a>2. 基本原理</h3><p>url  和ui 是意义对应的关系，记当你输入Url 时，就回渲染对应 react component</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525588546705.jpg" alt="基本原理"></p>
-<p>接下来然我们看看组件层面的实现原理</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525588577206.jpg" alt="实现原理"></p>
-<p>以browserHistory(一种history类型:一个 history 知道如何去监听浏览器地址栏的变化， 并解析这个 URL 转化为 location 对象)为例 :</p>
-<ul>
-<li>browserHistory进行==路由state==管理,主要通过sessionStorage</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//保存　路由state(router state)</span><br><span class="line">function saveState(key, state) &#123;</span><br><span class="line">  ...</span><br><span class="line">  window.sessionStorage.setItem(createKey(key), JSON.stringify(state));</span><br><span class="line">&#125;</span><br><span class="line">//读取路由state</span><br><span class="line">function readState(key) &#123;</span><br><span class="line">  ...</span><br><span class="line">  json = window.sessionStorage.getItem(createKey(key));</span><br><span class="line">  return JSON.parse(json);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中saveState函数传进来的state是个json对象，如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">route</span>: <span class="string">'/about'</span>&#125; <span class="comment">///假设此时的location为'/about'</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>进行路由匹配，最终渲染对应的组件</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> About = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//About 组件</span></span><br><span class="line"><span class="keyword">const</span> Inbox = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//Inbox 组件</span></span><br><span class="line"><span class="keyword">const</span> Home = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//Home组件</span></span><br><span class="line"> render() &#123;</span><br><span class="line">    <span class="keyword">let</span> Child</span><br><span class="line">    <span class="keyword">switch</span> (<span class="keyword">this</span>.state.route) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'/about'</span>: Child = About; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'/inbox'</span>: Child = Inbox; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:      Child = Home;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;App&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">          &lt;li&gt;&lt;a href="#/</span>about<span class="string">"&gt;About&lt;/a&gt;&lt;/li&gt;</span></span><br><span class="line">          &lt;li&gt;&lt;a href="#/inbox"&gt;Inbox&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Child/</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">React.render(&lt;App /</span>&gt;, <span class="built_in">document</span>.body)</span><br></pre></td></tr></table></figure>
-<h3 id="二-React-Router-实践"><a href="#二-React-Router-实践" class="headerlink" title="二. React Router 实践"></a>二. React Router 实践</h3><p>现在有这样的场景，想实现在 <strong>UserCenter Page</strong>(用户中心页面) 点击<strong>写文章</strong>链接后跳转到 <strong>BlogNewed Page</strong> (新建博客页面)的功能。</p>
-<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525589351634.jpg" alt="点击链接后跳转.jpg"></p>
-<ol>
-<li>于是，首先我们要建立我们的UserCenter Page，因为页面代码不是我们今天的重点，所以不会过多解释。</li>
-</ol>
-<p>我们先在src/components文件夹下新建文件UserCenter.js，并添加以下代码:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Link&#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCenter</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"row user-info blog-body"</span>&gt;</span><br><span class="line">        &lt;div className=<span class="string">"col-md-3 "</span>&gt;</span><br><span class="line">          ![](images/userPhoto.jpg)</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div className=" col-md-4"&gt;</span></span><br><span class="line"><span class="regexp">          &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li&gt;</span></span><br><span class="line"><span class="regexp">              &lt;h3&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Link to="/</span>blogNewed<span class="string">"&gt;</span></span><br><span class="line"><span class="string">                  &lt;span className="</span>iconfont icon-iconxiezuo01<span class="string">"&gt; &lt;/span&gt;</span></span><br><span class="line"><span class="string">                  写文章</span></span><br><span class="line"><span class="string">                &lt;/Link&gt;</span></span><br><span class="line"><span class="string">              &lt;/h3&gt;</span></span><br><span class="line"><span class="string">            &lt;/li&gt;</span></span><br><span class="line"><span class="string">          &lt;/ul&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    );</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">export default UserCenter;</span></span><br></pre></td></tr></table></figure>
-<p>这是一份很简单的代码，其中主要用到的是React Router的Link组件，相当于React版的a标签。<strong>其中”/blogNewed”就是点击该Link后要跳到的目的地址，这个地址会被下面谈及的路由所捕获，然后转向对应的页面</strong></p>
-<ol>
-<li>想想我们之前只有UserCenter这个页面，之前通过路由进入UserCenter 页面的做法如下：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*src/index.js*/</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;render&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> UserCenter <span class="keyword">from</span> <span class="string">'./components/UserCenter'</span>;</span><br><span class="line">render(</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">       &lt;UserCenter/&gt;</span><br><span class="line">    &lt;<span class="regexp">/Provider&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById('app')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
-<p>如果我们只是UserCenter这个页面的话，这样做也没有什么问题。但是问题是我们这里在UserCenter里面点击相应的链接，需要跳转到/blogNewed页面。如果要实现这个功能，我们就要<strong>引入React Router</strong>了，我们先看代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;render&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Router, Route, browserHistory,IndexRoute&#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;</span><br><span class="line"><span class="comment">/*import App from './components/App';*/</span></span><br><span class="line"><span class="keyword">import</span> UserCenter <span class="keyword">from</span> <span class="string">'./components/UserCenter'</span>;</span><br><span class="line"><span class="keyword">import</span> BlogNewd <span class="keyword">from</span> <span class="string">'./components/BlogNewed'</span>;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/"</span> component=&#123;UserCenter&#125;/&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/blogNewed"</span> component=&#123;BlogNewd&#125;/&gt;</span><br><span class="line">      &lt;<span class="regexp">/Router&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>上面的 Route组件中</p>
-<ul>
-<li>==path:== 代表用户访问的路径</li>
-<li>==component:== 用户访问这个路径的时候，页面将会导向哪里？这里的目的地址就是React的一个组件</li>
-</ul>
-<p>所以就实现了在 UserCenter Page(用户中心页面) 点击写文章后跳转到 BlogNewed Page (新建博客页面)的功能. <a href="https://github.com/yujuan123/blogsearchengine.git" target="_blank" rel="noopener">上述博客代码</a></p>
-<blockquote>
-<p>可以看出React Router在路由配置起了很大作用</p>
-</blockquote>
-<ul>
-<li>可以配置路由: 具体做法比如<route path="/" component="{UserCenter}/"></route></li>
-<li>可以切换路由:通过Link自由切换</li>
-</ul>
-<p>其他React Router基础知识：</p>
-<ul>
-<li><a href="http://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">React Router实现原理</a></li>
-<li>React Router <a href="http://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">基本原理</a></li>
-<li>React Router的<a href="https://github.com/reactjs/react-router-tutorial/tree/master/lessons" target="_blank" rel="noopener">示例教程</a></li>
-</ul>
-<p>这篇文章没有讲到怎样在js代码里面去跳转页面，之后了解到再补充</p>
-<p>参考链接：<a href="https://www.jianshu.com/p/6f8babea6243" target="_blank" rel="noopener">弄清原理之React Router</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/06/react-router history原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -982,7 +908,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
                 2018-05-06
@@ -994,6 +920,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1128,6 +1076,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/06/React Router 简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/06/React Router 简介/" itemprop="url">React Router 简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
+                2018-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>这篇文章主要是讲怎样 react router 是怎样的，并没有介绍到底层的实现机制，仅供未了解过的同学参考。</p>
+</blockquote>
+<h2 id="弄清原理之React-Router"><a href="#弄清原理之React-Router" class="headerlink" title="弄清原理之React Router"></a>弄清原理之React Router</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><p>在web应用开发过程中，路由系统是不可或缺的一部分，路由简单来说就是当url发生变化时，web界面也会随之改变。react 也有自己的路由系统，那就是 react router 路由系统。</p>
+<h3 id="2-基本原理"><a href="#2-基本原理" class="headerlink" title="2. 基本原理"></a>2. 基本原理</h3><p>url  和ui 是意义对应的关系，记当你输入Url 时，就回渲染对应 react component</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525588546705.jpg" alt="基本原理"></p>
+<p>接下来然我们看看组件层面的实现原理</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525588577206.jpg" alt="实现原理"></p>
+<p>以browserHistory(一种history类型:一个 history 知道如何去监听浏览器地址栏的变化， 并解析这个 URL 转化为 location 对象)为例 :</p>
+<ul>
+<li>browserHistory进行==路由state==管理,主要通过sessionStorage</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//保存　路由state(router state)</span><br><span class="line">function saveState(key, state) &#123;</span><br><span class="line">  ...</span><br><span class="line">  window.sessionStorage.setItem(createKey(key), JSON.stringify(state));</span><br><span class="line">&#125;</span><br><span class="line">//读取路由state</span><br><span class="line">function readState(key) &#123;</span><br><span class="line">  ...</span><br><span class="line">  json = window.sessionStorage.getItem(createKey(key));</span><br><span class="line">  return JSON.parse(json);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中saveState函数传进来的state是个json对象，如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">route</span>: <span class="string">'/about'</span>&#125; <span class="comment">///假设此时的location为'/about'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>进行路由匹配，最终渲染对应的组件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> About = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//About 组件</span></span><br><span class="line"><span class="keyword">const</span> Inbox = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//Inbox 组件</span></span><br><span class="line"><span class="keyword">const</span> Home = React.createClass(&#123;<span class="comment">/*...*/</span>&#125;) <span class="comment">//Home组件</span></span><br><span class="line"> render() &#123;</span><br><span class="line">    <span class="keyword">let</span> Child</span><br><span class="line">    <span class="keyword">switch</span> (<span class="keyword">this</span>.state.route) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'/about'</span>: Child = About; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'/inbox'</span>: Child = Inbox; <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:      Child = Home;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;App&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">          &lt;li&gt;&lt;a href="#/</span>about<span class="string">"&gt;About&lt;/a&gt;&lt;/li&gt;</span></span><br><span class="line">          &lt;li&gt;&lt;a href="#/inbox"&gt;Inbox&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Child/</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">React.render(&lt;App /</span>&gt;, <span class="built_in">document</span>.body)</span><br></pre></td></tr></table></figure>
+<h3 id="二-React-Router-实践"><a href="#二-React-Router-实践" class="headerlink" title="二. React Router 实践"></a>二. React Router 实践</h3><p>现在有这样的场景，想实现在 <strong>UserCenter Page</strong>(用户中心页面) 点击<strong>写文章</strong>链接后跳转到 <strong>BlogNewed Page</strong> (新建博客页面)的功能。</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1525589351634.jpg" alt="点击链接后跳转.jpg"></p>
+<ol>
+<li>于是，首先我们要建立我们的UserCenter Page，因为页面代码不是我们今天的重点，所以不会过多解释。</li>
+</ol>
+<p>我们先在src/components文件夹下新建文件UserCenter.js，并添加以下代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Link&#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCenter</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"row user-info blog-body"</span>&gt;</span><br><span class="line">        &lt;div className=<span class="string">"col-md-3 "</span>&gt;</span><br><span class="line">          ![](images/userPhoto.jpg)</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div className=" col-md-4"&gt;</span></span><br><span class="line"><span class="regexp">          &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li&gt;</span></span><br><span class="line"><span class="regexp">              &lt;h3&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Link to="/</span>blogNewed<span class="string">"&gt;</span></span><br><span class="line"><span class="string">                  &lt;span className="</span>iconfont icon-iconxiezuo01<span class="string">"&gt; &lt;/span&gt;</span></span><br><span class="line"><span class="string">                  写文章</span></span><br><span class="line"><span class="string">                &lt;/Link&gt;</span></span><br><span class="line"><span class="string">              &lt;/h3&gt;</span></span><br><span class="line"><span class="string">            &lt;/li&gt;</span></span><br><span class="line"><span class="string">          &lt;/ul&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    );</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">export default UserCenter;</span></span><br></pre></td></tr></table></figure>
+<p>这是一份很简单的代码，其中主要用到的是React Router的Link组件，相当于React版的a标签。<strong>其中”/blogNewed”就是点击该Link后要跳到的目的地址，这个地址会被下面谈及的路由所捕获，然后转向对应的页面</strong></p>
+<ol>
+<li>想想我们之前只有UserCenter这个页面，之前通过路由进入UserCenter 页面的做法如下：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*src/index.js*/</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;render&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> UserCenter <span class="keyword">from</span> <span class="string">'./components/UserCenter'</span>;</span><br><span class="line">render(</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">       &lt;UserCenter/&gt;</span><br><span class="line">    &lt;<span class="regexp">/Provider&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById('app')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<p>如果我们只是UserCenter这个页面的话，这样做也没有什么问题。但是问题是我们这里在UserCenter里面点击相应的链接，需要跳转到/blogNewed页面。如果要实现这个功能，我们就要<strong>引入React Router</strong>了，我们先看代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;render&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Router, Route, browserHistory,IndexRoute&#125; <span class="keyword">from</span> <span class="string">'react-router'</span>;</span><br><span class="line"><span class="comment">/*import App from './components/App';*/</span></span><br><span class="line"><span class="keyword">import</span> UserCenter <span class="keyword">from</span> <span class="string">'./components/UserCenter'</span>;</span><br><span class="line"><span class="keyword">import</span> BlogNewd <span class="keyword">from</span> <span class="string">'./components/BlogNewed'</span>;</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/"</span> component=&#123;UserCenter&#125;/&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/blogNewed"</span> component=&#123;BlogNewd&#125;/&gt;</span><br><span class="line">      &lt;<span class="regexp">/Router&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>上面的 Route组件中</p>
+<ul>
+<li>==path:== 代表用户访问的路径</li>
+<li>==component:== 用户访问这个路径的时候，页面将会导向哪里？这里的目的地址就是React的一个组件</li>
+</ul>
+<p>所以就实现了在 UserCenter Page(用户中心页面) 点击写文章后跳转到 BlogNewed Page (新建博客页面)的功能. <a href="https://github.com/yujuan123/blogsearchengine.git" target="_blank" rel="noopener">上述博客代码</a></p>
+<blockquote>
+<p>可以看出React Router在路由配置起了很大作用</p>
+</blockquote>
+<ul>
+<li>可以配置路由: 具体做法比如<route path="/" component="{UserCenter}/"></route></li>
+<li>可以切换路由:通过Link自由切换</li>
+</ul>
+<p>其他React Router基础知识：</p>
+<ul>
+<li><a href="http://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">React Router实现原理</a></li>
+<li>React Router <a href="http://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">基本原理</a></li>
+<li>React Router的<a href="https://github.com/reactjs/react-router-tutorial/tree/master/lessons" target="_blank" rel="noopener">示例教程</a></li>
+</ul>
+<p>这篇文章没有讲到怎样在js代码里面去跳转页面，之后了解到再补充</p>
+<p>参考链接：<a href="https://www.jianshu.com/p/6f8babea6243" target="_blank" rel="noopener">弄清原理之React Router</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/06/Web App Hybrid App和 Native App的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1157,7 +1300,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T00:00:00+08:00">
                 2018-05-06
@@ -1169,6 +1312,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1351,7 +1516,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T00:00:00+08:00">
                 2018-05-05
@@ -1363,6 +1528,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1516,7 +1703,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T00:00:00+08:00">
                 2018-05-05
@@ -1528,6 +1715,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1718,7 +1927,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-03T00:00:00+08:00">
                 2018-05-03
@@ -1730,6 +1939,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1975,7 +2206,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1986,7 +2217,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 </a>
               </div>
             
@@ -1997,7 +2228,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 </a>
               </div>
             
@@ -2043,7 +2274,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

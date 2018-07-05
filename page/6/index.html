@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -214,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/07/登录接口与后端的交互/">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/07/登录页面的错误提示/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pling Huang">
@@ -270,7 +270,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/07/登录接口与后端的交互/" itemprop="url">2018-3-7与后端的交互</a></h1>
+                <a class="post-title-link" href="/2018/03/07/登录页面的错误提示/" itemprop="url">2018-3-7 登录页面的错误提示</a></h1>
         
 
         <div class="post-meta">
@@ -280,7 +280,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T18:11:39+08:00">
                 2018-03-07
@@ -301,7 +301,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -344,173 +344,11 @@
       
         
           
-            <p>公司项目点击后产生一个POST请求，发送的数据为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">account:&quot;luwei&quot;</span><br><span class="line">captcha:&quot;a&quot;</span><br><span class="line">password:&quot;luwei&quot;</span><br><span class="line">tags:&quot;account&quot;</span><br><span class="line">uuid:&quot;e5d1e429-b084-43e0-887c-2c15f406972a_1520385455390&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>还有就是在头会设置一个token ：<br><code>Authorization:token 38dcbad3729b47968976f5b4793feae5jee9sz8o</code></p>
-<p>所以还要去生成一个token  还有前面的uuid 是通过在验证码的时候也有用到，所以需要将其作为一个属性，传递到子组件去</p>
-<p>不是很懂怎样将组件的数据传递到请求的<br><img src="./images/1520387621288.jpg" alt="enter description here"></p>
-<p>找到这个函数 将传入的payload 打印出来发现是参数 ，但是在哪调用了我就不是很清楚了<br>继续找<br>D:\luwei\project\wallpaper\wallpaper\src\routes\User\Login.js<br>在这个文件下 我找到了提交的参数 主要是通过submit的时候 调用上一层的函数 传递参数进去 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">handleSubmit = (err, values) =&gt; &#123;</span><br><span class="line">  console.log(&apos;handlesubmit&apos;, err, values);</span><br><span class="line">  const &#123; tags &#125; = this.state;</span><br><span class="line">  if (!err) &#123;</span><br><span class="line">    this.props.dispatch(&#123;</span><br><span class="line">      tags: &apos;login/login&apos;,</span><br><span class="line">      payload: &#123;</span><br><span class="line">        ...values,</span><br><span class="line">        tags,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>打印出来的value 就是：<br><code>{userName: &quot;1&quot;, password: &quot;1&quot;, captcha: &quot;1&quot;}</code><br>通过观察发现 其实这些参数都是组件内的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Tab key=&quot;account&quot; tab=&quot;账户密码登录&quot;&gt;</span><br><span class="line">          &#123;</span><br><span class="line">            login.status === &apos;error&apos; &amp;&amp;</span><br><span class="line">            login.tags === &apos;account&apos; &amp;&amp;</span><br><span class="line">            !login.submitting &amp;&amp;</span><br><span class="line">            this.renderMessage(&apos;账户或密码错误（admin/888888）&apos;)</span><br><span class="line">          &#125;</span><br><span class="line">          &lt;UserName name=&quot;userName&quot; placeholder=&quot;admin/user&quot; /&gt;</span><br><span class="line">          &lt;Password name=&quot;password&quot; placeholder=&quot;888888/123456&quot; /&gt;</span><br><span class="line">          &lt;Captcha name=&quot;captcha&quot; placeholder=&quot;11&quot; /&gt;</span><br><span class="line">        &lt;/Tab&gt;</span><br></pre></td></tr></table></figure>
-<p>所以我需要传递什么值都可以在这里设置，观察最上面的图片，增加几个参数：<br>修改userName 为 account<br>增加uuid uuid的生成算法有讲究 所以之后需要找下资料<br>现在来看 uuid 的传递 就是在父组件 更新uuid 传递到子组件 </p>
-<p>一开始我将 验证码图片的url写死了 就是只是在一开始进行初始化，将uuid 放到了state里面，然后就算在父组件的props的uuid属性改变了，子组件的state 并不会发生改变，所以可以通过将基本链接写在state里面，然后和父组件的props的uuid字符进行拼接，然后在父组件的属性更新 则url也更新。</p>
-<p><img src="./images/1520391675442.jpg" alt="发送登录请求"><br>发送成功的登录请求 返回有数据 接下来就是要做处理了；<br><img src="./images/1520391868782.jpg" alt="成功回调"></p>
-<p>接下来就是要对返回结果进行处理了  虽然不是很懂effect 这个机制的原理，但是可以直接在返回的response里面用 </p>
-<p>意外发现：<br><img src="./images/1520392188889.jpg" alt="enter description here"></p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@connect(<span class="function">(<span class="params">&#123; login, loading &#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">  login,</span><br><span class="line">  submitting: loading.effects[<span class="string">'login/login'</span>],</span><br><span class="line">&#125;))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginPage</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>原来effects 是在这里进行loading的 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">login.status === &apos;error&apos; &amp;&amp;</span><br><span class="line">         login.tags === &apos;account&apos; &amp;&amp;</span><br><span class="line">         !login.submitting &amp;&amp;</span><br></pre></td></tr></table></figure>
-<p>这个传入的login的属性 请示并不太清楚从哪得到的 但是看到有tags 这个属性 感觉好像是在submit的时候提交的 现在来看看response的处理 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">effects: &#123;</span><br><span class="line">    *login(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">      // console.log(&apos;login&apos;, payload);</span><br><span class="line">      const response = yield call(fakeAccountLogin, payload);</span><br><span class="line">      console.log(&apos;login&apos;, response.state, JSON.stringify(response));</span><br><span class="line">      yield put(&#123;</span><br><span class="line">        tags: &apos;changeLoginStatus&apos;,</span><br><span class="line">        payload: response,</span><br><span class="line">      &#125;);</span><br><span class="line">      console.log(&apos;login/login&apos;, response.state, JSON.stringify(response));</span><br><span class="line">      // Login successfully</span><br><span class="line">      if (response.status === &apos;ok&apos;) &#123;</span><br><span class="line">        reloadAuthorized();</span><br><span class="line">        yield put(routerRedux.push(&apos;/&apos;));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/06/vscode 配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/06/vscode 配置/" itemprop="url">vscode 配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:11:39+08:00">
-                2018-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题：Expected linebreaks to be ‘LF’ but found ‘CRLF’  linebreak-style</p>
-<blockquote>
-<p>原因：当许多人都有不同的编辑器，VCS应用程序和操作系统时，可能会发生不同的行结尾由上述任何一种写入（可能特别发生在将SourceTree的Windows和Mac版本一起使用时）。<br>在Windows操作系统中使用的换行符（换行符）通常是回车符（CR），后面是换行符（LF），使其成为回车换行符（CRLF），而Linux和Unix使用简单换行符（LF）。相应的控制序列是”\n”（对于LF）和”\r\n”对于（CRLF）。</p>
-</blockquote>
-<p>解决方法：<br>在.eslintrc文件的rule中添加：linebreak-style: [“error”, “windows”] 或 linebreak-style:0</p>
-<p>例如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  extends: <span class="string">'google'</span>,</span><br><span class="line">  quotes: [<span class="number">2</span>, <span class="string">'single'</span>],</span><br><span class="line">  globals: &#123;</span><br><span class="line">    SwaggerEditor: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  env: &#123;</span><br><span class="line">    browser: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  rules:&#123;</span><br><span class="line">    <span class="string">"linebreak-style"</span>: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            <p><img src="./images/1520409819446.jpg" alt="输入错入的数据的时候 会有错误提示"></p>
+<p>查看代码发现 是在下面的代码控制的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function checkStatus(response) &#123;</span><br><span class="line">  if (response.status &gt;= 200 &amp;&amp; response.status &lt; 300) &#123;</span><br><span class="line">    return response;</span><br><span class="line">  &#125;</span><br><span class="line">  const errortext = codeMessage[response.status] || response.statusText;</span><br><span class="line">  notification.error(&#123;</span><br><span class="line">    message: `请求错误 $&#123;response.status&#125;: $&#123;response.body.msg&#125;`,</span><br><span class="line">    description: errortext,</span><br><span class="line">  &#125;);</span><br><span class="line">  const error = new Error(errortext);</span><br><span class="line">  error.name = response.status;</span><br><span class="line">  error.response = response;</span><br><span class="line">  throw error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将errContext 和 response这两个属性 输出来 查看一下<br><code>console.log(&#39;checkStatus&#39;, JSON.stringify(errortext), JSON.stringify(response));</code><br>结果如下<br><code>checkStatus &quot;发出的请求有错误，服务器没有进行新建或修改数据的操作。&quot; {}</code></p>
+<p><img src="./images/1520411194353.jpg" alt="response"><br>返回的数据解析如上图 但是没有返回结果的body 但是通过浏览器的拦截 我看到有response是有数据的<br><img src="./images/1520411270183.jpg" alt="浏览器拦截"><br>所以这就很奇怪 </p>
 
           
         
@@ -588,7 +426,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:11:39+08:00">
                 2018-03-06
@@ -609,7 +447,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -707,7 +545,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/06/marjs随机生成hash值/">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/06/Effect 处理异步请求/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pling Huang">
@@ -726,7 +564,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/06/marjs随机生成hash值/" itemprop="url">js随机生成hash值</a></h1>
+                <a class="post-title-link" href="/2018/03/06/Effect 处理异步请求/" itemprop="url">Effect 处理异步请求</a></h1>
         
 
         <div class="post-meta">
@@ -736,7 +574,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:11:39+08:00">
                 2018-03-06
@@ -757,7 +595,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -800,151 +638,9 @@
       
         
           
-            <p>本篇简单介绍如何随机生成一个hashcode</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">//产生一个hash值，只有数字，规则和java的hashcode规则相同</span><br><span class="line">function hashCode(str) &#123;</span><br><span class="line">    var h = 0;</span><br><span class="line">    var len = str.length;</span><br><span class="line">    var t = 2147483648;</span><br><span class="line">    for (var i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        h = 31 * h + str.charCodeAt(i);</span><br><span class="line">        if (h &gt; 2147483647) h %= t; //java int溢出则取模</span><br><span class="line">    &#125;</span><br><span class="line">    /*var t = -2147483648 * 2;</span><br><span class="line">     while (h &gt; 2147483647) &#123;</span><br><span class="line">     h += t</span><br><span class="line">     &#125;*/</span><br><span class="line">    return h;</span><br><span class="line">&#125;</span><br><span class="line">//时间戳来自客户端，精确到毫秒，但仍旧有可能在在多线程下有并发，</span><br><span class="line">//尤其hash化后，毫秒数前面的几位都不变化，导致不同日期hash化的值有可能存在相同，</span><br><span class="line">//因此使用下面的随机数函数，在时间戳上加随机数，保证hash化的结果差异会比较大</span><br><span class="line">/*</span><br><span class="line"> ** randomWord 产生任意长度随机字母数字组合</span><br><span class="line"> ** randomFlag-是否任意长度 min-任意长度最小位[固定位数] max-任意长度最大位</span><br><span class="line"> ** 用法  randomWord(false,6);规定位数 flash</span><br><span class="line"> * 		randomWord(true,3，6);长度不定，true</span><br><span class="line"> * arr变量可以把其他字符加入，如以后需要小写字母，直接加入即可</span><br><span class="line"> */</span><br><span class="line">function randomWord(randomFlag, min, max) &#123;</span><br><span class="line">    var str = &quot;&quot;,</span><br><span class="line">        range = min,</span><br><span class="line">        arr = [&apos;0&apos;, &apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos;, &apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;, &apos;I&apos;, &apos;J&apos;, &apos;K&apos;, &apos;L&apos;, &apos;M&apos;, &apos;N&apos;, &apos;O&apos;, &apos;P&apos;, &apos;Q&apos;, &apos;R&apos;, &apos;S&apos;, &apos;T&apos;, &apos;U&apos;, &apos;V&apos;, &apos;W&apos;, &apos;X&apos;, &apos;Y&apos;, &apos;Z&apos;];</span><br><span class="line">    // 随机产生</span><br><span class="line">    if (randomFlag) &#123;</span><br><span class="line">        range = Math.round(Math.random() * (max - min)) + min;</span><br><span class="line">    &#125;</span><br><span class="line">    for (var i = 0; i &lt; range; i++) &#123;</span><br><span class="line">        pos = Math.round(Math.random() * (arr.length - 1));</span><br><span class="line">        str += arr[pos];</span><br><span class="line">    &#125;</span><br><span class="line">    return str;</span><br><span class="line">&#125;</span><br><span class="line">//获取hashcode</span><br><span class="line">function gethashcode() &#123;</span><br><span class="line">    //定义一个时间戳，计算与1970年相差的毫秒数  用来获得唯一时间</span><br><span class="line">    var timestamp = (new Date()).valueOf();</span><br><span class="line">    var myRandom=randomWord(false,6);</span><br><span class="line">    var hashcode=hashCode(myRandom+timestamp.toString());</span><br><span class="line">    return hashcode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/06/github仓库配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/06/github仓库配置/" itemprop="url">github仓库配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:11:39+08:00">
-                2018-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> "# aotuWeb" &gt;&gt; README.<span class="built_in">md</span></span><br><span class="line">git init</span><br><span class="line">git add README.<span class="built_in">md</span></span><br><span class="line">git commit -m "first commit"</span><br><span class="line">git remote add origin https://github.com/aa875982361/aotuWeb.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p>建立好个人仓库</p>
+            <p>在处理复杂的异步请求的时候，很容易让逻辑混乱，陷入嵌套陷阱，所以 Ant Design Pro 的底层基础框架 dva 使用 effect 的方式来管理<strong>同步化异步</strong>请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">effects: &#123;</span><br><span class="line">  *fetch(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      tags: &apos;changeLoading&apos;,</span><br><span class="line">      payload: true,</span><br><span class="line">    &#125;);</span><br><span class="line">    // 异步请求 1</span><br><span class="line">    const response = yield call(queryFakeList, payload);</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      tags: &apos;save&apos;,</span><br><span class="line">      payload: response,</span><br><span class="line">    &#125;);</span><br><span class="line">    // 异步请求 2</span><br><span class="line">    const response2 = yield call(queryFakeList2, payload);</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      tags: &apos;save2&apos;,</span><br><span class="line">      payload: response2,</span><br><span class="line">    &#125;);</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      tags: &apos;changeLoading&apos;,</span><br><span class="line">      payload: false,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>通过 <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/function*" target="_blank" rel="noopener">generator</a> 和 <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/yield" target="_blank" rel="noopener">yield</a> 使得异步调用的逻辑处理跟同步一样，更多可参看 dva async logic。</p>
 
           
         
@@ -1022,7 +718,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:11:39+08:00">
                 2018-03-06
@@ -1043,7 +739,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1146,7 +842,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/06/Effect 处理异步请求/">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/06/vscode 配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pling Huang">
@@ -1165,7 +861,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/06/Effect 处理异步请求/" itemprop="url">Effect 处理异步请求</a></h1>
+                <a class="post-title-link" href="/2018/03/06/vscode 配置/" itemprop="url">vscode 配置</a></h1>
         
 
         <div class="post-meta">
@@ -1175,7 +871,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:11:39+08:00">
                 2018-03-06
@@ -1196,7 +892,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1239,9 +935,13 @@
       
         
           
-            <p>在处理复杂的异步请求的时候，很容易让逻辑混乱，陷入嵌套陷阱，所以 Ant Design Pro 的底层基础框架 dva 使用 effect 的方式来管理<strong>同步化异步</strong>请求：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">effects: &#123;</span><br><span class="line">  *fetch(&#123; payload &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      tags: &apos;changeLoading&apos;,</span><br><span class="line">      payload: true,</span><br><span class="line">    &#125;);</span><br><span class="line">    // 异步请求 1</span><br><span class="line">    const response = yield call(queryFakeList, payload);</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      tags: &apos;save&apos;,</span><br><span class="line">      payload: response,</span><br><span class="line">    &#125;);</span><br><span class="line">    // 异步请求 2</span><br><span class="line">    const response2 = yield call(queryFakeList2, payload);</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      tags: &apos;save2&apos;,</span><br><span class="line">      payload: response2,</span><br><span class="line">    &#125;);</span><br><span class="line">    yield put(&#123;</span><br><span class="line">      tags: &apos;changeLoading&apos;,</span><br><span class="line">      payload: false,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<p>通过 <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/function*" target="_blank" rel="noopener">generator</a> 和 <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/yield" target="_blank" rel="noopener">yield</a> 使得异步调用的逻辑处理跟同步一样，更多可参看 dva async logic。</p>
+            <p>问题：Expected linebreaks to be ‘LF’ but found ‘CRLF’  linebreak-style</p>
+<blockquote>
+<p>原因：当许多人都有不同的编辑器，VCS应用程序和操作系统时，可能会发生不同的行结尾由上述任何一种写入（可能特别发生在将SourceTree的Windows和Mac版本一起使用时）。<br>在Windows操作系统中使用的换行符（换行符）通常是回车符（CR），后面是换行符（LF），使其成为回车换行符（CRLF），而Linux和Unix使用简单换行符（LF）。相应的控制序列是”\n”（对于LF）和”\r\n”对于（CRLF）。</p>
+</blockquote>
+<p>解决方法：<br>在.eslintrc文件的rule中添加：linebreak-style: [“error”, “windows”] 或 linebreak-style:0</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  extends: <span class="string">'google'</span>,</span><br><span class="line">  quotes: [<span class="number">2</span>, <span class="string">'single'</span>],</span><br><span class="line">  globals: &#123;</span><br><span class="line">    SwaggerEditor: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  env: &#123;</span><br><span class="line">    browser: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  rules:&#123;</span><br><span class="line">    <span class="string">"linebreak-style"</span>: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1290,7 +990,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/05/组合 vs 继承/">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/06/github仓库配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pling Huang">
@@ -1309,7 +1009,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/05/组合 vs 继承/" itemprop="url">组合 vs 继承</a></h1>
+                <a class="post-title-link" href="/2018/03/06/github仓库配置/" itemprop="url">github仓库配置</a></h1>
         
 
         <div class="post-meta">
@@ -1319,10 +1019,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T18:11:39+08:00">
-                2018-03-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:11:39+08:00">
+                2018-03-06
               </time>
             
 
@@ -1340,7 +1040,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1383,25 +1083,151 @@
       
         
           
-            <p>React 具有强大的组合模型，我们建议使用组合而不是继承来复用组件之间的代码。</p>
-<p>在本节中，我们将围绕几个 React 新手经常使用继承解决的问题，我们将展示如果用组合来解决它们。</p>
-<h2 id="包含关系"><a href="#包含关系" class="headerlink" title="包含关系"></a>包含关系</h2><p>一些组件不能提前知道它们的子组件是什么。这对于 Sidebar 或 Dialog 这类通用容器尤其常见。</p>
-<p>我们建议这些组件使用 children 属性<strong>将子元素直接传递</strong>到输出。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function FancyBorder(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&#123;&apos;FancyBorder FancyBorder-&apos; + props.color&#125;&gt;</span><br><span class="line">      &#123;props.children&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样做还允许其他组件通过<strong>嵌套 JSX 来传递子组件</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function WelcomeDialog() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;FancyBorder color=&quot;blue&quot;&gt;</span><br><span class="line">      &lt;h1 className=&quot;Dialog-title&quot;&gt;</span><br><span class="line">        Welcome</span><br><span class="line">      &lt;/h1&gt;</span><br><span class="line">      &lt;p className=&quot;Dialog-message&quot;&gt;</span><br><span class="line">        Thank you for visiting our spacecraft!</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">    &lt;/FancyBorder&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><fancyborder> JSX 标签内的任何内容都将通过 children 属性传入 FancyBorder。由于 FancyBorder 在一个 <div> 内渲染了 {props.children}，所以被传递的所有元素都会出现在最终输出中。</div></fancyborder></p>
-<p>虽然不太常见，但有时你可能需要在组件中有多个入口，这种情况下你可以使用自己约定的属性而不是 children：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function SplitPane(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;SplitPane&quot;&gt;</span><br><span class="line">      &lt;div className=&quot;SplitPane-left&quot;&gt;</span><br><span class="line">        &#123;props.left&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div className=&quot;SplitPane-right&quot;&gt;</span><br><span class="line">        &#123;props.right&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;SplitPane</span><br><span class="line">      left=&#123;</span><br><span class="line">        &lt;Contacts /&gt;</span><br><span class="line">      &#125;</span><br><span class="line">      right=&#123;</span><br><span class="line">        &lt;Chat /&gt;</span><br><span class="line">      &#125; /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>类似 <contacts> 和 <chat> 这样的 React 元素都是对象，所以你可以像任何其他元素一样传递它们。</chat></contacts></p>
-<h2 id="特殊实例"><a href="#特殊实例" class="headerlink" title="特殊实例"></a>特殊实例</h2><p>有时我们认为组件是其他组件的特殊实例。例如，我们会说 WelcomeDialog 是 Dialog 的特殊实例。</p>
-<p>在 React 中，这也是通过组合来实现的，通过配置属性用较特殊的组件来渲染较通用的组件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function Dialog(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;FancyBorder color=&quot;blue&quot;&gt;</span><br><span class="line">      &lt;h1 className=&quot;Dialog-title&quot;&gt;</span><br><span class="line">        &#123;props.title&#125;</span><br><span class="line">      &lt;/h1&gt;</span><br><span class="line">      &lt;p className=&quot;Dialog-message&quot;&gt;</span><br><span class="line">        &#123;props.message&#125;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">    &lt;/FancyBorder&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function WelcomeDialog() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;Dialog</span><br><span class="line">      title=&quot;Welcome&quot;</span><br><span class="line">      message=&quot;Thank you for visiting our spacecraft!&quot; /&gt;</span><br><span class="line"></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>组合对于定义为类的组件同样适用：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">function Dialog(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;FancyBorder color=&quot;blue&quot;&gt;</span><br><span class="line">      &lt;h1 className=&quot;Dialog-title&quot;&gt;</span><br><span class="line">        &#123;props.title&#125;</span><br><span class="line">      &lt;/h1&gt;</span><br><span class="line">      &lt;p className=&quot;Dialog-message&quot;&gt;</span><br><span class="line">        &#123;props.message&#125;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &#123;props.children&#125;</span><br><span class="line">    &lt;/FancyBorder&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SignUpDialog extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.handleChange = this.handleChange.bind(this);</span><br><span class="line">    this.handleSignUp = this.handleSignUp.bind(this);</span><br><span class="line">    this.state = &#123;login: &apos;&apos;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Dialog title=&quot;Mars Exploration Program&quot;</span><br><span class="line">              message=&quot;How should we refer to you?&quot;&gt;</span><br><span class="line">        &lt;input value=&#123;this.state.login&#125;</span><br><span class="line">               onChange=&#123;this.handleChange&#125; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;button onClick=&#123;this.handleSignUp&#125;&gt;</span><br><span class="line">          Sign Me Up!</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">      &lt;/Dialog&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleChange(e) &#123;</span><br><span class="line">    this.setState(&#123;login: e.target.value&#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleSignUp() &#123;</span><br><span class="line">    alert(`Welcome aboard, $&#123;this.state.login&#125;!`);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="那么继承呢？"><a href="#那么继承呢？" class="headerlink" title="那么继承呢？"></a>那么继承呢？</h2><p>在 Facebook 网站上，我们的 React 使用了数以千计的组件，然而却还未发现任何需要推荐你使用继承的情况。</p>
-<p>属性和组合为你提供了以清晰和安全的方式自定义组件的样式和行为所需的所有灵活性。请记住，组件可以接受任意元素，包括基本数据类型、React 元素或函数。</p>
-<p>如果要在组件之间复用 UI 无关的功能，我们建议将其提取到单独的 JavaScript 模块中。这样可以在不对组件进行扩展的前提下导入并使用该函数、对象或类。</p>
+            <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> "# aotuWeb" &gt;&gt; README.<span class="built_in">md</span></span><br><span class="line">git init</span><br><span class="line">git add README.<span class="built_in">md</span></span><br><span class="line">git commit -m "first commit"</span><br><span class="line">git remote add origin https://github.com/aa875982361/aotuWeb.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>建立好个人仓库</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/06/marjs随机生成hash值/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/marjs随机生成hash值/" itemprop="url">js随机生成hash值</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T18:11:39+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本篇简单介绍如何随机生成一个hashcode</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">//产生一个hash值，只有数字，规则和java的hashcode规则相同</span><br><span class="line">function hashCode(str) &#123;</span><br><span class="line">    var h = 0;</span><br><span class="line">    var len = str.length;</span><br><span class="line">    var t = 2147483648;</span><br><span class="line">    for (var i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        h = 31 * h + str.charCodeAt(i);</span><br><span class="line">        if (h &gt; 2147483647) h %= t; //java int溢出则取模</span><br><span class="line">    &#125;</span><br><span class="line">    /*var t = -2147483648 * 2;</span><br><span class="line">     while (h &gt; 2147483647) &#123;</span><br><span class="line">     h += t</span><br><span class="line">     &#125;*/</span><br><span class="line">    return h;</span><br><span class="line">&#125;</span><br><span class="line">//时间戳来自客户端，精确到毫秒，但仍旧有可能在在多线程下有并发，</span><br><span class="line">//尤其hash化后，毫秒数前面的几位都不变化，导致不同日期hash化的值有可能存在相同，</span><br><span class="line">//因此使用下面的随机数函数，在时间戳上加随机数，保证hash化的结果差异会比较大</span><br><span class="line">/*</span><br><span class="line"> ** randomWord 产生任意长度随机字母数字组合</span><br><span class="line"> ** randomFlag-是否任意长度 min-任意长度最小位[固定位数] max-任意长度最大位</span><br><span class="line"> ** 用法  randomWord(false,6);规定位数 flash</span><br><span class="line"> * 		randomWord(true,3，6);长度不定，true</span><br><span class="line"> * arr变量可以把其他字符加入，如以后需要小写字母，直接加入即可</span><br><span class="line"> */</span><br><span class="line">function randomWord(randomFlag, min, max) &#123;</span><br><span class="line">    var str = &quot;&quot;,</span><br><span class="line">        range = min,</span><br><span class="line">        arr = [&apos;0&apos;, &apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;, &apos;6&apos;, &apos;7&apos;, &apos;8&apos;, &apos;9&apos;, &apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;, &apos;I&apos;, &apos;J&apos;, &apos;K&apos;, &apos;L&apos;, &apos;M&apos;, &apos;N&apos;, &apos;O&apos;, &apos;P&apos;, &apos;Q&apos;, &apos;R&apos;, &apos;S&apos;, &apos;T&apos;, &apos;U&apos;, &apos;V&apos;, &apos;W&apos;, &apos;X&apos;, &apos;Y&apos;, &apos;Z&apos;];</span><br><span class="line">    // 随机产生</span><br><span class="line">    if (randomFlag) &#123;</span><br><span class="line">        range = Math.round(Math.random() * (max - min)) + min;</span><br><span class="line">    &#125;</span><br><span class="line">    for (var i = 0; i &lt; range; i++) &#123;</span><br><span class="line">        pos = Math.round(Math.random() * (arr.length - 1));</span><br><span class="line">        str += arr[pos];</span><br><span class="line">    &#125;</span><br><span class="line">    return str;</span><br><span class="line">&#125;</span><br><span class="line">//获取hashcode</span><br><span class="line">function gethashcode() &#123;</span><br><span class="line">    //定义一个时间戳，计算与1970年相差的毫秒数  用来获得唯一时间</span><br><span class="line">    var timestamp = (new Date()).valueOf();</span><br><span class="line">    var myRandom=randomWord(false,6);</span><br><span class="line">    var hashcode=hashCode(myRandom+timestamp.toString());</span><br><span class="line">    return hashcode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1479,7 +1305,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T18:11:39+08:00">
                 2018-03-05
@@ -1500,7 +1326,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1653,7 +1479,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/05/条件渲染/">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/05/事件处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pling Huang">
@@ -1672,7 +1498,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/05/条件渲染/" itemprop="url">条件渲染</a></h1>
+                <a class="post-title-link" href="/2018/03/05/事件处理/" itemprop="url">事件处理</a></h1>
         
 
         <div class="post-meta">
@@ -1682,7 +1508,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T18:11:39+08:00">
                 2018-03-05
@@ -1703,7 +1529,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1746,34 +1572,225 @@
       
         
           
-            <p>在 React 中，你可以创建不同的组件来封装各种你需要的行为。然后还可以根据应用的状态变化只渲染其中的一部分。</p>
-<p>React 中的条件渲染和 JavaScript 中的一致，使用 JavaScript 操作符 if 或条件运算符来创建表示当前状态的元素，然后让 React 根据它们来更新 UI。</p>
-<p>先来看两个组件:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UserGreeting</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome back!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GuestGreeting</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Please sign up.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们将创建一个 Greeting 组件，它会根据用户是否登录来显示其中之一：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Greeting</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> isLoggedIn = props.isLoggedIn;</span><br><span class="line">  <span class="keyword">if</span> (isLoggedIn) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">UserGreeting</span> /&gt;</span>;</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">  return <span class="tag">&lt;<span class="name">GuestGreeting</span> /&gt;</span>;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">ReactDOM.render(</span></span><br><span class="line"><span class="xml">  // Try changing to isLoggedIn=&#123;true&#125;:</span></span><br><span class="line">  &lt;Greeting isLoggedIn=&#123;false&#125; /&gt;,</span><br><span class="line">  document.getElementById('root')</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h2 id="元素变量"><a href="#元素变量" class="headerlink" title="元素变量"></a>元素变量</h2><p>可以使用变量来储存元素。它可以帮助你有条件的渲染组件的一部分，而输出的其他部分不会更改。</p>
-<p>再来看两个新组件分别代表注销和登录：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">LoginButton</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;button onClick=&#123;props.onClick&#125;&gt;</span><br><span class="line">      Login</span><br><span class="line">    &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function LogoutButton(props) &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;button onClick=&#123;props.onClick&#125;&gt;</span></span><br><span class="line"><span class="regexp">      Logout</span></span><br><span class="line"><span class="regexp">    &lt;/</span>button&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在下面的例子中，我们将要创建一个名为 LoginControl 的有状态的组件。</p>
-<p>它会根据当前的状态来渲染\<loginbutton> 或\<logoutbutton>，它也将渲染前面例子中的 \<greeting>。</greeting></logoutbutton></loginbutton></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginControl</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.handleLoginClick = <span class="keyword">this</span>.handleLoginClick.bind(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.handleLogoutClick = <span class="keyword">this</span>.handleLogoutClick.bind(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;<span class="attr">isLoggedIn</span>: <span class="literal">false</span>&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleLoginClick() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">isLoggedIn</span>: <span class="literal">true</span>&#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleLogoutClick() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">isLoggedIn</span>: <span class="literal">false</span>&#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> isLoggedIn = <span class="keyword">this</span>.state.isLoggedIn;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> button = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (isLoggedIn) &#123;</span><br><span class="line">      button = <span class="xml"><span class="tag">&lt;<span class="name">LogoutButton</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleLogoutClick&#125;</span> /&gt;</span>;</span></span><br><span class="line"><span class="xml">    &#125; else &#123;</span></span><br><span class="line">      button = &lt;LoginButton onClick=&#123;this.handleLoginClick&#125; /&gt;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;Greeting isLoggedIn=&#123;isLoggedIn&#125; /&gt;</span><br><span class="line">        &#123;button&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;LoginControl /&gt;,</span><br><span class="line">  document.getElementById('root')</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>声明变量并使用 if 语句是条件渲染组件的不错的方式，但有时你也想使用更简洁的语法，在 JSX 中有如下几种方法。</p>
-<h2 id="与运算符-amp-amp"><a href="#与运算符-amp-amp" class="headerlink" title="与运算符 &amp;&amp;"></a>与运算符 &amp;&amp;</h2><p>你可以通过用花括号包裹代码在 JSX 中嵌入任何表达式 ，也包括 JavaScript 的逻辑与 &amp;&amp;，它可以方便地条件渲染一个元素。</p>
-<p>理解：通过第一个条件成立 才有第二个条件的运行 第一个条件不满足，则不执行第二个条件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function Mailbox(props) &#123;</span><br><span class="line">  const unreadMessages = props.unreadMessages;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;Hello!&lt;/h1&gt;</span><br><span class="line">      &#123;unreadMessages.length &gt; 0 &amp;&amp;</span><br><span class="line">        &lt;h2&gt;</span><br><span class="line">          You have &#123;unreadMessages.length&#125; unread messages.</span><br><span class="line">        &lt;/h2&gt;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const messages = [&apos;React&apos;, &apos;Re: React&apos;, &apos;Re:Re: React&apos;];</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Mailbox unreadMessages=&#123;messages&#125; /&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>之所以能这样做，是因为在 JavaScript 中，true &amp;&amp; expression 总是返回 expression，而 false &amp;&amp; expression 总是返回 false。</p>
-<p>因此，如果条件是 true，&amp;&amp; 右侧的元素就会被渲染，如果是 false，React 会忽略并跳过它。</p>
-<h2 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h2><p>条件渲染的另一种方法是使用 JavaScript 的条件运算符 condition ? true : false。</p>
-<p>在下面的例子中，我们用它来有条件的渲染一小段文本。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">const</span> isLoggedIn = <span class="keyword">this</span>.state.isLoggedIn;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      The user is &lt;b&gt;&#123;isLoggedIn ? <span class="string">'currently'</span> : <span class="string">'not'</span>&#125;&lt;<span class="regexp">/b&gt; loggined in.</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>同样可以用在较大的表达式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">const</span> isLoggedIn = <span class="keyword">this</span>.state.isLoggedIn;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &#123;isLoggedIn ? (</span><br><span class="line">        &lt;LogoutButton onClick=&#123;<span class="keyword">this</span>.handleLogoutClick&#125; /&gt;</span><br><span class="line">      ) : (</span><br><span class="line">        &lt;LoginButton onClick=&#123;<span class="keyword">this</span>.handleLoginClick&#125; /&gt;</span><br><span class="line">      )&#125;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>像在 JavaScript 中一样，你可以根据团队的习惯选择更易读的方式。还要记住如果条件变得过于复杂，可能就是<strong>提取组件</strong>的好时机了。</p>
-<h2 id="阻止组件渲染"><a href="#阻止组件渲染" class="headerlink" title="阻止组件渲染"></a>阻止组件渲染</h2><p>在极少数情况下，你可能希望隐藏组件，即使它被其他组件渲染。让 render 方法返回 null 而不是它的渲染结果即可实现。</p>
-<p>在下面的例子中，<warningbanner> 根据属性 warn 的值条件渲染。如果 warn 的值是 false，则组件不会渲染：</warningbanner></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WarningBanner</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!props.warn) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"warning"</span>&gt;</span><br><span class="line">      Warning!</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">class Page extends React.Component &#123;</span></span><br><span class="line"><span class="regexp">  constructor(props) &#123;</span></span><br><span class="line"><span class="regexp">    super(props);</span></span><br><span class="line"><span class="regexp">    this.state = &#123;showWarning: true&#125;</span></span><br><span class="line"><span class="regexp">    this.handleToggleClick = this.handleToggleClick.bind(this);</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  handleToggleClick() &#123;</span></span><br><span class="line"><span class="regexp">    this.setState(prevState =&gt; (&#123;</span></span><br><span class="line"><span class="regexp">      showWarning: !prevState.showWarning</span></span><br><span class="line"><span class="regexp">    &#125;));</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  render() &#123;</span></span><br><span class="line"><span class="regexp">    return (</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;WarningBanner warn=&#123;this.state.showWarning&#125; /</span>&gt;</span><br><span class="line">        &lt;button onClick=&#123;<span class="keyword">this</span>.handleToggleClick&#125;&gt;</span><br><span class="line">          &#123;<span class="keyword">this</span>.state.showWarning ? <span class="string">'Hide'</span> : <span class="string">'Show'</span>&#125;</span><br><span class="line">        &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Page /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>组件的 render 方法返回 null 并<strong>不会影响该组件生命周期方法的回调</strong>。例如，componentWillUpdate 和 componentDidUpdate 依然可以被调用。</p>
+            <p>React 元素的事件处理和 DOM元素的很相似。但是有一点语法上的不同:</p>
+<ul>
+<li>React事件绑定属性的命名采用<strong>驼峰式</strong>写法，而不是小写。</li>
+<li>如果采用 JSX 的语法你需要传入一个<strong>函数</strong>作为事件处理函数，而不是一个字符串(DOM元素的写法)</li>
+</ul>
+<p>例如，传统的 HTML：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"activateLasers()"</span>&gt;</span></span><br><span class="line">  Activate Lasers</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>React 中稍稍有点不同：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;activateLasers&#125;</span>&gt;</span>//传递的是一个函数 </span><br><span class="line">  Activate Lasers</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在 React 中另一个不同是你不能使用返回 false 的方式阻止默认行为。你必须明确的使用 preventDefault。例如，传统的 HTML 中阻止链接默认打开一个新页面，你可以这样写：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">onclick</span>=<span class="string">"console.log('The link was clicked.'); return false"</span>&gt;</span></span><br><span class="line">  Click me</span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在 React，应该这样来写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ActionLink</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'The link was clicked.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;a href=<span class="string">"#"</span> onClick=&#123;handleClick&#125;&gt;</span><br><span class="line">      Click me</span><br><span class="line">    &lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>在这里，e 是一个<strong>合成事件</strong>。React 根据<a href="https://www.w3.org/TR/DOM-Level-3-Events/" target="_blank" rel="noopener"> W3C spec</a> 来定义这些合成事件，所以你不需要担心跨浏览器的兼容性问题。查看 <a href="https://doc.react-china.org/docs/events.html" target="_blank" rel="noopener">SyntheticEvent </a>参考指南来了解更多。</p>
+<blockquote>
+<p>关于阻止默认行为的说明：<br>默认行为就像点击a标签就跳转 阻止了就不会跳转</p>
+<ul>
+<li>a链接的跳转</li>
+<li>单选框、复选框的选中和取消选中</li>
+<li>submit的表单提交</li>
+</ul>
+</blockquote>
+<p>使用 React 的时候通常你不需要使用 addEventListener 为一个已创建的 DOM 元素添加监听器。你仅仅需要在这个元素初始渲染的时候提供一个监听器。</p>
+<p>当你使用 ES6 class 语法来定义一个组件的时候，事件处理器会成为类的一个方法。例如，下面的 Toggle 组件渲染一个让用户切换开关状态的按钮：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toggle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;<span class="attr">isToggleOn</span>: <span class="literal">true</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// This binding is necessary to make `this` work in the callback</span></span><br><span class="line">    <span class="keyword">this</span>.handleClick = <span class="keyword">this</span>.handleClick.bind(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleClick() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(<span class="function"><span class="params">prevState</span> =&gt;</span> (&#123;</span><br><span class="line">      isToggleOn: !prevState.isToggleOn</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;button onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt;</span><br><span class="line">        &#123;<span class="keyword">this</span>.state.isToggleOn ? <span class="string">'ON'</span> : <span class="string">'OFF'</span>&#125;</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">  &lt;Toggle /</span>&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>你必须谨慎对待 JSX 回调函数中的 this，<strong>类的方法默认是不会绑定 this</strong>的。如果你忘记绑定 this.handleClick 并把它传入 onClick, 当你调用这个函数的时候 this 的值会是 undefined。</p>
+<p>这并不是 React 的特殊行为；它是函数如何在 JavaScript 中运行的一部分。通常情况下，如果你<strong>没有在方法后面添加 ()</strong> ，例如 onClick={this.handleClick}，你应该为这个方法<strong>绑定 this</strong>.</p>
+<p>如果使用 bind 让你很困惑，这里有两种方式可以解决。如果你正在使用实验性的<strong>属性初始化器语法</strong>，你可以使用<strong>属性初始化器</strong>来正确的绑定回调函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoggingButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This syntax ensures `this` is bound within handleClick.</span></span><br><span class="line">  <span class="comment">// Warning: this is *experimental* syntax.</span></span><br><span class="line">  handleClick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'this is:'</span>, <span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;button onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt;</span><br><span class="line">        Click me</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这个语法在 Create React App 中默认开启。</p>
+<p>如果你没有使用属性初始化器语法，你可以在<strong>回调函数中使用箭头函数</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class LoggingButton extends React.Component &#123;</span><br><span class="line">  handleClick() &#123;</span><br><span class="line">    console.log(&apos;this is:&apos;, this);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    // This syntax ensures `this` is bound within handleClick</span><br><span class="line">    return (</span><br><span class="line">      &lt;button onClick=&#123;(e) =&gt; this.handleClick(e)&#125;&gt;</span><br><span class="line">        Click me</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用这个语法有个问题就是每次 LoggingButton 渲染的时候都会创建一个<strong>不同的回调函数</strong>。在大多数情况下，这没有问题。然而如果这个回调函数作为一个属性值传入低阶组件，这些组件可能会进行额外的重新渲染。我们通常建议在构造函数中绑定或使用属性初始化器语法来避免这类性能问题。</p>
+<h2 id="向事件处理程序传递参数"><a href="#向事件处理程序传递参数" class="headerlink" title="向事件处理程序传递参数"></a>向事件处理程序传递参数</h2><p>通常我们会为事件处理程序传递额外的参数。例如，若是 id 是一个<strong>内联 id</strong>，以下两种方式都可以向事件处理程序传递参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;(e) =&gt; this.deleteRow(id, e)&#125;&gt;Delete Row&lt;/button&gt;</span><br><span class="line">&lt;button onClick=&#123;this.deleteRow.bind(this, id)&#125;&gt;Delete Row&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>上述两种方式是等价的，分别通过 arrow functions 和 Function.prototags.bind 来为特定事件类型添加事件处理程序。</p>
+<p>上面两个例子中，参数 e 作为 React 事件对象将会被作为第二个参数进行传递。通过箭头函数的方式，事件对象必须显式的进行传递，但是通过 bind 的方式，事件对象以及更多的参数将会被隐式的进行传递。</p>
+<p>值得注意的是，通过 bind 方式向监听函数传参，在类组件中定义的监听函数，事件对象 e 要排在所传递参数的后面，例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Popper extends React.Component&#123;</span><br><span class="line">    constructor()&#123;</span><br><span class="line">        super();</span><br><span class="line">        this.state = &#123;name:&apos;Hello world!&apos;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    preventPop(name, e)&#123;    //事件对象e要放在最后</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        alert(name);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    render()&#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;p&gt;hello&lt;/p&gt;</span><br><span class="line">                &#123;/* Pass params via bind() method. */&#125;</span><br><span class="line">                &lt;a href=&quot;https://reactjs.org&quot; onClick=&#123;this.preventPop.bind(this,this.state.name)&#125;&gt;Click&lt;/a&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/03/05/列表 & Keys/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/05/列表 & Keys/" itemprop="url">列表 & Keys</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T18:11:39+08:00">
+                2018-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如下代码，我们使用map()函数让数组中的每一项翻倍,我们得到了一个新的数列doubled</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> doubled = numbers.map(<span class="function">(<span class="params">number</span>) =&gt;</span> number * <span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(doubled);</span><br></pre></td></tr></table></figure>
+<p>代码打印出[2, 4, 6, 8, 10]</p>
+<p>在React中，把数组转化为数列元素的过程是相似的</p>
+<h2 id="渲染多个组件"><a href="#渲染多个组件" class="headerlink" title="渲染多个组件"></a>渲染多个组件</h2><p>你可以通过使用{}在JSX内构建一个元素集合</p>
+<p>下面，我们使用Javascript中的map()方法遍历numbers数组。对数组中的每个元素返回<li>标签，最后我们得到一个数组listItems</li></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> listItems = numbers.map(<span class="function">(<span class="params">number</span>) =&gt;</span></span><br><span class="line">  &lt;li&gt;&#123;number&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">);x</span></span><br></pre></td></tr></table></figure>
+<p>我们把整个listItems插入到ul元素中，然后<strong>渲染进DOM</strong>:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;ul&gt;&#123;listItems&#125;&lt;<span class="regexp">/ul&gt;,</span></span><br><span class="line"><span class="regexp">  document.getElementById('root')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<p>这段代码生成了一个1到5的数字列表</p>
+<h2 id="基础列表组件"><a href="#基础列表组件" class="headerlink" title="基础列表组件"></a>基础列表组件</h2><p>通常你需要渲染一个列表到组件中</p>
+<p>我们可以把前面的例子重构成一个组件。这个组件接收numbers数组作为参数，输出一个无序列表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function NumberList(props) &#123;</span><br><span class="line">  const numbers = props.numbers;</span><br><span class="line">  const listItems = numbers.map((number) =&gt;</span><br><span class="line">    &lt;li&gt;&#123;number&#125;&lt;/li&gt;</span><br><span class="line">  );</span><br><span class="line">  return (</span><br><span class="line">    &lt;ul&gt;&#123;listItems&#125;&lt;/ul&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const numbers = [1, 2, 3, 4, 5];</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;NumberList numbers=&#123;numbers&#125; /&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>当我们运行这段代码，将会看到一个警告<strong>a key should be provided for list items</strong> ,意思是当你创建一个元素时，必须包括一个特殊的 key 属性。我们将在下一节讨论这是为什么。</p>
+<p>让我们来给每个列表元素分配一个 key 来解决上面的那个警告：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function NumberList(props) &#123;</span><br><span class="line">  const numbers = props.numbers;</span><br><span class="line">  const listItems = numbers.map((number) =&gt;</span><br><span class="line">    &lt;li key=&#123;number.toString()&#125;&gt;</span><br><span class="line">      &#123;number&#125;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  );</span><br><span class="line">  return (</span><br><span class="line">    &lt;ul&gt;&#123;listItems&#125;&lt;/ul&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const numbers = [1, 2, 3, 4, 5];</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;NumberList numbers=&#123;numbers&#125; /&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="Keys"><a href="#Keys" class="headerlink" title="Keys"></a>Keys</h2><p>Keys可以在DOM中的某些元素被增加或删除的时候帮助React识别哪些元素发生了变化。因此你应当给数组中的每一个元素赋予一个确定的标识。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const numbers = [1, 2, 3, 4, 5];</span><br><span class="line">const listItems = numbers.map((number) =&gt;</span><br><span class="line">  &lt;li key=&#123;number.toString()&#125;&gt;</span><br><span class="line">    &#123;number&#125;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>一个元素的key最好是这个元素在列表中拥有的一个独一无二的字符串。通常，我们使用来自数据的id作为元素的key:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const todoItems = todos.map((todo) =&gt;</span><br><span class="line">  &lt;li key=&#123;todo.id&#125;&gt;</span><br><span class="line">    &#123;todo.text&#125;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>当元素没有确定的id时，你可以使用他的序列号索引index作为key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const todoItems = todos.map((todo, index) =&gt;</span><br><span class="line">  // Only do this if items have no stable IDs</span><br><span class="line">  &lt;li key=&#123;index&#125;&gt;</span><br><span class="line">    &#123;todo.text&#125;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>如果列表可以重新排序，我们不建议使用索引来进行排序，因为这会导致渲染变得很慢。如果你想要了解更多，请点击<a href="https://doc.react-china.org/docs/reconciliation.html#%E9%80%92%E5%BD%92%E5%AD%90%E8%8A%82%E7%82%B9" target="_blank" rel="noopener">深度解析key的必要性</a></p>
+<h2 id="用keys提取组件"><a href="#用keys提取组件" class="headerlink" title="用keys提取组件"></a>用keys提取组件</h2><p>元素的key只有在它和它的兄弟节点对比时才有意义。</p>
+<p>比方说，如果你提取出一个ListItem组件，你应该把key保存在数组中的这个<listitem>元素上，而不是放在ListItem组件中的\<li>元素上。<br><strong>错误的示范</strong></li></listitem></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function ListItem(props) &#123;</span><br><span class="line">  const value = props.value;</span><br><span class="line">  return (</span><br><span class="line">    // 错啦！你不需要在这里指定key:</span><br><span class="line">    &lt;li key=&#123;value.toString()&#125;&gt;</span><br><span class="line">      &#123;value&#125;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function NumberList(props) &#123;</span><br><span class="line">  const numbers = props.numbers;</span><br><span class="line">  const listItems = numbers.map((number) =&gt;</span><br><span class="line">    //错啦！元素的key应该在这里指定：</span><br><span class="line">    &lt;ListItem value=&#123;number&#125; /&gt;</span><br><span class="line">  );</span><br><span class="line">  return (</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123;listItems&#125;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const numbers = [1, 2, 3, 4, 5];</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;NumberList numbers=&#123;numbers&#125; /&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>key的正确使用方式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function ListItem(props) &#123;</span><br><span class="line">  // 对啦！这里不需要指定key:</span><br><span class="line">  return &lt;li&gt;&#123;props.value&#125;&lt;/li&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function NumberList(props) &#123;</span><br><span class="line">  const numbers = props.numbers;</span><br><span class="line">  const listItems = numbers.map((number) =&gt;</span><br><span class="line">    // 又对啦！key应该在数组的上下文中被指定</span><br><span class="line">    &lt;ListItem key=&#123;number.toString()&#125;</span><br><span class="line">              value=&#123;number&#125; /&gt;</span><br><span class="line"></span><br><span class="line">  );</span><br><span class="line">  return (</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123;listItems&#125;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const numbers = [1, 2, 3, 4, 5];</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;NumberList numbers=&#123;numbers&#125; /&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>当你在map()方法的内部调用元素时，你最好随时记得为每一个元素加上一个独一无二的key。</p>
+<h2 id="元素的key在他的兄弟元素之间应该唯一"><a href="#元素的key在他的兄弟元素之间应该唯一" class="headerlink" title="元素的key在他的兄弟元素之间应该唯一"></a>元素的key在他的兄弟元素之间应该唯一</h2><p>数组元素中使用的key在其兄弟之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">function Blog(props) &#123;</span><br><span class="line">  const sidebar = (</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123;props.posts.map((post) =&gt;</span><br><span class="line">        &lt;li key=&#123;post.id&#125;&gt;</span><br><span class="line">          &#123;post.title&#125;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">      )&#125;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  );</span><br><span class="line">  const content = props.posts.map((post) =&gt;</span><br><span class="line">    &lt;div key=&#123;post.id&#125;&gt;</span><br><span class="line">      &lt;h3&gt;&#123;post.title&#125;&lt;/h3&gt;</span><br><span class="line">      &lt;p&gt;&#123;post.content&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &#123;sidebar&#125;</span><br><span class="line">      &lt;hr /&gt;</span><br><span class="line">      &#123;content&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const posts = [</span><br><span class="line">  &#123;id: 1, title: &apos;Hello World&apos;, content: &apos;Welcome to learning React!&apos;&#125;,</span><br><span class="line">  &#123;id: 2, title: &apos;Installation&apos;, content: &apos;You can install React from npm.&apos;&#125;</span><br><span class="line">];</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Blog posts=&#123;posts&#125; /&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>key会作为给React的提示，但不会传递给你的组件。如果您的组件中需要使用和key相同的值，请将其作为属性传递：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const content = posts.map((post) =&gt;</span><br><span class="line">  &lt;Post</span><br><span class="line">    key=&#123;post.id&#125;</span><br><span class="line">    id=&#123;post.id&#125;</span><br><span class="line">    title=&#123;post.title&#125; /&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>上面例子中，Post组件可以读出props.id，但是不能读出props.key</p>
+<h2 id="在jsx中嵌入map"><a href="#在jsx中嵌入map" class="headerlink" title="在jsx中嵌入map()"></a>在jsx中嵌入map()</h2><p>在上面的例子中，我们声明了一个单独的listItems变量并将其包含在JSX中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function NumberList(props) &#123;</span><br><span class="line">  const numbers = props.numbers;</span><br><span class="line">  const listItems = numbers.map((number) =&gt;</span><br><span class="line">    &lt;ListItem key=&#123;number.toString()&#125;</span><br><span class="line">              value=&#123;number&#125; /&gt;</span><br><span class="line"></span><br><span class="line">  );</span><br><span class="line">  return (</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123;listItems&#125;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JSX允许在大括号中嵌入任何表达式，所以我们可以在map()中这样使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function NumberList(props) &#123;</span><br><span class="line">  const numbers = props.numbers;</span><br><span class="line">  return (</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123;numbers.map((number) =&gt;</span><br><span class="line">        &lt;ListItem key=&#123;number.toString()&#125;</span><br><span class="line">                  value=&#123;number&#125; /&gt;</span><br><span class="line"></span><br><span class="line">      )&#125;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这么做有时可以使你的代码更清晰，但有时这种风格也会被滥用。就像在JavaScript中一样，何时需要为了可读性提取出一个变量，这完全取决于你。但请记住，如果一个map()嵌套了太多层级，那可能就是你提取出组件的一个好时机。</p>
 
           
         
@@ -1860,7 +1877,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1871,7 +1888,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 </a>
               </div>
             
@@ -1882,7 +1899,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 </a>
               </div>
             
@@ -1928,7 +1945,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
