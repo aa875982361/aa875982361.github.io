@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔试题，编程题," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今天在团队群里面 有人分享了一遍文章，描述动态规划，感觉挺有趣的，但是看不懂，所以自己上网找了一下资料  先给出我参考的一篇文章： 漫画：什么是动态规划？ 我比较习惯通过一个具体的例子去学习，所以我们来看个小例子吧！ 题目：  有一座高度是10级台阶的楼梯，从下往上走，每跨一步只能向上1级或者2级台阶。要求用程序来求出一共有多少种走法。  怎样才能到达第10阶呢？  这就有两种情况了，因为有可以">
+<meta name="keywords" content="笔试题，编程题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划">
+<meta property="og:url" content="http://nisonfuture.cn/2018/07/08/动态规划/index.html">
+<meta property="og:site_name" content="叶落林间">
+<meta property="og:description" content="今天在团队群里面 有人分享了一遍文章，描述动态规划，感觉挺有趣的，但是看不懂，所以自己上网找了一下资料  先给出我参考的一篇文章： 漫画：什么是动态规划？ 我比较习惯通过一个具体的例子去学习，所以我们来看个小例子吧！ 题目：  有一座高度是10级台阶的楼梯，从下往上走，每跨一步只能向上1级或者2级台阶。要求用程序来求出一共有多少种走法。  怎样才能到达第10阶呢？  这就有两种情况了，因为有可以">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531031910260.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531032217496.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531033204163.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531035173546.png">
+<meta property="og:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531035222242.png">
+<meta property="og:updated_time" content="2018-07-12T02:38:43.617Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态规划">
+<meta name="twitter:description" content="今天在团队群里面 有人分享了一遍文章，描述动态规划，感觉挺有趣的，但是看不懂，所以自己上网找了一下资料  先给出我参考的一篇文章： 漫画：什么是动态规划？ 我比较习惯通过一个具体的例子去学习，所以我们来看个小例子吧！ 题目：  有一座高度是10级台阶的楼梯，从下往上走，每跨一步只能向上1级或者2级台阶。要求用程序来求出一共有多少种走法。  怎样才能到达第10阶呢？  这就有两种情况了，因为有可以">
+<meta name="twitter:image" content="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531031910260.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://nisonfuture.cn/2018/07/08/动态规划/"/>
+
+
+
+
+
+  <title>动态规划 | 叶落林间</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落林间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">你只有非常努力，才能看起来毫不费力</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/07/08/动态规划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">动态规划</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-08T00:00:00+08:00">
+                2018-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>今天在团队群里面 有人分享了一遍文章，描述动态规划，感觉挺有趣的，但是看不懂，所以自己上网找了一下资料</p>
+</blockquote>
+<p>先给出我参考的一篇文章： <a href="https://juejin.im/post/5a29d52cf265da43333e4da7" target="_blank" rel="noopener">漫画：什么是动态规划？</a></p>
+<p>我比较习惯通过一个具体的例子去学习，所以我们来看个小例子吧！</p>
+<p>题目：</p>
+<blockquote>
+<p>有一座高度是10级台阶的楼梯，从下往上走，每跨一步只能向上1级或者2级台阶。要求用程序来求出一共有多少种走法。</p>
+</blockquote>
+<p>怎样才能到达第10阶呢？ </p>
+<p>这就有两种情况了，因为有可以走一步 或者可以走两步 </p>
+<ol>
+<li>从第9阶 走一步 </li>
+<li>从第8阶 走两步</li>
+</ol>
+<p>我们现在暂且不知道 走到第8阶，第 9阶有多少种走法，但是我们可以设置一个 变量去表示，就像 :</p>
+<ol>
+<li>走到第8阶有 X 种 走法</li>
+<li>走到第9阶有 Y 种 走法</li>
+<li><p>走到第10阶有 Z 种 走法 </p>
+<p>那么就会有 Z = X + Y 这样的关系</p>
+<p>那 在仔细想一下 走到第9阶 有多少种走法？</p>
+<p>走到 第9 阶 == 走到 第8阶 + 走到第7阶 </p>
+<p>所以是不是就得到这样的关系</p>
+<p>F（10） = F（9）+ F（8）；<br>F（9）= F（8）+F（7）；<br>….<br>….<br>….<br>所以是不是就得到这样的关系：</p>
+<p>F(N) = F(N-1) + F(N-2) (N&gt;=3)</p>
+<p>那要到哪里才停止呢？</p>
+<p>再看看题目：</p>
+<blockquote>
+<p>每跨一步只能向上1级或者2级台阶</p>
+</blockquote>
+</li>
+</ol>
+<p>也就是说 </p>
+<ol>
+<li>走到第1阶 有一种走法，就只走1步</li>
+<li>走到第2阶 有两种走法，从第1阶到第 2 阶，从一开始 直接到第 2 阶</li>
+<li>走到第三步 就是从第2阶 到第3阶 或者是 从第1阶走2步 到第3阶</li>
+<li>。。。。</li>
+</ol>
+<p>所以可以用递归的方式去做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">find</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(num == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(num == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">arguments</span>.callee(num - <span class="number">1</span> ) + <span class="built_in">arguments</span>.callee(num - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plog.d(find(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+<p> 这样子，其实就可以求出答案<br> 但是 这个递归计算的话，它的过程如下：</p>
+<p> <img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531031910260.png" alt="caculate"></p>
+<p> 这棵树的高度是N-1 节点个数接近2的N-1 次方 所以时间复杂度为O（2^N）；</p>
+<p> 有什么办法可以优化一下呢？ </p>
+<p> 通过节点数 可以看到，有一些是重复计算的 ，如下图：</p>
+<p> <img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531032217496.png" alt="重复"></p>
+<p> 所以可以考虑一下，在就算出结果的时候，可以将值保存起来：</p>
+<blockquote>
+<p>我在这里用了arguments.callee 来存储值</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">find_two</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( num &lt; <span class="number">1</span> ) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( num == <span class="number">1</span> ) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( num == <span class="number">2</span> ) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="keyword">typeof</span> <span class="built_in">arguments</span>.callee[num] != <span class="string">'undefined'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee[num];</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> value = <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>) + <span class="built_in">arguments</span>.callee(num<span class="number">-2</span>);</span><br><span class="line">        <span class="built_in">arguments</span>.callee[num] = value;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">var</span> start = + <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">plog.d(find(<span class="number">40</span>));</span><br><span class="line"><span class="keyword">var</span> stop = + <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">plog.d(<span class="string">'first time:'</span>+(stop - start));</span><br><span class="line"></span><br><span class="line">start = + <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">plog.d(find_two(<span class="number">40</span>));</span><br><span class="line">stop = + <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">plog.d(<span class="string">'second time:'</span>+(stop - start));</span><br></pre></td></tr></table></figure>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531033204163.png" alt="result"></p>
+<p> 可以看到花费的时间，第一种是第二种的8K多倍。<br> 我们来看看第二种的空间 时间复杂度</p>
+<pre><code>- 空间复杂度： O(N) 因为需要N-2个位置存储计算的结果
+- 时间复杂度： O(N) 因为 计算了 N-2 次 
+</code></pre><p> 另外 这个还可以再优化一下么？ 时间复杂度，已经是降到最低了，那空间复杂度还能在降低一点么？</p>
+<ul>
+<li>如果我想要得到 第3阶的结果的话，那么我需要 第1阶 第2阶的结果加起来</li>
+<li>如果我想要得到 第4阶的结果的话，那么我需要 第3阶 第2阶的结果加起来<br> 那我就不用 第1阶结果了，<ul>
+<li>如果我想要得到 第5阶的结果的话，那么我需要 第4阶 第3阶的结果加起来<br>那我就不用 第1 2阶结果了，那我是不是 可以用两个变量存储就好了</li>
+</ul>
+</li>
+</ul>
+<p>上面文字好像有点多 我个表格说明一下：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531035173546.png" alt="求第4阶"></p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1531035222242.png" alt="求第5阶"></p>
+<p>橙色的 结果  只需要绿色的变量 相加 计算完 可以将前面的舍弃掉，所以：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">find_three</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( num &lt; <span class="number">1</span> ) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( num == <span class="number">1</span> ) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( num == <span class="number">2</span> ) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> first = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> second = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">let</span> value = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">3</span>; i&lt;= num; i++)&#123;</span><br><span class="line">        value = first + second;</span><br><span class="line">        first = second;</span><br><span class="line">        second = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我用了三个变量：</p>
+<p>所以空间 复杂度为 O(1);</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔试题，编程题/" rel="tag"># 笔试题，编程题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/07/innerText 和 innerHtml 的不同/" rel="next" title="innerText 和 innerHtml 的不同">
+                <i class="fa fa-chevron-left"></i> innerText 和 innerHtml 的不同
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/10/项目地址/" rel="prev" title="微鱼项目地址">
+                微鱼项目地址 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Pling Huang</p>
+              <p class="site-description motion-element" itemprop="description">个人学习笔记，仅供本人复习</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pling Huang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

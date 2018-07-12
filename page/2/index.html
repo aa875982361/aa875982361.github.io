@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategorien
+            Categories
           </a>
         </li>
       
@@ -214,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -237,6 +237,937 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/19/possiblePlugin extractEvents is not a function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/19/possiblePlugin extractEvents is not a function/" itemprop="url">possiblePlugin.extractEvents is not a function</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-19T00:00:00+08:00">
+                2018-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>今天出现一个蜜汁bug,十分有趣，各位大神可有兴趣一观？</p>
+</blockquote>
+<p>操作：点击图中的按钮</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529394107892.png" alt="操作"></p>
+<p>图中按钮的代码如下，单纯打印一个test 字符串：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395327128.png" alt="button"></p>
+<p>浏览器控制台报错信息如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Uncaught tagsError: possiblePlugin.extractEvents is not a <span class="function"><span class="keyword">function</span></span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">extractEvents</span> (<span class="params">react-dom.development.js:<span class="number">704</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">runExtractedEventsInBatch</span> (<span class="params">react-dom.development.js:<span class="number">738</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">handleTopLevel</span> (<span class="params">react-dom.development.js:<span class="number">4203</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">batchedUpdates</span> (<span class="params">react-dom.development.js:<span class="number">12539</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">batchedUpdates</span> (<span class="params">react-dom.development.js:<span class="number">1941</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">dispatchEvent</span> (<span class="params">react-dom.development.js:<span class="number">4284</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">interactiveUpdates</span> (<span class="params">react-dom.development.js:<span class="number">12594</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">interactiveUpdates</span> (<span class="params">react-dom.development.js:<span class="number">1960</span></span>)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">dispatchInteractiveEvent</span> (<span class="params">react-dom.development.js:<span class="number">4261</span></span>)</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395104456.png" alt="error"></p>
+<p>仔细回想了一下自己的代码，以及通过测试，发现起因是下面这段代码，将代码注释掉就能正常运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function postLog (data) &#123;</span><br><span class="line">  let img = new Image();</span><br><span class="line">  img.src = logApi + params(data); // 这里是日志系统的链接地址</span><br><span class="line">  img.onload = () =&gt; &#123;</span><br><span class="line">    // TODO: 将img元素清除，避免内存泄漏</span><br><span class="line">    console.log(&apos;日志上报完成 &apos;, imgs.indexOf(img), img);</span><br><span class="line">    imgs.splice(imgs.indexOf(img),1);</span><br><span class="line">    console.log(&apos;清除img  &apos;, imgs)</span><br><span class="line">  &#125;</span><br><span class="line">  Array.prototags.push(imgs, img);// 采用闭包将img变量存储起来，担心数据未上报完毕 img对象就消失</span><br></pre></td></tr></table></figure>
+<p>通过注释代码 发现 主要问题在于：第十行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototags.push(imgs, img);<span class="comment">// 采用闭包将img变量存储起来，担心数据未上报完毕 img对象就消失</span></span><br></pre></td></tr></table></figure>
+<p>查看控制台的network：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395207454.png" alt="接口返回"></p>
+<p>发现 网络连接是没有问题的，那是什么原因呢？</p>
+<p>根据错误提示，我在<code>\node_modules\react-dom\cjs\react-dom.development.js</code>这个文件加了个debugger，去看 ==possiblePlugin==这个的值，</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395545595.png" alt="debugger"></p>
+<p>测试一： 不用img 向后台发送log </p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395818629.png" alt="正常情况"></p>
+<p>测试二： 用img向后台发送log</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529395941773.png" alt="异常情况"></p>
+<p>正常情况应该 ==possiblePlugin==这个是一个object，但是经过发送log后，替换成了Array</p>
+<p>问题根源在于：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototags.push(imgs, img); <span class="comment">//少了一个 .call 或 .applay</span></span><br></pre></td></tr></table></figure>
+<p>正确应该是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototags.push.call(imgs, img);</span><br></pre></td></tr></table></figure>
+<p>无语了 </p>
+<p>可是为什么会有这样的情况呢？<br><code>Array.prototags.push(imgs, img);</code>这个究竟做了什么呢？</p>
+<p>这个操作修改了array 的原型， </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[]; <span class="comment">// 这样初始化是不安全的</span></span><br><span class="line">因为 修改原型后 [<span class="number">0</span>] 是有值的 不等于空</span><br></pre></td></tr></table></figure>
+<p>查看react-dom的源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function recomputePluginOrdering() &#123;</span><br><span class="line">  if (!eventPluginOrder) &#123;</span><br><span class="line">    // Wait until an `eventPluginOrder` is injected.</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line">  for (var pluginName in namesToPlugins) &#123;</span><br><span class="line">    var pluginModule = namesToPlugins[pluginName];</span><br><span class="line">    var pluginIndex = eventPluginOrder.indexOf(pluginName);</span><br><span class="line">    !(pluginIndex &gt; -1) ? invariant(false, &apos;EventPluginRegistry: Cannot inject event plugins that do not exist in the plugin ordering, `%s`.&apos;, pluginName) : void 0;</span><br><span class="line">    if (plugins[pluginIndex]) &#123; // 主要是这里 用原型去取到的值不为空，所以就会continue </span><br><span class="line">      continue;</span><br><span class="line">    &#125;</span><br><span class="line">    !pluginModule.extractEvents ? invariant(false, &apos;EventPluginRegistry: Event plugins must implement an `extractEvents` method, but `%s` does not.&apos;, pluginName) : void 0;</span><br><span class="line">    plugins[pluginIndex] = pluginModule;</span><br><span class="line">    var publishedEvents = pluginModule.eventtagss;</span><br><span class="line">    for (var eventName in publishedEvents) &#123;</span><br><span class="line">      !publishEventForPlugin(publishedEvents[eventName], pluginModule, eventName) ? invariant(false, &apos;EventPluginRegistry: Failed to publish event `%s` for plugin `%s`.&apos;, eventName, pluginName) : void 0;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529406755639.png" alt="错误情况"></p>
+<p>看到图片上的 当i=0的时候，没有属性，需要去原型里面取，我放了一个空数组去，所以取到的值就是空数组。用的时候就会报错。</p>
+<p>下面是执行代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> possiblePlugin = plugins[i]; <span class="comment">// 当i=0 取到的是空数组</span></span><br><span class="line"><span class="keyword">if</span> (possiblePlugin) &#123;</span><br><span class="line">  <span class="keyword">debugger</span></span><br><span class="line">  <span class="built_in">console</span>.log(possiblePlugin); <span class="comment">//  possiblePlugin.extractEvents 这个就是undefined</span></span><br><span class="line">  <span class="keyword">var</span> extractedEvents = possiblePlugin.extractEvents(topLeveltags, targetInst, nativeEvent, nativeEventTarget);</span><br><span class="line">  <span class="keyword">if</span> (extractedEvents) &#123;</span><br><span class="line">    events = accumulateInto(events, extractedEvents);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>建议修改：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (plugins[pluginIndex] &amp;&amp; tagsof plugins[pluginIndex].extractEvents === <span class="string">'function'</span>) &#123; <span class="comment">// pluginIndex = 0  plugins[pluginIndex] = [] so containue</span></span><br><span class="line">  <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/18/前端日志系统解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/18/前端日志系统解决方案/" itemprop="url">前端日志系统解决方案</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-18T00:00:00+08:00">
+                2018-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考链接：<a href="https://tech.meituan.com/mt-mobile-analytics-practice.html" target="_blank" rel="noopener">美团点评前端无痕埋点实践</a><br><a href="https://github.com/eshengsky/lajax" target="_blank" rel="noopener">log + ajax，前端日志解决方案</a><br><a href="https://github.com/mixpanel/mixpanel-js" target="_blank" rel="noopener">可视化工具配置采集节点，在前端自动解析配置并上报埋点数据</a><br><a href="http://www.aliued.cn/2012/10/27/%E6%9E%84%E5%BB%BAweb%E5%89%8D%E7%AB%AF%E5%BC%82%E5%B8%B8%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F-fdsafe.html" target="_blank" rel="noopener">构建web前端异常监控系统</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/15/防范运营商劫持/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/15/防范运营商劫持/" itemprop="url">防范运营商劫持</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-15T00:00:00+08:00">
+                2018-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>我们经常会遇到一些页面出现广告的情况，就像下图的，就很有可能被运营商劫持了，这些并不是我们做出的网页效果，不符合我们的预期，那有什么办法去消除这些广告么？我们来看看</p>
+</blockquote>
+<p>运营商劫持有挺多方式的，我们一起看看：<a href="http://www.cnblogs.com/coco1s/p/5777260.html" target="_blank" rel="noopener">http://www.cnblogs.com/coco1s/p/5777260.html</a></p>
+<h2 id="1-页面被嵌入-iframe-中，重定向-iframe"><a href="#1-页面被嵌入-iframe-中，重定向-iframe" class="headerlink" title="1. 页面被嵌入 iframe 中，重定向 iframe"></a>1. 页面被嵌入 iframe 中，重定向 iframe</h2><p>先来说说我们的页面被嵌入了 iframe 的情况。也就是，网络运营商为了尽可能地减少植入广告对原有网站页面的影响，通常会通过把原有网站页面放置到一个和原页面相同大小的 iframe 里面去，那么就可以通过这个 iframe 来隔离广告代码对原有页面的影响。</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1529039796108.png" alt="劫持方式"></p>
+<p>这种情况还比较好处理，我们只需要知道我们的页面是否被嵌套在 iframe 中，如果是，则重定向外层页面到我们的正常页面即可。</p>
+<p>那么有没有方法知道我们的页面当前存在于 iframe 中呢？有的，就是 ==window.self== 与 ==window.top== 。</p>
+<p><strong>window.self</strong></p>
+<p>返回一个指向当前 window 对象的引用。</p>
+<p><strong>window.top</strong></p>
+<p>返回窗口体系中的最顶层窗口的引用。</p>
+<p>对于非同源的域名，iframe 子页面无法通过 ==parent.location== 或者 ==top.location== 拿到具体的页面地址，但是可以写入 ==top.location== ，也就是可以控制父页面的跳转。</p>
+<p>两个属性分别可以又简写为 self 与 top，所以当发现我们的页面被嵌套在 iframe 时，可以重定向父级页面：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (self != top) &#123;</span><br><span class="line">  <span class="comment">// 我们的正常页面</span></span><br><span class="line">  <span class="keyword">var</span> url = location.href;</span><br><span class="line">  <span class="comment">// 父级页面重定向</span></span><br><span class="line">  top.location = url;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/13/js 数组的深拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/13/js 数组的深拷贝/" itemprop="url">js 数组的深拷贝</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-13T00:00:00+08:00">
+                2018-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在js中对于 Object 和 Array 这类引用类型值，当一个变量想另一个变量复制应用类型时，这个值的副本其实是一个指针，两个变量指向同一个堆对象，改变其中一个变量，另一个也会受到影响。</p>
+</blockquote>
+<p>这种拷贝分为两种情况： 拷贝实例和拷贝引用，也就是我们说的浅拷贝和深拷贝</p>
+<h2 id="浅拷贝（shallow-copy）"><a href="#浅拷贝（shallow-copy）" class="headerlink" title="浅拷贝（shallow copy）"></a>浅拷贝（shallow copy）</h2><p>拷贝元对象的引用，这是最简单的拷贝。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象</span></span><br><span class="line"><span class="keyword">var</span> o1 = &#123; <span class="attr">a</span>: <span class="number">168</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = o1;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(o1 === o2); <span class="comment">// =&gt;true</span></span><br><span class="line">o2.a = <span class="number">699</span> ;</span><br><span class="line"><span class="built_in">console</span>,log(<span class="number">01.</span>a); <span class="comment">// =&gt;699</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="keyword">var</span> a1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> a2 = a1;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a1 === a2); <span class="comment">// true</span></span><br><span class="line">a2.push(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a1); <span class="comment">// [1,2,3,4]</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528876107034.png" alt="对象浅拷贝"></p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528876323842.png" alt="数组浅拷贝"></p>
+<p>拷贝原对象的实例，但是对其内部的引用类型值，拷贝的是其引用，常用的就是如 jquey中的 $.extend（{， object}）; Array.prototags.slice() 和 Array.protags.concat() 都会返回一个数组会对象的浅拷贝，看下下面的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = [ <span class="string">'plinghuang'</span>, &#123; <span class="attr">age</span>: <span class="number">22</span>&#125;];</span><br><span class="line"><span class="keyword">var</span> o2 = o1.slice();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( o1 === o2 );</span><br><span class="line">o2[<span class="number">0</span>] = <span class="string">'xieyanchuan'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(o1[<span class="number">0</span>]);</span><br><span class="line"><span class="comment">//对于基本类型的话，这个是实例拷贝</span></span><br><span class="line"></span><br><span class="line">o2[<span class="number">1</span>].age = <span class="string">'23'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(o1[<span class="number">1</span>].age);</span><br><span class="line"><span class="comment">// 对于引用类型的话 复制的是引用,会影响到原来的数值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 拓展运算符 复制对象属性</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	list: [ <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">	...obj,</span><br><span class="line">&#125;</span><br><span class="line">obj2.list[<span class="number">1</span>] = <span class="number">55</span>；</span><br><span class="line"><span class="built_in">console</span>.log(obj.list[<span class="number">1</span>]); <span class="comment">// 55</span></span><br></pre></td></tr></table></figure>
+<h2 id="深拷贝-deep-copy"><a href="#深拷贝-deep-copy" class="headerlink" title="深拷贝(deep copy)"></a>深拷贝(deep copy)</h2><p>深拷贝 也就是拷贝出一个实例和之前的实例互补影响,深拷贝的实现方式有几种:</p>
+<ol>
+<li>利用第三方库 jQuery lodash 等等</li>
+<li>递归</li>
+<li>利用JSON.stringify 和 JSON.parse 来做</li>
+</ol>
+<p>第三方库的就说了，我们来看下 用递归的方式吧</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">source</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 判断参数类型是不是 object 如果不是object 那就用浅拷贝</span></span><br><span class="line">	<span class="keyword">if</span>(!source || tagsof source !== <span class="string">'object'</span>) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'erroe arguments '</span>, <span class="string">'shallowClone'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 看看 原型是array 还是 object 初始化 </span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'constructor'</span>, source.constructor);</span><br><span class="line">	<span class="keyword">var</span> targetObj = source.constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">	<span class="comment">//遍历 对象属性</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> source)&#123;</span><br><span class="line">		<span class="comment">// 排除从原型继承的属性</span></span><br><span class="line">		<span class="keyword">if</span>( source.hasOwnProperty(key) ) &#123;</span><br><span class="line">			<span class="comment">// 判断是否为引用对象类型</span></span><br><span class="line">			 <span class="keyword">if</span>( source[key] &amp;&amp; tagsof source[key] === <span class="string">'object'</span>)&#123;</span><br><span class="line">			 	<span class="comment">// 首先判断是什么类型的 先初始化一遍</span></span><br><span class="line">				targetObj[key] = source[key].constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">				targetObj[key] = deepClone(source[key]);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				targetObj[key] = source[key];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还有一种实现深拷贝的方式是利用JSON对象中的parse和stringify，JOSN对象中的stringify可以把一个js对象序列化为一个JSON字符串，parse可以把JSON字符串反序列化为一个js对象，通过这两个方法，也可以实现对象的深复制。</p>
+<p>我们从下面的例子就可以看到，源对象的方法在拷贝的过程中丢失了，这是因为在==序列化JavaScript对象时，所有函数和原型成员会被有意忽略==，这个实现可以满足一些比较简单的情况，能够处理JSON格式所能表示的所有数据类型，同时如果在对象中存在循环应用的情况也无法正确处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(source)&#123;</span><br><span class="line">  return JSON.parse(JSON.stringify(source));</span><br><span class="line">&#125;</span><br><span class="line">undefined</span><br><span class="line">var obj1 = &#123; user : &#123;age: 66&#125;&#125;</span><br><span class="line">var obj2 = deepClone(obj1);</span><br><span class="line">obj2</span><br><span class="line">&#123;user: &#123;…&#125;&#125;user: &#123;age: 66&#125;</span><br><span class="line">obj1</span><br><span class="line">&#123;user: &#123;…&#125;&#125;user: &#123;age: 66&#125;</span><br><span class="line">obj2.user.age = 99</span><br><span class="line">99</span><br><span class="line">obj1</span><br><span class="line">&#123;user: &#123;…&#125;&#125;user: &#123;age: 66&#125;age: 66</span><br><span class="line">// 可以发现 并没有改变obj1的值</span><br></pre></td></tr></table></figure>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528883478202.png" alt="JSON 深拷贝"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/纯函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/12/纯函数/" itemprop="url">纯函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>纯函数是这样一种函数，即<strong>相同的输入</strong>，永远会得到<strong>相同的输出</strong>，而且没有任何可观察的副作用。</p>
+<p>例子：</p>
+<p>比如 slice 和 splice，这两个函数的作用并无二致——但是注意，它们各自的方式却大不同，但不管怎么说作用还是一样的。我们说 slice 符合纯函数的定义是因为对相同的输入它保证能返回相同的输出。而 splice 却会嚼烂调用它的那个数组，然后再吐出来；这就会产生可观察到的副作用，即这个数组永久地改变了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xs = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 纯的</span></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不纯的</span></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [4,5]</span></span><br><span class="line"></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; []</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/随机数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pling Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落林间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/12/随机数/" itemprop="url">随机数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandom</span>(<span class="params">min,max</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>( <span class="built_in">isNaN</span>( <span class="built_in">parseInt</span>(min) ) || <span class="built_in">isNaN</span>( <span class="built_in">parseInt</span>(max) ) )&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">'输入的值不能转化为数字'</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	min = <span class="built_in">parseInt</span>(min);</span><br><span class="line">	max = <span class="built_in">parseInt</span>(max);</span><br><span class="line">	<span class="keyword">if</span>(min&gt;max)&#123;</span><br><span class="line">		<span class="keyword">let</span> temp = min;</span><br><span class="line">		min = max;</span><br><span class="line">		max = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * ( max - min + <span class="number">1</span>)) + min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandom</span>(<span class="params">...values</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 对多元素进行 处理</span></span><br><span class="line">	<span class="keyword">let</span> exitNaN = values.some(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">isNaN</span>(value))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">if</span>( exitNaN ) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'存在不能转化为数字的值'</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">let</span> tempValueList = values.map(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">parseInt</span>(value,<span class="number">10</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(tempValueList);</span><br><span class="line">	<span class="comment">//取最小,最大值</span></span><br><span class="line">	<span class="keyword">let</span> min = <span class="built_in">Math</span>.min(...tempValueList);</span><br><span class="line">	<span class="keyword">let</span> max = <span class="built_in">Math</span>.max(...tempValueList);</span><br><span class="line">	<span class="keyword">if</span>(min&gt;max)&#123;</span><br><span class="line">		<span class="keyword">let</span> temp = min;</span><br><span class="line">		min = max;</span><br><span class="line">		max = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * ( max - min + <span class="number">1</span>)) + min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>检测数组：</p>
+<p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1528780129930.png" alt="slice检测数组"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -280,7 +1211,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
                 2018-06-12
@@ -301,7 +1232,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -522,7 +1453,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
                 2018-06-12
@@ -543,7 +1474,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -635,305 +1566,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/12/纯函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/12/纯函数/" itemprop="url">纯函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T00:00:00+08:00">
-                2018-06-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>纯函数是这样一种函数，即<strong>相同的输入</strong>，永远会得到<strong>相同的输出</strong>，而且没有任何可观察的副作用。</p>
-<p>例子：</p>
-<p>比如 slice 和 splice，这两个函数的作用并无二致——但是注意，它们各自的方式却大不同，但不管怎么说作用还是一样的。我们说 slice 符合纯函数的定义是因为对相同的输入它保证能返回相同的输出。而 splice 却会嚼烂调用它的那个数组，然后再吐出来；这就会产生可观察到的副作用，即这个数组永久地改变了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xs = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 纯的</span></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不纯的</span></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [1,2,3]</span></span><br><span class="line"></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; [4,5]</span></span><br><span class="line"></span><br><span class="line">xs.splice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//=&gt; []</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/03/复习计划/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/03/复习计划/" itemprop="url">复习计划</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
-                2018-06-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>代码优化</li>
-<li>性能优化</li>
-<li>自动化测试</li>
-<li>渗透测试</li>
-<li>自动化构建</li>
-<li>参考别人的项目</li>
-<li>日志系统</li>
-<li>点击穿透</li>
-<li>this</li>
-<li>redux 和 Array.reduce</li>
-<li>用webhook 触发后端的构建 自己搭建一个小的构建</li>
-<li>deno 源码学习</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/06/03/使用yum安装最新版nodejs和npm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -963,7 +1595,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
                 2018-06-03
@@ -984,7 +1616,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1116,7 +1748,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T00:00:00+08:00">
                 2018-06-03
@@ -1137,7 +1769,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1282,682 +1914,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/27/跨域问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/27/跨域问题/" itemprop="url">跨域问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-27T00:00:00+08:00">
-                2018-05-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-同源策略"><a href="#1-同源策略" class="headerlink" title="1. 同源策略"></a>1. 同源策略</h2><p>同源策略限制从一个源加载的文档或脚本 如何与另一个源的资源进行交互。<br>一个源的定义： 如果协议，端口（如果指定了一个）和主机对于两个页面是相同的，则两个页面具有相同的源。</p>
-<p>下表给出了相对 <a href="http://store.company.com/dir/page.html" target="_blank" rel="noopener">http://store.company.com/dir/page.html</a> 同源检测的示例:</p>
-<table>
-<thead>
-<tr>
-<th>URL</th>
-<th>结果</th>
-<th>原因 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://store.company.com/dir/inner/another.html" target="_blank" rel="noopener">http://store.company.com/dir/inner/another.html</a></td>
-<td>成功</td>
-<td>同一域名</td>
-</tr>
-<tr>
-<td><a href="http://store.company.com/dir2/other.html" target="_blank" rel="noopener">http://store.company.com/dir2/other.html</a></td>
-<td>成功</td>
-<td>统一域名下的不同文件</td>
-</tr>
-<tr>
-<td><a href="https://store.company.com/secure.html" target="_blank" rel="noopener">https://store.company.com/secure.html</a></td>
-<td>失败</td>
-<td>不同的协议（https）</td>
-</tr>
-<tr>
-<td><a href="http://store.company.com:81/dir/etc.html" target="_blank" rel="noopener">http://store.company.com:81/dir/etc.html</a></td>
-<td>失败</td>
-<td>不同的端口（81）</td>
-</tr>
-<tr>
-<td><a href="http://news.company.com/dir/other.html" target="_blank" rel="noopener">http://news.company.com/dir/other.html</a></td>
-<td>失败</td>
-<td>不同主机（news）</td>
-</tr>
-</tbody>
-</table>
-<h2 id="为什么要有跨域呢？"><a href="#为什么要有跨域呢？" class="headerlink" title="为什么要有跨域呢？"></a>为什么要有跨域呢？</h2><p>了解完跨域之后，想必大家都会有这么一个思考，为什么要有跨域的限制，浏览器这么做是出于何种原因呢。其实仔细想一想就会明白，跨域限制主要是为了安全考虑。</p>
-<p>AJAX 同源策略主要是用来防止 CSRF 攻击。如果没有 ajax 同源策略，相当危险，每当我们发起一次http请求都会带上请求地址对应的cookie，那么可以做一些攻击：</p>
-<ol>
-<li>用户登录了自己的银行页面 mybank.com，并保存了cookie </li>
-<li>用户访问恶意页面 evil.com。执行了页面中的恶意ajax代码。</li>
-<li>evil.com向mybank.com  发送一个AJAX 请求，请求默认把mybank.com 对应cookie也同时发送过去</li>
-<li>银行页面从发送的cookie中提取用户表示，验证用户无误，response 返回请求数据</li>
-<li>由于ajax 在后台执行，用户无法感知这一过程。</li>
-</ol>
-<p>DOM同源策略也一样，如果iframe之间可以跨域访问，可以这样攻击：</p>
-<p>做一个假网站，里面用iframe嵌套一个银行网站 <a href="http://mybank.com" target="_blank" rel="noopener">http://mybank.com</a><br>把iframe宽高啥的调整到页面全部，这样用户进来除了域名，别的部分和银行的网站没有任何差别。<br>这时如果用户输入账号密码，我们的主网站可以跨域访问到<a href="http://mybank.com" target="_blank" rel="noopener">http://mybank.com</a> 的dom节点，就可以拿到用户的输入了，那么就完成了一次攻击。<br>所以说有了跨域跨域限制之后，我们才能更安全的上网了。 </p>
-<h2 id="跨域的解决方式"><a href="#跨域的解决方式" class="headerlink" title="跨域的解决方式"></a>跨域的解决方式</h2><h3 id="gt-跨域资源共享"><a href="#gt-跨域资源共享" class="headerlink" title="&gt; 跨域资源共享"></a>&gt; 跨域资源共享</h3><p>CORS 这是一个W3C标准 全称是：‘跨资源共享’（Cross-origin resource sharing）<br> 对于这个方式，阮一峰老师总结的文章特别好，希望深入了解的可以看一下<a href="http://www.ruanyifeng.com/blog/2016/04/cors.html。" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/04/cors.html。</a> </p>
-<p>这里我就简单的说一说大体流程。 </p>
-<p>对于客户端，我们还是正常使用xhr对象发送ajax请求。<br>唯一需要注意的是，我们需要设置我们的xhr属性withCredentials为true，不然的话，cookie是带不过去的哦，设置： xhr.withCredentials = true;<br>对于服务器端，需要在 response header中设置如下两个字段:<br>Access-Control-Allow-Origin: <a href="http://www.yourhost.com" target="_blank" rel="noopener">http://www.yourhost.com</a><br>Access-Control-Allow-Credentials:true<br>这样，我们就可以跨域请求接口了。</p>
-<h3 id="gt-jsonp实现跨域"><a href="#gt-jsonp实现跨域" class="headerlink" title="&gt; jsonp实现跨域"></a>&gt; jsonp实现跨域</h3><p>基本原理就是通过动态创建script标签,然后利用src属性进行跨域。</p>
-<p>这么说比较模糊，我们来看个例子: </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个fun函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">fata</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 创建一个脚本，并且告诉后端回调函数名叫fun</span></span><br><span class="line"><span class="keyword">var</span> body = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.gerElement(<span class="string">'script'</span>);</span><br><span class="line">script.tags = <span class="string">'text/javasctipt'</span>;</span><br><span class="line">script.src = <span class="string">'demo.js?callback=fun'</span>;</span><br><span class="line">body.appendChild(script);</span><br></pre></td></tr></table></figure>
-<p>返回的js脚本，直接会执行。所以就执行了事先定义好的fun函数了，并且把数据传入了进来。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun(&#123;<span class="string">"name"</span>: <span class="string">"name"</span>&#125;)</span><br></pre></td></tr></table></figure>
-<p>当然，这个只是一个原理演示，实际情况下，我们需要动态创建这个fun函数，并且在数据返回的时候销毁它。 </p>
-<p>因为在实际使用的时候，我们用的各种ajax库，基本都包含了jsonp的封装，不过我们还是要知道一下原理，不然就不知道为什么jsonp不能发post请求了~</p>
-<h3 id="其他方式暂不介绍"><a href="#其他方式暂不介绍" class="headerlink" title="其他方式暂不介绍"></a>其他方式暂不介绍</h3><p>参考资料：<br><a href="https://github.com/wengjq/Blog/issues/2" target="_blank" rel="noopener">https://github.com/wengjq/Blog/issues/2</a><br><a href="https://zhuanlan.zhihu.com/p/28562290" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28562290</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/27/1 + + '2' + '2'/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/27/1 + + '2' + '2'/" itemprop="url">1 + + '2' + '2'</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-27T00:00:00+08:00">
-                2018-05-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>很有趣的题目：<br>console.log(1 + ‘2’ + ‘2’); // ‘122’<br>console.log(1 + + ‘2’ + ‘2’); // ‘32’</p>
-<ol>
-<li>console.log(1 + ‘2’ + ‘2’); // ‘122’</li>
-</ol>
-<p>再次翻了一下红宝石，发现加法有个运算规则：</p>
-<blockquote>
-<ol>
-<li>如果一个操作数是字符串，则将另外一个操作数转换成字符串，然后将两个字符串拼接起来</li>
-</ol>
-</blockquote>
-<p>之前一直以为是根据左操作数来判别类型转换，今天做了这道题才知道，原来是这样子，之后要注意</p>
-<ol>
-<li>consol.log(1 + +’2’ + ‘2’); // ‘32’ </li>
-</ol>
-<p>这个就很有趣，我一开始并没看懂题目，我还以为会报错，自己尝试一下，发现其实是没问题的，</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=&gt; <span class="number">1</span> + + <span class="string">"2"</span>    <span class="comment">// +"2" = 2</span></span><br><span class="line">=&gt; <span class="number">1</span> +    <span class="number">2</span></span><br><span class="line">=&gt; <span class="number">3</span></span><br></pre></td></tr></table></figure>
-<p>原因，加号 + 还可以是一元运算符，就是将数值变为正数 ，例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+ <span class="number">0</span> =&gt; +<span class="number">0</span></span><br><span class="line">-  <span class="number">0</span> =&gt; <span class="number">-0</span></span><br><span class="line">+ <span class="string">'8'</span> =&gt; +<span class="number">8</span></span><br><span class="line">-  <span class="string">'8'</span>=&gt; <span class="number">-8</span></span><br><span class="line"> + <span class="string">'123fdasf'</span> =&gt; <span class="literal">NaN</span></span><br></pre></td></tr></table></figure>
-<p>在对非数值应用一元加操作符时，该操作符会像Number（）转型函数一样对这个值进行转换。换句话说，布尔false 和 true 会转换为 0 和 1。字符串会被按照一组则属的规则进行解析，而对象是先调用他们的valueOf() 和 toString（）方法，再转换得到值。</p>
-<p>将书上的例子打出来会比较好理解：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="string">''</span><span class="number">01</span>;</span><br><span class="line"><span class="keyword">var</span> s2 = <span class="string">'1.1'</span>;</span><br><span class="line"> <span class="keyword">var</span> s3 = <span class="string">'a'</span>;</span><br><span class="line"> <span class="keyword">var</span> b = <span class="literal">false</span>;</span><br><span class="line"> <span class="keyword">var</span> f = <span class="number">1.1</span>,</span><br><span class="line"> <span class="keyword">var</span> o = &#123;</span><br><span class="line"> 	valueOf: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;	</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>TODO: 1.1 – =》 0.1000000000000000009</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/23/快速输出调试日志/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/23/快速输出调试日志/" itemprop="url">快速输出调试日志</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T00:00:00+08:00">
-                2018-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>感觉每次打console.log 很麻烦，所以就想加快输出log的速度<br>同事教我装个插件 Javascript code snippets。 装完使用 clg 即可 将 console.log（Object）输出</p>
-<p>后来感觉使用console.log 其实并不太好，因为如果到正式环境需要将调试的信息去掉，<br>所以我自己封装了一个plog : p 是我id(Plinghuang) 的首写字母 ,    其实是一个很简单的操作，但是极大简便我的开发。 代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// plog.js</span><br><span class="line">const plog=&#123;</span><br><span class="line"></span><br><span class="line">    log: (message, ...optionalParams) =&gt; &#123;</span><br><span class="line">      // let PostLog:PostLog=new PostLog();</span><br><span class="line">      console.log(message,optionalParams);</span><br><span class="line">    &#125;,</span><br><span class="line">    i: (message, ...optionalParams) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">      console.log(message,optionalParams);</span><br><span class="line">    &#125;,</span><br><span class="line">    w: (message, ...optionalParams) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">      console.log(message,optionalParams);</span><br><span class="line">    &#125;,</span><br><span class="line">    e: (message, ...optionalParams) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">      console.log(message,optionalParams);</span><br><span class="line">    &#125;,</span><br><span class="line">    /**</span><br><span class="line">     * 输出调试日志</span><br><span class="line">     * @param message TAG</span><br><span class="line">     * @param optionalParams funcName</span><br><span class="line">     */</span><br><span class="line">    d: (message , ...optionalParams) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">      console.log(message,optionalParams);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">export default plog;</span><br></pre></td></tr></table></figure>
-<p>当到正式环境的时候就将console.log() 注释掉就好 </p>
-<p>需要调试 就放出来 ，</p>
-<p>输入clg 可以就 console.log 快速输出来，所以想模仿这个 </p>
-<p>输入plg 可以将 plog.d(TAG,funcName ,’’)   </p>
-<p>上网找了下资料，发现可以通过修改代码片段 设置，<a href="http://xugaoyang.com/post/5a332920ae378735e4963679" target="_blank" rel="noopener">参考</a></p>
-<p>具体方法：<br> Step 1: 启动 VS code<br> Step 2: 左上角 Code -&gt; Preference -&gt; User Snippets 或，在 Help 输入 Snippets<br> Step 3:进入 VS Code 界面，搜索框输入 JavaScript</p>
-<p>示例是一个 Json 格式的文件，复制粘贴</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"Print to console"</span>: &#123;</span><br><span class="line">		<span class="attr">"prefix"</span>: <span class="string">"plg"</span>,</span><br><span class="line">		<span class="attr">"body"</span>: [</span><br><span class="line">			<span class="string">"plog.d(TAG, funcName, $1);"</span>,</span><br><span class="line">			<span class="string">"$2"</span></span><br><span class="line">		],</span><br><span class="line">		<span class="attr">"description"</span>: <span class="string">"Log output to console"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中我设置了 TAG funcName 主要是为了方便定位 错误信息 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> TAG = <span class="string">'Baby'</span>; <span class="comment">//全局文件名 这个放文件的全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在函数内部：</span></span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> funcName = <span class="string">'componentDidMount'</span>; <span class="comment">//函数名 这个放函数的开始</span></span><br><span class="line"></span><br><span class="line">    plog.d(TAG, funcName, <span class="string">'start:'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> deviceId = getQueryString(<span class="string">'deviceId'</span>) ? <span class="built_in">parseInt</span>(getQueryString(<span class="string">'deviceId'</span>)) : <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      deviceId,</span><br><span class="line">    &#125;);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// this.getCoupon();</span></span><br><span class="line">    <span class="keyword">this</span>.getBabyInfo();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>另外 还要注意日志的等级,写日志的时候,要分清楚是用来干嘛的,<br>例如</p>
-<ol>
-<li>我要看某个变量的值,这是时候就用plog.d 只是调试才用到 </li>
-<li>如果 我要看返回回来的数据的话,可以用info 答应出来,因为这个可以看到 我获取到的信息有没有错误,问题是不是出在后台返回参数错误</li>
-<li>如果 某个变量的值 类型为 undefined 不是正常业务逻辑,这个时候就要用 plog.w 打印出来,并且在正式环境不需要关掉</li>
-<li>如果 发生系统级别的错误,那就要用 error 打印出来  我用得比较少 </li>
-</ol>
-<p>之所以分级别,更重要的原因是 方便后台日志数据库,将必要信息存储进数据库里面,可以快速定位错误</p>
-<p>上面的plog 是没有加向后台发送日志服务的,<br>之前用ts 写过一个服务 可以向后台发送数据:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">//  plog.service.ts </span><br><span class="line">import &#123;Injectable&#125; from &quot;@angular/core&quot;;</span><br><span class="line">import &#123;PostService&#125; from &quot;./post.service&quot;;</span><br><span class="line">import utils from &quot;../utils/utils&quot;;</span><br><span class="line">import &#123;CONFIG&#125; from &quot;../config/config&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export  class PlogService&#123;</span><br><span class="line">  private TAG=&quot;PlogService&quot;;</span><br><span class="line">  constructor(private postService:PostService)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  log(message?: any, ...optionalParams: any[]) &#123;</span><br><span class="line">    this.postWeblog(&quot;log&quot;,message.toString(),optionalParams.toString());</span><br><span class="line">    console.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  i(message?: any, ...optionalParams: any[])&#123;</span><br><span class="line">    this.postWeblog(&quot;info&quot;,message.toString(),optionalParams.toString());</span><br><span class="line">    console.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  w(message?: any, ...optionalParams: any[])&#123;</span><br><span class="line">    this.postWeblog(&quot;warning&quot;,message.toString(),optionalParams.toString());</span><br><span class="line">    console.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  e(message?: any, ...optionalParams: any[])&#123;</span><br><span class="line">    this.postWeblog(&quot;error&quot;,message.toString(),optionalParams.toString());</span><br><span class="line">    console.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  d(message?: any, ...optionalParams: any[]) &#123;</span><br><span class="line">    // this.postWeblog(&quot;debug&quot;,message.toString(),optionalParams.toString());</span><br><span class="line">    console.log(message,optionalParams);</span><br><span class="line">  &#125;</span><br><span class="line">  postWeblog(tags,tag,detail:string)&#123;</span><br><span class="line">    let funcName=&quot;postWeblog&quot;;</span><br><span class="line">    let url=utils.getApiPrefix()+CONFIG.urls.postLog;</span><br><span class="line">    let data=&#123;</span><br><span class="line">      &quot;tags&quot;:tags,</span><br><span class="line">      &quot;tag&quot;:tag,</span><br><span class="line">      &quot;detail&quot;:detail,</span><br><span class="line">      &quot;createtime&quot;:parseInt((new Date().getTime()/1000).toFixed()),</span><br><span class="line">    &#125;</span><br><span class="line">    this.postService.postJsonData(url,data,(fb)=&gt;&#123;</span><br><span class="line">        console.log(this.TAG,funcName,&quot;success:&quot;,fb);</span><br><span class="line">    &#125;,(err)=&gt;&#123;</span><br><span class="line">        console.log(this.TAG,funcName,&quot;fail:&quot;,err);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>发送的服务自己写一个就好 仅供模式参考 </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nisonfuture.cn/2018/05/19/overflow hidden 出现边框 记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pling Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶落林间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/19/overflow hidden 出现边框 记录/" itemprop="url">overflow hidden 出现边框 记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T00:00:00+08:00">
-                2018-05-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://www.github.com/aa875982361/plingWeb/raw/master/markdown/1526698382487.jpg" alt="overflow:hidden"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2003,8 +1964,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -2015,7 +1976,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Kategorien</span>
+                  <span class="site-state-item-name">categories</span>
                 </a>
               </div>
             
@@ -2025,8 +1986,8 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">tags</span>
                 </a>
               </div>
             
@@ -2072,7 +2033,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
